@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>数据结构基础 | 麦金</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="总结一下数据结构的知识，以便之后忘记了可以翻阅，哈哈，就像是做了一次备份哇 基本概念与术语数据 是对客观事物的符号表示，很笼统的概念，范围很大  数据对象 是性质相同的数据元素的集合，是数据的子集  数据元素 是组成数据的基本单位  数据项 一个数据元素可以由若干个数据项组成 数据项是数据的不可分割的最小单位  数据结构 是相互之间存在的一种或多种特定关系的数据元素的集合  逻辑结构 是指数据对象">
+<meta name="keywords" content="algorithm,data_structure">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据结构基础">
+<meta property="og:url" content="https://barry215.github.io/2017/01/05/Data-Structure/index.html">
+<meta property="og:site_name" content="麦金">
+<meta property="og:description" content="总结一下数据结构的知识，以便之后忘记了可以翻阅，哈哈，就像是做了一次备份哇 基本概念与术语数据 是对客观事物的符号表示，很笼统的概念，范围很大  数据对象 是性质相同的数据元素的集合，是数据的子集  数据元素 是组成数据的基本单位  数据项 一个数据元素可以由若干个数据项组成 数据项是数据的不可分割的最小单位  数据结构 是相互之间存在的一种或多种特定关系的数据元素的集合  逻辑结构 是指数据对象">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://barry215.github.io/2017/01/05/Data-Structure/Data-Structure/erchashu.png">
+<meta property="og:image" content="https://barry215.github.io/2017/01/05/Data-Structure/Data-Structure/hefumanshu.png">
+<meta property="og:image" content="https://barry215.github.io/2017/01/05/Data-Structure/Data-Structure/hefumanbianma.png">
+<meta property="og:image" content="https://barry215.github.io/2017/01/05/Data-Structure/Data-Structure/linjiejuzheng.png">
+<meta property="og:image" content="https://barry215.github.io/2017/01/05/Data-Structure/Data-Structure/linjiebiao.png">
+<meta property="og:image" content="https://barry215.github.io/2017/01/05/Data-Structure/Data-Structure/shendubianli.png">
+<meta property="og:image" content="https://barry215.github.io/2017/01/05/Data-Structure/Data-Structure/guangdubianli.png">
+<meta property="og:image" content="https://barry215.github.io/2017/01/05/Data-Structure/Data-Structure/dijiesitela.png">
+<meta property="og:image" content="https://barry215.github.io/2017/01/05/Data-Structure/Data-Structure/b-tree.jpeg">
+<meta property="og:image" content="https://barry215.github.io/2017/01/05/Data-Structure/Data-Structure/b+tree.jpeg">
+<meta property="og:image" content="https://barry215.github.io/2017/01/05/Data-Structure/Data-Structure/mysql_diff.jpg">
+<meta property="og:image" content="https://barry215.github.io/2017/01/05/Data-Structure/Data-Structure/red-black-tree.png">
+<meta property="og:image" content="https://barry215.github.io/2017/01/05/Data-Structure/Data-Structure/ercitance.png">
+<meta property="og:image" content="https://barry215.github.io/2017/01/05/Data-Structure/Data-Structure/charupaixu.png">
+<meta property="og:image" content="https://barry215.github.io/2017/01/05/Data-Structure/Data-Structure/xierpaixu.png">
+<meta property="og:image" content="https://barry215.github.io/2017/01/05/Data-Structure/Data-Structure/guibin.png">
+<meta property="og:image" content="https://barry215.github.io/2017/01/05/Data-Structure/Data-Structure/time_al.jpg">
+<meta property="og:updated_time" content="2018-03-09T12:10:16.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="数据结构基础">
+<meta name="twitter:description" content="总结一下数据结构的知识，以便之后忘记了可以翻阅，哈哈，就像是做了一次备份哇 基本概念与术语数据 是对客观事物的符号表示，很笼统的概念，范围很大  数据对象 是性质相同的数据元素的集合，是数据的子集  数据元素 是组成数据的基本单位  数据项 一个数据元素可以由若干个数据项组成 数据项是数据的不可分割的最小单位  数据结构 是相互之间存在的一种或多种特定关系的数据元素的集合  逻辑结构 是指数据对象">
+<meta name="twitter:image" content="https://barry215.github.io/2017/01/05/Data-Structure/Data-Structure/erchashu.png">
+  
+    <link rel="alternate" href="/atom.xml" title="麦金" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">麦金</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">麦金的博客</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://barry215.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Data-Structure" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/01/05/Data-Structure/" class="article-date">
+  <time datetime="2017-01-05T07:26:02.000Z" itemprop="datePublished">2017-01-05</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Algorithm/">Algorithm</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      数据结构基础
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>总结一下数据结构的知识，以便之后忘记了可以翻阅，哈哈，就像是做了一次备份哇</p>
+<h2 id="基本概念与术语"><a href="#基本概念与术语" class="headerlink" title="基本概念与术语"></a>基本概念与术语</h2><h3 id="数据"><a href="#数据" class="headerlink" title="数据"></a>数据</h3><blockquote>
+<p>是对客观事物的符号表示，很笼统的概念，范围很大</p>
+</blockquote>
+<h3 id="数据对象"><a href="#数据对象" class="headerlink" title="数据对象"></a>数据对象</h3><blockquote>
+<p>是性质相同的数据元素的集合，是数据的子集</p>
+</blockquote>
+<h3 id="数据元素"><a href="#数据元素" class="headerlink" title="数据元素"></a>数据元素</h3><blockquote>
+<p>是组成数据的基本单位</p>
+</blockquote>
+<h3 id="数据项"><a href="#数据项" class="headerlink" title="数据项"></a>数据项</h3><blockquote>
+<p>一个数据元素可以由若干个数据项组成</p>
+<p>数据项是数据的不可分割的最小单位</p>
+</blockquote>
+<h3 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h3><blockquote>
+<p>是相互之间存在的一种或多种特定关系的数据元素的集合</p>
+</blockquote>
+<h4 id="逻辑结构"><a href="#逻辑结构" class="headerlink" title="逻辑结构"></a>逻辑结构</h4><blockquote>
+<p>是指数据对象中数据元素之间的相互关系</p>
+</blockquote>
+<ul>
+<li>集合结构</li>
+<li>线性结构</li>
+<li>树形结构</li>
+<li>图形结构或图状结构</li>
+</ul>
+<h4 id="物理结构"><a href="#物理结构" class="headerlink" title="物理结构"></a>物理结构</h4><blockquote>
+<p>是指数据的逻辑结构在计算机中存储形式</p>
+</blockquote>
+<ul>
+<li>顺序存储结构</li>
+<li>链式存储结构</li>
+</ul>
+<h2 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h2><blockquote>
+<p>解决问题的方法</p>
+</blockquote>
+<h3 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h3><ul>
+<li>有穷性</li>
+<li>确定性</li>
+<li>可行性</li>
+<li>输入</li>
+<li>输出</li>
+</ul>
+<h3 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h3><p>记作 <code>T(n) = O(f(n))</code></p>
+<blockquote>
+<p>表示随着<strong>问题规模</strong>n的增大，算法执行时间的增长率和f(n)的增长率相同，也称作<strong>渐进时间复杂度</strong></p>
+</blockquote>
+<p>小贴士：</p>
+<p>这里我们学到优化程序，不单单是降低时间复杂度，还可以从空间复杂度来解决，如果不考虑容量，可以用空间换效率</p>
+<h2 id="线性表"><a href="#线性表" class="headerlink" title="线性表"></a>线性表</h2><h3 id="顺序存储结构"><a href="#顺序存储结构" class="headerlink" title="顺序存储结构"></a>顺序存储结构</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXSIZE 20</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> ElemType;</span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">  ElemType data[MAXSIZE];</span><br><span class="line">  <span class="keyword">int</span> length;</span><br><span class="line">&#125;SqList;</span><br></pre></td></tr></table></figure>
+<h3 id="链式存储结构"><a href="#链式存储结构" class="headerlink" title="链式存储结构"></a>链式存储结构</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> ElemType;</span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">Node</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">  ElemType data;</span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">Node</span> *<span class="title">next</span>;</span></span><br><span class="line">&#125;Node,*LinkList;</span><br><span class="line"></span><br><span class="line"><span class="comment">//等同typedef struct Node *LinkList;</span></span><br><span class="line"><span class="comment">//p = (LinkList) malloc (sizeof (Node))</span></span><br><span class="line"><span class="comment">//有系统生成一个Node型的结点，同时将该结点的起始位置赋给指针变量p</span></span><br></pre></td></tr></table></figure>
+<h3 id="循环链表"><a href="#循环链表" class="headerlink" title="循环链表"></a>循环链表</h3><blockquote>
+<p>表中最后的一个结点的指针域指向头结点，整个链表形成一个环</p>
+</blockquote>
+<p>和线性链表基本一致，差别在于判断循环条件不是p或者p-&gt;next是否为空，而是它们是否等于头指针</p>
+<h3 id="双向链表"><a href="#双向链表" class="headerlink" title="双向链表"></a>双向链表</h3><blockquote>
+<p>就是不仅仅有指向后继的指针，还有增加了指向前驱的指针</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> ElemType;</span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">DuNode</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">  ElemType data;</span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">DuNode</span> *<span class="title">prior</span>;</span></span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">DuNode</span> *<span class="title">next</span>;</span></span><br><span class="line">&#125;DuNode,*DuLinkList;</span><br></pre></td></tr></table></figure>
+<h2 id="栈和队列"><a href="#栈和队列" class="headerlink" title="栈和队列"></a>栈和队列</h2><h3 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h3><blockquote>
+<p>后进先出 LIFO</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">  SElemType *base;</span><br><span class="line">  SElemType *top;</span><br><span class="line">  <span class="keyword">int</span> stacksize;</span><br><span class="line">&#125;SqStack;</span><br></pre></td></tr></table></figure>
+<p>栈可以在程序设计语言中实现递归（调用自己的行为叫做递归）</p>
+<h3 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h3><blockquote>
+<p>先进先出 FIFO</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">QNode</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">  QElemType data;</span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">QNode</span> *<span class="title">next</span>;</span></span><br><span class="line">&#125;QNode,*QueuePtr;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">  QueuePtr front;  <span class="comment">//队头指针</span></span><br><span class="line">  QueuePtr rear;   <span class="comment">//队尾指针</span></span><br><span class="line">&#125;LinkQueue;</span><br></pre></td></tr></table></figure>
+<h4 id="循环队列"><a href="#循环队列" class="headerlink" title="循环队列"></a>循环队列</h4><p>特点</p>
+<p>在非空队列中，头指针始终指向队列头元素，而尾指针始终指向队列尾元素的下一个位置，这样当front等于rear时，此队列不是还剩一个元素，而是空队列。</p>
+<h2 id="串"><a href="#串" class="headerlink" title="串"></a>串</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">char</span> *ch;</span><br><span class="line">    <span class="keyword">int</span> length;</span><br><span class="line">&#125;HString;</span><br></pre></td></tr></table></figure>
+<h2 id="广义表"><a href="#广义表" class="headerlink" title="广义表"></a>广义表</h2><h3 id="术语"><a href="#术语" class="headerlink" title="术语"></a>术语</h3><h4 id="长度"><a href="#长度" class="headerlink" title="长度"></a>长度</h4><p>第一层（括号）的数量</p>
+<h4 id="深度"><a href="#深度" class="headerlink" title="深度"></a>深度</h4><p>层数（括号数）</p>
+<p>速学路径</p>
+<p><a href="http://www.zybang.com/question/17d8254f4028ac9695f79081f32542f4.html" target="_blank" rel="noopener">http://www.zybang.com/question/17d8254f4028ac9695f79081f32542f4.html</a></p>
+<h2 id="树"><a href="#树" class="headerlink" title="树"></a>树</h2><h3 id="基本术语"><a href="#基本术语" class="headerlink" title="基本术语"></a>基本术语</h3><h4 id="结点"><a href="#结点" class="headerlink" title="结点"></a>结点</h4><blockquote>
+<p>树上的一个元素</p>
+</blockquote>
+<h4 id="度"><a href="#度" class="headerlink" title="度"></a>度</h4><blockquote>
+<p> 结点拥有的子树数</p>
+</blockquote>
+<h4 id="叶子"><a href="#叶子" class="headerlink" title="叶子"></a>叶子</h4><blockquote>
+<p>度为0的结点</p>
+</blockquote>
+<h4 id="孩子"><a href="#孩子" class="headerlink" title="孩子"></a>孩子</h4><blockquote>
+<p>结点的子树</p>
+</blockquote>
+<h4 id="双亲"><a href="#双亲" class="headerlink" title="双亲"></a>双亲</h4><blockquote>
+<p>子树的派生数称为双亲</p>
+</blockquote>
+<h4 id="兄弟"><a href="#兄弟" class="headerlink" title="兄弟"></a>兄弟</h4><blockquote>
+<p>同一个双亲的孩子互称兄弟</p>
+</blockquote>
+<h4 id="深度-1"><a href="#深度-1" class="headerlink" title="深度"></a>深度</h4><blockquote>
+<p>树中结点的最大层次称为树的深度</p>
+</blockquote>
+<h4 id="森林"><a href="#森林" class="headerlink" title="森林"></a>森林</h4><blockquote>
+<p>几棵互不相交的树的集合</p>
+</blockquote>
+<h3 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h3><blockquote>
+<p>每个结点最多两棵子树的树</p>
+</blockquote>
+<h4 id="性质"><a href="#性质" class="headerlink" title="性质"></a>性质</h4><ul>
+<li>在二叉树的第 i 层上最多有2^i-1^个结点</li>
+<li>深度为 k 的二叉树最多有2^k^-1个结点</li>
+<li>任何一棵二叉树，如果叶子结点数为n~0~，度为2的结点数为n~2~，则n~0~ = n~2~+1</li>
+<li>具有n个结点的完全二叉树的深度为[log~2~n]+1</li>
+</ul>
+<h4 id="存储结构"><a href="#存储结构" class="headerlink" title="存储结构"></a>存储结构</h4><h5 id="顺序存储结构-1"><a href="#顺序存储结构-1" class="headerlink" title="顺序存储结构"></a>顺序存储结构</h5><p>根据完全二叉树的顺序，依次排列，形成顺序表</p>
+<h5 id="链式存储结构-1"><a href="#链式存储结构-1" class="headerlink" title="链式存储结构"></a>链式存储结构</h5><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">BiTNode</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">  TElemType data;</span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">BiTNode</span> *<span class="title">lchild</span>,*<span class="title">rchuld</span>;</span></span><br><span class="line">&#125;BiTNode,*BiTree;</span><br></pre></td></tr></table></figure>
+<h4 id="遍历二叉树"><a href="#遍历二叉树" class="headerlink" title="遍历二叉树"></a>遍历二叉树</h4><blockquote>
+<p>仅仅是根节点的输出顺序的前后</p>
+</blockquote>
+<ul>
+<li>先序遍历</li>
+<li>中序遍历</li>
+<li>后序遍历</li>
+</ul>
+<h4 id="线索二叉树"><a href="#线索二叉树" class="headerlink" title="线索二叉树"></a>线索二叉树</h4><blockquote>
+<p>相比二叉树，他增加了前驱和后继的元素，为了节约空间，数据位还是采用之前的左右子树，但是用tag来表示是两边的数据位是左孩子还是前驱，右孩子还是后继</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>左数据位</th>
+<th>标识</th>
+<th>数据</th>
+<th>标识</th>
+<th>右数据位</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Lchild</td>
+<td>LTag</td>
+<td>data</td>
+<td>RTag</td>
+<td>Rchild</td>
+</tr>
+</tbody>
+</table>
+<p>如果tag为0，表示是孩子的数据，如果为1，表示是前驱或者后继</p>
+<h5 id="线索化"><a href="#线索化" class="headerlink" title="线索化"></a>线索化</h5><p>一般用中序遍历二叉树，使其变成线索二叉树</p>
+<p>速学路径</p>
+<p><a href="http://blog.csdn.net/jiajiayouba/article/details/9224403" target="_blank" rel="noopener">http://blog.csdn.net/jiajiayouba/article/details/9224403</a></p>
+<h3 id="树和森林"><a href="#树和森林" class="headerlink" title="树和森林"></a>树和森林</h3><h4 id="树的存储结构"><a href="#树的存储结构" class="headerlink" title="树的存储结构"></a>树的存储结构</h4><h5 id="双亲表示法"><a href="#双亲表示法" class="headerlink" title="双亲表示法"></a>双亲表示法</h5><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> SIZE 100</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">PTNode</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">  PElemType data;</span><br><span class="line">  <span class="keyword">int</span> parent;  <span class="comment">//双亲位置域</span></span><br><span class="line">&#125;PTNode;</span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">  PTNode nodes[SIZE];</span><br><span class="line">  <span class="keyword">int</span> r,n;   <span class="comment">//根的位置和结点数</span></span><br><span class="line">&#125;PTree;</span><br></pre></td></tr></table></figure>
+<h5 id="孩子表示法"><a href="#孩子表示法" class="headerlink" title="孩子表示法"></a>孩子表示法</h5><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">CTNode</span>   //孩子结点</span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">  <span class="keyword">int</span> child;</span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">CTNode</span> *<span class="title">next</span>;</span></span><br><span class="line">&#125;*ChildPtr;</span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">  TElemType data;</span><br><span class="line">  ChildPtr firstchild;   <span class="comment">//孩子链表头指针</span></span><br><span class="line">&#125;CTBox;</span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">  CTBOX nodes[SIZE];</span><br><span class="line">  <span class="keyword">int</span> r,n;   <span class="comment">//根的位置和结点数</span></span><br><span class="line">&#125;CTree;</span><br></pre></td></tr></table></figure>
+<h5 id="兄弟表示法"><a href="#兄弟表示法" class="headerlink" title="兄弟表示法"></a>兄弟表示法</h5><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">CSNode</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">  ElemType data;</span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">CSNode</span> *<span class="title">firstchild</span>,*<span class="title">nextsibling</span>;</span></span><br><span class="line">&#125;CSNode,*CSTree;</span><br></pre></td></tr></table></figure>
+<h4 id="树与二叉树的转换"><a href="#树与二叉树的转换" class="headerlink" title="树与二叉树的转换"></a>树与二叉树的转换</h4><p><img src="Data-Structure/erchashu.png" alt></p>
+<h4 id="树和森林的遍历"><a href="#树和森林的遍历" class="headerlink" title="树和森林的遍历"></a>树和森林的遍历</h4><h5 id="树的遍历"><a href="#树的遍历" class="headerlink" title="树的遍历"></a>树的遍历</h5><blockquote>
+<p>把树转化成二叉树</p>
+</blockquote>
+<ul>
+<li>先根遍历（类似于二叉树的先序遍历）</li>
+<li>后根遍历（类似于二叉树的中序遍历）</li>
+</ul>
+<h5 id="森林的遍历"><a href="#森林的遍历" class="headerlink" title="森林的遍历"></a>森林的遍历</h5><blockquote>
+<p>把森林转化成二叉树</p>
+</blockquote>
+<ul>
+<li>先序遍历森林（类似于二叉树的先序遍历）</li>
+<li>中序遍历森林（类似于二叉树的中序遍历）</li>
+</ul>
+<h3 id="赫夫曼树"><a href="#赫夫曼树" class="headerlink" title="赫夫曼树"></a>赫夫曼树</h3><blockquote>
+<p>转变二叉树来实现用较小的代价来访问到概率大的元素，又叫最优二叉树</p>
+</blockquote>
+<h4 id="生成最优树的方法"><a href="#生成最优树的方法" class="headerlink" title="生成最优树的方法"></a>生成最优树的方法</h4><p>现在有一堆概率数：A:5 , B:15 , C:40 , D:30 , E:10</p>
+<p><img src="Data-Structure/hefumanshu.png" alt></p>
+<p>如上图所示，选两个目前最小的数生成N~1~，保证右子树的权值大于左子树，然后这样循环，即可生成</p>
+<p>上图二叉树的带权路径长度(叶子结点的路径之和)<br>$$<br>40x1+30x2+15x3+10x4+5x4=205<br>$$</p>
+<h4 id="赫夫曼编码"><a href="#赫夫曼编码" class="headerlink" title="赫夫曼编码"></a>赫夫曼编码</h4><p>如下图所示</p>
+<p><img src="Data-Structure/hefumanbianma.png" alt></p>
+<p>主要思想还是没变，把概率最大的字母用最少的二进制字符来表示，而且每个二进制字符组代表的字母不冲突。</p>
+<p>速学路径</p>
+<p><a href="http://www.jianshu.com/p/95fba425be44" target="_blank" rel="noopener">http://www.jianshu.com/p/95fba425be44</a></p>
+<h2 id="图"><a href="#图" class="headerlink" title="图"></a>图</h2><h3 id="术语-1"><a href="#术语-1" class="headerlink" title="术语"></a>术语</h3><h4 id="G-V-E"><a href="#G-V-E" class="headerlink" title="G(V,E)"></a>G(V,E)</h4><blockquote>
+<p>G表示一个图，V是图的顶点集合，E是图的边集合</p>
+</blockquote>
+<h4 id="无向图"><a href="#无向图" class="headerlink" title="无向图"></a>无向图</h4><blockquote>
+<p>顶点之间的边没有方向</p>
+</blockquote>
+<h4 id="有向图"><a href="#有向图" class="headerlink" title="有向图"></a>有向图</h4><blockquote>
+<p>顶点之间的边有方向，这种边称为有向边，也称为弧</p>
+</blockquote>
+<h5 id="入度"><a href="#入度" class="headerlink" title="入度"></a>入度</h5><blockquote>
+<p>有向边指向顶点V的数量称为入度</p>
+</blockquote>
+<h5 id="出度"><a href="#出度" class="headerlink" title="出度"></a>出度</h5><blockquote>
+<p>有向边离开顶点V的数量称为出度</p>
+</blockquote>
+<h4 id="简单图"><a href="#简单图" class="headerlink" title="简单图"></a>简单图</h4><blockquote>
+<p>不存在顶点到自身的边，并且没有重复的边的图是简单图</p>
+</blockquote>
+<h4 id="网"><a href="#网" class="headerlink" title="网"></a>网</h4><blockquote>
+<p>有权值的图叫做网</p>
+</blockquote>
+<h4 id="连通图"><a href="#连通图" class="headerlink" title="连通图"></a>连通图</h4><blockquote>
+<p>图上任意两个顶点都连通，则为连通图</p>
+</blockquote>
+<h3 id="图的存储结构"><a href="#图的存储结构" class="headerlink" title="图的存储结构"></a>图的存储结构</h3><h4 id="邻接矩阵"><a href="#邻接矩阵" class="headerlink" title="邻接矩阵"></a>邻接矩阵</h4><p><img src="Data-Structure/linjiejuzheng.png" alt></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">char</span> VertexType;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> EdgeType;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXSIZE 100</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">  VertexType vexs[MAXSIZE];         <span class="comment">//顶点数组</span></span><br><span class="line">  EdgeType arc[MAXSIZE][MAXSIZE];   <span class="comment">//二维数组，边表</span></span><br><span class="line">  <span class="keyword">int</span> numVertexes,numEdges;         <span class="comment">//顶点数和边数</span></span><br><span class="line">&#125;MGraph;</span><br></pre></td></tr></table></figure>
+<h4 id="邻接表"><a href="#邻接表" class="headerlink" title="邻接表"></a>邻接表</h4><p><img src="Data-Structure/linjiebiao.png" alt></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAX_VERTEX_NUM 20</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">ArcNode</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">  <span class="keyword">int</span> adjvex;   <span class="comment">//储存该顶点的下标</span></span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">ArcNode</span> *<span class="title">nextarc</span>;</span>  <span class="comment">//指向下一个邻接点的指针</span></span><br><span class="line">&#125;ArcNode;</span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">VNode</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">  VertexType data;   <span class="comment">//顶点信息</span></span><br><span class="line">  ArcNode *firstarc;  <span class="comment">//指向第一个邻接点</span></span><br><span class="line">&#125;VNode,AdjList[MAX_VERTEX_NUM];</span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">  AdjList vertices;</span><br><span class="line">  <span class="keyword">int</span> vexnum,arcnum;  <span class="comment">//顶点数和弧数</span></span><br><span class="line">&#125;ALGraph;</span><br></pre></td></tr></table></figure>
+<h4 id="十字链表"><a href="#十字链表" class="headerlink" title="十字链表"></a>十字链表</h4><blockquote>
+<p>邻接表是以出度为出发点，逆邻接表是以入度为出发点，那么十字链表就是结合它们两者</p>
+</blockquote>
+<h5 id="顶点结点"><a href="#顶点结点" class="headerlink" title="顶点结点"></a>顶点结点</h5><table>
+<thead>
+<tr>
+<th>指向该顶点的入边表的第一个结点</th>
+<th>数据</th>
+<th>指向该顶点的出边表的第一个结点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>firstin</td>
+<td>data</td>
+<td>firstout</td>
+</tr>
+</tbody>
+</table>
+<h5 id="弧结点"><a href="#弧结点" class="headerlink" title="弧结点"></a>弧结点</h5><table>
+<thead>
+<tr>
+<th>弧起点的下标</th>
+<th>弧终点的下标</th>
+<th>指向终点相同的下一条弧</th>
+<th>指向起点相同的下一条弧</th>
+<th>数据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>tailvex</td>
+<td>headvex</td>
+<td>hlink</td>
+<td>tlink</td>
+<td>data</td>
+</tr>
+</tbody>
+</table>
+<h4 id="邻接多重表"><a href="#邻接多重表" class="headerlink" title="邻接多重表"></a>邻接多重表</h4><blockquote>
+<p>是无向图的另一种链式存储结构</p>
+</blockquote>
+<h3 id="图的遍历"><a href="#图的遍历" class="headerlink" title="图的遍历"></a>图的遍历</h3><h4 id="深度优先遍历"><a href="#深度优先遍历" class="headerlink" title="深度优先遍历"></a>深度优先遍历</h4><blockquote>
+<p>一直递归地遍历第一个顶点的第一个邻接点，直到访问的顶点没有邻接点后，再对第一个顶点的第二个邻接点进行递归遍历，如此循环</p>
+</blockquote>
+<p><img src="Data-Structure/shendubianli.png" alt></p>
+<h4 id="广度优先遍历"><a href="#广度优先遍历" class="headerlink" title="广度优先遍历"></a>广度优先遍历</h4><blockquote>
+<p>以顶点为起始点，由近至远，依次访问和顶点路径想通且路径长度分别为1，2……的顶点</p>
+</blockquote>
+<p><img src="Data-Structure/guangdubianli.png" alt></p>
+<p>速学路径</p>
+<p><a href="http://blog.csdn.net/dreamzuora/article/details/51137132" target="_blank" rel="noopener">http://blog.csdn.net/dreamzuora/article/details/51137132</a></p>
+<h3 id="最小生成树"><a href="#最小生成树" class="headerlink" title="最小生成树"></a>最小生成树</h3><blockquote>
+<p>把各个顶点连接起来的最小代价的树</p>
+</blockquote>
+<h4 id="普里姆（Prim）算法"><a href="#普里姆（Prim）算法" class="headerlink" title="普里姆（Prim）算法"></a>普里姆（Prim）算法</h4><blockquote>
+<p>新建一个集合，放入一个顶点，然后选出和这个顶点连通的最短路径的那个顶点，也放进这个集合，然后选出和这两个顶点连通的最短路径的那个顶点，然后再把它放进集合，直到所有的顶点都在集合里了，那最小生成树也出来了</p>
+</blockquote>
+<h4 id="克鲁斯卡尔（Kruskal）算法"><a href="#克鲁斯卡尔（Kruskal）算法" class="headerlink" title="克鲁斯卡尔（Kruskal）算法"></a>克鲁斯卡尔（Kruskal）算法</h4><blockquote>
+<p>将图中边按其权值由小到大的次序顺序选取，然后凑出来</p>
+</blockquote>
+<h4 id="速学路径"><a href="#速学路径" class="headerlink" title="速学路径"></a>速学路径</h4><p><a href="http://blog.csdn.net/weinierbian/article/details/8059129/" target="_blank" rel="noopener">http://blog.csdn.net/weinierbian/article/details/8059129/</a></p>
+<h3 id="拓扑排序"><a href="#拓扑排序" class="headerlink" title="拓扑排序"></a>拓扑排序</h3><blockquote>
+<p>由AOV网构造拓扑序列的拓扑排序算法主要是循环执行以下两步，直到不存在入度为0的顶点为止。</p>
+<p>(1) 选择一个入度为0的顶点并输出之；</p>
+<p>(2) 从网中删除此顶点及所有出边。</p>
+<p>循环结束后，若输出的顶点数小于网中的顶点数，则输出“有回路”信息，否则输出的顶点序列就是一种拓扑序列。</p>
+</blockquote>
+<h4 id="AOV网"><a href="#AOV网" class="headerlink" title="AOV网"></a>AOV网</h4><blockquote>
+<p>在有向图中若以顶点表示活动，有向边表示活动之间的先后关系，这样的图简称为AOV网</p>
+</blockquote>
+<h3 id="关键路径"><a href="#关键路径" class="headerlink" title="关键路径"></a>关键路径</h3><blockquote>
+<p>从源点到汇点的路径长度(各路径上持续时间之和)最长的路径叫关键路径</p>
+</blockquote>
+<h4 id="AOE网"><a href="#AOE网" class="headerlink" title="AOE网"></a>AOE网</h4><blockquote>
+<p>用顶点表示事件，弧表示活动，弧上的权值表示活动持续的时间的有向图叫AOE网</p>
+</blockquote>
+<h3 id="最短路径"><a href="#最短路径" class="headerlink" title="最短路径"></a>最短路径</h3><h4 id="迪杰斯特拉（Dijkstra）算法"><a href="#迪杰斯特拉（Dijkstra）算法" class="headerlink" title="迪杰斯特拉（Dijkstra）算法"></a>迪杰斯特拉（Dijkstra）算法</h4><blockquote>
+<p>按路径长度递增的次序产生最短路径的算法</p>
+</blockquote>
+<p><img src="Data-Structure/dijiesitela.png" alt></p>
+<p>速学路径</p>
+<p><a href="http://blog.csdn.net/qq_34845121/article/details/62056089" target="_blank" rel="noopener">http://blog.csdn.net/qq_34845121/article/details/62056089</a></p>
+<h4 id="弗洛伊德（Floyd）算法"><a href="#弗洛伊德（Floyd）算法" class="headerlink" title="弗洛伊德（Floyd）算法"></a>弗洛伊德（Floyd）算法</h4><p>速学链接</p>
+<p><a href="http://blog.csdn.net/bjtu_dubing/article/details/50333027" target="_blank" rel="noopener">http://blog.csdn.net/bjtu_dubing/article/details/50333027</a></p>
+<h2 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h2><h3 id="术语-2"><a href="#术语-2" class="headerlink" title="术语"></a>术语</h3><h4 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h4><blockquote>
+<p>是数据元素中某个数据项的值，用它可以标识一个数据元素</p>
+</blockquote>
+<h3 id="顺序查找"><a href="#顺序查找" class="headerlink" title="顺序查找"></a>顺序查找</h3><blockquote>
+<p>从第一个或者最后一个记录开始，逐个与给定的值进行匹配</p>
+</blockquote>
+<h3 id="折半查找"><a href="#折半查找" class="headerlink" title="折半查找"></a>折半查找</h3><blockquote>
+<p>搜索过程从数组的中间元素开始，如果中间元素正好是要查找的元素，则搜索过程结束；如果某一特定元素大于或者小于中间元素，则在数组大于或小于中间元素的那一半中查找，而且跟开始一样从中间元素开始比较。如果在某一步骤数组为空，则代表找不到。这种搜索算法每一次比较都使搜索范围缩小一半。</p>
+<p>时间复杂度为O(logn)</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// while循环</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">binary_search</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> arr[], <span class="keyword">int</span> start, <span class="keyword">int</span> end, <span class="keyword">int</span> khey)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> mid;</span><br><span class="line">	<span class="keyword">while</span> (start &lt;= end) &#123;</span><br><span class="line">		mid = start + (end - start) / <span class="number">2</span>; <span class="comment">//直接平均可能會溢位，所以用此算法</span></span><br><span class="line">		<span class="keyword">if</span> (arr[mid] &lt; khey)</span><br><span class="line">			start = mid + <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (arr[mid] &gt; khey)</span><br><span class="line">			end = mid - <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			<span class="keyword">return</span> mid; <span class="comment">//最後檢測相等是因為多數搜尋狀況不是大於要不就小於</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 递归版本</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">binary_search</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> arr[], <span class="keyword">int</span> start, <span class="keyword">int</span> end, <span class="keyword">int</span> khey)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (start &gt; end)</span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> mid = start + (end - start) / <span class="number">2</span>; <span class="comment">//直接平均可能會溢位，所以用此算法</span></span><br><span class="line">	<span class="keyword">if</span> (arr[mid] &gt; khey)</span><br><span class="line">		<span class="keyword">return</span> binary_search(arr, start, mid - <span class="number">1</span>, khey);</span><br><span class="line">	<span class="keyword">if</span> (arr[mid] &lt; khey)</span><br><span class="line">		<span class="keyword">return</span> binary_search(arr, mid + <span class="number">1</span>, end, khey);</span><br><span class="line">	<span class="keyword">return</span> mid; <span class="comment">//最後檢測相等是因為多數搜尋狀況不是大於要不就小於</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>java实现</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">binarySearch</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> &lt;T extends Comparable&lt;T&gt;&gt; <span class="function"><span class="keyword">int</span> <span class="title">binarySearch</span><span class="params">(T[] x, T key)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> binarySearch(x, <span class="number">0</span>, x.length- <span class="number">1</span>, key);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 使用循环实现的二分查找</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function"><span class="keyword">int</span> <span class="title">binarySearch</span><span class="params">(T[] x, T key, Comparator&lt;T&gt; comp)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> low = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> high = x.length - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (low &lt;= high) &#123;</span><br><span class="line">            <span class="keyword">int</span> mid = (low + high) &gt;&gt;&gt; <span class="number">1</span>; <span class="comment">//无符号向右移一位，左侧补0</span></span><br><span class="line"><span class="comment">//            int mid = (high + low)/2;</span></span><br><span class="line">            <span class="keyword">int</span> cmp = comp.compare(x[mid], key);</span><br><span class="line">            <span class="keyword">if</span> (cmp &lt; <span class="number">0</span>) &#123;</span><br><span class="line">                low= mid + <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (cmp &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                high= mid - <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> mid;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 使用递归实现的二分查找</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span>&lt;T extends Comparable&lt;T&gt;&gt; <span class="function"><span class="keyword">int</span> <span class="title">binarySearch</span><span class="params">(T[] x, <span class="keyword">int</span> low, <span class="keyword">int</span> high, T key)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(low &lt;= high) &#123;</span><br><span class="line">            <span class="keyword">int</span> mid = low + ((high -low) &gt;&gt; <span class="number">1</span>); <span class="comment">//向右移一位，就是除以2</span></span><br><span class="line"><span class="comment">//            int mid = (high + low)/2;  //直接平均可能會溢位，所以用上面这种算法</span></span><br><span class="line">            <span class="keyword">if</span>(key.compareTo(x[mid])== <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> mid;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(key.compareTo(x[mid])&lt; <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> binarySearch(x,low, mid - <span class="number">1</span>, key);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> binarySearch(x,mid + <span class="number">1</span>, high, key);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        Integer[] it = <span class="keyword">new</span> Integer[<span class="number">5</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> f = <span class="number">0</span>;f&lt;it.length;f++)&#123;</span><br><span class="line">            it[f] = f+<span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        System.out.println(binarySearch(it, <span class="number">3</span>, <span class="keyword">new</span> Comparator&lt;Integer&gt;() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Integer o1, Integer o2)</span> </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> o1.compareTo(o2);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="binary-search-tree"><a href="#binary-search-tree" class="headerlink" title="binary search tree"></a>binary search tree</h3><blockquote>
+<p> 中文翻译可为(排序二叉树,二叉搜索树,二叉查找树)</p>
+<p> 左子树上的所有结点的值均小于它的根结点的值</p>
+<p> 右子树上的所有结点的值均大于它的根结构的值</p>
+<p> 它的左右子树也分别为二叉排序树</p>
+</blockquote>
+<p>把无序序列转成二叉排序树之后，用中序遍历的方法可以输出有序的顺序序列</p>
+<h4 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Node 二叉树上的节点</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> wait</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Node</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 节点的数据，这里我们用一个int表示</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> data;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 节点的左孩子</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> Node left;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 节点的右孩子</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> Node right;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 构造函数，data初始化节点的值</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> data</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Node</span><span class="params">(<span class="keyword">int</span> data)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.data=http:<span class="comment">//blog.csdn.net/lwxdjk/article/details/data;</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 默认构造函数，data=0</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Node</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>(<span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * BTree二叉排序树类</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> wait</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BTree</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 树的根节点</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> Node root;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 记录树的节点个数</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> size;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 默认构造函数，树的根节点为null</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">BTree</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        root = <span class="keyword">null</span>;</span><br><span class="line">        size = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 插入一个新的节点node</span></span><br><span class="line"><span class="comment">     * </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> node</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insert</span><span class="params">(Node node)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="keyword">null</span>) &#123;</span><br><span class="line">            root = node;</span><br><span class="line">            size++;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        Node current = root;</span><br><span class="line">        <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (node.data &lt;= current.data) &#123;</span><br><span class="line">                <span class="comment">// 如果插入节点的值小于当前节点的值，说明应该插入到当前节点左子树，而此时如果左子树为空，就直接设置当前节点的左子树为插入节点。</span></span><br><span class="line">                <span class="keyword">if</span> (current.left == <span class="keyword">null</span>) &#123;</span><br><span class="line">                    current.left = node;</span><br><span class="line">                    size++;</span><br><span class="line">                    <span class="keyword">return</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                current = current.left;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="comment">// 如果插入节点的值大于当前节点的值，说明应该插入到当前节点右子树，而此时如果右子树为空，就直接设置当前节点的右子树为插入节点。</span></span><br><span class="line">                <span class="keyword">if</span> (current.right == <span class="keyword">null</span>) &#123;</span><br><span class="line">                    current.right = node;</span><br><span class="line">                    size++;</span><br><span class="line">                    <span class="keyword">return</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                current = current.right;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 插入一个值为data的节点</span></span><br><span class="line"><span class="comment">     * </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> data</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="keyword">int</span> data)</span> </span>&#123;</span><br><span class="line">        insert(<span class="keyword">new</span> Node(data));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 根据int数组里面的值建立一个二叉排序树</span></span><br><span class="line"><span class="comment">     * </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> datas</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">bulidTree</span><span class="params">(<span class="keyword">int</span>[] datas)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>, len = datas.length; i &lt; len; i++) &#123;</span><br><span class="line">            insert(datas[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">     <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 中序遍历，递归方法实现</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> node 当前访问的节点</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> list 存储节点值的容器</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">inOrderRe</span><span class="params">(Node node,List&lt;Integer&gt; list)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(list==<span class="keyword">null</span>)&#123;</span><br><span class="line">            list=<span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(node==<span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(node.left!=<span class="keyword">null</span>)&#123;</span><br><span class="line">            inOrderRe(node.left,list);</span><br><span class="line">        &#125;</span><br><span class="line">        list.add(node.data);</span><br><span class="line">        <span class="keyword">if</span>(node.right!=<span class="keyword">null</span>)&#123;</span><br><span class="line">            inOrderRe(node.right,list);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 中序遍历二叉排序树  非递归的方法，深度优先和栈思想</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] inOrder() &#123;</span><br><span class="line">        <span class="keyword">int</span>[] res = <span class="keyword">new</span> <span class="keyword">int</span>[size];</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">        <span class="comment">//使用stack存储遍历到的节点</span></span><br><span class="line">        Stack&lt;Node&gt; stack = <span class="keyword">new</span> Stack&lt;Node&gt;();</span><br><span class="line">        Node node = root;</span><br><span class="line">        <span class="keyword">while</span> (node != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="comment">//一直往下遍历，知道到左孩子节点为空</span></span><br><span class="line">            <span class="keyword">while</span> (node != <span class="keyword">null</span>) &#123;</span><br><span class="line">                stack.push(node);</span><br><span class="line">                node = node.left;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//左孩子节点为空之后，往后找，找到上一个节点.如果找到的上一个节点的右孩子节点为空，那么继续往上找，直到找到一个右孩子节点不为空的</span></span><br><span class="line">            <span class="keyword">while</span> (!stack.isEmpty() &amp;&amp; stack.peek().right == <span class="keyword">null</span>) &#123;</span><br><span class="line">                node = stack.pop();</span><br><span class="line">                res[i++] = node.data;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (!stack.isEmpty()) &#123;</span><br><span class="line">                node = stack.pop();</span><br><span class="line">                res[i++] = node.data;</span><br><span class="line">                <span class="comment">//找到了一个右孩子节点不为空的节点，就去遍历他的右孩子节点</span></span><br><span class="line">                <span class="keyword">if</span> (node != <span class="keyword">null</span>) &#123;</span><br><span class="line">                    node = node.right;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                node=<span class="keyword">null</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>速学路径</p>
+<p><a href="https://www.nowcoder.com/questionTerminal/a738e13ce2aa4daeac9ef3b4238e4b2e?pos=7&amp;mutiTagIds=583&amp;orderByHotValue=1" target="_blank" rel="noopener">https://www.nowcoder.com/questionTerminal/a738e13ce2aa4daeac9ef3b4238e4b2e?pos=7&amp;mutiTagIds=583&amp;orderByHotValue=1</a></p>
+<p><a href="http://www.itdadao.com/articles/c15a205949p0.html" target="_blank" rel="noopener">http://www.itdadao.com/articles/c15a205949p0.html</a></p>
+<p><a href="https://segmentfault.com/a/1190000008949339" target="_blank" rel="noopener">数据结构二叉树 JAVA版</a></p>
+<h3 id="B树-B-树-B-tree"><a href="#B树-B-树-B-tree" class="headerlink" title="B树(B-树,B-tree)"></a>B树(B-树,B-tree)</h3><blockquote>
+<p>B树是多路平衡查找树，B树每个结点可以有n个元素和n+1个孩子，减少树的高度，所以可以降低内存读取外存的次数；( 对二叉查找树的改进。它的设计思想是，将相关数据尽量集中在一起，以便一次读取多个数据，减少硬盘操作次数）一般用于数据库系统中</p>
+</blockquote>
+<p><img src="Data-Structure/b-tree.jpeg" alt></p>
+<h4 id="性质-1"><a href="#性质-1" class="headerlink" title="性质"></a>性质</h4><ul>
+<li>根结点的儿子数为[2, M]</li>
+<li>除根结点以外的非叶子节点的儿子数为[M/2, M]</li>
+<li>每个结点存放至少M/2-1（取上整）和至多M-1个关键字</li>
+<li>每个节点的关键字比它的子节点个数少 1 (叶结点除外)</li>
+<li>所有的叶子结点都在同一个层级</li>
+</ul>
+<h4 id="速学路径-1"><a href="#速学路径-1" class="headerlink" title="速学路径"></a>速学路径</h4><p><a href="http://www.jianshu.com/p/ed76dbc0536d" target="_blank" rel="noopener">http://www.jianshu.com/p/ed76dbc0536d</a></p>
+<h3 id="B-树"><a href="#B-树" class="headerlink" title="B+树"></a>B+树</h3><blockquote>
+<p>B+树是B树的变种树，有n棵子树的节点中含有n个关键字，每个关键字不保存数据，只用来索引，数据都保存在叶子节点。是为文件系统而生的。</p>
+</blockquote>
+<p><img src="Data-Structure/b+tree.jpeg" alt></p>
+<h4 id="为什么数据库索引采用B-树"><a href="#为什么数据库索引采用B-树" class="headerlink" title="为什么数据库索引采用B+树"></a>为什么数据库索引采用B+树</h4><p>因为从磁盘读到内存需要花很多时间，所以普通的搜索树的深度很深，会导致IO时间很长，所以用深度低的多路查找树。那为什么真实数据不放在内层节点呢，是要让磁盘块能放更多的数据项，同时数据项（索引字段）要小一点，这样可以减低树的高度。</p>
+<h4 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h4><p>重点：B树必须用中序遍历的方法按序扫库， 而B+树直接从叶子结点挨个扫一遍就完了</p>
+<table>
+<thead>
+<tr>
+<th>B 树</th>
+<th>B+ 树</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>关键字</td>
+<td>关键字分布在整颗树中，只出现一次</td>
+<td>所有关键字都出现在叶节点的链表中，且有序</td>
+</tr>
+<tr>
+<td>搜索命中</td>
+<td>可能在树中任意节点命中，搜索结束</td>
+<td>只可能在叶节点中命中，查询路径稳定</td>
+</tr>
+<tr>
+<td>非叶节点</td>
+<td>非叶节点包含关键字，也包含数据</td>
+<td>非叶节点相当于索引帮助搜索到叶节点，叶节点相当于存储关键字数据的数据层</td>
+</tr>
+<tr>
+<td>叶节点</td>
+<td></td>
+<td>增加了链表指针，相当于存储关键字数据的数据层</td>
+</tr>
+</tbody>
+</table>
+<h3 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h3><h4 id="InnoDB和MyISAM的索引区别"><a href="#InnoDB和MyISAM的索引区别" class="headerlink" title="InnoDB和MyISAM的索引区别"></a>InnoDB和MyISAM的索引区别</h4><p>MyISAM索引文件和数据文件是分离的，索引文件仅保存数据的地址</p>
+<p>InnoDB中，数据文件本身就是按B+Tree组织的一个索引结构，它的叶节点就保存了完整的数据</p>
+<h4 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h4><h5 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h5><ol>
+<li>大大加快数据的检索速度;</li>
+<li>创建唯一性索引，保证数据库表中每一行数据的唯一性;</li>
+<li>加速表和表之间的连接;</li>
+<li>在使用分组和排序子句进行数据检索时，可以显著减少查询中分组和排序的时间。</li>
+</ol>
+<h5 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h5><ol>
+<li>索引需要占物理空间。</li>
+<li>当对表中的数据进行增加、删除和修改的时候，索引也要动态的维护，降低了数据的维护速度。</li>
+</ol>
+<p><img src="Data-Structure/mysql_diff.jpg" alt></p>
+<h4 id="索引优化"><a href="#索引优化" class="headerlink" title="索引优化"></a>索引优化</h4><ul>
+<li>如果是联合索引，则把=放在最前面，范围&lt;&gt;between放在最后，因为从左往右匹配</li>
+<li>有了’AB’索引，就不用’A’索引了</li>
+<li>索引列匹配的时候，索引不要参与计算</li>
+<li>索引项尽量小</li>
+<li>数据量小的表不要建索引</li>
+<li>索引不是越多越好，因为数据的变更（增删改）都需要维护索引，而且更多的索引意味着也需要更多的空间</li>
+<li>索引值太单一，比如性别，就不要建索引</li>
+<li>更新非常频繁的数据也不要建索引</li>
+</ul>
+<h4 id="以下情况没有索引效果"><a href="#以下情况没有索引效果" class="headerlink" title="以下情况没有索引效果"></a>以下情况没有索引效果</h4><ul>
+<li>Like “%xxx”，Like的参数不能以通配符开头</li>
+<li>not in ， !=</li>
+<li>对列进行函数运算的情况（如 where md5(password) = “xxxx”）</li>
+<li>WHERE index=1 OR A=10</li>
+<li>int类型的数据 不好做索引</li>
+</ul>
+<p>速学路径：</p>
+<p><a href="http://www.cnblogs.com/zlcxbb/p/5757245.html" target="_blank" rel="noopener">http://www.cnblogs.com/zlcxbb/p/5757245.html</a></p>
+<h3 id="平衡二叉树-AVL树"><a href="#平衡二叉树-AVL树" class="headerlink" title="平衡二叉树(AVL树)"></a>平衡二叉树(AVL树)</h3><blockquote>
+<p>它是一棵空树或它的左右两个子树的高度差的绝对值不超过1，并且左右两个子树都是一棵平衡二叉树</p>
+</blockquote>
+<h4 id="平衡因子"><a href="#平衡因子" class="headerlink" title="平衡因子"></a>平衡因子</h4><p>将二叉树上结点的左子树深度减去右子树深度的值，也只能是-1，0，1</p>
+<p>速学路径</p>
+<p><a href="http://www.jianshu.com/p/db5529e91f4b" target="_blank" rel="noopener">http://www.jianshu.com/p/db5529e91f4b</a></p>
+<h3 id="红黑树"><a href="#红黑树" class="headerlink" title="红黑树"></a>红黑树</h3><p><img src="Data-Structure/red-black-tree.png" alt></p>
+<h4 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h4><ol>
+<li>每个节点要么是红色，要么是黑色。</li>
+<li>根节点必须是黑色</li>
+<li>红色节点不能连续（也即是，红色节点的孩子和父亲都不能是红色）。</li>
+<li>对于每个节点，从该点至<code>null</code>（树尾端）的任何路径，都含有相同个数的黑色节点。</li>
+<li>每个空叶子节点必须是黑色的；</li>
+</ol>
+<p>速学路径</p>
+<p><a href="http://www.jianshu.com/p/f4639d0cc887" target="_blank" rel="noopener">http://www.jianshu.com/p/f4639d0cc887</a></p>
+<p><a href="http://www.importnew.com/21818.html" target="_blank" rel="noopener">http://www.importnew.com/21818.html</a></p>
+<p><a href="http://www.importnew.com/21822.html" target="_blank" rel="noopener">http://www.importnew.com/21822.html</a></p>
+<p><a href="http://www.jianshu.com/p/23b84ba9a498" target="_blank" rel="noopener">http://www.jianshu.com/p/23b84ba9a498</a></p>
+<h3 id="哈希表"><a href="#哈希表" class="headerlink" title="哈希表"></a>哈希表</h3><h4 id="线性探测法"><a href="#线性探测法" class="headerlink" title="线性探测法"></a>线性探测法</h4><p><a href="http://blog.csdn.net/shangruo/article/details/8491733" target="_blank" rel="noopener">http://blog.csdn.net/shangruo/article/details/8491733</a></p>
+<h4 id="二次探测法"><a href="#二次探测法" class="headerlink" title="二次探测法"></a>二次探测法</h4><p><a href="http://blog.csdn.net/xyzbaihaiping/article/details/51607770" target="_blank" rel="noopener">http://blog.csdn.net/xyzbaihaiping/article/details/51607770</a></p>
+<p><img src="Data-Structure/ercitance.png" alt></p>
+<h2 id="排序-1"><a href="#排序-1" class="headerlink" title="排序"></a>排序</h2><h3 id="直接插入排序"><a href="#直接插入排序" class="headerlink" title="直接插入排序"></a>直接插入排序</h3><blockquote>
+<p>每步将一个待排序的记录，按其顺序码大小插入到前面已经排序的字序列的合适位置（从后向前找到合适位置后），直到全部插入排序完为止。</p>
+</blockquote>
+<p><img src="Data-Structure/charupaixu.png" alt></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">InsertSort</span><span class="params">(SqList *L)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> i,j;</span><br><span class="line">  <span class="keyword">for</span>(i=<span class="number">2</span>;i&lt;=L-&gt;length;i++)&#123;</span><br><span class="line">    <span class="keyword">if</span>(L-&gt;r[i] &lt; L-&gt;r[i<span class="number">-1</span>])&#123;    <span class="comment">//如果前者大于后者</span></span><br><span class="line">      L-&gt;r[<span class="number">0</span>]=L-&gt;r[i];          <span class="comment">//把后者保存在暂存区r[0]里</span></span><br><span class="line">      <span class="keyword">for</span>(j=i<span class="number">-1</span>;L-&gt;r[j] &gt; L-&gt;r[<span class="number">0</span>];j--)&#123;</span><br><span class="line">        L-&gt;r[j+<span class="number">1</span>]=L-&gt;r[j];      <span class="comment">//后者放入前者的值，如果前者的前者比暂存区的大，则再次交换</span></span><br><span class="line">      &#125;</span><br><span class="line">      L-&gt;r[j+<span class="number">1</span>]=L-&gt;r[<span class="number">0</span>];        <span class="comment">//再把暂存区的值拿出来</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">insertsort</span><span class="params">(<span class="keyword">int</span> arr[])</span></span>&#123;                </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt; arr.length; i ++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(arr[i] &lt; arr[i<span class="number">-1</span>])&#123;</span><br><span class="line"><span class="comment">//注意[0,i-1]都是有序的。如果待插入元素比arr[i-1]还大则无需再与[i-1]前面的元素进行比较了，反之则进入if语句</span></span><br><span class="line">                <span class="keyword">int</span> temp = arr[i];</span><br><span class="line">                <span class="keyword">int</span> j;</span><br><span class="line">                <span class="keyword">for</span>(j = i<span class="number">-1</span>; j &gt;= <span class="number">0</span> &amp;&amp; arr[j] &gt; temp; j --)&#123;                </span><br><span class="line">                        arr[j+<span class="number">1</span>] = arr[j];<span class="comment">//把比temp大或相等的元素全部往后移动一个位置            </span></span><br><span class="line">                &#125;</span><br><span class="line">                arr[j+<span class="number">1</span>] = temp;<span class="comment">//把待排序的元素temp插入腾出位置的(j+1)</span></span><br><span class="line">            &#125;            </span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>java实现</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">insertSort</span><span class="params">(<span class="keyword">int</span>[] list)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> size = list.length;</span><br><span class="line">    <span class="keyword">int</span> temp = <span class="number">0</span> ;</span><br><span class="line">    <span class="keyword">int</span> j =  <span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span> ; i &lt; size ; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        temp = list[i];</span><br><span class="line">        <span class="comment">//假如temp比前面的值小，则将前面的值后移</span></span><br><span class="line">        <span class="keyword">for</span>(j = i ; j &gt; <span class="number">0</span> &amp;&amp; temp &lt; list[j-<span class="number">1</span>] ; j --)</span><br><span class="line">        &#123;</span><br><span class="line">        	list[j] = list[j-<span class="number">1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        list[j] = temp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>时间复杂度为O[n^2^]</p>
+<h3 id="希尔排序"><a href="#希尔排序" class="headerlink" title="希尔排序"></a>希尔排序</h3><blockquote>
+<p>有间隔的直接插入排序</p>
+</blockquote>
+<p><img src="Data-Structure/xierpaixu.png" alt></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ShellSort</span><span class="params">(SQLite *L)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> i,j;</span><br><span class="line">  <span class="keyword">int</span> increment = L-&gt;length;</span><br><span class="line">  <span class="keyword">do</span>&#123;</span><br><span class="line">    increment = increment/<span class="number">3</span>+<span class="number">1</span>;        <span class="comment">//先确定间距</span></span><br><span class="line">    <span class="keyword">for</span>(i = increment+<span class="number">1</span>;i&lt;=L-&gt;length;i++)&#123;</span><br><span class="line">      <span class="keyword">if</span>(L-&gt;r[i] &lt; L-&gt;r[i-increment])&#123;        <span class="comment">//比较相隔increment的两值大小</span></span><br><span class="line">        L-&gt;r[<span class="number">0</span>]=L-&gt;r[i];</span><br><span class="line">        <span class="keyword">for</span>(j=i-increment;j&gt;<span class="number">0</span>&amp;&amp;L-&gt;r[<span class="number">0</span>]&lt;L-&gt;r[j];j-=increment)&#123;   <span class="comment">//和直接插入法一个意思</span></span><br><span class="line">          L-&gt;r[j+increment]=L-&gt;r[j];</span><br><span class="line">        &#125;</span><br><span class="line">        L-&gt;r[j+increment]=L-&gt;r[<span class="number">0</span>];</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">while</span>(increment&gt;<span class="number">1</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>java实现</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">shellSort</span><span class="params">(<span class="keyword">int</span>[] data)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> j;</span><br><span class="line">    <span class="keyword">int</span> temp;</span><br><span class="line">    <span class="comment">//每次将步长缩短为原来的一半</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> increment = data.length / <span class="number">2</span>; increment &gt; <span class="number">0</span>; increment /= <span class="number">2</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = increment; i &lt; data.length; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            temp = data[i];</span><br><span class="line">            <span class="keyword">for</span> (j = i; j &gt;= increment; j -= increment)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(temp &lt; data[j - increment])<span class="comment">//如想从小到大排只需修改这里</span></span><br><span class="line">                &#123;</span><br><span class="line">                    data[j] = data[j - increment];</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            data[j] = temp;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>当n无穷大的时候，可以减少到n(log~2~n)^2^</p>
+<h3 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h3><blockquote>
+<p>选择一个基准，将比起大的数放在一边，小的数放到另一边。对这个数的两边再递归上述方法。</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">sort</span><span class="params">(<span class="keyword">int</span> *a, <span class="keyword">int</span> left, <span class="keyword">int</span> right)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(left &gt;= right)  <span class="comment">/*如果左边索引大于或者等于右边的索引就代表已经整理完成一个组了*/</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> ;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> i = left;</span><br><span class="line">    <span class="keyword">int</span> j = right;</span><br><span class="line">    <span class="keyword">int</span> key = a[left];</span><br><span class="line">      </span><br><span class="line">    <span class="keyword">while</span>(i &lt; j)    <span class="comment">/*控制在当组内寻找一遍*/</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">while</span>(i &lt; j &amp;&amp; key &lt;= a[j])</span><br><span class="line">        <span class="comment">/*而寻找结束的条件就是，1，找到一个小于或者大于key的数（大于或小于取决于你想升</span></span><br><span class="line"><span class="comment">        序还是降序）2，没有符合条件1的，并且i与j的大小没有反转*/</span> </span><br><span class="line">        &#123;</span><br><span class="line">            j--;<span class="comment">/*向前寻找*/</span></span><br><span class="line">        &#125;</span><br><span class="line">          </span><br><span class="line">        a[i] = a[j];</span><br><span class="line">        <span class="comment">/*找到一个这样的数后就把它赋给前面的被拿走的i的值（如果第一次循环且key是</span></span><br><span class="line"><span class="comment">        a[left]，那么就是给key）*/</span></span><br><span class="line">          </span><br><span class="line">        <span class="keyword">while</span>(i &lt; j &amp;&amp; key &gt;= a[i])</span><br><span class="line">        <span class="comment">/*这是i在当组内向前寻找，同上，不过注意与key的大小关系停止循环和上面相反，</span></span><br><span class="line"><span class="comment">        因为排序思想是把数往两边扔，所以左右两边的数大小与key的关系相反*/</span></span><br><span class="line">        &#123;</span><br><span class="line">            i++;</span><br><span class="line">        &#125;</span><br><span class="line">          </span><br><span class="line">        a[j] = a[i];</span><br><span class="line">    &#125;</span><br><span class="line">      </span><br><span class="line">    a[i] = key;             <span class="comment">/*当在当组内找完一遍以后就把中间数key回归*/</span></span><br><span class="line">    sort(a, left, i - <span class="number">1</span>);   <span class="comment">/*最后用同样的方式对分出来的左边的小组进行同上的做法*/</span></span><br><span class="line">    sort(a, i + <span class="number">1</span>, right);  <span class="comment">/*用同样的方式对分出来的右边的小组进行同上的做法*/</span></span><br><span class="line">                            <span class="comment">/*当然最后可能会出现很多分左右，直到每一组的i = j 为止*/</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>java实现</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sort</span><span class="params">(<span class="keyword">int</span>[] list, <span class="keyword">int</span> start, <span class="keyword">int</span> end)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(start &gt;= end)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> ;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> i = start;</span><br><span class="line">    <span class="keyword">int</span> j = end;</span><br><span class="line">    <span class="keyword">int</span> key = list[start]; <span class="comment">//默认首位是key</span></span><br><span class="line">    <span class="keyword">while</span>(i &lt; j)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">while</span>(i &lt; j &amp;&amp; key &lt;= list[j])</span><br><span class="line">        &#123;</span><br><span class="line">            j--;</span><br><span class="line">        &#125;</span><br><span class="line">        list[i] = list[j];</span><br><span class="line">        <span class="keyword">while</span>(i &lt; j &amp;&amp; key &gt;= list[i])</span><br><span class="line">        &#123;</span><br><span class="line">            i++;</span><br><span class="line">        &#125;</span><br><span class="line">        list[j] = list[i];</span><br><span class="line">    &#125;</span><br><span class="line">    list[i] = key;</span><br><span class="line">    sort(list, start, i - <span class="number">1</span>);</span><br><span class="line">    sort(list, i + <span class="number">1</span>, end);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>最好情况是O(nlogn)，最差情况是O(n^2^)且不稳定</p>
+<h3 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h3><blockquote>
+<p>n-1次的循环比较，然后选出最小数的下标，然后进行交换</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">SelectSort</span><span class="params">(SQList *L)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> i,j,min;</span><br><span class="line">  <span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;L-&gt;length;i++)&#123;</span><br><span class="line">    min = i;</span><br><span class="line">    <span class="keyword">for</span>(j=i+<span class="number">1</span>;j&lt;L-&gt;length;j++)&#123;</span><br><span class="line">      <span class="keyword">if</span>(L-&gt;r[j] &lt; L-&gt;r[min])&#123;</span><br><span class="line">        min = j;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span>(i!=min)&#123;</span><br><span class="line">        swap(L,i,min);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>java写法</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">selection_sort</span><span class="params">(<span class="keyword">int</span>[] arr)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i, j, min, temp, len = arr.length;</span><br><span class="line">	<span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; len - <span class="number">1</span>; i++) &#123;</span><br><span class="line">		min = i;</span><br><span class="line">		<span class="keyword">for</span> (j = i + <span class="number">1</span>; j &lt; len; j++)</span><br><span class="line">			<span class="keyword">if</span> (arr[min] &gt; arr[j])</span><br><span class="line">				min = j;</span><br><span class="line">		temp = arr[min];</span><br><span class="line">		arr[min] = arr[i];</span><br><span class="line">		arr[i] = temp;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h3><blockquote>
+<ol>
+<li>比较相邻的元素。 如果第一个比第二个大，就交换他们两个。</li>
+<li>从开始第一对到结尾的最后一对，每对相邻元素都作同样的工作，。 这步做完后，最后的元素会是最大的数。</li>
+<li>针对所有的元素重复以上的步骤，除了最后一个。</li>
+<li>持续每次对越来越少的元素重复上面的步骤，直到没有任何一对数字需要比较。</li>
+</ol>
+</blockquote>
+<p><strong>用C写一个冒泡排序</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">bubble</span><span class="params">(<span class="keyword">int</span> r[n])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  	<span class="keyword">int</span> exchange=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=n &amp;&amp; exchange=<span class="number">1</span>; i++) <span class="comment">//如果为0，说明已经有序</span></span><br><span class="line">	&#123;</span><br><span class="line">      	exchange=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>; j&lt;n-i;j++) </span><br><span class="line">			<span class="keyword">if</span> (r[j]&gt;r[j+<span class="number">1</span>])&#123;   <span class="comment">//注意是从头开始比较</span></span><br><span class="line">				temp=r[j+<span class="number">1</span>];</span><br><span class="line">				r[j+<span class="number">1</span>]=r[j];</span><br><span class="line">				r[j]=temp;</span><br><span class="line">				exchange=<span class="number">1</span>;</span><br><span class="line">            &#125; </span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>用Java写一个冒泡排序</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Comparator;</span><br><span class="line"> </span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 排序器接口(策略模式: 将算法封装到具有共同接口的独立的类中使得它们可以相互替换)</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span>骆昊</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Sorter</span> </span>&#123;</span><br><span class="line"> </span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 排序</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> list 待排序的数组</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="keyword">public</span> &lt;T extends Comparable&lt;T&gt;&gt; <span class="function"><span class="keyword">void</span> <span class="title">sort</span><span class="params">(T[] list)</span></span>;</span><br><span class="line"> </span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 排序</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> list 待排序的数组</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> comp 比较两个对象的比较器</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="keyword">public</span> &lt;T&gt; <span class="function"><span class="keyword">void</span> <span class="title">sort</span><span class="params">(T[] list, Comparator&lt;T&gt; comp)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Comparator;</span><br><span class="line"> </span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 冒泡排序</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span>骆昊</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BubbleSorter</span> <span class="keyword">implements</span> <span class="title">Sorter</span> </span>&#123;</span><br><span class="line"> </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> &lt;T extends Comparable&lt;T&gt;&gt; <span class="function"><span class="keyword">void</span> <span class="title">sort</span><span class="params">(T[] list)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">boolean</span> swapped = <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>, len = list.length; i &lt; len &amp;&amp; swapped; ++i) &#123;</span><br><span class="line">            swapped = <span class="keyword">false</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; len - i; ++j) &#123;</span><br><span class="line">                <span class="keyword">if</span> (list[j].compareTo(list[j + <span class="number">1</span>]) &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                    T temp = list[j];</span><br><span class="line">                    list[j] = list[j + <span class="number">1</span>];</span><br><span class="line">                    list[j + <span class="number">1</span>] = temp;</span><br><span class="line">                    swapped = <span class="keyword">true</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> &lt;T&gt; <span class="function"><span class="keyword">void</span> <span class="title">sort</span><span class="params">(T[] list, Comparator&lt;T&gt; comp)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">boolean</span> swapped = <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>, len = list.length; i &lt; len &amp;&amp; swapped; ++i) &#123;</span><br><span class="line">            swapped = <span class="keyword">false</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; len - i; ++j) &#123;</span><br><span class="line">                <span class="keyword">if</span> (comp.compare(list[j], list[j + <span class="number">1</span>]) &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                    T temp = list[j];</span><br><span class="line">                    list[j] = list[j + <span class="number">1</span>];</span><br><span class="line">                    list[j + <span class="number">1</span>] = temp;</span><br><span class="line">                    swapped = <span class="keyword">true</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h3><blockquote>
+<p>大顶堆：每个结点的值都大于等于其左右孩子结点的值</p>
+<p>小顶堆：每个结点的值都小于等于其左右孩子结点的值</p>
+<p>将待排的序列构成一个大顶堆，然后取走堆顶（最大值），然后再调整大顶堆，再取走堆顶，如此往复</p>
+<p>每次取走堆顶后，把堆顶替换成之前最后的那个元素，然后再重新排序</p>
+</blockquote>
+<p>最好和最差的情况都是O(nlogn)但不稳定</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">sort</span><span class="params">(<span class="keyword">int</span>[] a)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> arrayLength=a.length;</span><br><span class="line">    <span class="comment">//循环建堆</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;arrayLength-<span class="number">1</span>;i++)&#123;</span><br><span class="line">        <span class="comment">//建堆</span></span><br><span class="line">        buildMaxHeap(a,arrayLength-<span class="number">1</span>-i);</span><br><span class="line">        <span class="comment">//交换堆顶和最后一个元素</span></span><br><span class="line">        swap(a,<span class="number">0</span>,arrayLength-<span class="number">1</span>-i);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//对data数组从0到lastIndex建大顶堆</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">buildMaxHeap</span><span class="params">(<span class="keyword">int</span>[] data, <span class="keyword">int</span> lastIndex)</span></span>&#123;</span><br><span class="line">    <span class="comment">//从lastIndex处节点（最后一个节点）的父节点开始</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=(lastIndex-<span class="number">1</span>)/<span class="number">2</span>;i&gt;=<span class="number">0</span>;i--)&#123;</span><br><span class="line">        <span class="comment">//k保存正在判断的节点</span></span><br><span class="line">        <span class="keyword">int</span> k=i;</span><br><span class="line">        <span class="comment">//如果当前k节点的子节点存在</span></span><br><span class="line">        <span class="keyword">while</span>(k*<span class="number">2</span>+<span class="number">1</span>&lt;=lastIndex)&#123;</span><br><span class="line">            <span class="comment">//k节点的左子节点的索引</span></span><br><span class="line">            <span class="keyword">int</span> biggerIndex=<span class="number">2</span>*k+<span class="number">1</span>;</span><br><span class="line">            <span class="comment">//如果biggerIndex小于lastIndex，即biggerIndex+1代表的k节点的右子节点存在</span></span><br><span class="line">            <span class="keyword">if</span>(biggerIndex&lt;lastIndex)&#123;</span><br><span class="line">                <span class="comment">//若果右子节点的值较大</span></span><br><span class="line">                <span class="keyword">if</span>(data[biggerIndex]&lt;data[biggerIndex+<span class="number">1</span>])&#123;</span><br><span class="line">                    <span class="comment">//biggerIndex总是记录较大子节点的索引</span></span><br><span class="line">                    biggerIndex++;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//如果k节点的值小于其较大的子节点的值</span></span><br><span class="line">            <span class="keyword">if</span>(data[k]&lt;data[biggerIndex])&#123;</span><br><span class="line">                <span class="comment">//交换他们</span></span><br><span class="line">                swap(data,k,biggerIndex);</span><br><span class="line">                <span class="comment">//将biggerIndex赋予k，开始while循环的下一次循环，重新保证k节点的值大于其左右子节点的值</span></span><br><span class="line">                k=biggerIndex;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//交换</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span>[] data, <span class="keyword">int</span> i, <span class="keyword">int</span> j)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> tmp=data[i];</span><br><span class="line">    data[i]=data[j];</span><br><span class="line">    data[j]=tmp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>速学路径</p>
+<p><a href="http://blog.csdn.net/xiaoxiaoxuewen/article/details/7570621/" target="_blank" rel="noopener">http://blog.csdn.net/xiaoxiaoxuewen/article/details/7570621/</a></p>
+<p><a href="http://www.cnblogs.com/kkun/archive/2011/11/23/2260286.html" target="_blank" rel="noopener">http://www.cnblogs.com/kkun/archive/2011/11/23/2260286.html</a></p>
+<h3 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h3><blockquote>
+<p>把n个有序的子序列两两归并，直到归并成一个序列</p>
+</blockquote>
+<p>最好和最差的情况都是O(nlogn)但稳定</p>
+<p><img src="Data-Structure/guibin.png" alt></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">int</span>[] gb_sort(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> low, <span class="keyword">int</span> high) &#123;</span><br><span class="line">    <span class="keyword">int</span> mid = (low + high) / <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">if</span> (low &lt; high) &#123;</span><br><span class="line">        <span class="comment">// 左边</span></span><br><span class="line">        gb_sort(nums, low, mid);</span><br><span class="line">        <span class="comment">// 右边</span></span><br><span class="line">        gb_sort(nums, mid + <span class="number">1</span>, high);</span><br><span class="line">        <span class="comment">// 左右归并</span></span><br><span class="line">        merge(nums, low, mid, high);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> nums;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">merge</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> low, <span class="keyword">int</span> mid, <span class="keyword">int</span> high)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span>[] temp = <span class="keyword">new</span> <span class="keyword">int</span>[high - low + <span class="number">1</span>];</span><br><span class="line">    <span class="keyword">int</span> i = low;<span class="comment">// 左指针</span></span><br><span class="line">    <span class="keyword">int</span> j = mid + <span class="number">1</span>;<span class="comment">// 右指针</span></span><br><span class="line">    <span class="keyword">int</span> k = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">// 把较小的数先移到新数组中</span></span><br><span class="line">    <span class="keyword">while</span> (i &lt;= mid &amp;&amp; j &lt;= high) &#123;</span><br><span class="line">        <span class="keyword">if</span> (nums[i] &lt; nums[j]) &#123;</span><br><span class="line">            temp[k++] = nums[i++];</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            temp[k++] = nums[j++];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 把左边剩余的数移入数组</span></span><br><span class="line">    <span class="keyword">while</span> (i &lt;= mid) &#123;</span><br><span class="line">        temp[k++] = nums[i++];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 把右边边剩余的数移入数组</span></span><br><span class="line">    <span class="keyword">while</span> (j &lt;= high) &#123;</span><br><span class="line">        temp[k++] = nums[j++];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 把新数组中的数覆盖nums数组</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> k2 = <span class="number">0</span>; k2 &lt; temp.length; k2++) &#123;</span><br><span class="line">        nums[k2 + low] = temp[k2];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>速学路径</p>
+<p><a href="http://blog.csdn.net/yinjiabin/article/details/8265827/" target="_blank" rel="noopener">http://blog.csdn.net/yinjiabin/article/details/8265827/</a></p>
+<h3 id="基数排序"><a href="#基数排序" class="headerlink" title="基数排序"></a>基数排序</h3><blockquote>
+<p>从序列的个位开始排列，然后到十位开始排列，直到最高的位数</p>
+</blockquote>
+<p>最好和最坏的情况都是O(d(n+rd))</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">radix_sort</span><span class="params">(<span class="keyword">int</span>[] array)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> max = array[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>;i&lt;array.length;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span> (array[i] &gt; max)&#123;</span><br><span class="line">            max = array[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> time = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (max&gt;<span class="number">0</span>)&#123;</span><br><span class="line">        max /= <span class="number">10</span>;</span><br><span class="line">        time++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> k = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> m = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> n = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> max_sd = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span>[][] tempArr = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">10</span>][array.length];</span><br><span class="line">    <span class="keyword">int</span>[] order = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">10</span>];</span><br><span class="line">    <span class="keyword">while</span> (m&lt;time)&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>;i&lt;array.length;i++)&#123;</span><br><span class="line">            <span class="keyword">int</span> sd = (array[i] / n) % <span class="number">10</span>;</span><br><span class="line">            tempArr[sd][order[sd]] = array[i];</span><br><span class="line">            order[sd]++;</span><br><span class="line">            <span class="keyword">if</span> (sd&gt;max_sd)&#123;</span><br><span class="line">                max_sd = sd;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>;i&lt;<span class="number">10</span>;i++)&#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>;order[i] != <span class="number">0</span> &amp;&amp; j&lt;order[i];j++)&#123;</span><br><span class="line">                array[k++] = tempArr[i][j];</span><br><span class="line">            &#125;</span><br><span class="line">            order[i]=<span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        n *= <span class="number">10</span>;</span><br><span class="line">        k = <span class="number">0</span>;</span><br><span class="line">        m++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>速学路径</p>
+<p><a href="http://blog.chinaunix.net/uid-26722078-id-3668671.html" target="_blank" rel="noopener">http://blog.chinaunix.net/uid-26722078-id-3668671.html</a></p>
+<p><a href="http://www.cnblogs.com/kkun/archive/2011/11/23/2260275.html" target="_blank" rel="noopener">http://www.cnblogs.com/kkun/archive/2011/11/23/2260275.html</a></p>
+<h3 id="各类算法比较"><a href="#各类算法比较" class="headerlink" title="各类算法比较"></a>各类算法比较</h3><p><img src="Data-Structure/time_al.jpg" alt></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://barry215.github.io/2017/01/05/Data-Structure/" data-id="cjvktzt73003jrxjdr45a88c0" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/algorithm/">algorithm</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/data-structure/">data_structure</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/01/25/screen-record/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          【转】解耦解的早，改需求没烦恼
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/11/15/Web history and future/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">【转】Web开发的历史与未来</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Book/">Book</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Computer/">Computer</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DataBase/">DataBase</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Design-Method/">Design Method</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Http/">Http</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Internet/">Internet</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Maven/">Maven</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mybatis/">Mybatis</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mysql/">Mysql</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Network/">Network</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Nginx/">Nginx</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Other/">Other</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Server/">Server</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/">Spring</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ajax/">ajax</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm/">algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/centos/">centos</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/computer/">computer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/data-structure/">data_structure</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/design-method/">design method</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/https/">https</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/init/">init</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javaweb/">javaweb</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jsp/">jsp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jstl/">jstl</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/maven/">maven</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mybatis/">mybatis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/servlet/">servlet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring/">spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sql/">sql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tcp-ip/">tcp/ip</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tomcat/">tomcat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/ajax/" style="font-size: 10px;">ajax</a> <a href="/tags/algorithm/" style="font-size: 13.33px;">algorithm</a> <a href="/tags/centos/" style="font-size: 10px;">centos</a> <a href="/tags/computer/" style="font-size: 10px;">computer</a> <a href="/tags/data-structure/" style="font-size: 10px;">data_structure</a> <a href="/tags/design-method/" style="font-size: 10px;">design method</a> <a href="/tags/git/" style="font-size: 13.33px;">git</a> <a href="/tags/http/" style="font-size: 16.67px;">http</a> <a href="/tags/https/" style="font-size: 10px;">https</a> <a href="/tags/init/" style="font-size: 10px;">init</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/tags/javaweb/" style="font-size: 10px;">javaweb</a> <a href="/tags/jsp/" style="font-size: 10px;">jsp</a> <a href="/tags/jstl/" style="font-size: 10px;">jstl</a> <a href="/tags/linux/" style="font-size: 16.67px;">linux</a> <a href="/tags/maven/" style="font-size: 10px;">maven</a> <a href="/tags/mybatis/" style="font-size: 10px;">mybatis</a> <a href="/tags/mysql/" style="font-size: 13.33px;">mysql</a> <a href="/tags/nginx/" style="font-size: 13.33px;">nginx</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/servlet/" style="font-size: 10px;">servlet</a> <a href="/tags/spring/" style="font-size: 10px;">spring</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a> <a href="/tags/tcp-ip/" style="font-size: 10px;">tcp/ip</a> <a href="/tags/tomcat/" style="font-size: 13.33px;">tomcat</a> <a href="/tags/web/" style="font-size: 10px;">web</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/02/06/computer-foundation/">计算机组成原理基础知识</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/16/http-socket/">Socket和Websocket的关系</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/16/algorithmList/">算法练习(不断更新中)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/06/git-learn/">Git命令篇</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/04/mysql-review/">MySQL持续更新</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 frank<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

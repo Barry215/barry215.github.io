@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>Mybatis基础回顾 | 麦金</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="用了很久的Mybatis，但是一直没有全面去学过，这次补一下基础吧  Mybatis当使用Mybatis时，首先用字节流通过Resource将配置文件读入，然后通过SqlSessionFactoryBuilder().build方法创建SqlSessionFactory，然后再通过sqlSessionFactory.openSession()方法创建一个sqlSession。Mybatis通过x">
+<meta name="keywords" content="mybatis">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mybatis基础回顾">
+<meta property="og:url" content="https://barry215.github.io/2017/04/04/mybatis-review/index.html">
+<meta property="og:site_name" content="麦金">
+<meta property="og:description" content="用了很久的Mybatis，但是一直没有全面去学过，这次补一下基础吧  Mybatis当使用Mybatis时，首先用字节流通过Resource将配置文件读入，然后通过SqlSessionFactoryBuilder().build方法创建SqlSessionFactory，然后再通过sqlSessionFactory.openSession()方法创建一个sqlSession。Mybatis通过x">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://barry215.github.io/2017/04/04/mybatis-review/mybatis-review/mybatis.png">
+<meta property="og:updated_time" content="2017-08-09T13:46:59.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Mybatis基础回顾">
+<meta name="twitter:description" content="用了很久的Mybatis，但是一直没有全面去学过，这次补一下基础吧  Mybatis当使用Mybatis时，首先用字节流通过Resource将配置文件读入，然后通过SqlSessionFactoryBuilder().build方法创建SqlSessionFactory，然后再通过sqlSessionFactory.openSession()方法创建一个sqlSession。Mybatis通过x">
+<meta name="twitter:image" content="https://barry215.github.io/2017/04/04/mybatis-review/mybatis-review/mybatis.png">
+  
+    <link rel="alternate" href="/atom.xml" title="麦金" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">麦金</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">麦金的博客</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://barry215.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-mybatis-review" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/04/mybatis-review/" class="article-date">
+  <time datetime="2017-04-04T11:40:09.000Z" itemprop="datePublished">2017-04-04</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Mybatis/">Mybatis</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Mybatis基础回顾
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>用了很久的Mybatis，但是一直没有全面去学过，这次补一下基础吧</p>
+</blockquote>
+<h3 id="Mybatis"><a href="#Mybatis" class="headerlink" title="Mybatis"></a>Mybatis</h3><p>当使用Mybatis时，首先用字节流通过Resource将配置文件读入，然后通过SqlSessionFactoryBuilder().build方法创建SqlSessionFactory，然后再通过sqlSessionFactory.openSession()方法创建一个sqlSession。Mybatis通过xml文件映射到各实体类的Mapper接口，Mapper接口中配置了每个类对数据库所需进行的sql语句映射。<br>经历了Mybatis初始化 –&gt;创建SqlSession –&gt;运行SQL语句 返回结果三个过程</p>
+<h3 id="mybatis缓存概念"><a href="#mybatis缓存概念" class="headerlink" title="mybatis缓存概念"></a>mybatis缓存概念</h3><p>当我们使用Mybatis进行数据库的操作时候，MyBatis会开启一个会话时，然后创建一个新的<strong>SqlSession</strong>对象，<strong>SqlSession</strong>对象中会有一个新的<strong>Executor</strong>对象，<strong>Executor</strong>对象中持有一个新的<strong>PerpetualCache</strong>对象；当会话结束时，<strong>SqlSession</strong>对象及其内部的<strong>Executor</strong>对象还有<strong>PerpetualCache</strong>对象也一并释放掉。</p>
+<p>一级缓存：（HashMap来实现，并没有对<strong>HashMap</strong>的容量和大小进行限制，key为hashCode+sqlId+Sql语句。value为从查询出来映射生成的java对象）</p>
+<p>对SqlSession的操作mybatis内部都是通过Executor来执行的，Executor在执行数据库查询的时候总是先查看缓存中是否存在，若不存在则查询数据库。</p>
+<blockquote>
+<p>SqlSession是对外接口，Executor是内部执行器</p>
+</blockquote>
+<p>二级缓存：</p>
+<p>二级缓存的范围更大，根据<code>namespace</code>划分的，多个<code>SqlSession</code>可以共享一个<code>UserMapper</code>的二级缓存区域。</p>
+<p>每一个<code>namespace</code>的<code>mapper</code>有一个二级缓存区域。也就是说如果两个<code>mapper</code>的<code>namespace</code>相同，那么这两个<code>mapper</code>执行<code>sql</code>查询到的数据将存储在一个二级缓存区域中。</p>
+<blockquote>
+<p>mybatis的二级缓存是通过CacheExecutor实现的。CacheExecutor其实是Executor的代理对象。所有的查询操作，在CacheExecutor中都会先匹配缓存中是否存在，不存在则查询数据库。二级缓存是可以跨SqlSession的</p>
+</blockquote>
+<p>MyBatis查询数据的顺序是：</p>
+<p>二级缓存 ———&gt; 一级缓存——&gt; 数据库</p>
+<p><img src="mybatis-review/mybatis.png" alt></p>
+<p>要使用Mybatis的二级缓存，需要对Mybatis进行配置，配置分三步</p>
+<ul>
+<li><p>Mybatis全局配置中启用二级缓存配置</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">setting</span> <span class="attr">name</span>=<span class="string">"cacheEnabled"</span> <span class="attr">value</span>=<span class="string">"true"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在对应的Mapper.xml中配置cache节点</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">mapper</span> <span class="attr">namespace</span>=<span class="string">"userMapper"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">cache</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">result</span> <span class="attr">...</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">select</span> <span class="attr">...</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在对应的select查询节点中添加useCache=true</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"findUserById"</span> <span class="attr">parameterType</span>=<span class="string">"int"</span> <span class="attr">resultMap</span>=<span class="string">"user"</span> <span class="attr">useCache</span>=<span class="string">"true"</span>&gt;</span></span><br><span class="line">  select * from users where id=#&#123;id&#125;;</span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>实体类要实现序列化接口</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> <span class="keyword">implements</span> <span class="title">Serializable</span></span>&#123;</span><br><span class="line">  <span class="comment">//属性......</span></span><br><span class="line">  <span class="comment">//getter and setter......  </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h4><p>一级缓存是sqlSession级别的缓存。在操作数据库时需要构造sqlSession对象，在对象中有一个数据结构(HashMap),用于存储缓存数据。不同的sqlSession之间的缓存区域(HashMap)是互不影响的。</p>
+<p>二级缓存是mapper级别的缓存，多个sqlSession去操作同一个Mapper的sql语句，多个SqlSession可以公用二级缓存，二级缓存是跨sqlSession的。</p>
+<h3 id="MyBatis和Hibernate各有什么优缺点"><a href="#MyBatis和Hibernate各有什么优缺点" class="headerlink" title="MyBatis和Hibernate各有什么优缺点?"></a>MyBatis和Hibernate各有什么优缺点?</h3><p><code>Hibernate</code>的优点是它是一个完全的<code>ORM框架</code>，使用<code>Hibernate</code>可以做到不用手写SQL，而且无须关心使用何种数据库，可移植性较好，当需要更变数据库时需要做的修改很少甚至为0。其缺点是需要根据数据库的设计在实体进行又一次的配置，且帮程序员做了太多事，如果需要进行调优的话需要对<code>Hibernate</code>有比较深的了解。<br><code>MyBatis</code>的优缺点差不多和<code>Hibernate</code>相反，我们需要<code>手写SQL</code>语句和<code>配置结果集和实体类的映射</code>，即使是简单的单表操作也需要写SQL(可以通过<code>拦截器</code>来实现CommonMapper，或者可以使用生成器来生成代码)，因此<code>MyBatis</code>要进行SQL调优也简单直接。其次是<code>MyBatis</code>的<code>二级缓存</code>功能较弱，是针对<code>namespace</code>的。</p>
+<h3 id="动态SQL"><a href="#动态SQL" class="headerlink" title="动态SQL"></a>动态SQL</h3><p><a href="http://www.jianshu.com/p/7dd95270864c" target="_blank" rel="noopener">MyBatis系列之动态SQL语句</a></p>
+<p><a href="http://www.ctolib.com/topics-102259.html" target="_blank" rel="noopener">MyBatis中的OGNL教程</a></p>
+<h3 id="TypeHandler"><a href="#TypeHandler" class="headerlink" title="TypeHandler"></a>TypeHandler</h3><blockquote>
+<p>TypeHandler可以让数据库字段类型和Java类做一个映射，就好像默认text类可以转成String，但是可以用TypeHandler来转成Java自定义类型</p>
+</blockquote>
+<p><a href="http://www.jianshu.com/p/17313a00a102" target="_blank" rel="noopener">http://www.jianshu.com/p/17313a00a102</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://barry215.github.io/2017/04/04/mybatis-review/" data-id="cjvktzt5i000arxjd6z7ksfsw" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mybatis/">mybatis</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/04/04/mysql-review/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          MySQL持续更新
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/03/27/java-thread/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Java多线程详解</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Book/">Book</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Computer/">Computer</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DataBase/">DataBase</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Design-Method/">Design Method</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Http/">Http</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Internet/">Internet</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Maven/">Maven</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mybatis/">Mybatis</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mysql/">Mysql</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Network/">Network</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Nginx/">Nginx</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Other/">Other</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Server/">Server</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/">Spring</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ajax/">ajax</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm/">algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/centos/">centos</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/computer/">computer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/data-structure/">data_structure</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/design-method/">design method</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/https/">https</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/init/">init</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javaweb/">javaweb</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jsp/">jsp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jstl/">jstl</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/maven/">maven</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mybatis/">mybatis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/servlet/">servlet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring/">spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sql/">sql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tcp-ip/">tcp/ip</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tomcat/">tomcat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/ajax/" style="font-size: 10px;">ajax</a> <a href="/tags/algorithm/" style="font-size: 13.33px;">algorithm</a> <a href="/tags/centos/" style="font-size: 10px;">centos</a> <a href="/tags/computer/" style="font-size: 10px;">computer</a> <a href="/tags/data-structure/" style="font-size: 10px;">data_structure</a> <a href="/tags/design-method/" style="font-size: 10px;">design method</a> <a href="/tags/git/" style="font-size: 13.33px;">git</a> <a href="/tags/http/" style="font-size: 16.67px;">http</a> <a href="/tags/https/" style="font-size: 10px;">https</a> <a href="/tags/init/" style="font-size: 10px;">init</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/tags/javaweb/" style="font-size: 10px;">javaweb</a> <a href="/tags/jsp/" style="font-size: 10px;">jsp</a> <a href="/tags/jstl/" style="font-size: 10px;">jstl</a> <a href="/tags/linux/" style="font-size: 16.67px;">linux</a> <a href="/tags/maven/" style="font-size: 10px;">maven</a> <a href="/tags/mybatis/" style="font-size: 10px;">mybatis</a> <a href="/tags/mysql/" style="font-size: 13.33px;">mysql</a> <a href="/tags/nginx/" style="font-size: 13.33px;">nginx</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/servlet/" style="font-size: 10px;">servlet</a> <a href="/tags/spring/" style="font-size: 10px;">spring</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a> <a href="/tags/tcp-ip/" style="font-size: 10px;">tcp/ip</a> <a href="/tags/tomcat/" style="font-size: 13.33px;">tomcat</a> <a href="/tags/web/" style="font-size: 10px;">web</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/02/06/computer-foundation/">计算机组成原理基础知识</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/16/http-socket/">Socket和Websocket的关系</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/16/algorithmList/">算法练习(不断更新中)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/06/git-learn/">Git命令篇</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/04/mysql-review/">MySQL持续更新</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 frank<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

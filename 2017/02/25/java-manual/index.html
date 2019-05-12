@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>阿里巴巴java手册首记 | 麦金</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="主要记一下平时不注意的点  java篇 pojo中的成员变量必须是包装类属性  pojo中都要有toString方法  pojo 类中布尔类型的变量，都不要加 is  方法参数中的可变参数(…)要放在其他参数的最后 12345678910111213public class Varargs &amp;#123;    public static void test(String... args) &amp;#1">
+<meta name="keywords" content="mysql,java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="阿里巴巴java手册首记">
+<meta property="og:url" content="https://barry215.github.io/2017/02/25/java-manual/index.html">
+<meta property="og:site_name" content="麦金">
+<meta property="og:description" content="主要记一下平时不注意的点  java篇 pojo中的成员变量必须是包装类属性  pojo中都要有toString方法  pojo 类中布尔类型的变量，都不要加 is  方法参数中的可变参数(…)要放在其他参数的最后 12345678910111213public class Varargs &amp;#123;    public static void test(String... args) &amp;#1">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-02-25T03:29:30.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="阿里巴巴java手册首记">
+<meta name="twitter:description" content="主要记一下平时不注意的点  java篇 pojo中的成员变量必须是包装类属性  pojo中都要有toString方法  pojo 类中布尔类型的变量，都不要加 is  方法参数中的可变参数(…)要放在其他参数的最后 12345678910111213public class Varargs &amp;#123;    public static void test(String... args) &amp;#1">
+  
+    <link rel="alternate" href="/atom.xml" title="麦金" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">麦金</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">麦金的博客</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://barry215.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-java-manual" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/02/25/java-manual/" class="article-date">
+  <time datetime="2017-02-25T02:46:12.000Z" itemprop="datePublished">2017-02-25</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Java/">Java</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      阿里巴巴java手册首记
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>主要记一下平时不注意的点</p>
+</blockquote>
+<h2 id="java篇"><a href="#java篇" class="headerlink" title="java篇"></a>java篇</h2><ol>
+<li><p>pojo中的成员变量必须是包装类属性</p>
+</li>
+<li><p>pojo中都要有toString方法</p>
+</li>
+<li><p>pojo 类中布尔类型的变量，都不要加 is</p>
+</li>
+<li><p>方法参数中的可变参数(…)要放在其他参数的最后</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Varargs</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">(String... args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(String arg : args) &#123;</span><br><span class="line">            System.out.println(arg);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        test();<span class="comment">//0个参数</span></span><br><span class="line">        test(<span class="string">"a"</span>);<span class="comment">//1个参数</span></span><br><span class="line">        test(<span class="string">"a"</span>,<span class="string">"b"</span>);<span class="comment">//多个参数</span></span><br><span class="line">        test(<span class="keyword">new</span> String[] &#123;<span class="string">"a"</span>, <span class="string">"b"</span>, <span class="string">"c"</span>&#125;);<span class="comment">//直接传递数组</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>long b = 4L; 符号标记要大写，因为字体<code>l</code>和<code>1</code>很像</p>
+</li>
+<li><p>method(“a”, “b”, “c”);方法参数书写格式要注意逗号后空一格</p>
+</li>
+<li><p>代码格式中缩进要4 个空格，不要2个空格</p>
+</li>
+<li><p>在pojo的方法中应遵守下面的规范</p>
+<ol>
+<li>获取单个对象的方法用get做前缀</li>
+<li>获取多个对象的方法用list做前缀</li>
+<li>获取统计值的方法用count做前缀</li>
+<li>插入的方法用save(推荐)或insert做前缀</li>
+<li>删除的方法用remove(推荐)或delete做前缀</li>
+<li>修改的方法用update做前缀</li>
+</ol>
+</li>
+<li><p>数据传输对象取名：xxxDTO，之前我没写DTO后缀，下次记住</p>
+</li>
+<li><p>用设计模式时，需要把类名给体现出来，如下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">OrderFactory</span></span>;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LoginProxy</span></span>; </span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ResourceObserver</span></span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用常量的equals方法，可以防止空指针问题：<code>&quot;1&quot;.equals(temp)</code></p>
+</li>
+<li><p>不要在 foreach 循环里进行元素的 remove/add 操作。remove 元素请使用 Iterator方式,如果并发操作,需要对 Iterator 对象加锁</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Iterator&lt;String&gt; it = a.iterator(); </span><br><span class="line">while(it.hasNext())&#123;</span><br><span class="line">String temp = it.next(); </span><br><span class="line">	if(删除元素的条件)&#123;</span><br><span class="line">		it.remove();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在做抽象接口中，可以利用泛型把抽象更深化</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public interface Info&lt;T&gt; &#123;</span><br><span class="line">	public T getVar();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用 entrySet 遍历 Map 类集合 KV，而不是 keySet 方式进行遍历，前面这种是一遍循环，后面两遍</p>
+</li>
+<li><p>线程资源必须通过线程池提供,不允许在应用中自行显式创建线程</p>
+</li>
+<li><p>SimpleDateFormat 是线程不安全的类,一般不要定义为static变量,如果定义为static,必须加锁,或者使用 DateUtils 工具类</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">private static final ThreadLocal&lt;DateFormat&gt; df = new ThreadLocal&lt;DateFormat&gt;() &#123; </span><br><span class="line">@Override</span><br><span class="line">	protected DateFormat initialValue() &#123;</span><br><span class="line">		return new SimpleDateFormat(&quot;yyyy-MM-dd&quot;);</span><br><span class="line">	&#125; </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>并发修改同一记录时,避免更新丢失,要么在应用层加锁,要么在缓存加锁,要么在数据库层使用乐观锁,使用 version 作为更新依据</p>
+</li>
+<li>Math.random() 这个方法返回是 double 类型,注意取值的范围 0≤x&lt;1(能够 取到零值,注意除零异常),如果想获取整数类型的随机数,不要将 x 放大 10 的若干倍然后 取整,直接使用 Random 对象的 nextInt 或者 nextLong 方法</li>
+<li>获取当前毫秒数 System.currentTimeMillis(); 而不是 new Date().getTime();</li>
+<li>异常不要用来做流程控制,条件控制,因为异常的处理效率比条件分支低</li>
+<li>不能在 finally 块中使用 return,finally 块中的 return 返回后方法结束执行,不 会再执行 try 块中的 return 语句</li>
+</ol>
+<h2 id="mysql篇"><a href="#mysql篇" class="headerlink" title="mysql篇"></a>mysql篇</h2><ol>
+<li>表达是与否概念的字段,必须使用 is_xxx 的方式命名,数据类型是 unsigned tinyint ( 1表示是,0表示否),此规则同样适用于odps建表</li>
+<li>唯一索引名为 <code>uk_字段名</code>；普通索引名则为 <code>idx_字段名</code></li>
+<li>表名、字段名必须使用小写字母或数字;禁止出现数字开头,禁止两个下划线中间只出现数字</li>
+<li>小数类型为 decimal,禁止使用 float 和 double</li>
+<li>如果存储的字符串长度几乎相等,使用 char 定长字符串类型</li>
+<li>varchar 是可变长字符串,不预先分配存储空间,长度不要超过 5000,如果存储长度大于此值,定义字段类型为 text,独立出来一张表,用主键来对应,避免影响其它字段索 引效率</li>
+<li>不要使用 count(列名)或 count(常量)来替代 count(*),count(*)就是 SQL92 定义 的标准统计行数的语法,跟数据库无关,跟 NULL 和非 NULL 无关</li>
+<li>不得使用外键与级联,一切外键概念必须在应用层解决</li>
+<li>禁止使用存储过程,存储过程难以调试和扩展,更没有移植性(不用学存储过程好开心)</li>
+<li><code>in</code> 操作能避免则避免,若实在避免不了,需要仔细评估<code>in</code> 后边的集合元素数量,控制在 1000 个之内</li>
+<li>pojo 类的 boolean 属性不能加 is,而数据库字段必须加 is_,要求在 resultMap 中 进行字段与属性之间的映射</li>
+</ol>
+<blockquote>
+<p>其实我还有一些没记下，因为完全没接触过。。尴尬，还是要继续学习</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://barry215.github.io/2017/02/25/java-manual/" data-id="cjvktzt5g0006rxjdy7axlxou" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql/">mysql</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/02/25/configureHttps/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          瓜皮翻身记之Https
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/02/21/mysql-install/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Centos7 mysql 安装篇</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Book/">Book</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Computer/">Computer</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DataBase/">DataBase</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Design-Method/">Design Method</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Http/">Http</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Internet/">Internet</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Maven/">Maven</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mybatis/">Mybatis</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mysql/">Mysql</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Network/">Network</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Nginx/">Nginx</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Other/">Other</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Server/">Server</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/">Spring</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ajax/">ajax</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm/">algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/centos/">centos</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/computer/">computer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/data-structure/">data_structure</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/design-method/">design method</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/https/">https</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/init/">init</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javaweb/">javaweb</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jsp/">jsp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jstl/">jstl</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/maven/">maven</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mybatis/">mybatis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/servlet/">servlet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring/">spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sql/">sql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tcp-ip/">tcp/ip</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tomcat/">tomcat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/ajax/" style="font-size: 10px;">ajax</a> <a href="/tags/algorithm/" style="font-size: 13.33px;">algorithm</a> <a href="/tags/centos/" style="font-size: 10px;">centos</a> <a href="/tags/computer/" style="font-size: 10px;">computer</a> <a href="/tags/data-structure/" style="font-size: 10px;">data_structure</a> <a href="/tags/design-method/" style="font-size: 10px;">design method</a> <a href="/tags/git/" style="font-size: 13.33px;">git</a> <a href="/tags/http/" style="font-size: 16.67px;">http</a> <a href="/tags/https/" style="font-size: 10px;">https</a> <a href="/tags/init/" style="font-size: 10px;">init</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/tags/javaweb/" style="font-size: 10px;">javaweb</a> <a href="/tags/jsp/" style="font-size: 10px;">jsp</a> <a href="/tags/jstl/" style="font-size: 10px;">jstl</a> <a href="/tags/linux/" style="font-size: 16.67px;">linux</a> <a href="/tags/maven/" style="font-size: 10px;">maven</a> <a href="/tags/mybatis/" style="font-size: 10px;">mybatis</a> <a href="/tags/mysql/" style="font-size: 13.33px;">mysql</a> <a href="/tags/nginx/" style="font-size: 13.33px;">nginx</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/servlet/" style="font-size: 10px;">servlet</a> <a href="/tags/spring/" style="font-size: 10px;">spring</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a> <a href="/tags/tcp-ip/" style="font-size: 10px;">tcp/ip</a> <a href="/tags/tomcat/" style="font-size: 13.33px;">tomcat</a> <a href="/tags/web/" style="font-size: 10px;">web</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/02/06/computer-foundation/">计算机组成原理基础知识</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/16/http-socket/">Socket和Websocket的关系</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/16/algorithmList/">算法练习(不断更新中)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/06/git-learn/">Git命令篇</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/04/mysql-review/">MySQL持续更新</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 frank<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

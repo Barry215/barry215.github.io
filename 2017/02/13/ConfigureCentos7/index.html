@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>从头配置NodeJs和PM2 | 麦金</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="下面我来分享下配置Centos7的吐血经历，(╯﹏╰)蓝瘦香菇…  环境介绍本地： Mac OSX 远端服务器：腾讯云ECS（1核CPU、1GB内存），系统版本为CentOS 7.0 服务器用户：root （期待有人来攻击我的垃圾服务器） Github：github.com/Barry215 安装目的本地代码开发测试后，更新到Github仓库，然后通过PM2部署远程服务器，服务器再部署Node的">
+<meta name="keywords" content="linux,nginx,git,node">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从头配置NodeJs和PM2">
+<meta property="og:url" content="https://barry215.github.io/2017/02/13/ConfigureCentos7/index.html">
+<meta property="og:site_name" content="麦金">
+<meta property="og:description" content="下面我来分享下配置Centos7的吐血经历，(╯﹏╰)蓝瘦香菇…  环境介绍本地： Mac OSX 远端服务器：腾讯云ECS（1核CPU、1GB内存），系统版本为CentOS 7.0 服务器用户：root （期待有人来攻击我的垃圾服务器） Github：github.com/Barry215 安装目的本地代码开发测试后，更新到Github仓库，然后通过PM2部署远程服务器，服务器再部署Node的">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-03-02T02:24:04.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="从头配置NodeJs和PM2">
+<meta name="twitter:description" content="下面我来分享下配置Centos7的吐血经历，(╯﹏╰)蓝瘦香菇…  环境介绍本地： Mac OSX 远端服务器：腾讯云ECS（1核CPU、1GB内存），系统版本为CentOS 7.0 服务器用户：root （期待有人来攻击我的垃圾服务器） Github：github.com/Barry215 安装目的本地代码开发测试后，更新到Github仓库，然后通过PM2部署远程服务器，服务器再部署Node的">
+  
+    <link rel="alternate" href="/atom.xml" title="麦金" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">麦金</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">麦金的博客</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://barry215.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-ConfigureCentos7" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/02/13/ConfigureCentos7/" class="article-date">
+  <time datetime="2017-02-13T05:53:33.000Z" itemprop="datePublished">2017-02-13</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Linux/">Linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      从头配置NodeJs和PM2
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>下面我来分享下配置Centos7的吐血经历，(╯﹏╰)蓝瘦香菇…</p>
+</blockquote>
+<h2 id="环境介绍"><a href="#环境介绍" class="headerlink" title="环境介绍"></a>环境介绍</h2><p><strong>本地：</strong> Mac OSX</p>
+<p><strong>远端服务器：</strong>腾讯云ECS（1核CPU、1GB内存），系统版本为CentOS 7.0</p>
+<p><strong>服务器用户：</strong>root （期待有人来攻击我的垃圾服务器）</p>
+<p><strong>Github：</strong>github.com/Barry215</p>
+<h2 id="安装目的"><a href="#安装目的" class="headerlink" title="安装目的"></a>安装目的</h2><p>本地代码开发测试后，更新到Github仓库，然后通过PM2部署远程服务器，服务器再部署Node的应用，最后使用Nginx进行反向代理</p>
+<h2 id="远端安装Nodejs"><a href="#远端安装Nodejs" class="headerlink" title="远端安装Nodejs"></a>远端安装Nodejs</h2><p>我看网上大多都是通过下载压缩包来安装的，如果我没有在本地装过Node，也许我会去选择，但是因为在Mac上吃过这个坑（node版本更新太快，而且mac上用brew来安装据说有bug），所以还是打算先安装nvm，用nvm来安装Node。</p>
+<h3 id="更新yum"><a href="#更新yum" class="headerlink" title="更新yum"></a>更新yum</h3><p>把yum更新到最新版本：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum update -y  #y参数是让升级过程中都默认yes</span><br></pre></td></tr></table></figure>
+<p>我们将使用最新源代码构建Node.js，要进行软件的安装，需要一组用来编译源代码的开发工具：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y groupinstall "Development Tools"</span><br></pre></td></tr></table></figure>
+<h3 id="安装Nvm"><a href="#安装Nvm" class="headerlink" title="安装Nvm"></a>安装Nvm</h3><p>用curl来安装nvm，但是这个命令有时效性，最新看<a href="https://github.com/creationix/nvm/" target="_blank" rel="noopener">https://github.com/creationix/nvm/</a></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash</span><br></pre></td></tr></table></figure>
+<p>在mac上这样就ok了，因为它会自动地在.bash_profile文件里写上</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export NVM_DIR="$HOME/.nvm"</span><br><span class="line">[ -s "$NVM_DIR/nvm.sh" ] &amp;&amp; . "$NVM_DIR/nvm.sh" # This loads nvm</span><br></pre></td></tr></table></figure>
+<p>但是亲身体验Centos发现要自己加上去，加完后记得<code>source .bash_profile</code>更新</p>
+<p>当然不一定要写在.bash_profile上</p>
+<p>官方说明（写在那四个文件上应该都有效，<a href="http://blog.csdn.net/chenchong08/article/details/7833242" target="_blank" rel="noopener">区别参考</a>）：</p>
+<blockquote>
+<p>The script clones the nvm repository to <code>~/.nvm</code> and adds the source line to your profile (<code>~/.bash_profile</code>, <code>~/.zshrc</code>, <code>~/.profile</code>, or <code>~/.bashrc</code>).</p>
+</blockquote>
+<p>然后，可以用一下 <code>nvm --version</code> 看一下安装好了没有</p>
+<h3 id="安装Node"><a href="#安装Node" class="headerlink" title="安装Node"></a>安装Node</h3><p>因为nvm是从国外的官网获取资源，所以我们再加入淘宝团队的镜像</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export NVM_NODEJS_ORG_MIRROR=https://npm.taobao.org/mirrors/node</span><br></pre></td></tr></table></figure>
+<p>这个也是放在.bash_profile里，加完后记得<code>source .bash_profile</code>更新</p>
+<p>下面我就开始安装Node</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvm install stable  #或者nvm install v7.5.0，选一个自己适用的版本</span><br></pre></td></tr></table></figure>
+<p>执行命令 <code>node -v</code> 就可以看到现在使用的 <code>Node.js</code> 的版本号</p>
+<p>执行命令 <code>npm -v</code> 就可以看到现在使用的 <code>NPM</code> 的版本号</p>
+<h3 id="安装cnpm"><a href="#安装cnpm" class="headerlink" title="安装cnpm"></a>安装cnpm</h3><p>因为原版的 <code>npm</code> 在国内安装东西是很慢的，要解决慢就一定要用镜像</p>
+<p><code>cnpm</code> 就是使用了淘宝的 <code>NPM</code> 镜像的 <code>npm</code></p>
+<p>安装方法也很简单：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g cnpm --registry=https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
+<p>只需要一步就可以安装好 <code>cnpm</code></p>
+<p>运行 <code>cnpm -v</code> 可以看到安装好了的 <code>cnpm</code> 的版本</p>
+<p>如果不使用PM2的话，用<code>scp</code>，<code>sftp</code>把代码传到服务器，可以直接运行NodeJs了</p>
+<p>因为 Nodejs 是一个Web服务器，所以它本身就已经有自己的端口了，我设置的是3000</p>
+<p>使用 <code>node app.js</code> 之类的手段可以让 Nodejs 服务器运行起来</p>
+<h2 id="远端安装PM2"><a href="#远端安装PM2" class="headerlink" title="远端安装PM2"></a>远端安装PM2</h2><p>本地和远端都使用命令安装</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install pm2 -g</span><br></pre></td></tr></table></figure>
+<p>安装成功后使用<code>pm2 -v</code>参看版本</p>
+<h3 id="Github与服务器建立信任"><a href="#Github与服务器建立信任" class="headerlink" title="Github与服务器建立信任"></a>Github与服务器建立信任</h3><p>如果之前github上已经放过服务器的key了，那就不用下面的操作了</p>
+<p>如果没有，那就</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen #生成公钥和密钥</span><br><span class="line">vi ~/.ssh/id_rsa.pub #去复制公钥里的内容</span><br></pre></td></tr></table></figure>
+<p>然后在github上的setting里的SSH keys加入id_rsa.pub的内容就行了</p>
+<h3 id="本地创建项目"><a href="#本地创建项目" class="headerlink" title="本地创建项目"></a>本地创建项目</h3><p>在github上创建一个新的项目，接着将本地项目与github远程仓库建立连接</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin https://github.com/Barry215/node_demo.git</span><br><span class="line">git push -u origin master #第一次提交好像要用-u，之后就不用了</span><br></pre></td></tr></table></figure>
+<h3 id="本地配置pm2"><a href="#本地配置pm2" class="headerlink" title="本地配置pm2"></a>本地配置pm2</h3><p>在本地的项目目录下，输入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pm2 ecosystem</span><br></pre></td></tr></table></figure>
+<p>会生成一个ecosystem.config.js(版本原因，也可能是ecosystem.json)文件</p>
+<p>因为目前我们仅部署一个应用，因此，先把不必要的信息删除，即删除apps部分的第二项</p>
+<p>同时把我们的目标文件改为你应用的入口文件，此处修改为Express.js的默认设置，即：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">script : &quot;./bin/www&quot;,</span><br></pre></td></tr></table></figure>
+<p>apps部分就设置完毕了，然后再设置deploy部分。其中production用于生产环境，dev用于开发环境</p>
+<p>我的配置结果</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line"></span><br><span class="line">  apps : [</span><br><span class="line"><span class="comment">//由于我们此次只有一个项目,我们只配置一个app</span></span><br><span class="line">    &#123;</span><br><span class="line">      name : <span class="string">"node_demo"</span>, <span class="comment">//自己取一个名字</span></span><br><span class="line">      script : <span class="string">"./bin/www"</span>,</span><br><span class="line">      env: &#123;</span><br><span class="line">        COMMON_VARIABLE: <span class="string">"true"</span></span><br><span class="line">      &#125;,</span><br><span class="line">      env_production : &#123;</span><br><span class="line">        NODE_ENV: <span class="string">"production"</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  ],</span><br><span class="line"></span><br><span class="line">  deploy : &#123;</span><br><span class="line">    <span class="comment">//生产环境部署配置</span></span><br><span class="line">    production : &#123;</span><br><span class="line">      <span class="comment">//登录远程服务器的用户名</span></span><br><span class="line">      user : <span class="string">"root"</span>,</span><br><span class="line">      <span class="comment">//远程服务器的IP或hostname，此处可以是数组同步部署多个服务器</span></span><br><span class="line">      host : <span class="string">"115.159.190.30"</span>,</span><br><span class="line">      <span class="comment">//远端名称及分支名</span></span><br><span class="line">      ref  : <span class="string">"origin/master"</span>,</span><br><span class="line">      <span class="comment">//git仓库地址</span></span><br><span class="line">      repo : <span class="string">"git@github.com:Barry215/node_demo.git"</span>,</span><br><span class="line">      <span class="comment">//远程服务器部署目录，需要填写user具备写入权限的目录</span></span><br><span class="line">      path : <span class="string">"/home/root/www/production"</span>,</span><br><span class="line">      <span class="comment">//部署后需要执行的命令</span></span><br><span class="line">      <span class="string">"post-deploy"</span> : <span class="string">"npm install &amp;&amp; pm2 startOrRestart ecosystem.config.js --env production"</span></span><br><span class="line">    &#125;</span><br><span class="line">     <span class="comment">//因为我没有开发环境的分支，所以dev部分就不写了</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="免密登录服务器"><a href="#免密登录服务器" class="headerlink" title="免密登录服务器"></a>免密登录服务器</h3><p>因为pm2的部署是通过ssh进行的，因此需要开通本地到远程服务器的无密码登录</p>
+<p>具体步骤看我的另一篇文章—<a href="https://barry215.github.io/2017/01/25/ssh-without-psd/">SSH免密登录服务器</a></p>
+<h3 id="配置pm2"><a href="#配置pm2" class="headerlink" title="配置pm2"></a>配置pm2</h3><p>在本地应用目录下，执行pm2 deploy命令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pm2 deploy ecosystem.config.js production setup</span><br></pre></td></tr></table></figure>
+<p>提示错误：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Invalid or unexpected token</span><br></pre></td></tr></table></figure>
+<p>仔细检查配置文件，看是否有写错，如果看不出可以放到vim里看</p>
+<p>并且注意ecosystem.config.js版本的顶部会有<code>module.exports =</code></p>
+<p>ecosystem.json版本的顶部直接是<code>{</code>开始的</p>
+<p>又提示错误：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Host key verification failed.</span><br><span class="line">fatal: Could not read from remote repository.</span><br><span class="line">Please make sure you have the correct access rights and the repository exists.</span><br><span class="line">  failed to clone</span><br><span class="line">Deploy failed</span><br></pre></td></tr></table></figure>
+<p>此时主要是在远程服务器中，并未将<a href="http://github.com/" target="_blank" rel="noopener">http://github.com</a>加入known_hosts，在服务器端通过如下命令设置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keyscan -t rsa github.com &gt;&gt; ~/.ssh/known_hosts</span><br></pre></td></tr></table></figure>
+<p>在本地继续执行部署命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pm2 deploy ecosystem.config.js production setup</span><br></pre></td></tr></table></figure>
+<p>此时，如无其他问题，输出应提示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">  ○ setup complete</span><br><span class="line">--&gt; Success</span><br></pre></td></tr></table></figure>
+<p>至此，pm2的本地部署设置完毕。</p>
+<h3 id="pm2部署服务器"><a href="#pm2部署服务器" class="headerlink" title="pm2部署服务器"></a>pm2部署服务器</h3><p>pm2部署要求本地的项目必须将修改提交到github</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m &quot;update ecosystem&quot;</span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
+<p>提交后，在本地应用目录，输入如下命令进行生产环境的部署：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pm2 deploy ecosystem.config.js production</span><br></pre></td></tr></table></figure>
+<p>如果看到</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Use `pm2 show &lt;id|name&gt;` to get more details about an app</span><br><span class="line">  ○ hook test</span><br><span class="line">  ○ successfully deployed origin/master</span><br><span class="line">--&gt; Success</span><br></pre></td></tr></table></figure>
+<p>说明部署成功</p>
+<p>在远程服务器查看端口情况：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -antp</span><br></pre></td></tr></table></figure>
+<p>可以看到应用默认部署的3000端口已经开放了。通过浏览器打开：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://115.159.190.30:3000</span><br></pre></td></tr></table></figure>
+<p>可以看到部署的Web应用可以访问了。（如果netstat -antp中可见3000端口可访问，可以检查下ECS的防火墙设置，确保3000端口对外开放）</p>
+<h3 id="服务器设置pm2开机自启"><a href="#服务器设置pm2开机自启" class="headerlink" title="服务器设置pm2开机自启"></a>服务器设置pm2开机自启</h3><p>开启启动设置，此处是CentOS系统，其他系统替换最后一个选项（可选项：ubuntu, centos, redhat, gentoo, systemd, darwin, amazon）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pm2 startup centos</span><br></pre></td></tr></table></figure>
+<p>然后按照提示需要输入的命令进行输入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo su -c &quot;env PATH=$PATH:/usr/bin pm2 startup centos -u root --hp /home/root&quot;</span><br></pre></td></tr></table></figure>
+<p>保存pm2设置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pm2 save</span><br></pre></td></tr></table></figure>
+<p>现在重新启动系统，测试是否可以开机启动：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo reboot</span><br></pre></td></tr></table></figure>
+<p>等系统重启后，通过浏览器检查系统是否自动启动：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://115.159.190.30:3000</span><br></pre></td></tr></table></figure>
+<p>如果启动正常，说明设置成功！</p>
+<h2 id="可选-更新git"><a href="#可选-更新git" class="headerlink" title="(可选)更新git"></a>(可选)更新git</h2><p>因为Centos 7 上的git版本是1.8，我嫌弃它，所以打算安装新的</p>
+<p>卸载原有 git</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum remove git</span><br></pre></td></tr></table></figure>
+<p>安装依赖文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum install curl-devel expat-devel gettext-devel openssl-devel zlib-devel #最好都装</span><br><span class="line">yum install gcc perl-ExtUtils-MakeMaker #一定要安装</span><br></pre></td></tr></table></figure>
+<p>切换到<code>/usr/local/src</code>目录下</p>
+<p>下载最新版git</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://www.kernel.org/pub/software/scm/git/git-2.11.1.tar.gz</span><br></pre></td></tr></table></figure>
+<p>解压并进入解压后的目录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf git-2.11.1.tar.gz &amp;&amp; cd git-2.11.1</span><br></pre></td></tr></table></figure>
+<p>编译安装</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">./configure #必须执行</span><br><span class="line"></span><br><span class="line">#二选一</span><br><span class="line">make &amp;&amp; make install</span><br><span class="line">或者(我试的好像是上面这种)</span><br><span class="line">make prefix=/usr/local/git all</span><br><span class="line">make prefix=/usr/local/git install</span><br></pre></td></tr></table></figure>
+<p>下面这种需要加环境，上面这种跳过</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export PATH=$PATH:/usr/local/git/bin #把它放到.bash_profile里</span><br><span class="line">source ~/.bash_profile</span><br></pre></td></tr></table></figure>
+<p>查看环境</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo $PATH</span><br></pre></td></tr></table></figure>
+<p>查看版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git --version</span><br></pre></td></tr></table></figure>
+<h2 id="安装Nginx"><a href="#安装Nginx" class="headerlink" title="安装Nginx"></a>安装Nginx</h2><p>通过Nginx反向代理，可以让服务器上某端口，指向指定域名的80端口，这样访问就不需要加端口号了</p>
+<h3 id="安装依赖包"><a href="#安装依赖包" class="headerlink" title="安装依赖包"></a>安装依赖包</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">yum install -y gcc gcc-c++</span><br><span class="line">yum -y install openssl</span><br><span class="line">yum -y install zlib</span><br><span class="line">yum -y install pcre</span><br></pre></td></tr></table></figure>
+<p>以上安装的是一些主要的依赖包，具体可根据自己情况或者报错信息提示安装或修改</p>
+<p>我装了<code>zlib</code> <code>zlib-devel</code> <code>pcre-devel</code></p>
+<h3 id="可选-安装pcre依赖"><a href="#可选-安装pcre依赖" class="headerlink" title="(可选)安装pcre依赖"></a>(可选)安装pcre依赖</h3><p>我先前不知道可以yum安装，所以是wget装的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.40.tar.gz </span><br><span class="line">./configure --prefix=/usr/local/pcre</span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
+<h3 id="下载Nginx"><a href="#下载Nginx" class="headerlink" title="下载Nginx"></a>下载Nginx</h3><blockquote>
+<p>网上说可以配置yum去安装它，但是我没有尝试</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget http://nginx.org/download/nginx-1.10.3.tar.gz</span><br></pre></td></tr></table></figure>
+<h3 id="解压"><a href="#解压" class="headerlink" title="解压"></a>解压</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf nginx-1.10.3.tar.gz</span><br></pre></td></tr></table></figure>
+<h3 id="编译安装"><a href="#编译安装" class="headerlink" title="编译安装"></a>编译安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd nginx-1.10.3</span><br><span class="line">./configure --prefix=/usr/local/nginx --with-pcre=../pcre-8.40</span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
+<h3 id="启动Nginx"><a href="#启动Nginx" class="headerlink" title="启动Nginx"></a>启动Nginx</h3><p>进入Nginx的安装目录下，直接启动Nginx</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/nginx/sbin</span><br><span class="line">./nginx -h #查看帮助</span><br><span class="line">./nginx -t #判断配置文件是否正确</span><br><span class="line">./nginx  #重启是 ./nginx -s reload</span><br><span class="line"><span class="meta">#</span><span class="bash">也可以 killall -9 nginx 杀死进程再启动，也可以是<span class="built_in">kill</span> -9 nginx</span></span><br></pre></td></tr></table></figure>
+<p>也可以使用脚本去启动，停止和重启Nginx—<a href="http://blog.csdn.net/w1014074794/article/details/51881050" target="_blank" rel="noopener">参考链接</a></p>
+<h3 id="配置Nginx"><a href="#配置Nginx" class="headerlink" title="配置Nginx"></a>配置Nginx</h3><p>进入配置目录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/nginx/conf</span><br></pre></td></tr></table></figure>
+<p>配置nginx.conf</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi nginx.conf</span><br></pre></td></tr></table></figure>
+<p>配置参考</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> user nobody;</span></span><br><span class="line">worker_processes 1;</span><br><span class="line">error_log /usr/local/nginx/logs/error.log;</span><br><span class="line">pid /run/nginx.pid;</span><br><span class="line"><span class="meta">#</span><span class="bash"> Load dynamic modules. See /usr/share/nginx/README.dynamic.</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> include /usr/share/nginx/modules/*.conf;</span></span><br><span class="line">events &#123;</span><br><span class="line">    worker_connections 1024;</span><br><span class="line">&#125;</span><br><span class="line">http &#123;</span><br><span class="line">  upstream my_nodejs_upstream &#123;</span><br><span class="line">    server 127.0.0.1:3000;</span><br><span class="line">    keepalive 64;</span><br><span class="line">  &#125;</span><br><span class="line">  server &#123;</span><br><span class="line">    listen 80;</span><br><span class="line">    server_name   www.maijinta.cn;//你的域名</span><br><span class="line">    # access_log /usr/local/nginx/logs/access.log;</span><br><span class="line">    # error_log /usr/local/nginx/logs/error.log;</span><br><span class="line">    location / &#123;</span><br><span class="line">        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">        proxy_set_header Host $http_host;</span><br><span class="line">        proxy_set_header X-NginX-Proxy true;</span><br><span class="line">        proxy_http_version 1.1;</span><br><span class="line">        proxy_pass http://my_nodejs_upstream/;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="重启Nginx"><a href="#重启Nginx" class="headerlink" title="重启Nginx"></a>重启Nginx</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">./nginx -t #判断配置文件是否正确</span><br><span class="line">./nginx -s reload #重启Nginx</span><br></pre></td></tr></table></figure>
+<p>这样之后，就可以用80端口访问我们的NodeJs应用了</p>
+<h2 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h2><p>往后就可以使用pm2来自动化部署Node.js了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pm2 deploy ecosystem.config.js production</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://barry215.github.io/2017/02/13/ConfigureCentos7/" data-id="cjvktzt65001trxjds7lkxm1a" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nginx/">nginx</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node/">node</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/02/21/mysql-install/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Centos7 mysql 安装篇
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/01/25/review of Full-Stack Engineer/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">《Web全栈工程师的自我修养》读书笔记</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Book/">Book</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Computer/">Computer</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DataBase/">DataBase</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Design-Method/">Design Method</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Http/">Http</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Internet/">Internet</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Maven/">Maven</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mybatis/">Mybatis</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mysql/">Mysql</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Network/">Network</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Nginx/">Nginx</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Other/">Other</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Server/">Server</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/">Spring</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ajax/">ajax</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm/">algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/centos/">centos</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/computer/">computer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/data-structure/">data_structure</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/design-method/">design method</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/https/">https</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/init/">init</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javaweb/">javaweb</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jsp/">jsp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jstl/">jstl</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/maven/">maven</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mybatis/">mybatis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/servlet/">servlet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring/">spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sql/">sql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tcp-ip/">tcp/ip</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tomcat/">tomcat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/ajax/" style="font-size: 10px;">ajax</a> <a href="/tags/algorithm/" style="font-size: 13.33px;">algorithm</a> <a href="/tags/centos/" style="font-size: 10px;">centos</a> <a href="/tags/computer/" style="font-size: 10px;">computer</a> <a href="/tags/data-structure/" style="font-size: 10px;">data_structure</a> <a href="/tags/design-method/" style="font-size: 10px;">design method</a> <a href="/tags/git/" style="font-size: 13.33px;">git</a> <a href="/tags/http/" style="font-size: 16.67px;">http</a> <a href="/tags/https/" style="font-size: 10px;">https</a> <a href="/tags/init/" style="font-size: 10px;">init</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/tags/javaweb/" style="font-size: 10px;">javaweb</a> <a href="/tags/jsp/" style="font-size: 10px;">jsp</a> <a href="/tags/jstl/" style="font-size: 10px;">jstl</a> <a href="/tags/linux/" style="font-size: 16.67px;">linux</a> <a href="/tags/maven/" style="font-size: 10px;">maven</a> <a href="/tags/mybatis/" style="font-size: 10px;">mybatis</a> <a href="/tags/mysql/" style="font-size: 13.33px;">mysql</a> <a href="/tags/nginx/" style="font-size: 13.33px;">nginx</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/servlet/" style="font-size: 10px;">servlet</a> <a href="/tags/spring/" style="font-size: 10px;">spring</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a> <a href="/tags/tcp-ip/" style="font-size: 10px;">tcp/ip</a> <a href="/tags/tomcat/" style="font-size: 13.33px;">tomcat</a> <a href="/tags/web/" style="font-size: 10px;">web</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/02/06/computer-foundation/">计算机组成原理基础知识</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/16/http-socket/">Socket和Websocket的关系</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/16/algorithmList/">算法练习(不断更新中)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/06/git-learn/">Git命令篇</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/04/mysql-review/">MySQL持续更新</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 frank<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

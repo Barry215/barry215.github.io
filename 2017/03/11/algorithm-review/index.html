@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>查找和排序算法大杂烩 | 麦金</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="很多算法都一知半解，就是现在，一个个击破它们吧！  链表算法反转单链12345678910111213141516//单链表的转置,循环方法Node* reverseByLoop(Node *head)&amp;#123;    if(head == NULL || head-&amp;gt;next == NULL)        return head;    Node *pre = NULL;    No">
+<meta name="keywords" content="algorithm">
+<meta property="og:type" content="article">
+<meta property="og:title" content="查找和排序算法大杂烩">
+<meta property="og:url" content="https://barry215.github.io/2017/03/11/algorithm-review/index.html">
+<meta property="og:site_name" content="麦金">
+<meta property="og:description" content="很多算法都一知半解，就是现在，一个个击破它们吧！  链表算法反转单链12345678910111213141516//单链表的转置,循环方法Node* reverseByLoop(Node *head)&amp;#123;    if(head == NULL || head-&amp;gt;next == NULL)        return head;    Node *pre = NULL;    No">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-08-03T15:30:26.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="查找和排序算法大杂烩">
+<meta name="twitter:description" content="很多算法都一知半解，就是现在，一个个击破它们吧！  链表算法反转单链12345678910111213141516//单链表的转置,循环方法Node* reverseByLoop(Node *head)&amp;#123;    if(head == NULL || head-&amp;gt;next == NULL)        return head;    Node *pre = NULL;    No">
+  
+    <link rel="alternate" href="/atom.xml" title="麦金" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">麦金</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">麦金的博客</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://barry215.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-algorithm-review" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/11/algorithm-review/" class="article-date">
+  <time datetime="2017-03-11T01:45:30.000Z" itemprop="datePublished">2017-03-11</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Algorithm/">Algorithm</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      查找和排序算法大杂烩
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>很多算法都一知半解，就是现在，一个个击破它们吧！</p>
+</blockquote>
+<h2 id="链表算法"><a href="#链表算法" class="headerlink" title="链表算法"></a>链表算法</h2><h3 id="反转单链"><a href="#反转单链" class="headerlink" title="反转单链"></a>反转单链</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//单链表的转置,循环方法</span></span><br><span class="line">Node* reverseByLoop(Node *head)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>(head == NULL || head-&gt;next == NULL)</span><br><span class="line">        <span class="keyword">return</span> head;</span><br><span class="line">    Node *pre = NULL;</span><br><span class="line">    Node *next = NULL;</span><br><span class="line">    <span class="keyword">while</span>(head != NULL)   <span class="comment">//总体来说就是进来一个，指向新链表一次，后面的链表由next保存</span></span><br><span class="line">    &#123;</span><br><span class="line">        next = head-&gt;next;<span class="comment">//保存之后的链表</span></span><br><span class="line">        head-&gt;next = pre; <span class="comment">//使当前的点指向之前生成的新链表</span></span><br><span class="line">        pre = head;       <span class="comment">//新链表指向当前点形成更新的链表</span></span><br><span class="line">        head = next;      <span class="comment">//当前元素变成之前的next的第一个元素</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> pre;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="链表倒数第k个节点"><a href="#链表倒数第k个节点" class="headerlink" title="链表倒数第k个节点"></a>链表倒数第k个节点</h3><blockquote>
+<p>设置两个指针 p1、p2，首先 p1 和 p2 都指向 head，然后 p2 向前走 k 步，这样 p1 和 p2 之间就间隔 k 个节点，最后 p1 和 p2 同时向前移动，直至 p2 走到链表末尾</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ListNode</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> val;</span><br><span class="line">  ListNode next = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">  ListNode(<span class="keyword">int</span> val) &#123;</span><br><span class="line">    <span class="keyword">this</span>.val = val;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> ListNode <span class="title">FindKthToTail</span><span class="params">(ListNode head,<span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(head==<span class="keyword">null</span>||k&lt;=<span class="number">0</span>)&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    ListNode pre=head;</span><br><span class="line">    ListNode last=head;       </span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;k;i++)&#123;</span><br><span class="line">      <span class="keyword">if</span>(pre.next!=<span class="keyword">null</span>)&#123;</span><br><span class="line">        pre=pre.next;</span><br><span class="line">      &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span>(pre.next!=<span class="keyword">null</span>)&#123;</span><br><span class="line">      pre = pre.next;</span><br><span class="line">      last=last.next;</span><br><span class="line">    &#125;</span><br><span class="line">  </span><br><span class="line">    <span class="keyword">return</span> last;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>速学路径</p>
+<p><a href="http://hanhailong.com/2016/02/25/Java%E5%8F%8D%E8%BD%AC%E5%8D%95%E9%93%BE%E8%A1%A8%E5%AE%9E%E6%88%98/" target="_blank" rel="noopener">Java反转单链表实战</a></p>
+<p><a href="http://wuchong.me/blog/2014/03/25/interview-link-questions/" target="_blank" rel="noopener">逆序、求倒数第K个节点，判断是否有环</a></p>
+<h2 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h2><p>数组方式</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StackArray</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span>[] array;<span class="comment">//用数组实现</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> top; <span class="comment">//栈顶指针</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> <span class="keyword">int</span> size = <span class="number">100</span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">StackArray</span><span class="params">()</span></span>&#123;</span><br><span class="line">        array = <span class="keyword">new</span> <span class="keyword">int</span>[size];</span><br><span class="line">        top = -<span class="number">1</span>; <span class="comment">//栈空的时候 </span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//压栈</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">push</span><span class="params">(<span class="keyword">int</span> element)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(top == size-<span class="number">1</span>)&#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> StackOverflowError();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> </span><br><span class="line">            array[++top] = element;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//弹栈</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">pop</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(top == -<span class="number">1</span>)&#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> EmptyStackException();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> array[top--];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//判断是否为空</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isEmpty</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> top == -<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//返回栈顶元素</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Integer <span class="title">peek</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(top == -<span class="number">1</span>)&#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> EmptyStackException();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> array[top];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>链表方式</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LinkedStack</span>&lt;<span class="title">T</span>&gt; <span class="keyword">implements</span> <span class="title">Stack</span>&lt;<span class="title">T</span>&gt;</span>&#123;</span><br><span class="line">    <span class="comment">//不用容器或者数组等数据结构存储节点</span></span><br><span class="line">    <span class="comment">//Node定义一个节点类</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Node</span>&lt;<span class="title">U</span>&gt;</span>&#123;</span><br><span class="line">        <span class="keyword">private</span> U item; <span class="comment">//存储的data</span></span><br><span class="line">        <span class="keyword">private</span> Node&lt;U&gt; next; <span class="comment">//类似指针</span></span><br><span class="line">        Node()&#123;</span><br><span class="line">            <span class="keyword">this</span>.item = <span class="keyword">null</span>;</span><br><span class="line">            <span class="keyword">this</span>.next = <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        Node(U item, Node&lt;U&gt; next)&#123;</span><br><span class="line">            <span class="keyword">this</span>.item = item;</span><br><span class="line">            <span class="keyword">this</span>.next = next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function"><span class="keyword">boolean</span> <span class="title">end</span><span class="params">()</span></span>&#123;</span><br><span class="line">            <span class="keyword">return</span> item == <span class="keyword">null</span> &amp;&amp; next == <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; </span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Node&lt;T&gt; top ; <span class="comment">//栈顶指针</span></span><br><span class="line">    LinkedStack()&#123;</span><br><span class="line">        top = <span class="keyword">new</span> Node&lt;T&gt;();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">//弹栈</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> T <span class="title">pop</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">this</span>.isEmpty() == <span class="keyword">true</span>)&#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> EmptyStackException();</span><br><span class="line">        &#125;</span><br><span class="line">        T result = top.item;</span><br><span class="line">        <span class="keyword">if</span>(!top.end())</span><br><span class="line">        &#123;</span><br><span class="line">            top = top.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//压栈</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">push</span><span class="params">(T element)</span></span>&#123;</span><br><span class="line">        top = <span class="keyword">new</span> Node&lt;T&gt;(element, top);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//判断是否为空</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isEmpty</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span>  top.end();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//返回栈顶元素</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> T <span class="title">peek</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">this</span>.isEmpty() == <span class="keyword">true</span>)&#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> EmptyStackException();</span><br><span class="line">        &#125;</span><br><span class="line">        T result = top.item;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>参考路径</p>
+<p><a href="https://segmentfault.com/a/1190000002516799" target="_blank" rel="noopener">Stack的三种实现（数组，容器，链表）</a></p>
+<h2 id="串"><a href="#串" class="headerlink" title="串"></a>串</h2><h3 id="字符串逆转"><a href="#字符串逆转" class="headerlink" title="字符串逆转"></a>字符串逆转</h3><p>数组方式</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">strReverseWithArray2</span><span class="params">(String string)</span></span>&#123;</span><br><span class="line">       <span class="keyword">if</span>(string==<span class="keyword">null</span>||string.length()==<span class="number">0</span>)<span class="keyword">return</span> string;</span><br><span class="line">       <span class="keyword">int</span> length = string.length();</span><br><span class="line">       <span class="keyword">char</span> [] array = string.toCharArray();</span><br><span class="line">       <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i&lt;length/<span class="number">2</span>;i++)&#123;</span><br><span class="line">           array[i] = string.charAt(length-<span class="number">1</span>-i);</span><br><span class="line">           array[length-<span class="number">1</span>-i] = string.charAt(i);</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> <span class="keyword">new</span> String(array);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>栈方式</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">strReverseWithStack</span><span class="params">(String string)</span></span>&#123;</span><br><span class="line">       <span class="keyword">if</span>(string==<span class="keyword">null</span>||string.length()==<span class="number">0</span>)<span class="keyword">return</span> string;</span><br><span class="line">       Stack&lt;Character&gt; stringStack = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">       <span class="keyword">char</span> [] array = string.toCharArray();</span><br><span class="line">       <span class="keyword">for</span>(Character c:array)&#123;</span><br><span class="line">           stringStack.push(c);</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">int</span> length = string.length();</span><br><span class="line">       <span class="keyword">for</span>(<span class="keyword">int</span> i= <span class="number">0</span>;i&lt;length;i++)&#123;</span><br><span class="line">           array[i] = stringStack.pop();</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> <span class="keyword">new</span> String(array);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>参考路径</p>
+<p><a href="http://www.cnblogs.com/JohnTsai/p/5606719.html" target="_blank" rel="noopener">http://www.cnblogs.com/JohnTsai/p/5606719.html</a></p>
+<h2 id="遍历"><a href="#遍历" class="headerlink" title="遍历"></a>遍历</h2><p>二叉树遍历</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Node</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> data;</span><br><span class="line">    <span class="keyword">public</span> Node left;</span><br><span class="line">    <span class="keyword">public</span> Node right;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Node</span><span class="params">(<span class="keyword">int</span> data)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.data = data;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Node</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>(<span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//中序递归遍历</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">inOrderRe</span><span class="params">(Node node,List&lt;Integer&gt; list)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(list==<span class="keyword">null</span>)&#123;</span><br><span class="line">        list=<span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(node==<span class="keyword">null</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(node.left!=<span class="keyword">null</span>)&#123;</span><br><span class="line">        inOrderRe(node.left,list);</span><br><span class="line">    &#125;</span><br><span class="line">    list.add(node.data);</span><br><span class="line">    <span class="keyword">if</span>(node.right!=<span class="keyword">null</span>)&#123;</span><br><span class="line">        inOrderRe(node.right,list);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//插入算法</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insert</span><span class="params">(Node node)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (root == <span class="keyword">null</span>) &#123; <span class="comment">//根节点不为空</span></span><br><span class="line">        root = node;</span><br><span class="line">        size++;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    Node current = root;</span><br><span class="line">    <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (node.data &lt;= current.data) &#123;</span><br><span class="line">            <span class="keyword">if</span> (current.left == <span class="keyword">null</span>) &#123;</span><br><span class="line">                current.left = node;</span><br><span class="line">                size++;</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            current = current.left;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (current.right == <span class="keyword">null</span>) &#123;</span><br><span class="line">                current.right = node;</span><br><span class="line">                size++;</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            current = current.right;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h2><h3 id="折半查找"><a href="#折半查找" class="headerlink" title="折半查找"></a>折半查找</h3><p>搜索过程从数组的中间元素开始，如果中间元素正好是要查找的元素，则搜索过程结束；如果某一特定元素大于或者小于中间元素，则在数组大于或小于中间元素的那一半中查找，而且跟开始一样从中间元素开始比较。如果在某一步骤数组为空，则代表找不到。这种搜索算法每一次比较都使搜索范围缩小一半。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// while循环</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">binary_search</span><span class="params">(<span class="keyword">int</span>[] arr,<span class="keyword">int</span> val)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> start = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> end = arr.length - <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">int</span> mid;</span><br><span class="line">	<span class="keyword">while</span>(start &lt;= end)&#123;</span><br><span class="line">		mid = (start + end) / <span class="number">2</span>;</span><br><span class="line">		<span class="keyword">if</span> (val &lt; arr[mid]) &#123;</span><br><span class="line">			end = mid - <span class="number">1</span>;</span><br><span class="line">		&#125;<span class="keyword">else</span> <span class="keyword">if</span> (val &gt; arr[mid]) &#123;</span><br><span class="line">			start = mid + <span class="number">1</span>;</span><br><span class="line">		&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="keyword">return</span> mid;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 递归版本</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">binary_search</span><span class="params">(<span class="keyword">int</span> arr[],<span class="keyword">int</span> val,<span class="keyword">int</span> start,<span class="keyword">int</span> end)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (start &gt; end) &#123;</span><br><span class="line">		<span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> mid = (start + end) / <span class="number">2</span>;</span><br><span class="line">	<span class="keyword">if</span> (val &lt; arr[mid]) &#123;</span><br><span class="line">		binary_search(arr,val,start,mid-<span class="number">1</span>);</span><br><span class="line">	&#125;<span class="keyword">else</span> <span class="keyword">if</span> (val &gt; arr[mid]) &#123;</span><br><span class="line">		binary_search(arr,val,mid+<span class="number">1</span>,end);</span><br><span class="line">	&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> mid;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="二叉查找树"><a href="#二叉查找树" class="headerlink" title="二叉查找树"></a>二叉查找树</h3><ol>
+<li>若任意节点的左子树不空，则左子树上所有结点的值均小于它的根结点的值；</li>
+<li>若任意节点的右子树不空，则右子树上所有结点的值均大于它的根结点的值；</li>
+<li>任意节点的左、右子树也分别为二叉查找树；</li>
+<li>没有键值相等的节点。</li>
+</ol>
+<h2 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h2><p>升序是从小到大</p>
+<p>降序是从大到小</p>
+<p>速学路径</p>
+<p><a href="http://www.jianshu.com/p/bbb7c838880f" target="_blank" rel="noopener">http://www.jianshu.com/p/bbb7c838880f</a></p>
+<h3 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h3><p>说白了就是循环一遍，每个元素都按大小插到前面的序列里</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">insertSort</span><span class="params">(<span class="keyword">int</span>[] list)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> size = list.length;</span><br><span class="line">    <span class="keyword">int</span> temp = <span class="number">0</span> ;</span><br><span class="line">    <span class="keyword">int</span> j =  <span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span> ; i &lt; size ; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        temp = list[i];</span><br><span class="line">        <span class="comment">//假如temp比前面的值小，则将前面的值后移</span></span><br><span class="line">        <span class="keyword">for</span>(j = i ; j &gt; <span class="number">0</span> &amp;&amp; temp &lt; list[j-<span class="number">1</span>] ; j --)</span><br><span class="line">        &#123;</span><br><span class="line">        	list[j] = list[j-<span class="number">1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        list[j] = temp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="希尔排序"><a href="#希尔排序" class="headerlink" title="希尔排序"></a>希尔排序</h3><p>有间隔的直接插入排序</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">shellSort</span><span class="params">(<span class="keyword">int</span>[] data)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> j;</span><br><span class="line">    <span class="keyword">int</span> temp;</span><br><span class="line">    <span class="comment">//每次将步长缩短为原来的一半</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> increment = data.length / <span class="number">2</span>; increment &gt; <span class="number">0</span>; increment /= <span class="number">2</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = increment; i &lt; data.length; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            temp = data[i];</span><br><span class="line">            <span class="keyword">for</span> (j = i; j &gt;= increment; j -= increment)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(temp &lt; data[j - increment])<span class="comment">//如想从小到大排只需修改这里</span></span><br><span class="line">                &#123;</span><br><span class="line">                    data[j] = data[j - increment];</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            data[j] = temp;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h3><p>堆是一颗完全二叉树，除了最底层之外，每一层都是满的。</p>
+<p>它有最大堆和最小堆之分</p>
+<p>堆中每个父节点的元素值都<strong>大于等于</strong>其孩子结点的堆就是一个最大堆</p>
+<p>那么相反，每个父节点都<strong>小于等于</strong>其孩子结点的堆就是一个最小堆</p>
+<p>堆排序的时间复杂度为O(n*logn)</p>
+<p>他的排序方法就是先形成一个堆</p>
+<p>父节点和两个子节点进行比较，把最大的那个换到父节点上，然后那两个子节点就递归这个比较和交换</p>
+<p>然后开始排序了</p>
+<p>把堆顶的元素拿下，并且把最小的元素换到堆顶，然后形成一个新堆，然后循环这样的操作，取出来的元素就有序了</p>
+<blockquote>
+<p><strong>满二叉树</strong>：除了叶结点外<strong>每一个结点都有左右子叶</strong>且叶结点都处在最底层的二叉树；</p>
+<p><strong>完全二叉树</strong>：只有最下面的两层结点度小于2，并且最下面一层的结点都集中在该层最左边的若干位置的二叉树；</p>
+<p>堆是一种完全二叉树或者近似完全二叉树</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">sort</span><span class="params">(<span class="keyword">int</span>[] a)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> arrayLength=a.length;</span><br><span class="line">    <span class="comment">//循环建堆</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;arrayLength-<span class="number">1</span>;i++)&#123;</span><br><span class="line">        <span class="comment">//建堆</span></span><br><span class="line">        buildMaxHeap(a,arrayLength-<span class="number">1</span>-i);</span><br><span class="line">        <span class="comment">//交换堆顶和最后一个元素</span></span><br><span class="line">        swap(a,<span class="number">0</span>,arrayLength-<span class="number">1</span>-i);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//对data数组从0到lastIndex建大顶堆</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">buildMaxHeap</span><span class="params">(<span class="keyword">int</span>[] data, <span class="keyword">int</span> lastIndex)</span></span>&#123;</span><br><span class="line">    <span class="comment">//从lastIndex处节点（最后一个节点）的父节点开始</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=(lastIndex-<span class="number">1</span>)/<span class="number">2</span>;i&gt;=<span class="number">0</span>;i--)&#123;</span><br><span class="line">        <span class="comment">//k保存正在判断的节点</span></span><br><span class="line">        <span class="keyword">int</span> k=i;</span><br><span class="line">        <span class="comment">//如果当前k节点的子节点存在</span></span><br><span class="line">        <span class="keyword">while</span>(k*<span class="number">2</span>+<span class="number">1</span>&lt;=lastIndex)&#123;</span><br><span class="line">            <span class="comment">//k节点的左子节点的索引</span></span><br><span class="line">            <span class="keyword">int</span> biggerIndex=<span class="number">2</span>*k+<span class="number">1</span>;</span><br><span class="line">            <span class="comment">//如果biggerIndex小于lastIndex，即biggerIndex+1代表的k节点的右子节点存在</span></span><br><span class="line">            <span class="keyword">if</span>(biggerIndex&lt;lastIndex)&#123;</span><br><span class="line">                <span class="comment">//若果右子节点的值较大</span></span><br><span class="line">                <span class="keyword">if</span>(data[biggerIndex]&lt;data[biggerIndex+<span class="number">1</span>])&#123;</span><br><span class="line">                    <span class="comment">//biggerIndex总是记录较大子节点的索引</span></span><br><span class="line">                    biggerIndex++;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//如果k节点的值小于其较大的子节点的值</span></span><br><span class="line">            <span class="keyword">if</span>(data[k]&lt;data[biggerIndex])&#123;</span><br><span class="line">                <span class="comment">//交换他们</span></span><br><span class="line">                swap(data,k,biggerIndex);</span><br><span class="line">                <span class="comment">//将biggerIndex赋予k，开始while循环的下一次循环，重新保证k节点的值大于其左右子节点的值</span></span><br><span class="line">                k=biggerIndex;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//交换</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span>[] data, <span class="keyword">int</span> i, <span class="keyword">int</span> j)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> tmp=data[i];</span><br><span class="line">    data[i]=data[j];</span><br><span class="line">    data[j]=tmp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h3><p>将两个已经排序的序列合并成一个序列的操作</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">int</span>[] gb_sort(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> low, <span class="keyword">int</span> high) &#123;</span><br><span class="line">    <span class="keyword">int</span> mid = (low + high) / <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">if</span> (low &lt; high) &#123;</span><br><span class="line">        <span class="comment">// 左边</span></span><br><span class="line">        gb_sort(nums, low, mid);</span><br><span class="line">        <span class="comment">// 右边</span></span><br><span class="line">        gb_sort(nums, mid + <span class="number">1</span>, high);</span><br><span class="line">        <span class="comment">// 左右归并</span></span><br><span class="line">        merge(nums, low, mid, high);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> nums;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">merge</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> low, <span class="keyword">int</span> mid, <span class="keyword">int</span> high)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span>[] temp = <span class="keyword">new</span> <span class="keyword">int</span>[high - low + <span class="number">1</span>];</span><br><span class="line">    <span class="keyword">int</span> i = low;<span class="comment">// 左指针</span></span><br><span class="line">    <span class="keyword">int</span> j = mid + <span class="number">1</span>;<span class="comment">// 右指针</span></span><br><span class="line">    <span class="keyword">int</span> k = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">// 把较小的数先移到新数组中</span></span><br><span class="line">    <span class="keyword">while</span> (i &lt;= mid &amp;&amp; j &lt;= high) &#123;</span><br><span class="line">        <span class="keyword">if</span> (nums[i] &lt; nums[j]) &#123;</span><br><span class="line">            temp[k++] = nums[i++];</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            temp[k++] = nums[j++];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 把左边剩余的数移入数组</span></span><br><span class="line">    <span class="keyword">while</span> (i &lt;= mid) &#123;</span><br><span class="line">        temp[k++] = nums[i++];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 把右边边剩余的数移入数组</span></span><br><span class="line">    <span class="keyword">while</span> (j &lt;= high) &#123;</span><br><span class="line">        temp[k++] = nums[j++];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 把新数组中的数覆盖nums数组</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> k2 = <span class="number">0</span>; k2 &lt; temp.length; k2++) &#123;</span><br><span class="line">        nums[k2 + low] = temp[k2];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>空间复杂度</strong></p>
+<p>平均时间复杂度是logn，所以根据遍历次数，推出空间复杂度也是logn</p>
+<h3 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h3><blockquote>
+<p>从需要排序的数里面随便找出一个，然后，把<strong>比这个数小的放在这个数左边，比这个数大的放在这个数右边，一样大的和这个数放在一起</strong>，最后，<strong>左右两边各自重复上述过程</strong>，直到左边或右边只剩下一个数（或零个数）无法继续为止。</p>
+</blockquote>
+<p>取出第一个元素为基准，然后有两个指针，一个指向第二个元素，一个指向最后一个元素，先从最后一个进行比较，如果比基准大的话，就向前移向下一个，如果元素比基准小的话，就把那个元素替换到前面那个空位，然后前面的指针开始比较，如果比基准小，就移向向后下一个，如果比基准大，就替换到后面的那个空位。然后又变成后指针开始移动比较。这样的比较替换后，除去基准的那个元素，再分成前后两组，然后进行这个过程，直到前后两个指针重合，排序也就结束了。</p>
+<p>快速排序不稳定，它的时间复杂度最好时为O(n<em>logn)，最差情况是O(n\</em>n)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">partition</span><span class="params">(<span class="keyword">int</span>[] arr, <span class="keyword">int</span> start, <span class="keyword">int</span> end)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> key = arr[start];</span><br><span class="line">    <span class="keyword">while</span>(start&lt;end)&#123;</span><br><span class="line">        <span class="keyword">while</span>(start &lt; end &amp;&amp; key &lt;= arr[end])&#123;</span><br><span class="line">            end--;</span><br><span class="line">        &#125;</span><br><span class="line">        arr[start] = arr[end];</span><br><span class="line">        <span class="keyword">while</span>(start &lt; end &amp;&amp; key &gt;= arr[start])&#123;</span><br><span class="line">            start++;</span><br><span class="line">        &#125;</span><br><span class="line">        arr[end] = arr[start];</span><br><span class="line">    &#125;</span><br><span class="line">    arr[start] = key;</span><br><span class="line">    <span class="keyword">return</span> start;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sort</span><span class="params">(<span class="keyword">int</span>[] arr,<span class="keyword">int</span> start,<span class="keyword">int</span> end)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (start &lt; end)&#123;</span><br><span class="line">        <span class="keyword">int</span> middle = partition(arr,start,end);</span><br><span class="line">        sort(arr,<span class="number">0</span>,middle-<span class="number">1</span>);</span><br><span class="line">        sort(arr,middle+<span class="number">1</span>,end);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>优化</strong></p>
+<p>三值取中法： 待排序序列的前(第一个位置)、中(中间位置)、后(最后一个位置)三个记录中的中间值(按大小排序)作为枢轴</p>
+<p><strong>空间复杂度</strong></p>
+<p>就空间复杂度来说，主要是递归造成的栈空间的使用，最好情况，递归的深度为log2n，其空间复杂度也就为O(logn)，最坏情况，需要进行n‐1递归调用，其空间复杂度为O(n)，平均情况，空间复杂度也为O(logn)。</p>
+<h3 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h3><ol>
+<li>比较相邻的元素。 如果第一个比第二个大，就交换他们两个。</li>
+<li>从开始第一对到结尾的最后一对，每对相邻元素都作同样的工作，。 这步做完后，最后的元素会是最大的数。</li>
+<li>针对所有的元素重复以上的步骤，除了最后一个。</li>
+<li>持续每次对越来越少的元素重复上面的步骤，直到没有任何一对数字需要比较。</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sort</span><span class="params">(<span class="keyword">int</span>[] arr)</span></span>&#123;</span><br><span class="line">    <span class="keyword">boolean</span> swaped;</span><br><span class="line">    <span class="keyword">int</span> temp;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i&lt;arr.length-<span class="number">1</span>;i++)&#123;</span><br><span class="line">        swaped = <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> f = <span class="number">0</span>;f&lt;arr.length-i-<span class="number">1</span>;f++)&#123;</span><br><span class="line">            <span class="keyword">if</span> (arr[f] &gt; arr[f+<span class="number">1</span>])&#123;</span><br><span class="line">                temp = arr[f];</span><br><span class="line">                arr[f] = arr[f+<span class="number">1</span>];</span><br><span class="line">                arr[f+<span class="number">1</span>] = temp;</span><br><span class="line">                swaped = <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (!swaped)&#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h3><p>首先在序列中找到最小（大）元素，存放到排序序列的起始位置，然后，再从剩余未排序元素中继续寻找最小（大）元素，然后放到已排序序列的末尾。以此类推，直到所有元素均排序完毕。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sort</span><span class="params">(<span class="keyword">int</span>[] arr)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> max_index;</span><br><span class="line">    <span class="keyword">int</span> temp;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i&lt;arr.length;i++)&#123;</span><br><span class="line">        max_index = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> f = <span class="number">0</span>;f&lt;arr.length-i;f++)&#123;</span><br><span class="line">            <span class="keyword">if</span> (arr[f] &gt; arr[max_index])&#123;</span><br><span class="line">                max_index = f;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        temp = arr[arr.length-i-<span class="number">1</span>];</span><br><span class="line">        arr[arr.length-i-<span class="number">1</span>] = arr[max_index];</span><br><span class="line">        arr[max_index] = temp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="基数排序"><a href="#基数排序" class="headerlink" title="基数排序"></a>基数排序</h3><p>将所有待比较数值（正整数）统一为同样的数位长度，数位较短的数前面补零。然后，从最低位开始，依次进行一次排序。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">radix_sort</span><span class="params">(<span class="keyword">int</span>[] array)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> max = array[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>;i&lt;array.length;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span> (array[i] &gt; max)&#123;</span><br><span class="line">            max = array[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> time = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (max&gt;<span class="number">0</span>)&#123;</span><br><span class="line">        max /= <span class="number">10</span>;</span><br><span class="line">        time++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> k = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> m = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> n = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> max_sd = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span>[][] tempArr = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">10</span>][array.length];</span><br><span class="line">    <span class="keyword">int</span>[] order = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">10</span>];</span><br><span class="line">    <span class="keyword">while</span> (m&lt;time)&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>;i&lt;array.length;i++)&#123;</span><br><span class="line">            <span class="keyword">int</span> sd = (array[i] / n) % <span class="number">10</span>;</span><br><span class="line">            tempArr[sd][order[sd]] = array[i];</span><br><span class="line">            order[sd]++;</span><br><span class="line">            <span class="keyword">if</span> (sd&gt;max_sd)&#123;</span><br><span class="line">                max_sd = sd;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>;i&lt;<span class="number">10</span>;i++)&#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>;order[i] != <span class="number">0</span> &amp;&amp; j&lt;order[i];j++)&#123;</span><br><span class="line">                array[k++] = tempArr[i][j];</span><br><span class="line">            &#125;</span><br><span class="line">            order[i]=<span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        n *= <span class="number">10</span>;</span><br><span class="line">        k = <span class="number">0</span>;</span><br><span class="line">        m++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><table>
+<thead>
+<tr>
+<th>Algorithm</th>
+<th>Average</th>
+<th>Best</th>
+<th>Worst</th>
+<th>extra space</th>
+<th>stable</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>冒泡排序</td>
+<td>O(N^2)</td>
+<td>O(N)</td>
+<td>O(N^2)</td>
+<td>O(1)</td>
+<td>稳定</td>
+</tr>
+<tr>
+<td>直接插入排序</td>
+<td>O(N^2)</td>
+<td>O(N)</td>
+<td>O(N^2)</td>
+<td>O(1)</td>
+<td>稳定</td>
+</tr>
+<tr>
+<td>希尔排序</td>
+<td>O(N^1.3)</td>
+<td>O(N)</td>
+<td>O(N^2)</td>
+<td>O(1)</td>
+<td>不稳定</td>
+</tr>
+<tr>
+<td>简单选择排序</td>
+<td>O(N^2)</td>
+<td>O(N^2)</td>
+<td>O(N^2)</td>
+<td>O(1)</td>
+<td>不稳定</td>
+</tr>
+<tr>
+<td>快速排序</td>
+<td>O(NlogN)</td>
+<td>O(NlogN)</td>
+<td>O(N^2)</td>
+<td>O(logN)~O(N^2)</td>
+<td>不稳定</td>
+</tr>
+<tr>
+<td>归并排序</td>
+<td>O(NlogN)</td>
+<td>O(NlogN)</td>
+<td>O(NlogN)</td>
+<td>O(N)</td>
+<td>稳定</td>
+</tr>
+<tr>
+<td>堆排序</td>
+<td>O(NlogN)</td>
+<td>O(NlogN)</td>
+<td>O(NlogN)</td>
+<td>O(1)</td>
+<td>不稳定</td>
+</tr>
+<tr>
+<td>计数排序</td>
+<td>O(d*(N+K))</td>
+<td>O(d*(N+K))</td>
+<td>O(d*(N+K))</td>
+<td>O(N+K)</td>
+<td>稳定</td>
+</tr>
+</tbody>
+</table>
+<h3 id="排序方法的选择"><a href="#排序方法的选择" class="headerlink" title="排序方法的选择"></a>排序方法的选择</h3><ol>
+<li>若n较小(如n≤50)，可采用直接插入或直接选择排序。</li>
+</ol>
+<p>　当记录规模较小时，直接插入排序较好；否则因为直接选择移动的记录数少于直接插人，应选直接选择排序为宜。</p>
+<ol start="2">
+<li>若文件初始状态基本有序(指正序)，则应选用直接插人、冒泡或随机的快速排序为宜；</li>
+<li>若n较大，则应采用时间复杂度为O(nlgn)的排序方法：快速排序、堆排序或归并排序。</li>
+</ol>
+<p>快速排序是目前基于比较的内部排序中被认为是最好的方法，当待排序的关键字是随机分布时，快速排序的平均时间最短；<br>堆排序所需的辅助空间少于快速排序，并且不会出现快速排序可能出现的最坏情况。这两种排序都是不稳定的;<br>若要求排序稳定，则可选用归并排序。</p>
+<blockquote>
+<p>但本章介绍的从单个记录起进行两两归并的排序算法并不值得提倡，通常可以将它和直接插入排序结合在一起使用。先利用直接插入排序求得较长的有序子文件，然后再两两归并之。因为直接插入排序是稳定 的，所以改进后的归并排序仍是稳定的。</p>
+</blockquote>
+<p>参考资料：</p>
+<p><a href="https://segmentfault.com/a/1190000004994003?f=tt&amp;hmsr=toutiao.io&amp;utm_medium=toutiao.io&amp;utm_source=toutiao.io#articleHeader22" target="_blank" rel="noopener">排序总结</a></p>
+<p><a href="https://segmentfault.com/a/1190000002595152" target="_blank" rel="noopener">常用排序算法总结(性能+代码)</a></p>
+<p><a href="https://segmentfault.com/a/1190000009069319" target="_blank" rel="noopener">Java常用的八种排序算法与代码实现精解</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://barry215.github.io/2017/03/11/algorithm-review/" data-id="cjvktzt6o002xrxjdatlb2daa" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/algorithm/">algorithm</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/03/22/spring-review/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Spring IOC&amp;&amp;AOP
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/03/09/network-review/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">网络知识复习</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Book/">Book</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Computer/">Computer</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DataBase/">DataBase</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Design-Method/">Design Method</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Http/">Http</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Internet/">Internet</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Maven/">Maven</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mybatis/">Mybatis</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mysql/">Mysql</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Network/">Network</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Nginx/">Nginx</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Other/">Other</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Server/">Server</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/">Spring</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ajax/">ajax</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm/">algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/centos/">centos</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/computer/">computer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/data-structure/">data_structure</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/design-method/">design method</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/https/">https</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/init/">init</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javaweb/">javaweb</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jsp/">jsp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jstl/">jstl</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/maven/">maven</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mybatis/">mybatis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/servlet/">servlet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring/">spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sql/">sql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tcp-ip/">tcp/ip</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tomcat/">tomcat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/ajax/" style="font-size: 10px;">ajax</a> <a href="/tags/algorithm/" style="font-size: 13.33px;">algorithm</a> <a href="/tags/centos/" style="font-size: 10px;">centos</a> <a href="/tags/computer/" style="font-size: 10px;">computer</a> <a href="/tags/data-structure/" style="font-size: 10px;">data_structure</a> <a href="/tags/design-method/" style="font-size: 10px;">design method</a> <a href="/tags/git/" style="font-size: 13.33px;">git</a> <a href="/tags/http/" style="font-size: 16.67px;">http</a> <a href="/tags/https/" style="font-size: 10px;">https</a> <a href="/tags/init/" style="font-size: 10px;">init</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/tags/javaweb/" style="font-size: 10px;">javaweb</a> <a href="/tags/jsp/" style="font-size: 10px;">jsp</a> <a href="/tags/jstl/" style="font-size: 10px;">jstl</a> <a href="/tags/linux/" style="font-size: 16.67px;">linux</a> <a href="/tags/maven/" style="font-size: 10px;">maven</a> <a href="/tags/mybatis/" style="font-size: 10px;">mybatis</a> <a href="/tags/mysql/" style="font-size: 13.33px;">mysql</a> <a href="/tags/nginx/" style="font-size: 13.33px;">nginx</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/servlet/" style="font-size: 10px;">servlet</a> <a href="/tags/spring/" style="font-size: 10px;">spring</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a> <a href="/tags/tcp-ip/" style="font-size: 10px;">tcp/ip</a> <a href="/tags/tomcat/" style="font-size: 13.33px;">tomcat</a> <a href="/tags/web/" style="font-size: 10px;">web</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/02/06/computer-foundation/">计算机组成原理基础知识</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/16/http-socket/">Socket和Websocket的关系</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/16/algorithmList/">算法练习(不断更新中)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/06/git-learn/">Git命令篇</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/04/mysql-review/">MySQL持续更新</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 frank<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

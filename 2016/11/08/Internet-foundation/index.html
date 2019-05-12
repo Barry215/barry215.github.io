@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>网络基础知识 | 麦金</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="网络基础知识OSI七层模型它是参考模型是国际标准化组织（ISO）制定的一个用于计算机或通信系统间互联的标准体系。 它将计算机网络体系结构的通信协议划分为七层，自下而上依次为： 物理层、数据链路层、网络层、传输层、会话层、表示层、应用层。其中第四层完成数据传送服务，上面三层面向用户。  TCP/IP五层模型应用层、传输层、网络层、数据链路层、物理层。层级越往上越接近用户，越往下越接近硬件。 每一层都">
+<meta name="keywords" content="http,tcp&#x2F;ip">
+<meta property="og:type" content="article">
+<meta property="og:title" content="网络基础知识">
+<meta property="og:url" content="https://barry215.github.io/2016/11/08/Internet-foundation/index.html">
+<meta property="og:site_name" content="麦金">
+<meta property="og:description" content="网络基础知识OSI七层模型它是参考模型是国际标准化组织（ISO）制定的一个用于计算机或通信系统间互联的标准体系。 它将计算机网络体系结构的通信协议划分为七层，自下而上依次为： 物理层、数据链路层、网络层、传输层、会话层、表示层、应用层。其中第四层完成数据传送服务，上面三层面向用户。  TCP/IP五层模型应用层、传输层、网络层、数据链路层、物理层。层级越往上越接近用户，越往下越接近硬件。 每一层都">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://barry215.github.io/2016/11/08/Internet-foundation/Internet-foundation/protocol1.jpg">
+<meta property="og:image" content="https://barry215.github.io/2016/11/08/Internet-foundation/Internet-foundation/protocol2.jpg">
+<meta property="og:image" content="https://barry215.github.io/2016/11/08/Internet-foundation/Internet-foundation/head_data_1.png">
+<meta property="og:image" content="https://barry215.github.io/2016/11/08/Internet-foundation/Internet-foundation/yitaiwang.png">
+<meta property="og:image" content="https://barry215.github.io/2016/11/08/Internet-foundation/Internet-foundation/head_data_2.png">
+<meta property="og:image" content="https://barry215.github.io/2016/11/08/Internet-foundation/Internet-foundation/wangguan.jpg">
+<meta property="og:image" content="https://barry215.github.io/2016/11/08/Internet-foundation/Internet-foundation/head_data_3.png">
+<meta property="og:image" content="https://barry215.github.io/2016/11/08/Internet-foundation/Internet-foundation/tcp.png">
+<meta property="og:image" content="https://barry215.github.io/2016/11/08/Internet-foundation/Internet-foundation/head_data_4.png">
+<meta property="og:image" content="https://barry215.github.io/2016/11/08/Internet-foundation/Internet-foundation/http1.png">
+<meta property="og:image" content="https://barry215.github.io/2016/11/08/Internet-foundation/Internet-foundation/internet.png">
+<meta property="og:image" content="https://barry215.github.io/2016/11/08/Internet-foundation/Internet-foundation/xieyi.png">
+<meta property="og:image" content="https://barry215.github.io/2016/11/08/Internet-foundation/Internet-foundation/http2.png">
+<meta property="og:image" content="https://barry215.github.io/2016/11/08/Internet-foundation/Internet-foundation/request.jpeg">
+<meta property="og:image" content="https://barry215.github.io/2016/11/08/Internet-foundation/Internet-foundation/cache.png">
+<meta property="og:image" content="https://barry215.github.io/2016/11/08/Internet-foundation/Internet-foundation/cacheHead.png">
+<meta property="og:image" content="https://barry215.github.io/2016/11/08/Internet-foundation/Internet-foundation/cacheFlow.png">
+<meta property="og:image" content="https://barry215.github.io/2016/11/08/Internet-foundation/Internet-foundation/flashCache.png">
+<meta property="og:image" content="https://barry215.github.io/2016/11/08/Internet-foundation/Internet-foundation/response.png">
+<meta property="og:image" content="https://barry215.github.io/2016/11/08/Internet-foundation/Internet-foundation/csrf.jpg">
+<meta property="og:updated_time" content="2017-04-07T12:39:53.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="网络基础知识">
+<meta name="twitter:description" content="网络基础知识OSI七层模型它是参考模型是国际标准化组织（ISO）制定的一个用于计算机或通信系统间互联的标准体系。 它将计算机网络体系结构的通信协议划分为七层，自下而上依次为： 物理层、数据链路层、网络层、传输层、会话层、表示层、应用层。其中第四层完成数据传送服务，上面三层面向用户。  TCP/IP五层模型应用层、传输层、网络层、数据链路层、物理层。层级越往上越接近用户，越往下越接近硬件。 每一层都">
+<meta name="twitter:image" content="https://barry215.github.io/2016/11/08/Internet-foundation/Internet-foundation/protocol1.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="麦金" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">麦金</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">麦金的博客</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://barry215.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Internet-foundation" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/11/08/Internet-foundation/" class="article-date">
+  <time datetime="2016-11-08T14:13:22.000Z" itemprop="datePublished">2016-11-08</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Internet/">Internet</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      网络基础知识
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="网络基础知识"><a href="#网络基础知识" class="headerlink" title="网络基础知识"></a>网络基础知识</h2><h3 id="OSI七层模型"><a href="#OSI七层模型" class="headerlink" title="OSI七层模型"></a>OSI七层模型</h3><p>它是参考模型是国际标准化组织（ISO）制定的一个用于计算机或通信系统间互联的标准体系。</p>
+<p>它将计算机网络体系结构的通信协议划分为七层，自下而上依次为：</p>
+<p>物理层、数据链路层、网络层、传输层、会话层、表示层、应用层。其中第四层完成数据传送服务，上面三层面向用户。</p>
+<p><img src="Internet-foundation/protocol1.jpg" alt="模型对比"></p>
+<h3 id="TCP-IP五层模型"><a href="#TCP-IP五层模型" class="headerlink" title="TCP/IP五层模型"></a>TCP/IP五层模型</h3><p>应用层、传输层、网络层、数据链路层、物理层。层级越往上越接近用户，越往下越接近硬件。</p>
+<p>每一层都是为了完成一种功能。为了实现这些功能，就需要大家都遵守共同的规则。</p>
+<p><img src="Internet-foundation/protocol2.jpg" alt="五层模型"></p>
+<h4 id="物理层"><a href="#物理层" class="headerlink" title="物理层"></a>物理层</h4><p>就是用物理的方式把多个计算机连接在一起，比如无线电，双绞线，光缆，电缆</p>
+<h4 id="数据链路层"><a href="#数据链路层" class="headerlink" title="数据链路层"></a>数据链路层</h4><p>把二进制的信号按规则组合起来，使它变得有意义</p>
+<h5 id="以太网协议"><a href="#以太网协议" class="headerlink" title="以太网协议"></a>以太网协议</h5><p>以太网就是平常所说的局域网的一种</p>
+<p>同一个以太网下的电脑用唯一的mac地址识别，然后可以相互发送数据</p>
+<h5 id="以太网数据包"><a href="#以太网数据包" class="headerlink" title="以太网数据包"></a>以太网数据包</h5><p>一组电信号构成一个数据包，叫做”帧”（Frame）。每一帧分成两个部分：标头（Head）和数据（Data）</p>
+<p>这个数据包最大是1500字节，所以如果数据很长，就必须分割成多个帧进行发送。</p>
+<p><img src="Internet-foundation/head_data_1.png" alt></p>
+<h5 id="mac地址"><a href="#mac地址" class="headerlink" title="mac地址"></a>mac地址</h5><p>以太网规定，连入网络的所有设备，都必须具有”网卡”接口。数据包必须是从一块网卡，传送到另一块网卡。网卡的地址，就是数据包的发送地址和接收地址，这叫做MAC地址。</p>
+<p>每块网卡出厂的时候，都有一个全世界独一无二的MAC地址，长度是48个二进制位，通常用12个十六进制数表示。</p>
+<p>举例：a8:bb:cf:04:cf:bc是一个mac地址</p>
+<h5 id="网卡"><a href="#网卡" class="headerlink" title="网卡"></a>网卡</h5><p>网卡是工作在链路层的网络组件，是局域网中连接计算机和传输介质的接口，不仅能实现与局域网传输介质之间的物理连接和电信号匹配，还涉及帧的发送与接收、帧的封装与拆封、介质访问控制、数据的编码与解码以及数据缓存的功能等。</p>
+<h5 id="广播"><a href="#广播" class="headerlink" title="广播"></a>广播</h5><p>在以太网内传输数据，肯定要知道目的主机的mac地址。所以需要一个ARP协议来知道目的主机的mac地址</p>
+<p>然后因为某种原因，以太网采用广播的方式发送数据包，即向以太网内的所有计算机发送数据包，然后如果计算机的mac地址和目的的mac地址一样，那就打开数据包，否则就丢弃</p>
+<h4 id="网络层"><a href="#网络层" class="headerlink" title="网络层"></a>网络层</h4><p><img src="Internet-foundation/yitaiwang.png" alt></p>
+<p>以太网内发送数据包有局限性</p>
+<ul>
+<li>采用广播的方式发送，效率低</li>
+<li>目的主机在发送者的以太网外就无法发送</li>
+</ul>
+<p>所以我们需要网络地址来判断目的主机在哪一个子网络</p>
+<p>网络地址帮助我们确定计算机所在的子网络，MAC地址则将数据包送到该子网络中的目标网卡。</p>
+<h5 id="IP协议"><a href="#IP协议" class="headerlink" title="IP协议"></a>IP协议</h5><p>规定网络地址的协议，叫做IP协议。它所定义的地址，就被称为IP地址。</p>
+<p>现在的IP协议有IPv4和IPv6两种，IPv4是主要的网络地址</p>
+<p>IPv4 规定网络地址是由32个二进制位组成，为了分辨方便，我们用分成四段的十进制数表示IP地址。</p>
+<p>因为2的8次是256，所以IPv4的地址是从0.0.0.0一直到255.255.255.255</p>
+<p>互联网上的每一台计算机，都会分配到一个IP地址。</p>
+<p>这个地址分成两个部分，前一部分代表网络地址，后一部分代表主机地址</p>
+<p>但是每个部分的长度不是固定的，所以我们需要子网掩码来获取哪一部分是网络地址</p>
+<p>IP协议的作用主要有两个</p>
+<ul>
+<li>为每一台计算机分配IP地址</li>
+<li>确定哪些地址在同一个子网络</li>
+</ul>
+<h5 id="子网掩码"><a href="#子网掩码" class="headerlink" title="子网掩码"></a>子网掩码</h5><p>它在形式上等同于IP地址，也是一个32位二进制数字，它的网络部分全部为1，主机部分全部为0。</p>
+<p>比如，IP地址172.16.254.1，如果已知网络部分是前24位，主机部分是后8位，那么子网络掩码就是11111111.11111111.11111111.00000000，写成十进制就是255.255.255.0。</p>
+<p>知道”子网掩码”，我们就能判断，任意两个IP地址是否处在同一个<strong>子网络</strong>。</p>
+<p><strong>子网掩码可以区分网络位是几位，主机位是几位</strong></p>
+<p>方法是将两个IP地址与子网掩码分别进行AND运算（两个数位都为1，运算结果为1，否则为0），然后比较结果是否相同，如果是的话，就表明它们在同一个子网络中，否则就不是。</p>
+<p>A类默认子网掩码为：255.0.0.0<br>B类默认子网掩码为：255.255.0.0<br>C类默认子网掩码为：255.255.255.0</p>
+<p>比如，已知IP地址172.16.254.1和172.16.254.233的子网掩码都是255.255.255.0，两者与子网掩码分别进行AND运算，结果都是172.16.254.0，因此它们在同一个子网络。</p>
+<h5 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h5><p><strong>IP地址分为3类</strong></p>
+<ul>
+<li>A类地址 0.0.0.0~127.255.255.255</li>
+<li>B类地址 128.0.0.0~191.255.255.255</li>
+<li>C类地址 192.0.0.0~223.255.255.255</li>
+<li>D类地址 224.0.0.0~239.255.255.255 （不用）</li>
+<li>E类地址 240.0.0.0~255.255.255.255 （不用）</li>
+</ul>
+<blockquote>
+<p>投入使用的只有ABC三类，DE两类是保留的。</p>
+</blockquote>
+<p><strong>私有地址</strong>(private address)也叫保留地址，它们不会在全球使用，只具有本地意义</p>
+<ul>
+<li>10.0.0.0 - 10.255.255.255</li>
+<li>172.16.0.0 - 172.31.255.255</li>
+<li>192.168.0.0 - 192.168.255.255</li>
+</ul>
+<p>所以一般局域网的地址都是192.168.X.X</p>
+<p><strong>子网划分</strong></p>
+<p>子网的划分主要是将主机位借用几位来表示子网号，余下几位主机位表示新的主机号，借来的位数加在子网掩码上</p>
+<h5 id="广播地址"><a href="#广播地址" class="headerlink" title="广播地址"></a>广播地址</h5><p>它是在使用TCP/IP 协议的网络中，<strong>主机位</strong> 为全1 的IP 地址</p>
+<h5 id="网络地址"><a href="#网络地址" class="headerlink" title="网络地址"></a>网络地址</h5><p>它是IP与子网掩码做与操作得到的地址</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">将202.100.2.0划分成4个子网.</span><br><span class="line">4=2的2次幂，所以需要向主机位借2位。</span><br><span class="line">因为该IP地址属于C类地址，</span><br><span class="line">所以主机位有8位，0000 0000，借两位之后</span><br><span class="line">子网掩码会变成  11111111 11111111 11111111 11000000</span><br><span class="line">即为：255.255.255.192</span><br><span class="line">那么划分的子网起始地址为（不考虑网络地址和广播地址）</span><br><span class="line">11001010 01100100 00000010 00000000 网络地址</span><br><span class="line">11001010 01100100 00000010 01000000</span><br><span class="line">11001010 01100100 00000010 10000000</span><br><span class="line">11001010 01100100 00000010 11000000 内含广播地址</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">申请一个C类IP，链接6个公司，最大的子公司有26台计算机，求子网掩码。</span><br><span class="line">解：</span><br><span class="line">因为  2^4 &lt; 26 &lt; 2^5</span><br><span class="line">所以  主机位应该为5位</span><br><span class="line">所以  该子网掩码为</span><br><span class="line">11111111 11111111 11111111 11100000</span><br><span class="line">即，255.255.255.224</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">B类地址子网掩码为255.255.255.248，则每个子网内可用的主机地址有（）个？</span><br><span class="line">解：</span><br><span class="line">255.255.255.248：</span><br><span class="line">11111111 11111111 11111111 11111000</span><br><span class="line">可以得出主机位只有3位，2的3次幂=8</span><br><span class="line">减去广播地址和网络地址，8-2=6</span><br><span class="line">所以子网内可用的主机地址有6个。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">某IP地址192.168.48.10，掩码为255.255.255.128，其所在的子网为()，广播地址为()，有效的主机IP地址范围从()到().</span><br><span class="line">192.168.48.0/192.168.48.127/192.168.48.1  到 192.168.48.126</span><br><span class="line"></span><br><span class="line">网络位为25  主机位为7 </span><br><span class="line">网络地址ip和子网掩码相与的192.168.48.0</span><br><span class="line"></span><br><span class="line">广播地址等于网络地址的主机位的二进制全为1</span><br><span class="line">192.168.48.127</span><br><span class="line"></span><br><span class="line">有效的主机IP地址=网络地址+1   ----   广播地址-1</span><br><span class="line">192.168.48.1 到 192.168.48.126</span><br></pre></td></tr></table></figure>
+<h5 id="NAT协议"><a href="#NAT协议" class="headerlink" title="NAT协议"></a>NAT协议</h5><p>将私网地址转换成公网地址，从而连接到公共网络</p>
+<p>好处：节省了公网IP地址</p>
+<h5 id="IP数据包"><a href="#IP数据包" class="headerlink" title="IP数据包"></a>IP数据包</h5><p>把IP数据包直接放进以太网数据包的”数据”部分</p>
+<p><img src="Internet-foundation/head_data_2.png" alt></p>
+<h5 id="ARP协议"><a href="#ARP协议" class="headerlink" title="ARP协议"></a>ARP协议</h5><p>因为IP数据包是放在以太网数据包里发送的，所以我们必须同时知道两个地址，一个是对方的MAC地址，另一个是对方的IP地址。通常情况下，对方的IP地址是已知的，但是我们不知道它的MAC地址。</p>
+<p>所以我们需要用ARP协议来获取目的主机的MAC地址。</p>
+<p>这里又可以分成两种情况</p>
+<ul>
+<li>如果两台主机不在同一个子网络，那么事实上没有办法得到对方的MAC地址，只能把数据包传送到两个子网络连接处的”网关”（gateway），让网关去处理。</li>
+<li>如果两台主机在同一个子网络，那么我们可以用ARP协议，得到对方的MAC地址。ARP协议也是发出一个数据包（包含在以太网数据包中），其中包含它所要查询主机的IP地址，在对方的MAC地址这一栏，填的是FF:FF:FF:FF:FF:FF，表示这是一个”广播”地址。它所在子网络的每一台主机，都会收到这个数据包，从中取出IP地址，与自身的IP地址进行比较。如果两者相同，都做出回复，向对方报告自己的MAC地址，否则就丢弃这个包。</li>
+</ul>
+<p>总之，有了ARP协议之后，我们就可以得到同一个子网络内的主机MAC地址，可以把数据包发送到任意一台主机之上了。</p>
+<h5 id="网关"><a href="#网关" class="headerlink" title="网关"></a>网关</h5><p>网关(Gateway)又称网间连接器、协议转换器。网关在网络层以上实现网络互连，是最复杂的网络互连设备，仅用于两个高层协议不同的网络互连。网关既可以用于广域网互连，也可以用于局域网互连。</p>
+<p>一般来说，路由器的LAN接口的IP地址就是你所在局域网中的网关。当你所在的局域网的计算机需要和其它局域网中的计算机，或者需要访问互联网的时候，你所在局域网的计算机会先把数据包传输到网关（路由器的LAN接口），然后再由网关进行转发。</p>
+<blockquote>
+<p>说明：由于历史的原因，许多有关TCP/IP的文献曾经把网络层使用的路由器称为网关，在今天很多局域网采用都是路由来接入网络，因此通常指的网关就是路由器的IP</p>
+</blockquote>
+<p><img src="Internet-foundation/wangguan.jpg" alt></p>
+<h4 id="传输层"><a href="#传输层" class="headerlink" title="传输层"></a>传输层</h4><p>虽然通过以上两层，数据传到了计算机，但是计算机还是不知道这个数据是哪个应用程序的数据。所以我们又在计算机上定义了端口（port）。</p>
+<p>传输层的功能，就是建立”端口到端口”的通信。相比之下，”网络层”的功能是建立”主机到主机”的通信。只要确定主机和端口，我们就能实现程序之间的交流。</p>
+<h5 id="端口"><a href="#端口" class="headerlink" title="端口"></a>端口</h5><p>端口是0到65535之间的一个整数，正好16个二进制位。0到1023的端口被系统占用，用户只能选用大于1023的端口。不管是浏览网页还是在线聊天，应用程序会随机选用一个端口，然后与服务器的相应端口联系。</p>
+<h5 id="UDP协议"><a href="#UDP协议" class="headerlink" title="UDP协议"></a>UDP协议</h5><p>现在，我们必须在数据包中加入端口信息，这就需要新的协议。最简单的实现叫做UDP协议，它的格式几乎就是在数据前面，加上端口号。</p>
+<p><img src="Internet-foundation/head_data_3.png" alt></p>
+<h5 id="TCP协议"><a href="#TCP协议" class="headerlink" title="TCP协议"></a>TCP协议</h5><p>UDP协议的优点是比较简单，容易实现，但是缺点是可靠性较差，一旦数据包发出，无法知道对方是否收到。</p>
+<p>所以出现了TCP协议，它会和目的主机进行三次握手确认，保证了数据传输的准确性</p>
+<p>握手过程中传送的包里不包含数据，三次握手完毕后，客户端与服务器才正式开始传送数据。</p>
+<p>只需要一次连接，属于长连接，只要不断开的情况可以一直使用。</p>
+<p><img src="Internet-foundation/tcp.png" alt></p>
+<h5 id="TCP滑动窗口"><a href="#TCP滑动窗口" class="headerlink" title="TCP滑动窗口"></a>TCP滑动窗口</h5><p>如果发送方把数据发送得过快，接收方可能会来不及接收，这就会造成数据的丢失。</p>
+<p>滑动窗口本质上是描述接受方的TCP数据报缓冲区大小的数据，发送方根据这个数据来计算自己最多能发送多长的数据。如果发送方收到接受方的窗口大小为0的TCP数据报，那么发送方将停止发送数据，等到接受方发送窗口大小不为0的数据报的到来。窗口可以实时调整。</p>
+<p>TCP的窗口单位是字节，不是报文段。</p>
+<p>利用滑动窗口机制可以很方便地在TCP连接上实现对发送方的流量控制。</p>
+<p><a href="http://www.jianshu.com/p/8afbbdd4af48" target="_blank" rel="noopener">TCP滑动窗口和流控</a></p>
+<h5 id="数据拥堵控制"><a href="#数据拥堵控制" class="headerlink" title="数据拥堵控制"></a>数据拥堵控制</h5><p>在广域网中TCP发送方需要确认连接双方的线路的数据最大吞吐量是多少。这，就是所谓的拥塞窗口。</p>
+<p>确定了拥塞窗口的大小，发送方就用这个拥塞窗口的大小发送数据。</p>
+<p>一般是通过慢启动的方式来的，就是一开始发送一个数据报，然后等待对方的回应，得到回应后就把这个窗口的大小加倍，然后连续发送两个数据报，下一轮发送更多的数据报，直到出现超时错误，就知道了拥塞窗口的大小，这也就是为什么下载速度是慢慢开始涨的</p>
+<p><a href="http://www.jianshu.com/p/bd141e76bc8b" target="_blank" rel="noopener">http://www.jianshu.com/p/bd141e76bc8b</a></p>
+<h5 id="SOCKET"><a href="#SOCKET" class="headerlink" title="SOCKET"></a>SOCKET</h5><p>Socket是对TCP/IP协议的封装，Socket本身并不是协议，而是一个调用接口（API），通过Socket，我们才能使用TCP/IP协议。Socket的出现只是使得程序员更方便地使用TCP/IP协议栈而已，是对TCP/IP协议的抽象，从而形成了我们知道的一些最基本的函数接口。</p>
+<p>在设计模式中，Socket其实就是一个门面模式，它把复杂的TCP/IP协议族隐藏在Socket接口后面。因为他是端口到端口的通讯接口，所以它让程序和程序之间可以相互交流</p>
+<p>主要流程：服务器监听，客户端连接，连接确认</p>
+<h5 id="TCP和UDP区别"><a href="#TCP和UDP区别" class="headerlink" title="TCP和UDP区别"></a>TCP和UDP区别</h5><p>TCP（传输控制协议）</p>
+<p>基于连接的协议，也就是说，在正式收发数据前，必须和对方建立可靠的连接。</p>
+<p>支持超时重发</p>
+<p>UDP（用户数据报协议）</p>
+<p>它是面向非连接的协议，它不与对方建立连接，而是直接就把数据包发送过去</p>
+<p>只管是否发送成功，不保证对方是否接收到数据，所以UDP是不安全的，有可能会丢失数据包。</p>
+<h4 id="应用层"><a href="#应用层" class="headerlink" title="应用层"></a>应用层</h4><p>这一层有很多的协议，因为要规定应用程序的数据格式。比如Email (SMTP)、HTTP、FTP这些数据，都对应的协议。</p>
+<p>数据包是TCP/IP协议通信传输中的数据单位，也称为“包”。</p>
+<p><img src="Internet-foundation/head_data_4.png" alt></p>
+<h5 id="SMTP协议"><a href="#SMTP协议" class="headerlink" title="SMTP协议"></a>SMTP协议</h5><p>SMTP（Simple Mail Transfer Protocol，简单邮件传输协议），用来发送电子邮件。</p>
+<h5 id="HTTP数据包"><a href="#HTTP数据包" class="headerlink" title="HTTP数据包"></a>HTTP数据包</h5><p><img src="Internet-foundation/http1.png" alt></p>
+<h5 id="HTTP协议"><a href="#HTTP协议" class="headerlink" title="HTTP协议"></a>HTTP协议</h5><p>HTTP(超文本传输协议)是利用TCP在两台电脑(通常是Web服务器和客户端)之间传输信息的协议。客户端使用Web浏览器发起HTTP请求给Web服务器，Web服务器发送被请求的信息给客户端。</p>
+<p>HTTP协议，可以认为主要是用来访问网页的，是比TCP更上层的协议，http里面规定了我们访问网页的时候如何进行缓存，以及请求什么格式。等等，主要是为了让人们访问网页的时候更快，更安全，而规定了很多参数。你可以认为TCP就是搬运工，保证搬动的东西不被损坏。http协议是做业务的，用来决定要不要搬运，以及如何搬运，从哪去搬运。</p>
+<h5 id="HTTPS协议"><a href="#HTTPS协议" class="headerlink" title="HTTPS协议"></a>HTTPS协议</h5><p>以安全为目标的HTTP通道，简单讲是HTTP的安全版。即HTTP下加入SSL层，HTTPS的安全基础是SSL，因此加密的详细内容就需要SSL。用于安全的HTTP数据传输。</p>
+<h5 id="SSL协议"><a href="#SSL协议" class="headerlink" title="SSL协议"></a>SSL协议</h5><p>SSL协议能够对信用卡和个人信息提供较安全的保护。SSL是对计算机之间整个会话进行加密的协议。在SSL中，采用了公开密钥和私有密钥两种加密方法。</p>
+<h5 id="FTP协议"><a href="#FTP协议" class="headerlink" title="FTP协议"></a>FTP协议</h5><p>FTP（File Transfer Protocol，文件传输协议） 是 TCP/IP 协议组中的协议之一。FTP协议包括两个组成部分，其一为FTP服务器，其二为FTP客户端。其中FTP服务器用来存储文件，用户可以使用FTP客户端通过FTP协议访问位于FTP服务器上的资源。在开发网站的时候，通常利用FTP协议把网页或程序传到Web服务器上。此外，由于FTP传输效率非常高，在网络上传输大的文件时，一般也采用该协议。</p>
+<p><img src="Internet-foundation/internet.png" alt></p>
+<h3 id="网络请求"><a href="#网络请求" class="headerlink" title="网络请求"></a>网络请求</h3><p>发送数据包，需要知道两个地址</p>
+<ul>
+<li>目的计算机的mac地址</li>
+<li>目的计算机的IP地址</li>
+</ul>
+<p>如果目的计算机的地址不在子网络中</p>
+<table>
+<thead>
+<tr>
+<th>场景</th>
+<th>数据包地址</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>非同一个子网络</td>
+<td>网关的MAC地址，对方的IP地址</td>
+</tr>
+<tr>
+<td>同一个子网络</td>
+<td>对方的MAC地址，对方的IP地址</td>
+</tr>
+</tbody>
+</table>
+<h4 id="静态IP地址设置"><a href="#静态IP地址设置" class="headerlink" title="静态IP地址设置"></a>静态IP地址设置</h4><p><img src="Internet-foundation/xieyi.png" alt></p>
+<p>需要4个网络参数</p>
+<ul>
+<li>本机的IP地址   192.168.1.100</li>
+</ul>
+<ul>
+<li>子网掩码          255.255.255.0</li>
+<li>网关的IP地址   192.168.1.1</li>
+<li>DNS的IP地址   8.8.8.8</li>
+</ul>
+<h4 id="动态IP地址设置"><a href="#动态IP地址设置" class="headerlink" title="动态IP地址设置"></a>动态IP地址设置</h4><p>新的计算机加入网络，必须向”DHCP服务器”发送一个”DHCP请求”数据包，申请IP地址和相关的网络参数。</p>
+<h5 id="DHCP协议"><a href="#DHCP协议" class="headerlink" title="DHCP协议"></a>DHCP协议</h5><p>每一个子网络中，有一台计算机负责管理本网络的所有IP地址，它叫做”DHCP服务器”</p>
+<h4 id="访问网页"><a href="#访问网页" class="headerlink" title="访问网页"></a>访问网页</h4><p>1、配置好4个网络参数</p>
+<p>2、在浏览器里输入网址：<a href="http://www.baidu.com" target="_blank" rel="noopener">www.baidu.com</a></p>
+<p>3、访问DNS服务器，将这个网址转换成IP地址128.39.120.45</p>
+<p>4、用子网掩码判断128.39.120.45这个地址是不是和自己在同一个子网络</p>
+<p>5、因为不是在同一个子网络中，数据包发到网关，网关再转发</p>
+<p>6、目的主机接受数据包</p>
+<p>7、服务器和浏览器三次握手</p>
+<p>8、数据包确认</p>
+<p>9、返回数据包给浏览器</p>
+<h5 id="CDN"><a href="#CDN" class="headerlink" title="CDN"></a>CDN</h5><blockquote>
+<p>CDN缓存，也叫网关缓存、反向代理缓存。浏览器先向CDN网关发起WEB请求，网关服务器后面对应着一台或多台负载均衡源服务器，会根据它们的负载请求，动态地请求转发到合适的源服务器上。</p>
+</blockquote>
+<p>启用CDN缓存后浏览器访问的全过程：</p>
+<p>1.用户输入URL，浏览器将解析过后的域名发给DNS服务器</p>
+<p>2.CDN返回该域名对应的CNAME，此时浏览器需要再次对获得的CNAME进行解析，才能得到CDN缓存服务器的IP地址。在此过程中全局负载均衡DNS解析服务器会将用户的访问请求定位到离用户最近、负载最轻的CDN缓存服务器上。这种技术也被称为“DNS重定向”，DNS服务器不是为每个请求返回相同的IP地址，比如在悉尼的一个客户请求解析<a href="http://www.cdn.com，DNS服务器根据地理位置，计算出距离这个用户最近的CDN服务器，于是返回一个悉尼CDN节点的IP地址。这种方法也不一定是最优的，因为地理位置上最近的两个点，延迟可能反而很高。还有一种方法是通过估计节点间的样本延迟，具体原理我也不了解。" target="_blank" rel="noopener">www.cdn.com，DNS服务器根据地理位置，计算出距离这个用户最近的CDN服务器，于是返回一个悉尼CDN节点的IP地址。这种方法也不一定是最优的，因为地理位置上最近的两个点，延迟可能反而很高。还有一种方法是通过估计节点间的样本延迟，具体原理我也不了解。</a></p>
+<p>3.再次解析后，浏览器得到CDN缓存服务器的实际IP地址，向缓存服务器发起请求。</p>
+<p>4.缓存服务器根据浏览器提供的域名，通过内部DNS解析得到此域名源服务器的真实IP地址，再由缓存服务器向该服务器发起访问请求。</p>
+<p>5.缓存服务器拿到数据后，一方面将数据发回浏览器，另一方面进行本地保存，以备后用。之后再次访问，数据将从CDN缓存服务器中被返回。CDN不会永久保存数据，可以设置CDN的刷新频率，来达到数据的更新。</p>
+<p>6.浏览器得到由缓存服务器发回的数据，并将其显示出来。至此，完成整个域名访问的过程。</p>
+<p>速学路径</p>
+<p><a href="https://segmentfault.com/a/1190000000538796" target="_blank" rel="noopener">https://segmentfault.com/a/1190000000538796</a></p>
+<h5 id="域名"><a href="#域名" class="headerlink" title="域名"></a>域名</h5><p>域名是为了方便人而将域名（句点分割的字符串）映射到IP上。实际上机器之间用的是IP地址。</p>
+<p>目的就是比IP地址好记</p>
+<h5 id="DNS"><a href="#DNS" class="headerlink" title="DNS"></a>DNS</h5><p>是一台装有很多域名和IP地址对应的服务器</p>
+<h4 id="网络架设"><a href="#网络架设" class="headerlink" title="网络架设"></a>网络架设</h4><h5 id="ISP"><a href="#ISP" class="headerlink" title="ISP"></a>ISP</h5><p>ISP（Internet Service Provider）即因特网服务提供商，能提供拨号上网服务、网上浏览、下载文件、收发电子邮件等服务，是网络最终用户进入Internet的入口和桥梁。它包括Internet接入服务和Internet内容提供服务。这里主要是Internet接入服务，即通过电话线把你的计算机或其他终端设备连入Internet。</p>
+<p>中国三大基础运营商：中国电信，中国移动，中国联通。</p>
+<h5 id="PPP协议"><a href="#PPP协议" class="headerlink" title="PPP协议"></a>PPP协议</h5><p>PPP（Point-to-Point Protocol点到点协议）是为在同等单元之间传输数据包这样的简单链路设计的链路层协议。</p>
+<p>PPP是目前使用最广泛的数据链路层协议，不管是低速的拨号猫连接还是高速的光纤链路，都适用PPP协议。因特网用户通常都要连接到某个ISP 才能接入到因特网。 PPP协议就是用户计算机和ISP进行通信时所使用的数据链路层协议。 ISP使用PPP协议为计算机分配一些网络参数（如IP地址、域名等）。</p>
+<h5 id="PPPoE协议"><a href="#PPPoE协议" class="headerlink" title="PPPoE协议"></a>PPPoE协议</h5><p>PPPoE（PPP over Ethernet）是在以太网上建立PPP连接，由于以太网技术十分成熟且使用广泛，而PPP协议在传统的拨号上网应用中显示出良好的可扩展性和优质的管理控制机制，二者结合而成的PPPoE协议得到了宽带接入运营商的认可并广为采用。它可以使以太网的主机通过一个简单的桥接设备连到一个远端的接入集中器上。通过pppoe协议，远端接入设备能够实现对每个接入用户的控制和计费。</p>
+<h5 id="猫"><a href="#猫" class="headerlink" title="猫"></a>猫</h5><p>猫是Moden，宽带上网调制解调器</p>
+<p>光纤或者是电话线经过猫，然后可以拉出来一根网线，再和电脑连接，电脑通过拨号的方式上网</p>
+<p>有些小区或者一些地区已经省去了用猫这个步骤了，直接给你一根网线，插进电脑直接能拨号</p>
+<h5 id="路由器"><a href="#路由器" class="headerlink" title="路由器"></a>路由器</h5><p>路由器相当于一台低配的计算机，一般路由器有两个部分组成，WAN和LAN，WAN是用来拨号的，是让路由自身能上网的一个部分，LAN是用来局域网内交换数据的，跟交换机的作用一样，我们的电脑插在LAN口才能上网</p>
+<p>路由器验证宽带连接以后，连接的电脑不再需要验证</p>
+<p>路由内置DHCP服务器，可以为使用路由的电脑自动分配IP，所以他们直接插上就能上网</p>
+<h5 id="交换机"><a href="#交换机" class="headerlink" title="交换机"></a>交换机</h5><p>交换机简单的说，就是不能拨号的路由器，但是它不是一个计算机，它只有LAN，没有WAN，把网线插进交换机的任意接口，把电脑插进交换机的任意接口，把电脑2插进交换机的任意接口，这样两台电脑都需要拨号才能上网（就是宽带连接，交换机跟没使用路由器的拨号方法是一样的），以此看来交换机是用来数据交换的。</p>
+<h5 id="路由器和交换机的区别"><a href="#路由器和交换机的区别" class="headerlink" title="路由器和交换机的区别"></a>路由器和交换机的区别</h5><ul>
+<li>交换机是一根网线上网，但是大家上网是分别拨号，各自使用自己的宽带，大家上网没有影响。而路由器比交换机多了一个虚拟拨号功能，通过同一台路由器上网的电脑是共用一个宽带账号，大家上网要相互影响。</li>
+<li>交换机工作在数据链路层，交换机根据MAC地址寻址。路由器工作在网络层，根据IP地址寻址，路由器可以处理TCP/IP协议，而交换机不可以。</li>
+<li>交换机可以使连接它的多台电脑组成局域网，如果还有代理服务器的话还可以实现同时上网功能而且局域网所有电脑是共享它的带宽速率的，但是交换机没有路由器的自动识别数据包发送和到达地址的功能。路由器可以自动识别数据包发送和到达的地址，路由器相当于马路上的警察，负责交通疏导和指路的。</li>
+</ul>
+<h5 id="路由器和交换器的作用举例（涉及网络模型）"><a href="#路由器和交换器的作用举例（涉及网络模型）" class="headerlink" title="路由器和交换器的作用举例（涉及网络模型）"></a>路由器和交换器的作用举例（涉及网络模型）</h5><p>应用层就是最后使用者(写信和收信的人),中间的任何网络设备就是一个一个邮局。应用层写了好了信，就用一个信封装好，填好收信人，交给下一层协议，下一层协议既不关心信里有什么内容，也不关心收信人在哪里，它只要再按自己约定的职责，再封一层信封，交给自己的下一层就行了。就像公司老总，他只管写好信，封个信封，写上：发给XX公司王总。交给秘书，秘书交给行政，行政交给收发室……老总不用关心这封信是从哪个邮局走，走哪条路。最后，数据交到物理层。物理层只管往外发广播，就是把信复制N封，发到自己可达的任何下一个邮局就行，到了这一步，就算是离开了你的电脑了。 </p>
+<p>首先到交换机，交换机会打开第一层和第二层的信封。如果发现这封信只是寄给公司内部人员的，那就不用交到邮局(路由器)去，直接转发给收信的部门。如果信是发到外面的，就重新写上两层信封，转交给路由器。路由器一般会拆、装三层信封，它会根据第三层信封上的目标地址，来选择对方邮局(路由功能),例如，寄到北京的信，就不会从A邮局(路由器/网段)走，寄往上海的信，就不会从B邮局走……等等。最后一个又一个邮局(路由器)接力,每个邮局都拆开三层信封，再封上三层信封，送往下一个应到的邮局。 </p>
+<p>最后，到达目标收件人公司，由收发室(物理层)，行政部(数据链路层)，秘书科(IP层)，根据信封上写的房间号(TCP/UDP端口号)，决定送给张总(应用A)，或者王总(应用B)，收信人收到信，打开最后一层信封，开始阅读信件，或者按照信件上的内容开始做事。这就是应用层的工作了。</p>
+<h5 id="WAN口"><a href="#WAN口" class="headerlink" title="WAN口"></a>WAN口</h5><p>WAN，全称Wide Area Network，中文名叫做广域网。</p>
+<p>WAN是一种跨越大的、地域性的计算机网络的集合。通常跨越省、市，甚至一个国家。广域网包括大大小小不同的子网，子网可以是局域网，也可以是小型的广域网。</p>
+<h5 id="LAN口"><a href="#LAN口" class="headerlink" title="LAN口"></a>LAN口</h5><p>LAN，全称Local Area Network，中文名叫做<strong>局域网</strong>。</p>
+<p>顾名思义，LAN是指在某一区域内由多台计算机互联成的计算机组。一般是方圆几千米以内。局域网可以实现文件管理、应用软件共享、打印机共享、工作组内的日程安排、电子邮件和传真通信服务等功能。局域网是封闭型的，可以由办公室内的两台计算机组成，也可以由一个公司内的上千台计算机组成。</p>
+<p>具体到路由器，我们一般组网，都是组建的LAN网络，用户在局域网里通信、传输文件。其获取到的是内部IP，LAN 内部是交换机。我们可以不连接 WAN 口，把路由器当做普通交换机来使用</p>
+<h5 id="WLAN"><a href="#WLAN" class="headerlink" title="WLAN"></a>WLAN</h5><p>WLAN是无线局域网 (Wireless Local Area Network)的简称。它是以射频无线微波通信技术构建的局域网，不用缆线即能提供传统有线局域网的所有功能，是高速有线接入的补充，属于小范围、短距离无线接入。</p>
+<h5 id="WiFi"><a href="#WiFi" class="headerlink" title="WiFi"></a>WiFi</h5><p>WiFi是无线保真(wireless fidelity)的缩写，是能将电脑、手机等以无线方式互联的技术。</p>
+<p>而WLAN是指无线局域网，其覆盖范围能达到5公里。WiFi是WLAN的一个子集，WiFi是短距离无线通信技术，而WLAN可以构建强大的电信级互联网络，布置多个AP(热点)，比如校园无线局域网。</p>
+<p>从包含关系上来说，WiFi是WLAN的一个标准，WiFi包含于 WLAN中，属于采用WLAN协议中的一项新技术。WiFi的覆盖范围则可达300英尺左右（约合90米），WLAN最大（加天线）可以到5KM。</p>
+<h5 id="GWF"><a href="#GWF" class="headerlink" title="GWF"></a>GWF</h5><p>GreatFireWall(防火长城),也称中国防火墙或中国国家防火墙</p>
+<p>手段</p>
+<ul>
+<li>它通过使用错误的DNS解析地址来使你的浏览器得到错误的IP地址——DNS污染</li>
+<li>它在会在你访问外网（国外的网）的时候，拦截一些特定网址的请求——IP封锁</li>
+</ul>
+<h5 id="HOSTS"><a href="#HOSTS" class="headerlink" title="HOSTS"></a>HOSTS</h5><p>Hosts 文件本来是用来提高解析效率。在进行 DNS 请求以前，系统会先检查自己的 Hosts 文件中是否有这个地址映射关系，如果有则调用这个 IP 地址映射，如果没有再向已知的 DNS 服务器提出域名解析。也就是说 Hosts 的请求级别比 DNS 高。当你的 Hosts 文件里面有对应的 IP 时，它就会直接访问那个 IP，而不用通过 DNS。<br>所以，当我们直接将 Google、Twitter、Facebook 之类的 IP 放入 Hosts 文件后，就可以跳过 DNS 的解析这一步，直接就行 IP 访问，不受 GFW 的 DNS 污染干扰了</p>
+<h5 id="VPN"><a href="#VPN" class="headerlink" title="VPN"></a>VPN</h5><p>VPN的作用是在公用网络上建立专用网络。</p>
+<p>比如你是一名公安民警，你出差在外住酒店，需要到公安内部网络查询某些资料。但是酒店的网络是公有网络，数据传输途中要经过酒店的路由，ISP的路由。中途任何有技术的人都可以看到你跟内部网络之间的明文通信。这时候需要在你和公安内部网络建立一条加密的专用信道。发送数据的时候加密，接收数据的时候解密，加解密的方式事先设定好。这样第三方看到加密过后的数据也无法理解其中的含义。</p>
+<p>如果你明文请求Google主机，GFW会直接重置连接。但是你在国外有个VPN代理服务器，代理服务器帮你请求Google；再把Google的响应用加密的方式转发给你。因为你跟VPN代理之间是加密传输，GFW不知道你访问的是Google，它不可能把所有发到国外的请求都重置掉，所以成功突破封锁。</p>
+<p>用VPN代理后，你的IP地址就变成了VPN服务器的地址，所有的网络操作都是服务器帮你做的</p>
+<h4 id="浏览器知识"><a href="#浏览器知识" class="headerlink" title="浏览器知识"></a>浏览器知识</h4><h5 id="URL"><a href="#URL" class="headerlink" title="URL"></a>URL</h5><p>URL全称是资源描述符，一个URL地址，它用于描述一个网络上的资源</p>
+<h5 id="HTTP请求报文"><a href="#HTTP请求报文" class="headerlink" title="HTTP请求报文"></a>HTTP请求报文</h5><p><img src="Internet-foundation/http2.png" alt></p>
+<h5 id="HTTP请求头"><a href="#HTTP请求头" class="headerlink" title="HTTP请求头"></a>HTTP请求头</h5><p><img src="Internet-foundation/request.jpeg" alt></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>GET /user/2 HTTP/1.1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Host</td>
+<td><a href="http://www.maijinta.cn" target="_blank" rel="noopener">www.maijinta.cn</a></td>
+</tr>
+<tr>
+<td>Cache-Control</td>
+<td>max-age=0</td>
+</tr>
+<tr>
+<td>Upgrade-Insecure-Requests</td>
+<td>1</td>
+</tr>
+<tr>
+<td>User-Agent</td>
+<td>Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.98 Safari/537.36</td>
+</tr>
+<tr>
+<td>Accept</td>
+<td>text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,<em>/</em>;q=0.8</td>
+</tr>
+<tr>
+<td>Accept-Encoding</td>
+<td>gzip, deflate, sdch</td>
+</tr>
+<tr>
+<td>Accept-Language</td>
+<td>zh-CN,zh;q=0.8</td>
+</tr>
+<tr>
+<td>Cookie</td>
+<td>JSESSIONID=C189DB3E2F2239EFDA2120A702B6DF34</td>
+</tr>
+</tbody>
+</table>
+<p>accept:浏览器通过这个头告诉服务器，它所支持的数据类型<br>Accept-Charset: 浏览器通过这个头告诉服务器，它支持哪种字符集<br>Accept-Encoding：浏览器通过这个头告诉服务器，支持的压缩格式<br>Accept-Language：浏览器通过这个头告诉服务器，它的语言环境<br>Host：浏览器通过这个头告诉服务器，想访问哪台主机<br>If-Modified-Since: 浏览器通过这个头告诉服务器，缓存数据的时间<br>Referer：浏览器通过这个头告诉服务器，客户机是哪个页面来的  防盗链<br>Connection：浏览器通过这个头告诉服务器，请求完后是断开链接还是何持链接</p>
+<h5 id="WEB缓存机制"><a href="#WEB缓存机制" class="headerlink" title="WEB缓存机制"></a>WEB缓存机制</h5><p>Cache策略</p>
+<p><img src="Internet-foundation/cache.png" alt></p>
+<p>浏览器缓存</p>
+<p>浏览器会把缓存的文件保存在一个叫User Data的文件夹下，下次页面加载同样资源时，可以直接从本地读取，不必通过HTTP从服务器端再次下载资源，大大加快了页面的响应速度</p>
+<p>本地缓存阶段</p>
+<p>HTPP1.0 使用Expires来设置有效期，有效期未到，则使用浏览器缓存，到了再请求服务器</p>
+<p>HTPP1.1 使用Cache-Control的<code>max-age</code>来设置最大缓存时间，<code>max-age</code>就会覆盖Expires</p>
+<p>协商缓存阶段</p>
+<p>HTPP1.0 使用Last-Modified与If-Modified-Since，服务器返回的是Last-Modified，浏览器第二次会发If-Modified-Since</p>
+<p>HTTP1.1 使用ETag与If-None-Match，服务器返回的是ETag，浏览器第二次会发If-None-Match，当ETag和Last-modified同时存在时，Last-modified会被忽略</p>
+<p><img src="Internet-foundation/cacheHead.png" alt></p>
+<p>当一个用户发起一个静态资源请求的时候，浏览器会通过以下几步来获取资源：</p>
+<ul>
+<li>本地缓存阶段：先在本地查找该资源，如果有发现该资源，而且该资源还没有过期，就使用这一个资源，完全不会发送http请求到服务器；</li>
+<li>协商缓存阶段：如果在本地缓存找到对应的资源，但是不知道该资源是否过期或者已经过期，则发一个http请求到服务器,然后服务器判断这个请求，如果请求的资源在服务器上没有改动过，则返回304，让浏览器使用本地找到的那个资源；</li>
+<li>缓存失败阶段：当服务器发现请求的资源已经修改过，或者这是一个新的请求(在本来没有找到资源)，服务器则返回该资源的数据，并且返回200， 当然这个是指找到资源的情况下，如果服务器上没有这个资源，则返回404。</li>
+</ul>
+<p><img src="Internet-foundation/cacheFlow.png" alt></p>
+<p>刷新失效</p>
+<p><img src="Internet-foundation/flashCache.png" alt></p>
+<h5 id="Web缓存的作用"><a href="#Web缓存的作用" class="headerlink" title="Web缓存的作用"></a>Web缓存的作用</h5><ul>
+<li>减少网络带宽消耗</li>
+<li>降低服务器压力</li>
+<li>减少网络延迟，加快页面打开速度</li>
+</ul>
+<p>WEB缓存速学</p>
+<p><a href="http://imweb.io/topic/55c6f9bac222e3af6ce235b9" target="_blank" rel="noopener">缓存策略</a></p>
+<p><a href="http://www.jianshu.com/p/7a24e0920255" target="_blank" rel="noopener">浏览器缓存</a></p>
+<p><a href="http://www.jianshu.com/p/985b35774295" target="_blank" rel="noopener">浏览器缓存知识小结及应用</a></p>
+<p><a href="https://mp.weixin.qq.com/s/F5gvzdi6MTwCFXV9LKs9NQ" target="_blank" rel="noopener">浏览器缓存机制浅析</a></p>
+<p><a href="http://imweb.io/topic/5795dcb6fb312541492eda8c" target="_blank" rel="noopener">HTTP缓存控制小结</a></p>
+<h5 id="怎么判断是否存在网络延迟"><a href="#怎么判断是否存在网络延迟" class="headerlink" title="怎么判断是否存在网络延迟"></a>怎么判断是否存在网络延迟</h5><ul>
+<li>chrome调试工具</li>
+<li>ping命令</li>
+<li>抓包</li>
+</ul>
+<h5 id="HTTP响应头"><a href="#HTTP响应头" class="headerlink" title="HTTP响应头"></a>HTTP响应头</h5><p><img src="Internet-foundation/response.png" alt></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>HTTP/1.1 200 OK</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Date</td>
+<td>Sat, 02 Jan 2016 13:20:55 GMT</td>
+</tr>
+<tr>
+<td>Server</td>
+<td>Apache/2.4.6 (CentOS) PHP/5.6.14</td>
+</tr>
+<tr>
+<td>Content-Length</td>
+<td>78</td>
+</tr>
+<tr>
+<td>Keep-Alive</td>
+<td>timeout=5, max=100</td>
+</tr>
+<tr>
+<td>Connection</td>
+<td>Keep-Alive</td>
+</tr>
+<tr>
+<td>Content-Type</td>
+<td>application/json; charset=utf-8</td>
+</tr>
+</tbody>
+</table>
+<p>Location: 服务器通过这个头，来告诉浏览器跳到哪里Server：服务器通过这个头，告诉浏览器服务器的型号<br>Content-Encoding：服务器通过这个头，告诉浏览器，数据的压缩格式<br>Content-Length: 服务器通过这个头，告诉浏览器回送数据的长度<br>Content-Language: 服务器通过这个头，告诉浏览器语言环境<br>Content-Type：服务器通过这个头，告诉浏览器回送数据的类型<br>Refresh：服务器通过这个头，告诉浏览器定时刷新<br>Content-Disposition: 服务器通过这个头，告诉浏览器以下载方式打数据<br>Transfer-Encoding：服务器通过这个头，告诉浏览器数据是以分块方式回送的控制浏览器不要缓存</p>
+<h5 id="HTTP8种请求"><a href="#HTTP8种请求" class="headerlink" title="HTTP8种请求"></a>HTTP8种请求</h5><p>HTTP/1.1协议中共定义了八种方法或者叫“动作”get，post，put， options，head，delete，trace，connect，来表明对Request-URI指定的资源的不同操作方式，具体介绍如下：</p>
+<ul>
+<li><code>OPTIONS</code>：返回服务器针对特定资源所支持的HTTP请求方法。也可以利用向Web服务器发送’*’的请求来测试服务器的功能性。</li>
+<li><code>HEAD</code>：向服务器索要与GET请求相一致的响应，只不过响应体将不会被返回。这一方法可以在不必传输整个响应内容的情况下，就可以获取包含在响应消息头中的元信息。</li>
+<li><code>GET</code>：向特定的资源发出请求。</li>
+<li><code>POST</code>：向指定资源提交数据进行处理请求（例如提交表单或者上传文件）。数据被包含在请求体中。POST请求可能会导致新的资源的创建和/或已有资源的修改。</li>
+<li><code>PUT</code>：用于向服务器发送请求，如果URI不存在，则要求服务器根据请求创建资源，如果存在，服务器就接受请求内容，并修改URI的原始版本</li>
+<li><code>DELETE</code>：请求服务器删除Request-URI所标识的资源。</li>
+<li><code>TRACE</code>：回显服务器收到的请求，主要用于测试或诊断。</li>
+<li><code>CONNECT</code>：HTTP/1.1协议中预留给能够将连接改为管道方式的代理服务器。</li>
+</ul>
+<p>上述方法中最基本的方法有4种，分别是GET，POST，PUT，DELETE。</p>
+<h5 id="HTTP-1-1之后增加的方法PATCH"><a href="#HTTP-1-1之后增加的方法PATCH" class="headerlink" title="HTTP/1.1之后增加的方法PATCH"></a>HTTP/1.1之后增加的方法PATCH</h5><p><code>PATCH</code>方法出现的较晚，<code>PATCH</code>请求与<code>PUT</code>请求类似，同样用于资源的更新。二者有以下两点不同：</p>
+<ul>
+<li>但<code>PATCH</code>一般用于资源的部分更新，而<code>PUT</code>一般用于资源的整体更新。</li>
+<li>当资源不存在时，<code>PATCH</code>会创建一个新的资源，而<code>PUT</code>只会对已在资源进行更新。</li>
+</ul>
+<h5 id="get，put，post，delete详解"><a href="#get，put，post，delete详解" class="headerlink" title="get，put，post，delete详解"></a>get，put，post，delete详解</h5><ul>
+<li><code>get</code>请求会向数据库发索取数据的请求，从而来获取信息，该请求就像数据库的<code>select</code>操作一样，只是用来查询一下数据，不会修改、增加数据，不会影响资源的内容，即该请求不会产生副作用。无论进行多少次操作，结果都是一样的。</li>
+<li><code>put</code> 是向服务器端发送数据的，从而改变信息，该请求就像数据库的update操作一样，用来修改数据的内容，但是不会增加数据的种类等，也就是说无论进行多少次PUT操作，其结果并没有不同。</li>
+<li><code>post</code>同PUT请求类似，都是向服务器端发送数据的，但是该请求会改变数据的种类等资源，就像数据库的insert操作一样，会创建新的内容。几乎目前所有的提交操作都是用POST请求的。</li>
+<li><code>delete</code>就是用来删除某一个资源的，该请求就像数据库的delete操作。</li>
+</ul>
+<h5 id="状态码"><a href="#状态码" class="headerlink" title="状态码"></a>状态码</h5><p>服务器向用户返回的状态码和提示信息</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>类别</th>
+<th>原因短语</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1XX</td>
+<td>Informational (信息性状态码)</td>
+<td>接收的请求正在处理</td>
+</tr>
+<tr>
+<td>2XX</td>
+<td>Success (成功状态码)</td>
+<td>请求正常处理完毕</td>
+</tr>
+<tr>
+<td>3XX</td>
+<td>Redirection (重定向状态码)</td>
+<td>需要进行附加操作以完成请求</td>
+</tr>
+<tr>
+<td>4XX</td>
+<td>Client Error (客户端错误状态码)</td>
+<td>服务器无法处理请求</td>
+</tr>
+<tr>
+<td>5XX</td>
+<td>Server Error (服务器错误状态码)</td>
+<td>服务器处理请求出错</td>
+</tr>
+</tbody>
+</table>
+<p>常用状态码</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"> 200 OK</span><br><span class="line"><span class="meta">#</span><span class="bash">表示从客户端发来的请求在服务器被正常处理了</span></span><br><span class="line"> 301 永久移动 请求的网页已永久移动到新位置。 服务器返回此响应时，会自动将请求者转到新位置</span><br><span class="line"> 302 临时移动 服务器目前从不同位置的网页响应请求，但请求者应继续使用原有位置来进行以后的请求</span><br><span class="line"> 304 资源未修改</span><br><span class="line"> 307 重定向 GET</span><br><span class="line"><span class="meta">#</span><span class="bash">自从上次请求后，请求的网页未修改过。 服务器返回此响应时，不会返回网页内容。</span></span><br><span class="line"> 400 Bad Request</span><br><span class="line"><span class="meta">#</span><span class="bash">该状态码表示请求报文中存在的语法错误。当错误发生时，需修改请求的内容后再次发送请求，浏览器会像200 OK一样对待该状态码。</span></span><br><span class="line"> 401 未授权</span><br><span class="line"> 403 Forbidden</span><br><span class="line"><span class="meta">#</span><span class="bash">该状态码表明对请求资源的访问被服务器拒绝了。</span></span><br><span class="line"> 404 Not Found</span><br><span class="line"><span class="meta">#</span><span class="bash">该状态码表明服务器上无法找到请求的资源。除此之外，也可以在服务器端拒绝请求且不想说明理由时使用。</span></span><br><span class="line"> 500 Internal Server Error</span><br><span class="line"><span class="meta">#</span><span class="bash">该状态码表明服务器端在执行请求时发生了错误。也有可能是Web应用存在的bug或某些临时故障。</span></span><br></pre></td></tr></table></figure>
+<h5 id="SESSION"><a href="#SESSION" class="headerlink" title="SESSION"></a>SESSION</h5><p>浏览器访问服务器，服务器就会在内存中生成一个session，用于记录该浏览器和服务器的会话信息。然后服务器在返回数据包的时候，会把这个session的id返回给客户端。客户端把这个sessionID放在本地的cookie当中，以后的请求会带上sessionID，这样服务器就认识你这个客户端了。</p>
+<h5 id="COOKIE"><a href="#COOKIE" class="headerlink" title="COOKIE"></a>COOKIE</h5><p>cookie是服务器放在客户端的一些信息</p>
+<p>Cookies最典型的应用是判定注册用户是否已经登录网站，用户可能会得到提示，是否在下一次进入此网站时保留用户信息以便简化登录手续，这些都是Cookies的功用。另一个重要应用场合是“购物车”之类处理。用户可能会在一段时间内在同一家网站的不同页面中选择不同的商品，这些信息都会写入Cookies，以便在最后付款时提取信息。</p>
+<h4 id="常见的WEB攻击"><a href="#常见的WEB攻击" class="headerlink" title="常见的WEB攻击"></a>常见的WEB攻击</h4><h5 id="CSRF"><a href="#CSRF" class="headerlink" title="CSRF"></a>CSRF</h5><blockquote>
+<p>Cross-Site Request Forgery - 跨站请求伪造</p>
+</blockquote>
+<p>攻击方式</p>
+<ol>
+<li>用户C打开浏览器，访问受信任网站A，输入用户名和密码请求登录网站A；</li>
+<li>在用户信息通过验证后，网站A产生Cookie信息并返回给浏览器，此时用户登录网站A成功，可以正常发送请求到网站A；</li>
+<li>用户未退出网站A之前，在同一浏览器中，打开一个TAB页访问网站B；</li>
+<li>网站B接收到用户请求后，返回一些攻击性代码，并发出一个请求要求访问第三方站点A；</li>
+<li>浏览器在接收到这些攻击性代码后，根据网站B的请求，在用户不知情的情况下携带Cookie信息，向网站A发出请求。网站A并不知道该请求其实是由B发起的，所以会根据用户C的Cookie信息以C的权限处理该请求，导致来自网站B的恶意代码被执行。</li>
+</ol>
+<p>CSRF攻击分类</p>
+<p>CSRF漏洞一般分为站外和站内两种类型。</p>
+<p>CSRF站外类型的漏洞本质上就是传统意义上的外部提交数据问题。通常程序员会考虑给一些留言或者评论的表单加上水印以防止SPAM问题（这里，SPAM可以简单的理解为垃圾留言、垃圾评论，或者是带有站外链接的恶意回复），但是有时为了提高用户的体验性，可能没有对一些操作做任何限制，所以攻击者可以事先预测并设置请求的参数，在站外的Web页面里编写脚本伪造文件请求，或者和自动提交的表单一起使用来实现GET、POST请求，当用户在会话状态下点击链接访问站外Web页面，客户端就被强迫发起请求。</p>
+<p>CSRF站内类型的漏洞在一定程度上是由于程序员滥用REQUEST类变量造成的。在一些敏感的操作中（如修改密码、添加用户等），本来要求用户从表单提交发起POST请求传递参数给程序，但是由于使用了REQUEST类变量造成的。在一些敏感的操作中（如修改密码、添加用户等），本来要求用户从表单提交发起POST请求传递参数给程序，但是由于使用了_REQUEST等变量，程序除支持接收POST请求传递的参数外也支持接收GET请求传递的参数，这样就会为攻击者使用CSRF攻击创造条件。一般攻击者只要把预测的请求参数放在站内一个贴子或者留言的图片链接里，受害者浏览了这样的页面就会被强迫发起这些请求。</p>
+<p><img src="Internet-foundation/csrf.jpg" alt></p>
+<h5 id="CSRF漏洞防御"><a href="#CSRF漏洞防御" class="headerlink" title="CSRF漏洞防御"></a>CSRF漏洞防御</h5><ol>
+<li>验证HTTP Referer字段，查看HTTP请求来源</li>
+<li>在请求中添加token并验证</li>
+<li>禁用CORS，可以防止其他网页里的恶意链接</li>
+</ol>
+<h5 id="CORS"><a href="#CORS" class="headerlink" title="CORS"></a>CORS</h5><blockquote>
+<p>Cross Origin Resourse-Sharing - 跨站资源共享</p>
+</blockquote>
+<p>它允许浏览器向跨站服务器发送XHR请求。CORS的出现，使得网站开发者可对受信任的站点（域名）绕过浏览器同源策略的限制，提供了极大的灵活性。</p>
+<p>XHR</p>
+<p>XMLHttpRequest对象可以在不向服务器提交整个页面的情况下，实现局部更新网页。当页面全部加载完毕后，客户端通过该对象向服务器请求数据，服务器端接受数据并处理后，向客户端反馈数据。 XMLHttpRequest 对象提供了对 HTTP 协议的完全的访问，包括做出 POST 和 HEAD 请求以及普通的 GET 请求的能力。XMLHttpRequest 可以同步或异步返回 Web 服务器的响应，并且能以文本或者一个 DOM 文档形式返回内容。尽管名为 XMLHttpRequest，它并不限于和 XML 文档一起使用：它可以接收任何形式的文本文档。</p>
+<h5 id="XSS"><a href="#XSS" class="headerlink" title="XSS"></a>XSS</h5><p>XSS是跨站脚本攻击的缩写，是一种网站应用程序的安全漏洞攻击，是代码注入的一种。 通常是通过利用网页开发时留下的漏洞，通过巧妙的方法注入恶意指令代码到网页，使用户加载并执行攻击者恶意制造的网页程序。</p>
+<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ul>
+<li><a href="http://jingyan.baidu.com/article/3c343ff7e862850d3679637b.html" target="_blank" rel="noopener">LAN、WAN、WLAN的区别</a></li>
+<li><a href="http://www.jianshu.com/p/674fb7ec1e2c" target="_blank" rel="noopener">计算机网络基础知识大总汇</a></li>
+<li><a href="http://www.45it.com/www/201308/35524.htm" target="_blank" rel="noopener">路由器、交换机、猫的作用与区别</a></li>
+<li><a href="http://www.cnblogs.com/Lynn-Zhang/articles/5754336.html" target="_blank" rel="noopener">交换机和路由器的区别</a></li>
+<li><a href="https://zh.wikipedia.org/wiki/TCP/IP%E5%8D%8F%E8%AE%AE%E6%97%8F#TCP.2FIP.E5.8D.94.E8.AD.B0.E6.A3.A7.E7.B5.84.E6.88.90" target="_blank" rel="noopener">TCP/IP协议族</a></li>
+<li><a href="http://bbs.51cto.com/thread-68584-1-1.html" target="_blank" rel="noopener">子网掩码与子网划分 </a></li>
+<li><a href="http://www.cnblogs.com/maybe2030/p/4781555.html" target="_blank" rel="noopener">计算机网络基础知识总结</a></li>
+<li><a href="http://www.cnblogs.com/shuijilove/p/5274659.html" target="_blank" rel="noopener">网络请求心路历程</a></li>
+<li><a href="http://www.jianshu.com/p/0320f7e0ad11" target="_blank" rel="noopener">简单 -http详解</a></li>
+<li><a href="http://www.ruanyifeng.com/blog/2016/08/http.html" target="_blank" rel="noopener">HTTP 协议入门</a></li>
+<li><a href="http://www.ruanyifeng.com/blog/2007/10/ascii_unicode_and_utf-8.html" target="_blank" rel="noopener">字符编码笔记</a></li>
+<li><a href="http://www.ruanyifeng.com/blog/2012/05/internet_protocol_suite_part_i.html" target="_blank" rel="noopener">互联网协议入门（一）</a></li>
+<li><a href="http://www.ruanyifeng.com/blog/2012/06/internet_protocol_suite_part_ii.html" target="_blank" rel="noopener">互联网协议入门（二）</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://barry215.github.io/2016/11/08/Internet-foundation/" data-id="cjvktzt78003rrxjddb4asvzg" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/http/">http</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tcp-ip/">tcp/ip</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/11/13/Web-backstage/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Java web 基础
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/10/30/SQL-foundation/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">SQL 基础</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Book/">Book</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Computer/">Computer</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DataBase/">DataBase</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Design-Method/">Design Method</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Http/">Http</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Internet/">Internet</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Maven/">Maven</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mybatis/">Mybatis</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mysql/">Mysql</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Network/">Network</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Nginx/">Nginx</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Other/">Other</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Server/">Server</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/">Spring</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ajax/">ajax</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm/">algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/centos/">centos</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/computer/">computer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/data-structure/">data_structure</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/design-method/">design method</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/https/">https</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/init/">init</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javaweb/">javaweb</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jsp/">jsp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jstl/">jstl</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/maven/">maven</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mybatis/">mybatis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/servlet/">servlet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring/">spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sql/">sql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tcp-ip/">tcp/ip</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tomcat/">tomcat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/ajax/" style="font-size: 10px;">ajax</a> <a href="/tags/algorithm/" style="font-size: 13.33px;">algorithm</a> <a href="/tags/centos/" style="font-size: 10px;">centos</a> <a href="/tags/computer/" style="font-size: 10px;">computer</a> <a href="/tags/data-structure/" style="font-size: 10px;">data_structure</a> <a href="/tags/design-method/" style="font-size: 10px;">design method</a> <a href="/tags/git/" style="font-size: 13.33px;">git</a> <a href="/tags/http/" style="font-size: 16.67px;">http</a> <a href="/tags/https/" style="font-size: 10px;">https</a> <a href="/tags/init/" style="font-size: 10px;">init</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/tags/javaweb/" style="font-size: 10px;">javaweb</a> <a href="/tags/jsp/" style="font-size: 10px;">jsp</a> <a href="/tags/jstl/" style="font-size: 10px;">jstl</a> <a href="/tags/linux/" style="font-size: 16.67px;">linux</a> <a href="/tags/maven/" style="font-size: 10px;">maven</a> <a href="/tags/mybatis/" style="font-size: 10px;">mybatis</a> <a href="/tags/mysql/" style="font-size: 13.33px;">mysql</a> <a href="/tags/nginx/" style="font-size: 13.33px;">nginx</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/servlet/" style="font-size: 10px;">servlet</a> <a href="/tags/spring/" style="font-size: 10px;">spring</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a> <a href="/tags/tcp-ip/" style="font-size: 10px;">tcp/ip</a> <a href="/tags/tomcat/" style="font-size: 13.33px;">tomcat</a> <a href="/tags/web/" style="font-size: 10px;">web</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/02/06/computer-foundation/">计算机组成原理基础知识</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/16/http-socket/">Socket和Websocket的关系</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/16/algorithmList/">算法练习(不断更新中)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/06/git-learn/">Git命令篇</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/04/mysql-review/">MySQL持续更新</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 frank<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

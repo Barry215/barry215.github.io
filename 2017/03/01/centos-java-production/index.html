@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>Centos从头配置javaweb环境 | 麦金</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="记性太差，还是得写个教程来总结一下配置javaweb的教程，这篇教程也是综合了网上的很多教程  环境服务器：阿里云ESC Centos 7.3 本地: Mac OS X 10.10.5 预先准备最近才发现阿里云是不建议升级服务器的内核和操作系统版本，估计腾讯云也是，当初手贱，不管三七二十一，都给升级了，虽然也没有发现什么不对，就一直将就着用了，系统版本也是最新的7.3，本来是7.2的 为了防止在">
+<meta name="keywords" content="java,tomcat,centos">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Centos从头配置javaweb环境">
+<meta property="og:url" content="https://barry215.github.io/2017/03/01/centos-java-production/index.html">
+<meta property="og:site_name" content="麦金">
+<meta property="og:description" content="记性太差，还是得写个教程来总结一下配置javaweb的教程，这篇教程也是综合了网上的很多教程  环境服务器：阿里云ESC Centos 7.3 本地: Mac OS X 10.10.5 预先准备最近才发现阿里云是不建议升级服务器的内核和操作系统版本，估计腾讯云也是，当初手贱，不管三七二十一，都给升级了，虽然也没有发现什么不对，就一直将就着用了，系统版本也是最新的7.3，本来是7.2的 为了防止在">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-03-02T09:21:03.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Centos从头配置javaweb环境">
+<meta name="twitter:description" content="记性太差，还是得写个教程来总结一下配置javaweb的教程，这篇教程也是综合了网上的很多教程  环境服务器：阿里云ESC Centos 7.3 本地: Mac OS X 10.10.5 预先准备最近才发现阿里云是不建议升级服务器的内核和操作系统版本，估计腾讯云也是，当初手贱，不管三七二十一，都给升级了，虽然也没有发现什么不对，就一直将就着用了，系统版本也是最新的7.3，本来是7.2的 为了防止在">
+  
+    <link rel="alternate" href="/atom.xml" title="麦金" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">麦金</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">麦金的博客</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://barry215.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-centos-java-production" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/01/centos-java-production/" class="article-date">
+  <time datetime="2017-03-01T07:47:49.000Z" itemprop="datePublished">2017-03-01</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Linux/">Linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Centos从头配置javaweb环境
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>记性太差，还是得写个教程来总结一下配置javaweb的教程，这篇教程也是综合了网上的很多教程</p>
+</blockquote>
+<h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p>服务器：阿里云ESC Centos 7.3</p>
+<p>本地: Mac OS X 10.10.5</p>
+<h2 id="预先准备"><a href="#预先准备" class="headerlink" title="预先准备"></a>预先准备</h2><p>最近才发现阿里云是不建议升级服务器的内核和操作系统版本，估计腾讯云也是，当初手贱，不管三七二十一，都给升级了，虽然也没有发现什么不对，就一直将就着用了，系统版本也是最新的7.3，本来是7.2的</p>
+<p>为了防止在软件更新时升级了内核及系统版本的情况，按照阿里云给出的<a href="https://help.aliyun.com/knowledge_detail/41199.html" target="_blank" rel="noopener">帮助文档</a>，我们做如下修改</p>
+<p>打开yum.conf文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/yum.conf</span><br></pre></td></tr></table></figure>
+<p>添加代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">exclude=kernel*</span><br><span class="line">exclude=centos-release*</span><br></pre></td></tr></table></figure>
+<p>这样就防止升级了，如果还是不懂可以，参考<a href="https://help.aliyun.com/knowledge_detail/41199.html" target="_blank" rel="noopener">帮助文档</a></p>
+<p>接着我们可以开始升级软件包了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y update</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>-y 参数是在执行过程中，遇到的交互默认选择 yes</p>
+</blockquote>
+<h2 id="安装JDK"><a href="#安装JDK" class="headerlink" title="安装JDK"></a>安装JDK</h2><p>访问Oracle官网下载jdk，因为Oracle搞了cookie验证，所以wget不方便</p>
+<p>下载地址-<a href="http://www.oracle.com/technetwork/cn/java/javase/downloads/jdk8-downloads-2133151-zhs.html" target="_blank" rel="noopener">http://www.oracle.com/technetwork/cn/java/javase/downloads/jdk8-downloads-2133151-zhs.html</a></p>
+<p>安装jdk之前一定要把之前的版本卸载掉</p>
+<p>查看之前已经安装的jdk rpm</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -qa | grep jdk</span><br></pre></td></tr></table></figure>
+<p>查到包名之后，我们就可以卸载了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -e 包名</span><br></pre></td></tr></table></figure>
+<p>下载完安装包之后，我们用scp命令传到服务器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp ~/Downloads/jdk-8u111-linux-x64.rpm root@maijinta.top:/usr/local/src</span><br></pre></td></tr></table></figure>
+<p>因为我已经添加信任，所以就不用输密码了</p>
+<p>如果一定要用wget的方法，用服务器直接下载的话，我提供下面的方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget --no-check-certificate --no-cookies --header &quot;Cookie: oraclelicense=accept-securebackup-cookie&quot; http://download.oracle.com/otn-pub/java/jdk/8u111-b14/jdk-8u111-linux-x64.rpm</span><br><span class="line"># 或者</span><br><span class="line">wget --no-cookies --no-check-certificate --header &quot;Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie&quot; http://download.oracle.com/otn-pub/java/jdk/8u111-b14/jdk-8u111-linux-x64.rpm</span><br></pre></td></tr></table></figure>
+<p>下面就开始安装rpm包了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -ivh jdk-8u111-linux-x64.rpm</span><br></pre></td></tr></table></figure>
+<p>安装好以后，在/etc/profile文件中配置环境变量</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/profile</span><br></pre></td></tr></table></figure>
+<p>加入下面的内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export JAVA_HOME=/usr/java/default</span><br><span class="line">export PATH=$PATH:$JAVA_HOME/bin</span><br><span class="line">export CLASSPATH=.:$JAVA_HOME/jre/lib:$JAVA_HOME/lib:$JAVA_HOME/lib/tools.jar</span><br></pre></td></tr></table></figure>
+<p>查看版本号</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -version 或 javac -version</span><br></pre></td></tr></table></figure>
+<p>查看环境变量</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">echo $PATH</span><br><span class="line">#输出了/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/root/bin:/usr/java/default/bin</span><br></pre></td></tr></table></figure>
+<h2 id="安装Tomcat"><a href="#安装Tomcat" class="headerlink" title="安装Tomcat"></a>安装Tomcat</h2><p>我下载的是tomcat 8.5，下载地址是-<a href="http://tomcat.apache.org/download-80.cgi" target="_blank" rel="noopener">http://tomcat.apache.org/download-80.cgi</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget http://apache.fayea.com/tomcat/tomcat-8/v8.5.11/bin/apache-tomcat-8.5.11.tar.gz</span><br></pre></td></tr></table></figure>
+<p>解压</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar zxvf apache-tomcat-8.5.11.tar.gz</span><br></pre></td></tr></table></figure>
+<p>转移文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv apache-tomcat-8.5.11 /usr/local/tomcat</span><br></pre></td></tr></table></figure>
+<p>运行Tomcat</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd bin</span><br><span class="line">./startup.sh</span><br></pre></td></tr></table></figure>
+<p>停止Tomcat</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./shutdown.sh</span><br></pre></td></tr></table></figure>
+<h2 id="安装mysql"><a href="#安装mysql" class="headerlink" title="安装mysql"></a>安装mysql</h2><p>下载安装rpm</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/src</span><br><span class="line">wget http://dev.mysql.com/get/mysql57-community-release-el7-9.noarch.rpm</span><br><span class="line">rpm -ivh mysql57-community-release-el7-9.noarch.rpm</span><br></pre></td></tr></table></figure>
+<p>安装mysql</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install mysql-community-server</span><br></pre></td></tr></table></figure>
+<p>安装mysql要好长一段时间，结果中途断网了，真悲剧</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">/var/run/yum.pid 已被锁定，PID 为 8095 的另一个程序正在运行。</span><br><span class="line">Another app is currently holding the yum lock; waiting for it to exit...</span><br><span class="line">  另一个应用程序是：yum</span><br><span class="line">    内存： 88 M RSS （480 MB VSZ）</span><br><span class="line">    已启动： Wed Mar  1 18:56:02 2017 - 1:48:09之前</span><br><span class="line">    状态  ：睡眠中，进程ID：8095</span><br></pre></td></tr></table></figure>
+<p>只能删除该进程</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm -rf /var/run/yum.pid</span><br></pre></td></tr></table></figure>
+<p>清理之前下的缓存后重新下载</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum clean all</span><br><span class="line">yum install mysql-community-server</span><br></pre></td></tr></table></figure>
+<p>下面的过程和之前的文章一样-<a href="https://barry215.github.io/2017/02/21/mysql-install/">Centos7 mysql 安装篇</a></p>
+<h2 id="安装Nginx"><a href="#安装Nginx" class="headerlink" title="安装Nginx"></a>安装Nginx</h2><p>  先查看yum可以安装的版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum info nginx</span><br></pre></td></tr></table></figure>
+<p>我的是1.10.2，所以就打算用他的了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install nginx</span><br></pre></td></tr></table></figure>
+<p>因为这样安装不用自己去装依赖，安装完也可以用命令去查看版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nginx -v</span><br></pre></td></tr></table></figure>
+<p>开启服务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl start nginx</span><br></pre></td></tr></table></figure>
+<p>查看状态</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl status nginx</span><br></pre></td></tr></table></figure>
+<p>当然也可以更换软件源，首先新建一个repo，例如 nginx.repo</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/yum.repos.d/nginx.repo</span><br></pre></td></tr></table></figure>
+<p>编辑内容如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[nginx]</span><br><span class="line">name=nginx repo</span><br><span class="line">baseurl=http://nginx.org/packages/mainline/centos/7/$basearch/</span><br><span class="line">gpgcheck=0</span><br><span class="line">enabled=1</span><br></pre></td></tr></table></figure>
+<p>这里配置的是mainline version，如果想用稳定版，将baseurl中的mainline删除即可</p>
+<h3 id="配置Nginx"><a href="#配置Nginx" class="headerlink" title="配置Nginx"></a>配置Nginx</h3><p>用yum安装的nginx，配置文件在<code>/etc/nginx/nginx.conf</code>这里</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/nginx/nginx.conf</span><br></pre></td></tr></table></figure>
+<p>添加监听端口，因为tomcat是8080端口</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">        listen       80;</span><br><span class="line">        #listen       [::]:80 default_server;</span><br><span class="line">        server_name  www.maijinta.top;</span><br><span class="line">        root         /usr/share/nginx/html;</span><br><span class="line"></span><br><span class="line">        # Load configuration files for the default server block.</span><br><span class="line">        include /etc/nginx/default.d/*.conf;</span><br><span class="line"></span><br><span class="line">        location / &#123;</span><br><span class="line">                proxy_pass http://127.0.0.1:8080;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        error_page 404 /404.html;</span><br><span class="line">            location = /40x.html &#123;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        error_page 500 502 503 504 /50x.html;</span><br><span class="line">            location = /50x.html &#123;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后重启服务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart nginx</span><br></pre></td></tr></table></figure>
+<h2 id="安装Redis"><a href="#安装Redis" class="headerlink" title="安装Redis"></a>安装Redis</h2><p>目前稳定版是3.2.8，其实应该不管版本直接下stable版本就好了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget http://download.redis.io/releases/redis-stable.tar.gz</span><br></pre></td></tr></table></figure>
+<p>首先可以判断是否装了tcl</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -qa tcl</span><br></pre></td></tr></table></figure>
+<p>有版本号回复说明装了</p>
+<p>也可以用<code>which tcl</code>或<code>whereis tcl</code></p>
+<p>接下来就解压，并移到想要的位置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tar zxvf redis-stable.tar.gz</span><br><span class="line">mv redis-stable /usr/local/</span><br></pre></td></tr></table></figure>
+<p>进入redis目录，编译</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/redis-stable</span><br><span class="line">make</span><br></pre></td></tr></table></figure>
+<p>然后编译检查</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">make test</span><br><span class="line">#成功后会提示 \o/ All tests passed without errors!</span><br></pre></td></tr></table></figure>
+<p>如果它提示缺什么，就装什么</p>
+<p>编译检查很持续一段时间，结束后就可以安装了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make install</span><br></pre></td></tr></table></figure>
+<p>安装完就执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redis-server</span><br></pre></td></tr></table></figure>
+<p>看到这个图就说明成功了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">               _._</span><br><span class="line">          _.-``__ &apos;&apos;-._</span><br><span class="line">     _.-``    `.  `_.  &apos;&apos;-._           Redis 3.2.8 (00000000/0) 64 bit</span><br><span class="line"> .-`` .-```.  ```\/    _.,_ &apos;&apos;-._</span><br><span class="line">(    &apos;      ,       .-`  | `,    )     Running in standalone mode</span><br><span class="line">|`-._`-...-` __...-.``-._|&apos;` _.-&apos;|     Port: 6379</span><br><span class="line">|    `-._   `._    /     _.-&apos;    |     PID: 20631</span><br><span class="line"> `-._    `-._  `-./  _.-&apos;    _.-&apos;</span><br><span class="line">|`-._`-._    `-.__.-&apos;    _.-&apos;_.-&apos;|</span><br><span class="line">|    `-._`-._        _.-&apos;_.-&apos;    |           http://redis.io</span><br><span class="line"> `-._    `-._`-.__.-&apos;_.-&apos;    _.-&apos;</span><br><span class="line">|`-._`-._    `-.__.-&apos;    _.-&apos;_.-&apos;|</span><br><span class="line">|    `-._`-._        _.-&apos;_.-&apos;    |</span><br><span class="line"> `-._    `-._`-.__.-&apos;_.-&apos;    _.-&apos;</span><br><span class="line">     `-._    `-.__.-&apos;    _.-&apos;</span><br><span class="line">         `-._        _.-&apos;</span><br><span class="line">             `-.__.-&apos;</span><br></pre></td></tr></table></figure>
+<p>设置redis 服务后台启动，在配置文件 redis.conf 中设置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">daemonize yes #默认是no</span><br></pre></td></tr></table></figure>
+<p>然后用这个配置启动</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redis-server redis.conf</span><br></pre></td></tr></table></figure>
+<p>查看进程，果然redis已经启动了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ps -aux #查看所有进程</span><br><span class="line">ps -ef|grep redis #只看redis</span><br></pre></td></tr></table></figure>
+<p>用客户端测试</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">redis-cli</span><br><span class="line">set name frank</span><br><span class="line">get name</span><br></pre></td></tr></table></figure>
+<p>测试成功</p>
+<p>关闭redis服务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">redis-cli shutdown</span><br><span class="line">pkill redis-server #杀死进程</span><br></pre></td></tr></table></figure>
+<p>修改配置文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vim redis.conf</span><br><span class="line">#requirepass foobared  #在这里把注释去掉，换个密码，如requirepass 123456</span><br><span class="line">#bind 127.0.0.1  #加上注释，允许远程访问</span><br></pre></td></tr></table></figure>
+<p>查看网络监听</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -nlt|grep 6379</span><br></pre></td></tr></table></figure>
+<p>看到网络监听从<code>127.0.0.1:6379</code> 变成 <code>0 0.0.0.0:6379</code>，表示Redis已经允许远程登陆访问</p>
+<p>修改<code>redis-cli</code>密码，默认是空</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">执行redis-cli #登录</span><br><span class="line">执行config get requirepass</span><br><span class="line">得到 1) &quot;requirepass&quot;</span><br><span class="line">	2) &quot;&quot;             #由此可见是没密码的</span><br><span class="line">执行config set requirepass 123456 #设置密码</span><br><span class="line">需要重新登陆</span><br><span class="line">执行redis-cli -h 127.0.0.1 -p 6379 -a 123456或redis-cli -a 123456</span><br></pre></td></tr></table></figure>
+<p>开机启动配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo &quot;/usr/local/redis-stable/redis-server /usr/local/redis-stable/redis.conf &amp;&quot; &gt;&gt; /etc/rc.local</span><br></pre></td></tr></table></figure>
+<h2 id="安装vsftpd"><a href="#安装vsftpd" class="headerlink" title="安装vsftpd"></a>安装vsftpd</h2><p>直接yum安装</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install vsftpd</span><br></pre></td></tr></table></figure>
+<p>启动vsftpd服务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart vsftpd.service  # 重启服务</span><br><span class="line">systemctl start vsftpd.service    # 启动服务</span><br><span class="line">systemctl status vsftpd.service   # 服务状态查看</span><br></pre></td></tr></table></figure>
+<p>修改配置文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/vsftpd/vsftpd.conf</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">anonymous_enable=NO        # 不允许匿名访问，禁用匿名登录</span><br><span class="line">chroot_local_user=YES      # 启用限定用户在其主目录下</span><br><span class="line">chroot_list_enable=YES</span><br><span class="line">chroot_list_file=/etc/vsftpd/chroot_list</span><br><span class="line">use_localtime=YES          # 使用本地时(自行添加)</span><br><span class="line">local_enable=YES           # 允许使用本地帐户进行FTP用户登录验证</span><br><span class="line">allow_writeable_chroot=YES # 如果启用了限定用户在其主目录下需要添加这个配置，解决报错 500 OOPS: vsftpd: refusing to run with writable root inside chroot()</span><br><span class="line">xferlog_enable=YES         # 启用上传和下载的日志功能，默认开启。</span><br><span class="line">local_umask=022            # 设置本地用户默认文件掩码022</span><br><span class="line"># FTP上本地的文件权限，默认是077，不过vsftpd安装后的配置文件里默认是022</span><br><span class="line">ascii_upload_enable=YES   #设定支持ASCII模式的上传和下载功能</span><br><span class="line">ascii_download_enable=YES</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>从2.3.5之后，vsftpd增强了安全检查，如果用户被限定在了其主目录下，则该用户的主目录不能再具有写权限了</p>
+<p>所以要添加 allow_writeable_chroot=YES</p>
+</blockquote>
+<p>创建新用户</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#创建用户 ftpuser 指定 /var/ftp/public_root 目录</span><br><span class="line">useradd -d /var/ftp/public_root -g ftp -s /sbin/nologin ftpuser</span><br><span class="line"># 设置用户 ftpuser 的密码</span><br><span class="line">passwd ftpuser</span><br><span class="line"># 把 /home/vsftpd 的所有权给ftpuser.root</span><br><span class="line"># chown -R ftpuser.root /var/ftp/public_root 这步不用做，做了应该也没事</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>-s：禁止此用户登录SSH的权限</p>
+<p>/sbin/nologin：不允许此用户登录系统，但可以登录FTP</p>
+</blockquote>
+<p>权限设置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--更改目录所有者--&gt;</span><br><span class="line">chown ftpuser /var/ftp/public_root</span><br><span class="line">&lt;!--更改目录权限--&gt;</span><br><span class="line">chmod -R 755 /var/ftp/public_root</span><br></pre></td></tr></table></figure>
+<p>设置开机重启</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl enable vsftpd.service</span><br></pre></td></tr></table></figure>
+<p>删除用户 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">userdel ftpuser</span><br></pre></td></tr></table></figure>
+<p>最后在Filezilla中创建新站点就可以用了</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://barry215.github.io/2017/03/01/centos-java-production/" data-id="cjvktzt67001wrxjdd2q92agx" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/centos/">centos</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tomcat/">tomcat</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/03/03/maven-product/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Maven自动部署War
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/02/25/configureHttps/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">瓜皮翻身记之Https</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Book/">Book</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Computer/">Computer</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DataBase/">DataBase</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Design-Method/">Design Method</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Http/">Http</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Internet/">Internet</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Maven/">Maven</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mybatis/">Mybatis</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mysql/">Mysql</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Network/">Network</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Nginx/">Nginx</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Other/">Other</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Server/">Server</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/">Spring</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ajax/">ajax</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm/">algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/centos/">centos</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/computer/">computer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/data-structure/">data_structure</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/design-method/">design method</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/https/">https</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/init/">init</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javaweb/">javaweb</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jsp/">jsp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jstl/">jstl</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/maven/">maven</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mybatis/">mybatis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/servlet/">servlet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring/">spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sql/">sql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tcp-ip/">tcp/ip</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tomcat/">tomcat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/ajax/" style="font-size: 10px;">ajax</a> <a href="/tags/algorithm/" style="font-size: 13.33px;">algorithm</a> <a href="/tags/centos/" style="font-size: 10px;">centos</a> <a href="/tags/computer/" style="font-size: 10px;">computer</a> <a href="/tags/data-structure/" style="font-size: 10px;">data_structure</a> <a href="/tags/design-method/" style="font-size: 10px;">design method</a> <a href="/tags/git/" style="font-size: 13.33px;">git</a> <a href="/tags/http/" style="font-size: 16.67px;">http</a> <a href="/tags/https/" style="font-size: 10px;">https</a> <a href="/tags/init/" style="font-size: 10px;">init</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/tags/javaweb/" style="font-size: 10px;">javaweb</a> <a href="/tags/jsp/" style="font-size: 10px;">jsp</a> <a href="/tags/jstl/" style="font-size: 10px;">jstl</a> <a href="/tags/linux/" style="font-size: 16.67px;">linux</a> <a href="/tags/maven/" style="font-size: 10px;">maven</a> <a href="/tags/mybatis/" style="font-size: 10px;">mybatis</a> <a href="/tags/mysql/" style="font-size: 13.33px;">mysql</a> <a href="/tags/nginx/" style="font-size: 13.33px;">nginx</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/servlet/" style="font-size: 10px;">servlet</a> <a href="/tags/spring/" style="font-size: 10px;">spring</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a> <a href="/tags/tcp-ip/" style="font-size: 10px;">tcp/ip</a> <a href="/tags/tomcat/" style="font-size: 13.33px;">tomcat</a> <a href="/tags/web/" style="font-size: 10px;">web</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/02/06/computer-foundation/">计算机组成原理基础知识</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/16/http-socket/">Socket和Websocket的关系</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/16/algorithmList/">算法练习(不断更新中)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/06/git-learn/">Git命令篇</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/04/mysql-review/">MySQL持续更新</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 frank<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

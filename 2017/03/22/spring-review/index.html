@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>Spring IOC&amp;&amp;AOP | 麦金</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="SpringSpring IOC (Inverse of Control)思想： IOC意思是控制反转，控制权由对象本身转向容器，由容器根据配置文件去创建实例并创建各个实例之间的依赖关系 这个容器叫做bean工厂；在Spring中，bean工厂创建的各个实例称作bean  原理： 利用java反射，就是在Spring运行时，bean工厂根据Spring的xml配置文件或扫描指定包下注解来动态地生成">
+<meta name="keywords" content="java,spring">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spring IOC&amp;&amp;AOP">
+<meta property="og:url" content="https://barry215.github.io/2017/03/22/spring-review/index.html">
+<meta property="og:site_name" content="麦金">
+<meta property="og:description" content="SpringSpring IOC (Inverse of Control)思想： IOC意思是控制反转，控制权由对象本身转向容器，由容器根据配置文件去创建实例并创建各个实例之间的依赖关系 这个容器叫做bean工厂；在Spring中，bean工厂创建的各个实例称作bean  原理： 利用java反射，就是在Spring运行时，bean工厂根据Spring的xml配置文件或扫描指定包下注解来动态地生成">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://barry215.github.io/2017/03/22/spring-review/spring-review/SpringMVC.jpg">
+<meta property="og:updated_time" content="2017-08-09T12:57:46.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Spring IOC&amp;&amp;AOP">
+<meta name="twitter:description" content="SpringSpring IOC (Inverse of Control)思想： IOC意思是控制反转，控制权由对象本身转向容器，由容器根据配置文件去创建实例并创建各个实例之间的依赖关系 这个容器叫做bean工厂；在Spring中，bean工厂创建的各个实例称作bean  原理： 利用java反射，就是在Spring运行时，bean工厂根据Spring的xml配置文件或扫描指定包下注解来动态地生成">
+<meta name="twitter:image" content="https://barry215.github.io/2017/03/22/spring-review/spring-review/SpringMVC.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="麦金" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">麦金</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">麦金的博客</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://barry215.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-spring-review" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/22/spring-review/" class="article-date">
+  <time datetime="2017-03-22T07:23:51.000Z" itemprop="datePublished">2017-03-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Spring/">Spring</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Spring IOC&amp;&amp;AOP
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="Spring"><a href="#Spring" class="headerlink" title="Spring"></a>Spring</h3><h4 id="Spring-IOC-Inverse-of-Control"><a href="#Spring-IOC-Inverse-of-Control" class="headerlink" title="Spring IOC (Inverse of Control)"></a>Spring IOC (Inverse of Control)</h4><p>思想：</p>
+<p>IOC意思是控制反转，控制权由对象本身转向容器，由容器根据配置文件去创建实例并创建各个实例之间的依赖关系</p>
+<p>这个容器叫做bean工厂；在Spring中，bean工厂创建的各个实例称作bean </p>
+<p>原理：</p>
+<p>利用java反射，就是在Spring运行时，bean工厂根据Spring的xml配置文件或扫描指定包下注解来动态地生成一个实例，并且调用对象里的方法的</p>
+<p>Spring支持三种依赖注入方式，分别是属性（Setter方法）注入，接口注入和构造注入。</p>
+<p>一般不采用接口注入，因为注入对象还必须实现某个接口，比较麻烦。</p>
+<p><a href="http://www.paymoon.com:8001/index.php/2017/01/06/why-spring-ioc-mechanism-is-not-new-but-reflection/" target="_blank" rel="noopener">http://www.paymoon.com:8001/index.php/2017/01/06/why-spring-ioc-mechanism-is-not-new-but-reflection/</a></p>
+<h4 id="SpringMVC运行原理"><a href="#SpringMVC运行原理" class="headerlink" title="SpringMVC运行原理"></a>SpringMVC运行原理</h4><ol>
+<li>客户端请求提交到DispatcherServlet</li>
+<li>由DispatcherServlet控制器查询HandlerMapping，找到并分发到指定的Controller中。</li>
+<li>Controller调用业务逻辑处理后，返回ModelAndView</li>
+<li>DispatcherServlet查询一个或多个ViewResoler视图解析器，找到ModelAndView指定的视图</li>
+<li>视图负责将结果显示到客户端</li>
+</ol>
+<p><img src="spring-review/SpringMVC.jpg" alt></p>
+<p><a href="http://www.cnblogs.com/xiaoxing/p/5836835.html" target="_blank" rel="noopener">http://www.cnblogs.com/xiaoxing/p/5836835.html</a></p>
+<h4 id="Resource跟-Autowired比较"><a href="#Resource跟-Autowired比较" class="headerlink" title="@Resource跟@Autowired比较"></a>@Resource跟@Autowired比较</h4><p>上面介绍中Controller中注入userService或者 Service层里面注入dao都是用@Resource标签，其实也可以使用@Autowired来替代，但是建议使用@Resource。下面说说这2者的区别：</p>
+<ol>
+<li><p>@Autowired和@Resource都可以用来装配bean，都可以写在字段上，或者方法上。</p>
+</li>
+<li><p>@Autowired属于Spring的；@Resource为JSR-250标准的注释，属于J2EE的。</p>
+</li>
+<li><p>@Autowired默认按类型装配，默认情况下必须要求依赖对象必须存在，如果要允许null值，可以设置它的required属性为false，例如：@Autowired(required=false) ，如果我们想使用名称装配可以结合@Qualifier注解进行使用</p>
+<p>例如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Autowired</span></span><br><span class="line"><span class="meta">@Qualifier</span>(<span class="string">"baseDao"</span>)</span><br><span class="line"><span class="keyword">private</span> BaseDao baseDao;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>@Resource，默认按照名称进行装配，名称可以通过name属性进行指定，如果没有指定name属性，当注解写在字段上时，默认取字段名进行安装名称查找，如果注解写在setter方法上默认取属性名进行装配。当找不到与名称匹配的bean时才按照类型进行装配。但是需要注意的是，如果name属性一旦指定，就只会按照名称进行装配。</p>
+<p>例如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Resource</span>(name=<span class="string">"baseDao"</span>)</span><br><span class="line"><span class="keyword">private</span> BaseDao baseDao;</span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li>之所以推荐使用@Resource，因为这个注解是属于J2EE的，减少了与spring的耦合。这样代码看起就比较优雅。</li>
+</ol>
+</li>
+</ol>
+<p><a href="http://www.jianshu.com/p/135693f589c4" target="_blank" rel="noopener">http://www.jianshu.com/p/135693f589c4</a></p>
+<h4 id="SpringAOP原理"><a href="#SpringAOP原理" class="headerlink" title="SpringAOP原理"></a>SpringAOP原理</h4><p>AOP是通过动态代理来实现的，有两种常用的技术，一是<code>JDK的动态代理</code>，二是<code>CGLIB</code>，而无论是前者还是后者，都是生成动态生成类的字节码来实现的。<code>JDK的动态代理只能处理接口实现的方法</code>，而CGLIB则没有这个限制。因为字节码是动态生成的，所以可以在生成的字节码当中，在目标方法前后插入定义好的方法的调用。</p>
+<p>切面（Aspect）：一个关注点的模块化，这个关注点可能会横切多个对象。 在Spring  AOP中，切面可以使用通用类（基于模式的风格） 或者在普通类中以 @Aspect 注解（@AspectJ风格）来实现</p>
+<p>连接点（Joinpoint）： 在程序执行过程中某个特定的点，比如某方法调用的时候或者处理异常的时候。在Spring AOP中，一个连接点 总是  代表一个方法的执行。通过声明一个org.aspectj.lang.JoinPoint类型的参数可以使通知（Advice）的主体部分获得连接点信息。</p>
+<p>通知（Advice）：在切面的某个特定的连接点（Joinpoint）上执行的动作。通知有各种类型，其中包括“around”、“before”和“after”等通知。通知的类型将在后面部分进行讨论。许多AOP框架，包括Spring，都是以拦截器做通知模型，并维护一个以连接点为中心的拦截器链。</p>
+<p>切入点（Pointcut）：匹配连接点（Joinpoint）的断言。通知和一个切入点表达式关联，并在满足这个切入点的连接点上运行（例如，当执行某个特定名称的方法时）。切入点表达式如何和连接点匹配是AOP的核心：Spring缺省使用AspectJ切入点语法。</p>
+<p>引入（Introduction）： （也被称为内部类型声明（inter-type declaration））。声明额外的方法或者某个类型的字段。  Spring允许引入新的接口（以及一个对应的实现）到任何被代理的对象。例如，你可以使用一个引入来使bean实现 IsModified  接口，以便简化缓存机制。</p>
+<p>织入（Weaving）：  把切面（aspect）连接到其它的应用程序类型或者对象上，并创建一个被通知（advised）的对象。这些可以在编译时（例如使用AspectJ编译器），类加载时和运行时完成。  Spring和其他纯Java AOP框架一样，在运行时完成织入。</p>
+<p>通知的类型：</p>
+<p>前置通知（Before advice）： 在某连接点（join  point）之前执行的通知，但这个通知不能阻止连接点前的执行（除非它抛出一个异常）。</p>
+<p>返回后通知（After returning advice）： 在某连接点（join  point）正常完成后执行的通知：例如，一个方法没有抛出任何异常，正常返回。</p>
+<p>抛出异常后通知（After throwing advice）： 在方法抛出异常退出时执行的通知。</p>
+<p>后通知（After (finally) advice）： 当某连接点退出的时候执行的通知（不论是正常返回还是异常退出）。</p>
+<p>环绕通知（Around Advice）： 包围一个连接点（join  point）的通知，如方法调用。这是最强大的一种通知类型。环绕通知可以在方法调用前后完成自定义的行为。它也会选择是否继续执行连接点或直接返回它们自己的返回值或抛出异常来结束执行。</p>
+<p>原接口：很多种方法定义</p>
+<p>委托类：实现接口的方法</p>
+<p>代理类：引用委托类实现方法的同时，额外做一些事情</p>
+<h5 id="AOP速学路径"><a href="#AOP速学路径" class="headerlink" title="AOP速学路径"></a>AOP速学路径</h5><p><a href="https://segmentfault.com/a/1190000007469982" target="_blank" rel="noopener">https://segmentfault.com/a/1190000007469982</a></p>
+<h4 id="jdk动态代理"><a href="#jdk动态代理" class="headerlink" title="jdk动态代理"></a>jdk动态代理</h4><p>使用java反射机制，在运行期时，插入自定义的方法调用</p>
+<p>具体是通过Proxy和InvocationHandler这个<strong>接口</strong>来实现的，InvocationHandler里有invoke(Object proxy, Method method, Object[] args)这个方法，它可以有委托类方法和参数引用，所以可以在invoke方法中围绕着委托类的方法做一些前置、后置操作</p>
+<p>Proxy会用newProxyInstance(ClassLoader,interfaces,InvocationHandlerImpl)生成<strong>动态代理类</strong>，这个代理类会实现委托类的接口，当执行代理类的方法时，实际上是执行InvocationHandler的invoke方法，所以就实现了之前我们的前置、后置操作</p>
+<h5 id="动态代理速学路径"><a href="#动态代理速学路径" class="headerlink" title="动态代理速学路径"></a>动态代理速学路径</h5><p><a href="https://segmentfault.com/a/1190000007089902" target="_blank" rel="noopener">https://segmentfault.com/a/1190000007089902</a></p>
+<p><a href="http://blog.csdn.net/qqHJQS/article/details/53402493" target="_blank" rel="noopener">http://blog.csdn.net/qqHJQS/article/details/53402493</a></p>
+<h4 id="CGLIB代理"><a href="#CGLIB代理" class="headerlink" title="CGLIB代理"></a>CGLIB代理</h4><p>cglib是用asm框架生成的字节码文件，而且生成的<strong>动态代理类</strong>是<strong>委托类</strong>的子类，所以委托类不能是final</p>
+<p>利用MethodInterceptor接口的intercept方法，可以在这个方法里调用invokeSuper来操作委托类方法，同样就可以围绕着委托类的方法做一些前置、后置操作</p>
+<p>速学路径：</p>
+<p><a href="http://www.deanwangpro.com/2017/02/08/aop-in-java/" target="_blank" rel="noopener">http://www.deanwangpro.com/2017/02/08/aop-in-java/</a></p>
+<p><strong><a href="http://blog.csdn.net/panyongcsd/article/details/53204719" target="_blank" rel="noopener">http://blog.csdn.net/panyongcsd/article/details/53204719</a></strong></p>
+<p><a href="http://www.importnew.com/20732.html" target="_blank" rel="noopener">http://www.importnew.com/20732.html</a></p>
+<p><a href="http://www.jianshu.com/p/d35e46f27187" target="_blank" rel="noopener">http://www.jianshu.com/p/d35e46f27187</a></p>
+<h4 id="Spring-AOP应用场景"><a href="#Spring-AOP应用场景" class="headerlink" title="Spring AOP应用场景"></a>Spring AOP应用场景</h4><p>性能检测，访问控制，日志管理，事务</p>
+<h4 id="Spring-Bean的作用域区别"><a href="#Spring-Bean的作用域区别" class="headerlink" title="Spring Bean的作用域区别"></a>Spring Bean的作用域区别</h4><p>Spring容器中的bean可以分为5个范围。所有范围的名称都是自说明的，但是为了避免混淆，还是让我们来解释一下：</p>
+<ol>
+<li>singleton：这种bean范围是默认的，这种范围确保不管接受到多少个请求，每个容器中只有一个bean的实例，单例的模式由bean factory自身来维护。</li>
+<li>prototype：原形范围与单例范围相反，为每一个bean请求提供一个实例。</li>
+<li>request：在请求bean范围内会每一个来自客户端的网络请求创建一个实例，在请求完成以后，bean会失效并被垃圾回收器回收。</li>
+<li>Session：与请求范围类似，确保每个session中有一个bean的实例，在session过期后，bean会随之失效。</li>
+<li>global-session：global-session和Portlet应用相关。当你的应用部署在Portlet容器中工作时，它包含很多portlet。如果你想要声明让所有的portlet共用全局的存储变量的话，那么这全局变量需要存储在global-session中。</li>
+</ol>
+<p>全局作用域与Servlet中的session作用域效果相同。</p>
+<h4 id="Spring中的单例Beans是线程安全的吗"><a href="#Spring中的单例Beans是线程安全的吗" class="headerlink" title="Spring中的单例Beans是线程安全的吗"></a>Spring中的单例Beans是线程安全的吗</h4><p>不是，Spring框架并没有对单例bean进行任何多线程的封装处理。关于单例bean的线程安全和并发问题需要开发者自行去搞定。但实际上，大部分的Spring bean并没有可变的状态(比如Service类和DAO类)，所以在某种程度上说Spring的单例bean是线程安全的。如果你的bean有多种状态的话（比如 View Model 对象），就需要自行保证线程安全。Spring原理上使用ThreadLocal来保证单例安全的。</p>
+<p>最浅显的解决办法就是将单态bean的作用域由<strong>“singleton</strong>”变更为“<strong>prototype</strong>”。<br>当然，scope的值不止这两种，还包括了request,session 等。但用的最多的还是singleton单态，prototype多态。<br>singleton表示该bean全局只有一个实例，Spring中bean的scope默认也是singleton.<br>prototype表示该bean在每次被注入的时候，都要重新创建一个实例，这种情况适用于有状态的Bean.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://barry215.github.io/2017/03/22/spring-review/" data-id="cjvktzt6a0023rxjdv393i6f0" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/spring/">spring</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/03/26/java-collection/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Java集合深入详解
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/03/11/algorithm-review/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">查找和排序算法大杂烩</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Book/">Book</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Computer/">Computer</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DataBase/">DataBase</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Design-Method/">Design Method</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Http/">Http</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Internet/">Internet</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Maven/">Maven</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mybatis/">Mybatis</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mysql/">Mysql</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Network/">Network</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Nginx/">Nginx</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Other/">Other</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Server/">Server</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/">Spring</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ajax/">ajax</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm/">algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/centos/">centos</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/computer/">computer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/data-structure/">data_structure</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/design-method/">design method</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/https/">https</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/init/">init</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javaweb/">javaweb</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jsp/">jsp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jstl/">jstl</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/maven/">maven</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mybatis/">mybatis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/servlet/">servlet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring/">spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sql/">sql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tcp-ip/">tcp/ip</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tomcat/">tomcat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/ajax/" style="font-size: 10px;">ajax</a> <a href="/tags/algorithm/" style="font-size: 13.33px;">algorithm</a> <a href="/tags/centos/" style="font-size: 10px;">centos</a> <a href="/tags/computer/" style="font-size: 10px;">computer</a> <a href="/tags/data-structure/" style="font-size: 10px;">data_structure</a> <a href="/tags/design-method/" style="font-size: 10px;">design method</a> <a href="/tags/git/" style="font-size: 13.33px;">git</a> <a href="/tags/http/" style="font-size: 16.67px;">http</a> <a href="/tags/https/" style="font-size: 10px;">https</a> <a href="/tags/init/" style="font-size: 10px;">init</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/tags/javaweb/" style="font-size: 10px;">javaweb</a> <a href="/tags/jsp/" style="font-size: 10px;">jsp</a> <a href="/tags/jstl/" style="font-size: 10px;">jstl</a> <a href="/tags/linux/" style="font-size: 16.67px;">linux</a> <a href="/tags/maven/" style="font-size: 10px;">maven</a> <a href="/tags/mybatis/" style="font-size: 10px;">mybatis</a> <a href="/tags/mysql/" style="font-size: 13.33px;">mysql</a> <a href="/tags/nginx/" style="font-size: 13.33px;">nginx</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/servlet/" style="font-size: 10px;">servlet</a> <a href="/tags/spring/" style="font-size: 10px;">spring</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a> <a href="/tags/tcp-ip/" style="font-size: 10px;">tcp/ip</a> <a href="/tags/tomcat/" style="font-size: 13.33px;">tomcat</a> <a href="/tags/web/" style="font-size: 10px;">web</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/02/06/computer-foundation/">计算机组成原理基础知识</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/16/http-socket/">Socket和Websocket的关系</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/16/algorithmList/">算法练习(不断更新中)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/06/git-learn/">Git命令篇</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/04/mysql-review/">MySQL持续更新</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 frank<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

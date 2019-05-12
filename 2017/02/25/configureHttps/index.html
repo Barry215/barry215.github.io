@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>瓜皮翻身记之Https | 麦金</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="之前装过腾讯云提供的免费ssl证书，但是没试成功。如果真就这样放弃Https，那就很瓜皮了，为了要做一个有灵性的后台，所以我最终还是找到了另外一个免费的SSL证书，哈哈，这就用起来很舒服了  证书提供去年的时候，国内 WoSign （沃通）还有免费的SSL证书，但是现在它已经被打压了 不过，Let&amp;#39;s Encrypt 也正式对外颁发免费的SSL证书  Let’s Encrypt 是一个免">
+<meta name="keywords" content="https,linux,nginx">
+<meta property="og:type" content="article">
+<meta property="og:title" content="瓜皮翻身记之Https">
+<meta property="og:url" content="https://barry215.github.io/2017/02/25/configureHttps/index.html">
+<meta property="og:site_name" content="麦金">
+<meta property="og:description" content="之前装过腾讯云提供的免费ssl证书，但是没试成功。如果真就这样放弃Https，那就很瓜皮了，为了要做一个有灵性的后台，所以我最终还是找到了另外一个免费的SSL证书，哈哈，这就用起来很舒服了  证书提供去年的时候，国内 WoSign （沃通）还有免费的SSL证书，但是现在它已经被打压了 不过，Let&amp;#39;s Encrypt 也正式对外颁发免费的SSL证书  Let’s Encrypt 是一个免">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-02-25T09:21:00.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="瓜皮翻身记之Https">
+<meta name="twitter:description" content="之前装过腾讯云提供的免费ssl证书，但是没试成功。如果真就这样放弃Https，那就很瓜皮了，为了要做一个有灵性的后台，所以我最终还是找到了另外一个免费的SSL证书，哈哈，这就用起来很舒服了  证书提供去年的时候，国内 WoSign （沃通）还有免费的SSL证书，但是现在它已经被打压了 不过，Let&amp;#39;s Encrypt 也正式对外颁发免费的SSL证书  Let’s Encrypt 是一个免">
+  
+    <link rel="alternate" href="/atom.xml" title="麦金" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">麦金</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">麦金的博客</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://barry215.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-configureHttps" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/02/25/configureHttps/" class="article-date">
+  <time datetime="2017-02-25T09:12:06.000Z" itemprop="datePublished">2017-02-25</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Nginx/">Nginx</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      瓜皮翻身记之Https
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>之前装过腾讯云提供的免费ssl证书，但是没试成功。如果真就这样放弃Https，那就很瓜皮了，为了要做一个有灵性的后台，所以我最终还是找到了另外一个免费的SSL证书，哈哈，这就用起来很舒服了</p>
+</blockquote>
+<h2 id="证书提供"><a href="#证书提供" class="headerlink" title="证书提供"></a>证书提供</h2><p>去年的时候，国内 <code>WoSign</code> （沃通）还有免费的SSL证书，但是现在它已经被打压了</p>
+<p>不过，<code>Let&#39;s Encrypt</code> 也正式对外颁发免费的<code>SSL</code>证书</p>
+<blockquote>
+<p><code>Let’s Encrypt</code> 是一个免费、自动化、开放的证书签发服务，由 <em>ISRG</em>（Internet Security Research Group，译：互联网安全研究小组) 这个非盈利组织维护。现在是 Linux 基金会 (Linux Foundation) 合作的项目。</p>
+</blockquote>
+<h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p>服务器：Centos 7.0</p>
+<p>服务器软件：Nginx</p>
+<h2 id="安装-Certbot"><a href="#安装-Certbot" class="headerlink" title="安装 Certbot"></a>安装 Certbot</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install certbot</span><br></pre></td></tr></table></figure>
+<h2 id="初始化验证目录"><a href="#初始化验证目录" class="headerlink" title="初始化验证目录"></a>初始化验证目录</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /usr/share/nginx/certbot</span><br></pre></td></tr></table></figure>
+<h2 id="绑定-Let’s-Encrypt-验证目录"><a href="#绑定-Let’s-Encrypt-验证目录" class="headerlink" title="绑定 Let’s Encrypt 验证目录"></a>绑定 Let’s Encrypt 验证目录</h2><p>进入Nginx配置目录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/nginx/conf</span><br></pre></td></tr></table></figure>
+<p>配置nginx.conf</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi nginx.conf</span><br></pre></td></tr></table></figure>
+<p>只需要在 nginx 配置文件上的 server 层加上下面的代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">location ^~ /.well-known/acme-challenge/ &#123;</span><br><span class="line">    default_type &quot;text/plain&quot;;</span><br><span class="line">    root /usr/share/nginx/certbot;</span><br><span class="line">&#125;</span><br><span class="line">location = /.well-known/acme-challenge/ &#123;</span><br><span class="line">    return 404;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>重启服务器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 进入sbin目录</span><br><span class="line">cd /usr/local/nginx/sbin</span><br><span class="line"># 重启服务器</span><br><span class="line">./nginx -s reload</span><br></pre></td></tr></table></figure>
+<h2 id="使用-certbot颁发证书"><a href="#使用-certbot颁发证书" class="headerlink" title="使用 certbot颁发证书"></a>使用 certbot颁发证书</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo certbot certonly --webroot -w /usr/share/nginx/certbot -d 你的域名</span><br><span class="line">sudo certbot certonly --webroot -w /usr/share/nginx/certbot -d maijinta.cn  #我的是这个</span><br></pre></td></tr></table></figure>
+<p>然后第一次使用的时候，Certbot 会让你填写一个邮箱，该邮箱作为证书的拥有者，用于后面证书更新</p>
+<blockquote>
+<p>重点是我也第一次看到命令行里还有图形界面的输入框，真是大开眼界</p>
+</blockquote>
+<p>还有就是同意 <code>Let&#39;s Encrypt</code> 的使用条款，没有异议的话选择 Agree就好了</p>
+<p>完成颁发之后，就会看到 Congratulations之类的字样</p>
+<h2 id="引入SSL证书并绑定443端口"><a href="#引入SSL证书并绑定443端口" class="headerlink" title="引入SSL证书并绑定443端口"></a>引入SSL证书并绑定443端口</h2><p>还是配置nginx.conf</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">        listen 80;</span><br><span class="line">        listen 443 ssl;</span><br><span class="line">        server_name  maijinta.cn www.maijinta.cn;</span><br><span class="line"></span><br><span class="line">        ssl_certificate /etc/letsencrypt/live/maijinta.cn/fullchain.pem;</span><br><span class="line">        ssl_certificate_key /etc/letsencrypt/live/maijinta.cn/privkey.pem;</span><br><span class="line">        ssl_trusted_certificate /etc/letsencrypt/live/maijinta.cn/chain.pem;</span><br><span class="line"></span><br><span class="line">        ssl_session_cache shared:SSL:10m;</span><br><span class="line">        ssl_session_timeout 20m;</span><br><span class="line">        ssl_prefer_server_ciphers on;</span><br><span class="line">        ssl_ciphers ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-RC4-SHA:!ECDHE-RSA-RC4-SHA:ECDH-ECDSA-RC4-SHA:ECDH-RSA-RC4-SHA:ECDHE-RSA-AES256-SHA:!RC4-SHA:HIGH:!aNULL:!eNULL:!LOW:!3DES:!MD5:!EXP:!CBC:!EDH:!kEDH:!PSK:!SRP:!kECDH;</span><br><span class="line"></span><br><span class="line">        location ^~ /.well-known/acme-challenge/ &#123;</span><br><span class="line">                default_type &quot;text/plain&quot;;</span><br><span class="line">                root     /usr/share/nginx/certbot;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        location = /.well-known/acme-challenge/ &#123;</span><br><span class="line">             return 404;</span><br><span class="line">        &#125;</span><br><span class="line">        location / &#123;</span><br><span class="line">            #root   html; #before exit</span><br><span class="line">            #index  index.html index.htm; #before exit</span><br><span class="line">        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">        proxy_set_header Host $http_host;</span><br><span class="line">        proxy_set_header X-NginX-Proxy true;</span><br><span class="line">        proxy_http_version 1.1;</span><br><span class="line">        proxy_pass http://my_nodejs_upstream/;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我的配置文件最终是这样的，加了一些ssl必要的配置，可以和之前的博文对比——<a href="https://barry215.github.io/2017/02/13/ConfigureCentos7/">从头配置NodeJs和PM2</a></p>
+<p>配置之后就可以重启服务器了，但是重启之后我遇到了一个问题</p>
+<p>nginx提示缺少<code>the &quot;ssl&quot; parameter requires ngx_http_ssl_module</code></p>
+<p>估计是当初编译安装的时候没有加上<code>--with-http_ssl_module</code></p>
+<p>所以要重新编译</p>
+<h2 id="查看原来的配置参数"><a href="#查看原来的配置参数" class="headerlink" title="查看原来的配置参数"></a>查看原来的配置参数</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/nginx/sbin/nginx -V</span><br><span class="line">返回了configure arguments: --prefix=/usr/local/nginx --with-pcre=../pcre-8.40</span><br></pre></td></tr></table></figure>
+<p>configure arguments:就是我原来的配置信息</p>
+<h2 id="加入新参数，重新编译"><a href="#加入新参数，重新编译" class="headerlink" title="加入新参数，重新编译"></a>加入新参数，重新编译</h2><h3 id="进入nginx源码目录"><a href="#进入nginx源码目录" class="headerlink" title="进入nginx源码目录"></a>进入nginx源码目录</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd nginx-1.10.3</span><br></pre></td></tr></table></figure>
+<h3 id="停止nginx进程"><a href="#停止nginx进程" class="headerlink" title="停止nginx进程"></a>停止nginx进程</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">killall -9 nginx</span><br></pre></td></tr></table></figure>
+<h3 id="重新编译的代码和模块"><a href="#重新编译的代码和模块" class="headerlink" title="重新编译的代码和模块"></a>重新编译的代码和模块</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./configure --prefix=/usr/local/nginx --with-pcre=../pcre-8.40 --with-http_ssl_module</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make #编译，注意：千万别make install，否则就覆盖安装了</span><br></pre></td></tr></table></figure>
+<p>make完之后在<code>./nginx-1.10.3/objs</code>目录下就多了个nginx，这个就是新版本的程序了</p>
+<h3 id="替换nginx二进制文件"><a href="#替换nginx二进制文件" class="headerlink" title="替换nginx二进制文件"></a>替换nginx二进制文件</h3><p>保持当前目录不变</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 先备份nginx</span><br><span class="line">cp /usr/local/nginx/sbin/nginx /usr/local/nginx/sbin/nginx.bak</span><br><span class="line"># 再覆盖，覆盖的时候最好是关掉nginx，不然可能是文件正在使用中，无法覆盖</span><br><span class="line">cp ./objs/nginx /usr/local/nginx/sbin/</span><br></pre></td></tr></table></figure>
+<p>开启服务器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 进入sbin目录</span><br><span class="line">cd /usr/local/nginx/sbin</span><br><span class="line"># 开启服务器</span><br><span class="line">./nginx</span><br></pre></td></tr></table></figure>
+<h2 id="设置自动更新证书"><a href="#设置自动更新证书" class="headerlink" title="设置自动更新证书"></a>设置自动更新证书</h2><p>因为 <code>Let&#39;s Encrypt</code> 的证书<strong>只有 3个月 有效期</strong></p>
+<p>所以我们需要依靠 certbot 自动更新证书</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">certbot renew --quiet</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>这样之后我们的HTTPS就完工了，快打开浏览器试一下吧！</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://barry215.github.io/2017/02/25/configureHttps/" data-id="cjvktzt560000rxjdxgzocs66" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/https/">https</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nginx/">nginx</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/03/01/centos-java-production/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Centos从头配置javaweb环境
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/02/25/java-manual/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">阿里巴巴java手册首记</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Book/">Book</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Computer/">Computer</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DataBase/">DataBase</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Design-Method/">Design Method</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Http/">Http</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Internet/">Internet</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Maven/">Maven</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mybatis/">Mybatis</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mysql/">Mysql</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Network/">Network</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Nginx/">Nginx</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Other/">Other</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Server/">Server</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/">Spring</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ajax/">ajax</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm/">algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/centos/">centos</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/computer/">computer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/data-structure/">data_structure</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/design-method/">design method</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/https/">https</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/init/">init</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javaweb/">javaweb</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jsp/">jsp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jstl/">jstl</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/maven/">maven</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mybatis/">mybatis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/servlet/">servlet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring/">spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sql/">sql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tcp-ip/">tcp/ip</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tomcat/">tomcat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/ajax/" style="font-size: 10px;">ajax</a> <a href="/tags/algorithm/" style="font-size: 13.33px;">algorithm</a> <a href="/tags/centos/" style="font-size: 10px;">centos</a> <a href="/tags/computer/" style="font-size: 10px;">computer</a> <a href="/tags/data-structure/" style="font-size: 10px;">data_structure</a> <a href="/tags/design-method/" style="font-size: 10px;">design method</a> <a href="/tags/git/" style="font-size: 13.33px;">git</a> <a href="/tags/http/" style="font-size: 16.67px;">http</a> <a href="/tags/https/" style="font-size: 10px;">https</a> <a href="/tags/init/" style="font-size: 10px;">init</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/tags/javaweb/" style="font-size: 10px;">javaweb</a> <a href="/tags/jsp/" style="font-size: 10px;">jsp</a> <a href="/tags/jstl/" style="font-size: 10px;">jstl</a> <a href="/tags/linux/" style="font-size: 16.67px;">linux</a> <a href="/tags/maven/" style="font-size: 10px;">maven</a> <a href="/tags/mybatis/" style="font-size: 10px;">mybatis</a> <a href="/tags/mysql/" style="font-size: 13.33px;">mysql</a> <a href="/tags/nginx/" style="font-size: 13.33px;">nginx</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/servlet/" style="font-size: 10px;">servlet</a> <a href="/tags/spring/" style="font-size: 10px;">spring</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a> <a href="/tags/tcp-ip/" style="font-size: 10px;">tcp/ip</a> <a href="/tags/tomcat/" style="font-size: 13.33px;">tomcat</a> <a href="/tags/web/" style="font-size: 10px;">web</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/02/06/computer-foundation/">计算机组成原理基础知识</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/16/http-socket/">Socket和Websocket的关系</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/16/algorithmList/">算法练习(不断更新中)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/06/git-learn/">Git命令篇</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/04/mysql-review/">MySQL持续更新</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 frank<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
