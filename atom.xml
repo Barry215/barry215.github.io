@@ -344,11 +344,11 @@
       <category term="Maven" scheme="https://barry215.github.io/categories/Maven/"/>
     
     
-      <category term="tomcat" scheme="https://barry215.github.io/tags/tomcat/"/>
-    
       <category term="maven" scheme="https://barry215.github.io/tags/maven/"/>
     
       <category term="javaweb" scheme="https://barry215.github.io/tags/javaweb/"/>
+    
+      <category term="tomcat" scheme="https://barry215.github.io/tags/tomcat/"/>
     
   </entry>
   
@@ -378,9 +378,9 @@
     
       <category term="java" scheme="https://barry215.github.io/tags/java/"/>
     
-      <category term="centos" scheme="https://barry215.github.io/tags/centos/"/>
-    
       <category term="tomcat" scheme="https://barry215.github.io/tags/tomcat/"/>
+    
+      <category term="centos" scheme="https://barry215.github.io/tags/centos/"/>
     
   </entry>
   

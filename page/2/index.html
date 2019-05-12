@@ -314,40 +314,6 @@
     <a href="/schedule/" rel="section"><i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>日程表</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-sitemap">
-
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/sitemap.xml" rel="section"><i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br>站点地图</a>
-
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-commonweal">
-
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/404/" rel="section"><i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>公益 404</a>
-
-  </li>
 
       
       
@@ -513,192 +479,25 @@
       
         
           
-            <h3 id="TCP，HTTP和Socket区别"><a href="#TCP，HTTP和Socket区别" class="headerlink" title="TCP，HTTP和Socket区别"></a>TCP，HTTP和Socket区别</h3><ul>
-<li>tcp是传输协议，http是超文本传输协议</li>
-<li>tcp是传输层协议，http是应用层协议</li>
-<li>http连接是基于tcp的三次握手的</li>
-<li>Socket连接过程分为三个步骤：服务器监听，客户端请求，连接确认</li>
-<li>Socket可以支持不同的传输层协议（TCP或UDP）</li>
-<li>Socket是对TCP/IP协议的封装</li>
-</ul>
-<h3 id="网页访问过程"><a href="#网页访问过程" class="headerlink" title="网页访问过程"></a>网页访问过程</h3><p>DNS域名解析 –&gt; 发起TCP的三次握手 –&gt; 建立TCP连接后发起http请求 –&gt; 服务器响应http请求，浏览器得到html代码 –&gt; 浏览器解析html代码，并请求html代码中的资源（如js、css、图片等） –&gt; 浏览器对页面进行渲染呈现给用户</p>
-<h3 id="GET和POST区别"><a href="#GET和POST区别" class="headerlink" title="GET和POST区别"></a>GET和POST区别</h3><h4 id="GET"><a href="#GET" class="headerlink" title="GET"></a>GET</h4><p>特点：</p>
-<ul>
-<li>GET是放在浏览器地址栏上请求的，对用户可见</li>
-<li>GET语义是从指定的服务器中获取数据</li>
-<li>GET请求有长度限制</li>
-<li>GET请求能够被缓存</li>
-<li>GET请求不安全</li>
-</ul>
-<h4 id="POST"><a href="#POST" class="headerlink" title="POST"></a>POST</h4><p>特点：</p>
-<ul>
-<li>POST请求对用户不可见</li>
-<li>POST语义是提交数据给指定的服务器处理 </li>
-<li>POST请求没有长度限制</li>
-<li>POST请求不能被缓存</li>
-<li>POST请求比GET请求安全</li>
-</ul>
-<h4 id="GET和POST的区别"><a href="#GET和POST的区别" class="headerlink" title="GET和POST的区别"></a>GET和POST的区别</h4><table>
-<thead>
-<tr>
-<th>区别</th>
-<th>GET</th>
-<th>POST</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>点击返回/刷新按钮</strong></td>
-<td>没有影响</td>
-<td>数据会重新发送（浏览器将会提示用户“数据被从新提交”）</td>
-</tr>
-<tr>
-<td><strong>添加书签</strong></td>
-<td>可以</td>
-<td>不可以</td>
-</tr>
-<tr>
-<td><strong>缓存</strong></td>
-<td>可以</td>
-<td>不可以</td>
-</tr>
-<tr>
-<td><strong>编码类型(Encoding type)</strong></td>
-<td>application/x-www-form-urlencoded</td>
-<td>application/x-www-form-urlencoded or multipart/form-data. 请为二进制数据使用multipart编码</td>
-</tr>
-<tr>
-<td><strong>历史记录</strong></td>
-<td>有</td>
-<td>没有</td>
-</tr>
-<tr>
-<td><strong>长度限制</strong></td>
-<td>有</td>
-<td>没有</td>
-</tr>
-<tr>
-<td><strong>数据类型限制</strong></td>
-<td>只允许ASCII字符类型</td>
-<td>没有限制。允许二进制数据</td>
-</tr>
-<tr>
-<td><strong>安全性</strong></td>
-<td>查询字符串会显示在地址栏的URL中，不安全，请不要使用GET请求提交敏感数据</td>
-<td>因为数据不会显示在地址栏中，也不会缓存下来或保存在浏览记录中，所以看POST求情比GET请求安全，但也不是最安全的方式。如需要传送敏感数据，请使用加密方式传输</td>
-</tr>
-<tr>
-<td><strong>可见性</strong></td>
-<td>查询字符串显示在地址栏的URL中，可见</td>
-<td>查询字符串不会显示在地址栏中，不可见</td>
-</tr>
-</tbody>
-</table>
-<h4 id="其他HTTP请求方式"><a href="#其他HTTP请求方式" class="headerlink" title="其他HTTP请求方式"></a>其他HTTP请求方式</h4><table>
-<thead>
-<tr>
-<th><strong>方式</strong></th>
-<th><strong>描述</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>HEAD</td>
-<td>与GET请求类似，不同在与服务器只返回HTTP头部信息，没有页面内容</td>
-</tr>
-<tr>
-<td>PUT</td>
-<td>上传指定URL的描述</td>
-</tr>
-<tr>
-<td>DELETE</td>
-<td>删除指定资源</td>
-</tr>
-<tr>
-<td>OPTIONS</td>
-<td>返回服务器支持的HTTP方法</td>
-</tr>
-<tr>
-<td>CONNECT</td>
-<td>转换为透明TCP/IP隧道的连接请求</td>
-</tr>
-</tbody>
-</table>
-<h3 id="TCP三次握手四次挥手"><a href="#TCP三次握手四次挥手" class="headerlink" title="TCP三次握手四次挥手"></a>TCP三次握手四次挥手</h3><p>简单形容的话，建立连接时的三次握手：</p>
-<ol>
-<li>客户端 —&gt; 服务器，客户端请求连接</li>
-<li>服务器 —&gt; 客户端，服务器确认连接信息</li>
-<li>客户端 —&gt; 服务器，客户端确认连接信息，开始连接</li>
-</ol>
-<p>断开连接时的四次握手：</p>
-<ol>
-<li>A —&gt; B，A请求断开连接</li>
-<li>B —&gt; A，B确认请求并准备断开连接</li>
-<li>B —&gt; A，B关闭连接并通知A</li>
-<li>A —&gt; B，A确认关闭</li>
-</ol>
-<p><strong>三次握手：</strong></p>
-<p><img src="/2017/03/09/network-review/tcp3.jpeg" alt></p>
-<p><strong>第一次（syn=1，seq=x）：</strong></p>
-<p>客户端向服务器发送syn=1，seq=client_isn的数据包，客户端进入SYN_SEND状态</p>
-<p><strong>第二次（syn=1，ack=1，seq=y，ack_num=x+1）：</strong></p>
-<p>服务器收到请求包之后，syn=1，ack=1，seq=server_isn，ack_num=client_isn+1的数据包，服务器进人SYN_RCVD状态</p>
-<p><strong>第三次（ack=1，ack_num=y+1）：</strong></p>
-<p>客户端接收到回复后，检查收到的ack_num是否是之前发出去的seq+1以及ack是否为1，如果都对，就再发送syn=0，ack=1，ack_num=server_isn+1，发送后客户端进入ESTABLISHED状态，服务器收到后进入ESTABLISHED状态</p>
-<blockquote>
-<p>client_isn和server_isn是 随机ISN 序列号</p>
-<p>ack和syn是标志位</p>
-</blockquote>
-<p><strong>四次挥手：</strong></p>
-<p><img src="/2017/03/09/network-review/tcp4.jpeg" alt></p>
-<p><strong>第一次挥手（fin=1，seq=x）：</strong></p>
-<p>假设客户端想要关闭连接，客户端发送一个 FIN 标志位置为1的包，表示自己已经没有数据可以发送了，但是仍然可以接受数据。发送完毕后，客户端进入 FIN_WAIT_1 状态</p>
-<p><strong>第二次挥手（ack=1，ack_num=x+1）：</strong></p>
-<p>服务器端确认客户端的 FIN包，发送一个确认包，表明自己接受到了客户端关闭连接的请求，但还没有准备好关闭连接。发送完毕后，服务器端进入 CLOSE_WAIT 状态，客户端接收到这个确认包之后，进入 FIN_WAIT_2 状态，等待服务器端关闭连接。</p>
-<p><strong>第三次挥手（fin=1，seq=y）：</strong></p>
-<p>服务器端准备好关闭连接时，向客户端发送结束连接请求，FIN置为1。</p>
-<p>发送完毕后，服务器端进入 LAST_ACK 状态，等待来自客户端的最后一个ACK。</p>
-<p><strong>第四次挥手（ack=1，ack_num=y+1）：</strong></p>
-<p>客户端接收到来自服务器端的关闭请求，发送一个确认包，并进入 TIME_WAIT状态，等待可能出现的要求重传的 <code>ACK</code>包。</p>
-<p>服务器端接收到这个确认包之后，关闭连接，进入 CLOSED 状态。</p>
-<p>客户端等待了某个固定时间（两个最大段生命周期，2MSL，2 Maximum Segment Lifetime）之后，没有收到服务器端的 ACK，认为服务器端已经正常关闭连接，于是自己也关闭连接，进入 CLOSED状态。</p>
-<h4 id="三次握手四次握手原因"><a href="#三次握手四次握手原因" class="headerlink" title="三次握手四次握手原因"></a>三次握手四次握手原因</h4><p>这是因为服务端的LISTEN状态下的SOCKET当收到SYN报文的建连请求后，它可以把ACK和SYN（ACK起应答作用，而SYN起同步作用）放在一个报文里来发送。但关闭连接时，当收到对方的FIN报文通知时，它仅仅表示对方没有数据发送给你了；但未必你所有的数据都全部发送给对方了，所以你可以未必会马上会关闭SOCKET,也即你可能还需要发送一些数据给对方之后，再发送FIN报文给对方来表示你同意现在可以关闭连接了，所以它这里的ACK报文和FIN报文多数情况下都是分开发送的。</p>
-<p><strong>为什么TIME_WAIT状态还需要等2MSL后才能返回到CLOSED状态？</strong></p>
-<p>这是因为虽然双方都同意关闭连接了，而且握手的4个报文也都协调和发送完毕，按理可以直接回到CLOSED状态（就好比从SYN_SEND状态到ESTABLISH状态那样）；但是因为我们必须要假想网络是不可靠的，你无法保证你最后发送的ACK报文会一定被对方收到，因此对方处于LAST_ACK状态下的SOCKET可能会因为超时未收到ACK报文，而重发FIN报文，所以这个TIME_WAIT状态的作用就是用来重发可能丢失的ACK报文。</p>
-<p>速学路径：</p>
-<p><a href="http://www.jianshu.com/p/092705233d37" target="_blank" rel="noopener">http://www.jianshu.com/p/092705233d37</a></p>
-<h3 id="滑动窗口"><a href="#滑动窗口" class="headerlink" title="滑动窗口"></a>滑动窗口</h3><p>滑动窗口是接受数据端使用的窗口大小，用来告知发送端接收端的缓存大小，以此可以控制发送端发送数据的大小，从而达到流量控制的目的。</p>
-<h3 id="拥塞窗口"><a href="#拥塞窗口" class="headerlink" title="拥塞窗口"></a>拥塞窗口</h3><p>那么对于数据的发送端就是拥塞窗口了，拥塞窗口不代表缓存，拥塞窗口指某一源端数据流在一个RTT内可以最多发送的数据包数</p>
-<h3 id="TCP与UDP的区别"><a href="#TCP与UDP的区别" class="headerlink" title="TCP与UDP的区别"></a>TCP与UDP的区别</h3><ul>
-<li>TCP是面向连接的，UDP是无连接的</li>
-<li>TCP有<strong>顺序控制</strong>和<strong>重发控制</strong>，还有流控制(流量控制)，<strong>拥塞控制</strong>，UDP不保证消息送达</li>
-<li>TCP通过3次“握手”来保证数据发送的安全性，不会丢失数据包</li>
-<li>UDP每一次发送数据都需要绑定IP和端口号。相当于发送邮件，只管是否发送成功，不保证对方是否接收到数据</li>
-<li>TCP连接是点对点的，UDP支持多对多通信</li>
-<li>UDP适用于实时性比较高的，比如视频，广播，TCP适合传输文件</li>
-</ul>
-<h3 id="HTML状态码"><a href="#HTML状态码" class="headerlink" title="HTML状态码"></a>HTML状态码</h3><p>​    (1)<br>​    常见错误代码：200，304，400，404，500</p>
-<p>​    (2)<br>​    1xx：临时响应，服务器端响应成功，<br>​      等待请求者进一步操作</p>
-<p>​    (3)<br>​    2xx：响应成功</p>
-<p>​    202接受请求，未处理</p>
-<p>​    204处理了请求，但没有返回任何内容</p>
-<p>​    (4)<br>​    3xx重定向，要完成响应，服务器需要进一步处理</p>
-<p>​    301网页已被永久移动到新位置</p>
-<p>​    302临时移动到新位置</p>
-<p>​    305要求只能使用代理才能访问</p>
-<p>​    (5)<br>​    4xx请求错误</p>
-<p>​    400不理解请求语法</p>
-<p>​    401要求身份验证，先登陆才能请求</p>
-<p>​    403禁止访问，服务器拒绝请求</p>
-<p>​    405请求中的方法被禁用</p>
-<p>​    408请求超时</p>
-<p>​    (6)<br>​    5xx服务器在处理请求时内部发生错误，来自服务器本身的错误</p>
-<p>​    501服务器不具备完成该请求的功能</p>
-<p>​    502服务器作为网关或代理，从上游服务器收到无效响应</p>
-<p>​    504网关超时</p>
-<p>​    505  HTTP版本不支持</p>
-
+            <p>
+              TCP，HTTP和Socket区别
+tcp是传输协议，http是超文本传输协议
+tcp是传输层协议，http是应用层协议
+http连接是基于tcp的三次握手的
+Socket连接过程分为三个步骤：服务器监听，客户端请求，连接确认
+Socket可以支持不同的传输层协议（TCP或UDP）
+Socket是
+              ...
+            </p>
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2017/03/09/network-review/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -869,44 +668,22 @@
       
         
           
-            <blockquote>
-<p>昨天的重装环境也是为了实验自动化部署，踩了好多坑，但还是做到了，也许这就是不看英文文档的苦吧</p>
-</blockquote>
-<h2 id="大致思路"><a href="#大致思路" class="headerlink" title="大致思路"></a>大致思路</h2><p>网上找了一些教程，我大概懂了这个部署的流程，首先在远程tomcat的<code>tomcat-users.xml</code>里添加管理员，然后在maven的<code>settings.xml</code>里设置访问tomcat的账号密码，最后在项目的<code>pom.xml</code>设置远程服务器的地址，输入命令就自动部署了</p>
-<h2 id="第一步"><a href="#第一步" class="headerlink" title="第一步"></a>第一步</h2><p>登录服务器，在tomcat的<code>../tomcat/conf/tomcat-users.xml</code>添加如下代码</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">role</span> <span class="attr">rolename</span>=<span class="string">"admin-gui"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">role</span> <span class="attr">rolename</span>=<span class="string">"admin-script"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">role</span> <span class="attr">rolename</span>=<span class="string">"manager-gui"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">role</span> <span class="attr">rolename</span>=<span class="string">"manager-script"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">role</span> <span class="attr">rolename</span>=<span class="string">"manager-jmx"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">role</span> <span class="attr">rolename</span>=<span class="string">"manager-status"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">user</span> <span class="attr">username</span>=<span class="string">"admin"</span> <span class="attr">password</span>=<span class="string">"123456"</span> <span class="attr">roles</span>=<span class="string">"manager-gui,manager-script,manager-jmx,manager-status,admin-script,admin-gui"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>其实这个就是一个大坑，Tomcat会提示你，很多教程也会告诉你Tomcat8以后</p>
-<p>Users with the manager-gui role should not be granted either the manager-script or manager-jmx roles.</p>
-<p>也就是manager-gui，manager-script，manager-jmx 不能一起被授权</p>
-<p>结果听话的我，就一直只填一个角色，然后一直不成功，服务器提示401未授权错误</p>
-</blockquote>
-<h2 id="第二步"><a href="#第二步" class="headerlink" title="第二步"></a>第二步</h2><p>在maven的<code>settings.xml</code>里设置访问tomcat的账号密码</p>
-<p>这个文件的位置也是在<code>../maven/conf/settings.xml</code>，当然这是自己安装的maven目录下，如果是IDEA自带的maven3，可以设置在<code>~/.m2/settings.xml</code></p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">server</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">id</span>&gt;</span>productionServer<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">username</span>&gt;</span>admin<span class="tag">&lt;/<span class="name">username</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">password</span>&gt;</span>123456<span class="tag">&lt;/<span class="name">password</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">server</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h2 id="第三步"><a href="#第三步" class="headerlink" title="第三步"></a>第三步</h2><p>在项目的<code>pom.xml</code>设置远程服务器的地址</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">finalName</span>&gt;</span>MavenDemo<span class="tag">&lt;/<span class="name">finalName</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.tomcat.maven<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>tomcat7-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">              <span class="tag">&lt;<span class="name">server</span>&gt;</span>productionServer<span class="tag">&lt;/<span class="name">server</span>&gt;</span></span><br><span class="line">              <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://122.45.66.201/manager/text<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">              <span class="tag">&lt;<span class="name">path</span>&gt;</span>/MavenDemo<span class="tag">&lt;/<span class="name">path</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>这里的这个插件<code>tomcat7-maven-plugin</code>是Tomcat 8*也适用的</p>
-<p>地址必须是IP+<code>/manager/text</code></p>
-<p>path里的是访问地址，也是项目在webapps里的位置</p>
-</blockquote>
-<h2 id="一些坑"><a href="#一些坑" class="headerlink" title="一些坑"></a>一些坑</h2><p>项目的jdk和服务器的jdk版本要一样</p>
-<p>除了这个之外，我们还需要注意如果你用的是Tomcat 8.5，我们还要再做一个配置</p>
-<p>在<code>conf/Catalina/localhost/manager.xml</code>里写入（如果没有就创建）</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Context</span> <span class="attr">privileged</span>=<span class="string">"true"</span> <span class="attr">antiResourceLocking</span>=<span class="string">"false"</span> <span class="attr">docBase</span>=<span class="string">"$&#123;catalina.home&#125;/webapps/manager"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">Valve</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.valves.RemoteAddrValve"</span> <span class="attr">allow</span>=<span class="string">"^.*$"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">Context</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>因为Tomcat 8.5之后对安全访问增强了，不仅仅需要配置管理帐号还需要配置允许远程访问管理员账户</p>
-<p>修改后直接生效无须重启<br>在官方文档中提到：每个web应用应该有自己的安全管理文件（manager.xml）如果没有使用默认值 也就是不能远程访问，所以如果需要远程访问就需要创建<code>manager.xml</code>来指定允许远程访问规则</p>
-</blockquote>
-<p>后来应用到实际项目的时候，你会发现上传的大小受限制了，所以要改Nginx的配置</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">        listen <span class="number">80</span>;</span><br><span class="line">        server_name XX.com;</span><br><span class="line">        location /&#123;</span><br><span class="line">           proxy_pass http:<span class="comment">//192.168.0.12:8080;</span></span><br><span class="line">          client_max_body_size <span class="number">500</span>M; <span class="comment">//添加这一句</span></span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>如果你还使用了mybatis的自动生成工具<code>org.mybatis.generator</code>，请一定要注释掉它</p>
-<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>可以用IDEA的右侧maven可视化插件按钮，点击<code>tomcat7:redeploy</code></p>
-<p>如果你安装过maven，也可以使用命令：<code>mvn tomcat7:redeploy</code></p>
-<p>这里不用deploy，因为据说会出错，所以就用redeploy好了</p>
+            <p>
+              
+昨天的重装环境也是为了实验自动化部署，踩了好多坑，但还是做到了，也许这就是不看英文文档的苦吧
 
+大致思路网上找了一些教程，我大概懂了这个部署的流程，首先在远程tomcat的tomcat-users.xml里添加管理员，然后在maven的settings.xml里设置访问tomcat的账号密码，最后
+              ...
+            </p>
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2017/03/03/maven-product/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -1077,152 +854,24 @@
       
         
           
-            <blockquote>
-<p>记性太差，还是得写个教程来总结一下配置javaweb的教程，这篇教程也是综合了网上的很多教程</p>
-</blockquote>
-<h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p>服务器：阿里云ESC Centos 7.3</p>
-<p>本地: Mac OS X 10.10.5</p>
-<h2 id="预先准备"><a href="#预先准备" class="headerlink" title="预先准备"></a>预先准备</h2><p>最近才发现阿里云是不建议升级服务器的内核和操作系统版本，估计腾讯云也是，当初手贱，不管三七二十一，都给升级了，虽然也没有发现什么不对，就一直将就着用了，系统版本也是最新的7.3，本来是7.2的</p>
-<p>为了防止在软件更新时升级了内核及系统版本的情况，按照阿里云给出的<a href="https://help.aliyun.com/knowledge_detail/41199.html" target="_blank" rel="noopener">帮助文档</a>，我们做如下修改</p>
-<p>打开yum.conf文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/yum.conf</span><br></pre></td></tr></table></figure>
-<p>添加代码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">exclude=kernel*</span><br><span class="line">exclude=centos-release*</span><br></pre></td></tr></table></figure>
-<p>这样就防止升级了，如果还是不懂可以，参考<a href="https://help.aliyun.com/knowledge_detail/41199.html" target="_blank" rel="noopener">帮助文档</a></p>
-<p>接着我们可以开始升级软件包了</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y update</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>-y 参数是在执行过程中，遇到的交互默认选择 yes</p>
-</blockquote>
-<h2 id="安装JDK"><a href="#安装JDK" class="headerlink" title="安装JDK"></a>安装JDK</h2><p>访问Oracle官网下载jdk，因为Oracle搞了cookie验证，所以wget不方便</p>
-<p>下载地址-<a href="http://www.oracle.com/technetwork/cn/java/javase/downloads/jdk8-downloads-2133151-zhs.html" target="_blank" rel="noopener">http://www.oracle.com/technetwork/cn/java/javase/downloads/jdk8-downloads-2133151-zhs.html</a></p>
-<p>安装jdk之前一定要把之前的版本卸载掉</p>
-<p>查看之前已经安装的jdk rpm</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -qa | grep jdk</span><br></pre></td></tr></table></figure>
-<p>查到包名之后，我们就可以卸载了</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -e 包名</span><br></pre></td></tr></table></figure>
-<p>下载完安装包之后，我们用scp命令传到服务器</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp ~/Downloads/jdk-8u111-linux-x64.rpm root@maijinta.top:/usr/local/src</span><br></pre></td></tr></table></figure>
-<p>因为我已经添加信任，所以就不用输密码了</p>
-<p>如果一定要用wget的方法，用服务器直接下载的话，我提供下面的方法</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget --no-check-certificate --no-cookies --header &quot;Cookie: oraclelicense=accept-securebackup-cookie&quot; http://download.oracle.com/otn-pub/java/jdk/8u111-b14/jdk-8u111-linux-x64.rpm</span><br><span class="line"># 或者</span><br><span class="line">wget --no-cookies --no-check-certificate --header &quot;Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie&quot; http://download.oracle.com/otn-pub/java/jdk/8u111-b14/jdk-8u111-linux-x64.rpm</span><br></pre></td></tr></table></figure>
-<p>下面就开始安装rpm包了</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -ivh jdk-8u111-linux-x64.rpm</span><br></pre></td></tr></table></figure>
-<p>安装好以后，在/etc/profile文件中配置环境变量</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/profile</span><br></pre></td></tr></table></figure>
-<p>加入下面的内容</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export JAVA_HOME=/usr/java/default</span><br><span class="line">export PATH=$PATH:$JAVA_HOME/bin</span><br><span class="line">export CLASSPATH=.:$JAVA_HOME/jre/lib:$JAVA_HOME/lib:$JAVA_HOME/lib/tools.jar</span><br></pre></td></tr></table></figure>
-<p>查看版本号</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -version 或 javac -version</span><br></pre></td></tr></table></figure>
-<p>查看环境变量</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">echo $PATH</span><br><span class="line">#输出了/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/root/bin:/usr/java/default/bin</span><br></pre></td></tr></table></figure>
-<h2 id="安装Tomcat"><a href="#安装Tomcat" class="headerlink" title="安装Tomcat"></a>安装Tomcat</h2><p>我下载的是tomcat 8.5，下载地址是-<a href="http://tomcat.apache.org/download-80.cgi" target="_blank" rel="noopener">http://tomcat.apache.org/download-80.cgi</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget http://apache.fayea.com/tomcat/tomcat-8/v8.5.11/bin/apache-tomcat-8.5.11.tar.gz</span><br></pre></td></tr></table></figure>
-<p>解压</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar zxvf apache-tomcat-8.5.11.tar.gz</span><br></pre></td></tr></table></figure>
-<p>转移文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv apache-tomcat-8.5.11 /usr/local/tomcat</span><br></pre></td></tr></table></figure>
-<p>运行Tomcat</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd bin</span><br><span class="line">./startup.sh</span><br></pre></td></tr></table></figure>
-<p>停止Tomcat</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./shutdown.sh</span><br></pre></td></tr></table></figure>
-<h2 id="安装mysql"><a href="#安装mysql" class="headerlink" title="安装mysql"></a>安装mysql</h2><p>下载安装rpm</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/src</span><br><span class="line">wget http://dev.mysql.com/get/mysql57-community-release-el7-9.noarch.rpm</span><br><span class="line">rpm -ivh mysql57-community-release-el7-9.noarch.rpm</span><br></pre></td></tr></table></figure>
-<p>安装mysql</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install mysql-community-server</span><br></pre></td></tr></table></figure>
-<p>安装mysql要好长一段时间，结果中途断网了，真悲剧</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">/var/run/yum.pid 已被锁定，PID 为 8095 的另一个程序正在运行。</span><br><span class="line">Another app is currently holding the yum lock; waiting for it to exit...</span><br><span class="line">  另一个应用程序是：yum</span><br><span class="line">    内存： 88 M RSS （480 MB VSZ）</span><br><span class="line">    已启动： Wed Mar  1 18:56:02 2017 - 1:48:09之前</span><br><span class="line">    状态  ：睡眠中，进程ID：8095</span><br></pre></td></tr></table></figure>
-<p>只能删除该进程</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm -rf /var/run/yum.pid</span><br></pre></td></tr></table></figure>
-<p>清理之前下的缓存后重新下载</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum clean all</span><br><span class="line">yum install mysql-community-server</span><br></pre></td></tr></table></figure>
-<p>下面的过程和之前的文章一样-<a href="https://barry215.github.io/2017/02/21/mysql-install/">Centos7 mysql 安装篇</a></p>
-<h2 id="安装Nginx"><a href="#安装Nginx" class="headerlink" title="安装Nginx"></a>安装Nginx</h2><p>  先查看yum可以安装的版本</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum info nginx</span><br></pre></td></tr></table></figure>
-<p>我的是1.10.2，所以就打算用他的了</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install nginx</span><br></pre></td></tr></table></figure>
-<p>因为这样安装不用自己去装依赖，安装完也可以用命令去查看版本</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nginx -v</span><br></pre></td></tr></table></figure>
-<p>开启服务</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl start nginx</span><br></pre></td></tr></table></figure>
-<p>查看状态</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl status nginx</span><br></pre></td></tr></table></figure>
-<p>当然也可以更换软件源，首先新建一个repo，例如 nginx.repo</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/yum.repos.d/nginx.repo</span><br></pre></td></tr></table></figure>
-<p>编辑内容如下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[nginx]</span><br><span class="line">name=nginx repo</span><br><span class="line">baseurl=http://nginx.org/packages/mainline/centos/7/$basearch/</span><br><span class="line">gpgcheck=0</span><br><span class="line">enabled=1</span><br></pre></td></tr></table></figure>
-<p>这里配置的是mainline version，如果想用稳定版，将baseurl中的mainline删除即可</p>
-<h3 id="配置Nginx"><a href="#配置Nginx" class="headerlink" title="配置Nginx"></a>配置Nginx</h3><p>用yum安装的nginx，配置文件在<code>/etc/nginx/nginx.conf</code>这里</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/nginx/nginx.conf</span><br></pre></td></tr></table></figure>
-<p>添加监听端口，因为tomcat是8080端口</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">        listen       80;</span><br><span class="line">        #listen       [::]:80 default_server;</span><br><span class="line">        server_name  www.maijinta.top;</span><br><span class="line">        root         /usr/share/nginx/html;</span><br><span class="line"></span><br><span class="line">        # Load configuration files for the default server block.</span><br><span class="line">        include /etc/nginx/default.d/*.conf;</span><br><span class="line"></span><br><span class="line">        location / &#123;</span><br><span class="line">                proxy_pass http://127.0.0.1:8080;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        error_page 404 /404.html;</span><br><span class="line">            location = /40x.html &#123;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        error_page 500 502 503 504 /50x.html;</span><br><span class="line">            location = /50x.html &#123;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>然后重启服务</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart nginx</span><br></pre></td></tr></table></figure>
-<h2 id="安装Redis"><a href="#安装Redis" class="headerlink" title="安装Redis"></a>安装Redis</h2><p>目前稳定版是3.2.8，其实应该不管版本直接下stable版本就好了</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget http://download.redis.io/releases/redis-stable.tar.gz</span><br></pre></td></tr></table></figure>
-<p>首先可以判断是否装了tcl</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -qa tcl</span><br></pre></td></tr></table></figure>
-<p>有版本号回复说明装了</p>
-<p>也可以用<code>which tcl</code>或<code>whereis tcl</code></p>
-<p>接下来就解压，并移到想要的位置</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tar zxvf redis-stable.tar.gz</span><br><span class="line">mv redis-stable /usr/local/</span><br></pre></td></tr></table></figure>
-<p>进入redis目录，编译</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/redis-stable</span><br><span class="line">make</span><br></pre></td></tr></table></figure>
-<p>然后编译检查</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">make test</span><br><span class="line">#成功后会提示 \o/ All tests passed without errors!</span><br></pre></td></tr></table></figure>
-<p>如果它提示缺什么，就装什么</p>
-<p>编译检查很持续一段时间，结束后就可以安装了</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make install</span><br></pre></td></tr></table></figure>
-<p>安装完就执行</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redis-server</span><br></pre></td></tr></table></figure>
-<p>看到这个图就说明成功了</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">               _._</span><br><span class="line">          _.-``__ &apos;&apos;-._</span><br><span class="line">     _.-``    `.  `_.  &apos;&apos;-._           Redis 3.2.8 (00000000/0) 64 bit</span><br><span class="line"> .-`` .-```.  ```\/    _.,_ &apos;&apos;-._</span><br><span class="line">(    &apos;      ,       .-`  | `,    )     Running in standalone mode</span><br><span class="line">|`-._`-...-` __...-.``-._|&apos;` _.-&apos;|     Port: 6379</span><br><span class="line">|    `-._   `._    /     _.-&apos;    |     PID: 20631</span><br><span class="line"> `-._    `-._  `-./  _.-&apos;    _.-&apos;</span><br><span class="line">|`-._`-._    `-.__.-&apos;    _.-&apos;_.-&apos;|</span><br><span class="line">|    `-._`-._        _.-&apos;_.-&apos;    |           http://redis.io</span><br><span class="line"> `-._    `-._`-.__.-&apos;_.-&apos;    _.-&apos;</span><br><span class="line">|`-._`-._    `-.__.-&apos;    _.-&apos;_.-&apos;|</span><br><span class="line">|    `-._`-._        _.-&apos;_.-&apos;    |</span><br><span class="line"> `-._    `-._`-.__.-&apos;_.-&apos;    _.-&apos;</span><br><span class="line">     `-._    `-.__.-&apos;    _.-&apos;</span><br><span class="line">         `-._        _.-&apos;</span><br><span class="line">             `-.__.-&apos;</span><br></pre></td></tr></table></figure>
-<p>设置redis 服务后台启动，在配置文件 redis.conf 中设置</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">daemonize yes #默认是no</span><br></pre></td></tr></table></figure>
-<p>然后用这个配置启动</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redis-server redis.conf</span><br></pre></td></tr></table></figure>
-<p>查看进程，果然redis已经启动了</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ps -aux #查看所有进程</span><br><span class="line">ps -ef|grep redis #只看redis</span><br></pre></td></tr></table></figure>
-<p>用客户端测试</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">redis-cli</span><br><span class="line">set name frank</span><br><span class="line">get name</span><br></pre></td></tr></table></figure>
-<p>测试成功</p>
-<p>关闭redis服务</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">redis-cli shutdown</span><br><span class="line">pkill redis-server #杀死进程</span><br></pre></td></tr></table></figure>
-<p>修改配置文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vim redis.conf</span><br><span class="line">#requirepass foobared  #在这里把注释去掉，换个密码，如requirepass 123456</span><br><span class="line">#bind 127.0.0.1  #加上注释，允许远程访问</span><br></pre></td></tr></table></figure>
-<p>查看网络监听</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -nlt|grep 6379</span><br></pre></td></tr></table></figure>
-<p>看到网络监听从<code>127.0.0.1:6379</code> 变成 <code>0 0.0.0.0:6379</code>，表示Redis已经允许远程登陆访问</p>
-<p>修改<code>redis-cli</code>密码，默认是空</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">执行redis-cli #登录</span><br><span class="line">执行config get requirepass</span><br><span class="line">得到 1) &quot;requirepass&quot;</span><br><span class="line">	2) &quot;&quot;             #由此可见是没密码的</span><br><span class="line">执行config set requirepass 123456 #设置密码</span><br><span class="line">需要重新登陆</span><br><span class="line">执行redis-cli -h 127.0.0.1 -p 6379 -a 123456或redis-cli -a 123456</span><br></pre></td></tr></table></figure>
-<p>开机启动配置</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo &quot;/usr/local/redis-stable/redis-server /usr/local/redis-stable/redis.conf &amp;&quot; &gt;&gt; /etc/rc.local</span><br></pre></td></tr></table></figure>
-<h2 id="安装vsftpd"><a href="#安装vsftpd" class="headerlink" title="安装vsftpd"></a>安装vsftpd</h2><p>直接yum安装</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install vsftpd</span><br></pre></td></tr></table></figure>
-<p>启动vsftpd服务</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart vsftpd.service  # 重启服务</span><br><span class="line">systemctl start vsftpd.service    # 启动服务</span><br><span class="line">systemctl status vsftpd.service   # 服务状态查看</span><br></pre></td></tr></table></figure>
-<p>修改配置文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/vsftpd/vsftpd.conf</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">anonymous_enable=NO        # 不允许匿名访问，禁用匿名登录</span><br><span class="line">chroot_local_user=YES      # 启用限定用户在其主目录下</span><br><span class="line">chroot_list_enable=YES</span><br><span class="line">chroot_list_file=/etc/vsftpd/chroot_list</span><br><span class="line">use_localtime=YES          # 使用本地时(自行添加)</span><br><span class="line">local_enable=YES           # 允许使用本地帐户进行FTP用户登录验证</span><br><span class="line">allow_writeable_chroot=YES # 如果启用了限定用户在其主目录下需要添加这个配置，解决报错 500 OOPS: vsftpd: refusing to run with writable root inside chroot()</span><br><span class="line">xferlog_enable=YES         # 启用上传和下载的日志功能，默认开启。</span><br><span class="line">local_umask=022            # 设置本地用户默认文件掩码022</span><br><span class="line"># FTP上本地的文件权限，默认是077，不过vsftpd安装后的配置文件里默认是022</span><br><span class="line">ascii_upload_enable=YES   #设定支持ASCII模式的上传和下载功能</span><br><span class="line">ascii_download_enable=YES</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>从2.3.5之后，vsftpd增强了安全检查，如果用户被限定在了其主目录下，则该用户的主目录不能再具有写权限了</p>
-<p>所以要添加 allow_writeable_chroot=YES</p>
-</blockquote>
-<p>创建新用户</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#创建用户 ftpuser 指定 /var/ftp/public_root 目录</span><br><span class="line">useradd -d /var/ftp/public_root -g ftp -s /sbin/nologin ftpuser</span><br><span class="line"># 设置用户 ftpuser 的密码</span><br><span class="line">passwd ftpuser</span><br><span class="line"># 把 /home/vsftpd 的所有权给ftpuser.root</span><br><span class="line"># chown -R ftpuser.root /var/ftp/public_root 这步不用做，做了应该也没事</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>-s：禁止此用户登录SSH的权限</p>
-<p>/sbin/nologin：不允许此用户登录系统，但可以登录FTP</p>
-</blockquote>
-<p>权限设置</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--更改目录所有者--&gt;</span><br><span class="line">chown ftpuser /var/ftp/public_root</span><br><span class="line">&lt;!--更改目录权限--&gt;</span><br><span class="line">chmod -R 755 /var/ftp/public_root</span><br></pre></td></tr></table></figure>
-<p>设置开机重启</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl enable vsftpd.service</span><br></pre></td></tr></table></figure>
-<p>删除用户 </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">userdel ftpuser</span><br></pre></td></tr></table></figure>
-<p>最后在Filezilla中创建新站点就可以用了</p>
+            <p>
+              
+记性太差，还是得写个教程来总结一下配置javaweb的教程，这篇教程也是综合了网上的很多教程
 
+环境服务器：阿里云ESC Centos 7.3
+本地: Mac OS X 10.10.5
+预先准备最近才发现阿里云是不建议升级服务器的内核和操作系统版本，估计腾讯云也是，当初手贱，不管三七二十一，都给升
+              ...
+            </p>
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2017/03/01/centos-java-production/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -1381,59 +1030,23 @@
       
         
           
-            <blockquote>
-<p>之前装过腾讯云提供的免费ssl证书，但是没试成功。如果真就这样放弃Https，那就很瓜皮了，为了要做一个有灵性的后台，所以我最终还是找到了另外一个免费的SSL证书，哈哈，这就用起来很舒服了</p>
-</blockquote>
-<h2 id="证书提供"><a href="#证书提供" class="headerlink" title="证书提供"></a>证书提供</h2><p>去年的时候，国内 <code>WoSign</code> （沃通）还有免费的SSL证书，但是现在它已经被打压了</p>
-<p>不过，<code>Let&#39;s Encrypt</code> 也正式对外颁发免费的<code>SSL</code>证书</p>
-<blockquote>
-<p><code>Let’s Encrypt</code> 是一个免费、自动化、开放的证书签发服务，由 <em>ISRG</em>（Internet Security Research Group，译：互联网安全研究小组) 这个非盈利组织维护。现在是 Linux 基金会 (Linux Foundation) 合作的项目。</p>
-</blockquote>
-<h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p>服务器：Centos 7.0</p>
-<p>服务器软件：Nginx</p>
-<h2 id="安装-Certbot"><a href="#安装-Certbot" class="headerlink" title="安装 Certbot"></a>安装 Certbot</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install certbot</span><br></pre></td></tr></table></figure>
-<h2 id="初始化验证目录"><a href="#初始化验证目录" class="headerlink" title="初始化验证目录"></a>初始化验证目录</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /usr/share/nginx/certbot</span><br></pre></td></tr></table></figure>
-<h2 id="绑定-Let’s-Encrypt-验证目录"><a href="#绑定-Let’s-Encrypt-验证目录" class="headerlink" title="绑定 Let’s Encrypt 验证目录"></a>绑定 Let’s Encrypt 验证目录</h2><p>进入Nginx配置目录</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/nginx/conf</span><br></pre></td></tr></table></figure>
-<p>配置nginx.conf</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi nginx.conf</span><br></pre></td></tr></table></figure>
-<p>只需要在 nginx 配置文件上的 server 层加上下面的代码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">location ^~ /.well-known/acme-challenge/ &#123;</span><br><span class="line">    default_type &quot;text/plain&quot;;</span><br><span class="line">    root /usr/share/nginx/certbot;</span><br><span class="line">&#125;</span><br><span class="line">location = /.well-known/acme-challenge/ &#123;</span><br><span class="line">    return 404;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>重启服务器</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 进入sbin目录</span><br><span class="line">cd /usr/local/nginx/sbin</span><br><span class="line"># 重启服务器</span><br><span class="line">./nginx -s reload</span><br></pre></td></tr></table></figure>
-<h2 id="使用-certbot颁发证书"><a href="#使用-certbot颁发证书" class="headerlink" title="使用 certbot颁发证书"></a>使用 certbot颁发证书</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo certbot certonly --webroot -w /usr/share/nginx/certbot -d 你的域名</span><br><span class="line">sudo certbot certonly --webroot -w /usr/share/nginx/certbot -d maijinta.cn  #我的是这个</span><br></pre></td></tr></table></figure>
-<p>然后第一次使用的时候，Certbot 会让你填写一个邮箱，该邮箱作为证书的拥有者，用于后面证书更新</p>
-<blockquote>
-<p>重点是我也第一次看到命令行里还有图形界面的输入框，真是大开眼界</p>
-</blockquote>
-<p>还有就是同意 <code>Let&#39;s Encrypt</code> 的使用条款，没有异议的话选择 Agree就好了</p>
-<p>完成颁发之后，就会看到 Congratulations之类的字样</p>
-<h2 id="引入SSL证书并绑定443端口"><a href="#引入SSL证书并绑定443端口" class="headerlink" title="引入SSL证书并绑定443端口"></a>引入SSL证书并绑定443端口</h2><p>还是配置nginx.conf</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">        listen 80;</span><br><span class="line">        listen 443 ssl;</span><br><span class="line">        server_name  maijinta.cn www.maijinta.cn;</span><br><span class="line"></span><br><span class="line">        ssl_certificate /etc/letsencrypt/live/maijinta.cn/fullchain.pem;</span><br><span class="line">        ssl_certificate_key /etc/letsencrypt/live/maijinta.cn/privkey.pem;</span><br><span class="line">        ssl_trusted_certificate /etc/letsencrypt/live/maijinta.cn/chain.pem;</span><br><span class="line"></span><br><span class="line">        ssl_session_cache shared:SSL:10m;</span><br><span class="line">        ssl_session_timeout 20m;</span><br><span class="line">        ssl_prefer_server_ciphers on;</span><br><span class="line">        ssl_ciphers ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-RC4-SHA:!ECDHE-RSA-RC4-SHA:ECDH-ECDSA-RC4-SHA:ECDH-RSA-RC4-SHA:ECDHE-RSA-AES256-SHA:!RC4-SHA:HIGH:!aNULL:!eNULL:!LOW:!3DES:!MD5:!EXP:!CBC:!EDH:!kEDH:!PSK:!SRP:!kECDH;</span><br><span class="line"></span><br><span class="line">        location ^~ /.well-known/acme-challenge/ &#123;</span><br><span class="line">                default_type &quot;text/plain&quot;;</span><br><span class="line">                root     /usr/share/nginx/certbot;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        location = /.well-known/acme-challenge/ &#123;</span><br><span class="line">             return 404;</span><br><span class="line">        &#125;</span><br><span class="line">        location / &#123;</span><br><span class="line">            #root   html; #before exit</span><br><span class="line">            #index  index.html index.htm; #before exit</span><br><span class="line">        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">        proxy_set_header Host $http_host;</span><br><span class="line">        proxy_set_header X-NginX-Proxy true;</span><br><span class="line">        proxy_http_version 1.1;</span><br><span class="line">        proxy_pass http://my_nodejs_upstream/;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>我的配置文件最终是这样的，加了一些ssl必要的配置，可以和之前的博文对比——<a href="https://barry215.github.io/2017/02/13/ConfigureCentos7/">从头配置NodeJs和PM2</a></p>
-<p>配置之后就可以重启服务器了，但是重启之后我遇到了一个问题</p>
-<p>nginx提示缺少<code>the &quot;ssl&quot; parameter requires ngx_http_ssl_module</code></p>
-<p>估计是当初编译安装的时候没有加上<code>--with-http_ssl_module</code></p>
-<p>所以要重新编译</p>
-<h2 id="查看原来的配置参数"><a href="#查看原来的配置参数" class="headerlink" title="查看原来的配置参数"></a>查看原来的配置参数</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/nginx/sbin/nginx -V</span><br><span class="line">返回了configure arguments: --prefix=/usr/local/nginx --with-pcre=../pcre-8.40</span><br></pre></td></tr></table></figure>
-<p>configure arguments:就是我原来的配置信息</p>
-<h2 id="加入新参数，重新编译"><a href="#加入新参数，重新编译" class="headerlink" title="加入新参数，重新编译"></a>加入新参数，重新编译</h2><h3 id="进入nginx源码目录"><a href="#进入nginx源码目录" class="headerlink" title="进入nginx源码目录"></a>进入nginx源码目录</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd nginx-1.10.3</span><br></pre></td></tr></table></figure>
-<h3 id="停止nginx进程"><a href="#停止nginx进程" class="headerlink" title="停止nginx进程"></a>停止nginx进程</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">killall -9 nginx</span><br></pre></td></tr></table></figure>
-<h3 id="重新编译的代码和模块"><a href="#重新编译的代码和模块" class="headerlink" title="重新编译的代码和模块"></a>重新编译的代码和模块</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./configure --prefix=/usr/local/nginx --with-pcre=../pcre-8.40 --with-http_ssl_module</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make #编译，注意：千万别make install，否则就覆盖安装了</span><br></pre></td></tr></table></figure>
-<p>make完之后在<code>./nginx-1.10.3/objs</code>目录下就多了个nginx，这个就是新版本的程序了</p>
-<h3 id="替换nginx二进制文件"><a href="#替换nginx二进制文件" class="headerlink" title="替换nginx二进制文件"></a>替换nginx二进制文件</h3><p>保持当前目录不变</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 先备份nginx</span><br><span class="line">cp /usr/local/nginx/sbin/nginx /usr/local/nginx/sbin/nginx.bak</span><br><span class="line"># 再覆盖，覆盖的时候最好是关掉nginx，不然可能是文件正在使用中，无法覆盖</span><br><span class="line">cp ./objs/nginx /usr/local/nginx/sbin/</span><br></pre></td></tr></table></figure>
-<p>开启服务器</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 进入sbin目录</span><br><span class="line">cd /usr/local/nginx/sbin</span><br><span class="line"># 开启服务器</span><br><span class="line">./nginx</span><br></pre></td></tr></table></figure>
-<h2 id="设置自动更新证书"><a href="#设置自动更新证书" class="headerlink" title="设置自动更新证书"></a>设置自动更新证书</h2><p>因为 <code>Let&#39;s Encrypt</code> 的证书<strong>只有 3个月 有效期</strong></p>
-<p>所以我们需要依靠 certbot 自动更新证书</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">certbot renew --quiet</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>这样之后我们的HTTPS就完工了，快打开浏览器试一下吧！</p>
-</blockquote>
+            <p>
+              
+之前装过腾讯云提供的免费ssl证书，但是没试成功。如果真就这样放弃Https，那就很瓜皮了，为了要做一个有灵性的后台，所以我最终还是找到了另外一个免费的SSL证书，哈哈，这就用起来很舒服了
 
+证书提供去年的时候，国内 WoSign （沃通）还有免费的SSL证书，但是现在它已经被打压了
+不过，Let
+              ...
+            </p>
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2017/02/25/configureHttps/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -1592,80 +1205,30 @@
       
         
           
-            <blockquote>
-<p>主要记一下平时不注意的点</p>
-</blockquote>
-<h2 id="java篇"><a href="#java篇" class="headerlink" title="java篇"></a>java篇</h2><ol>
-<li><p>pojo中的成员变量必须是包装类属性</p>
-</li>
-<li><p>pojo中都要有toString方法</p>
-</li>
-<li><p>pojo 类中布尔类型的变量，都不要加 is</p>
-</li>
-<li><p>方法参数中的可变参数(…)要放在其他参数的最后</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Varargs</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">(String... args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(String arg : args) &#123;</span><br><span class="line">            System.out.println(arg);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        test();<span class="comment">//0个参数</span></span><br><span class="line">        test(<span class="string">"a"</span>);<span class="comment">//1个参数</span></span><br><span class="line">        test(<span class="string">"a"</span>,<span class="string">"b"</span>);<span class="comment">//多个参数</span></span><br><span class="line">        test(<span class="keyword">new</span> String[] &#123;<span class="string">"a"</span>, <span class="string">"b"</span>, <span class="string">"c"</span>&#125;);<span class="comment">//直接传递数组</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>long b = 4L; 符号标记要大写，因为字体<code>l</code>和<code>1</code>很像</p>
-</li>
-<li><p>method(“a”, “b”, “c”);方法参数书写格式要注意逗号后空一格</p>
-</li>
-<li><p>代码格式中缩进要4 个空格，不要2个空格</p>
-</li>
-<li><p>在pojo的方法中应遵守下面的规范</p>
-<ol>
-<li>获取单个对象的方法用get做前缀</li>
-<li>获取多个对象的方法用list做前缀</li>
-<li>获取统计值的方法用count做前缀</li>
-<li>插入的方法用save(推荐)或insert做前缀</li>
-<li>删除的方法用remove(推荐)或delete做前缀</li>
-<li>修改的方法用update做前缀</li>
-</ol>
-</li>
-<li><p>数据传输对象取名：xxxDTO，之前我没写DTO后缀，下次记住</p>
-</li>
-<li><p>用设计模式时，需要把类名给体现出来，如下</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">OrderFactory</span></span>;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LoginProxy</span></span>; </span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ResourceObserver</span></span>;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>使用常量的equals方法，可以防止空指针问题：<code>&quot;1&quot;.equals(temp)</code></p>
-</li>
-<li><p>不要在 foreach 循环里进行元素的 remove/add 操作。remove 元素请使用 Iterator方式,如果并发操作,需要对 Iterator 对象加锁</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Iterator&lt;String&gt; it = a.iterator(); </span><br><span class="line">while(it.hasNext())&#123;</span><br><span class="line">String temp = it.next(); </span><br><span class="line">	if(删除元素的条件)&#123;</span><br><span class="line">		it.remove();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在做抽象接口中，可以利用泛型把抽象更深化</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public interface Info&lt;T&gt; &#123;</span><br><span class="line">	public T getVar();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>使用 entrySet 遍历 Map 类集合 KV，而不是 keySet 方式进行遍历，前面这种是一遍循环，后面两遍</p>
-</li>
-<li><p>线程资源必须通过线程池提供,不允许在应用中自行显式创建线程</p>
-</li>
-<li><p>SimpleDateFormat 是线程不安全的类,一般不要定义为static变量,如果定义为static,必须加锁,或者使用 DateUtils 工具类</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">private static final ThreadLocal&lt;DateFormat&gt; df = new ThreadLocal&lt;DateFormat&gt;() &#123; </span><br><span class="line">@Override</span><br><span class="line">	protected DateFormat initialValue() &#123;</span><br><span class="line">		return new SimpleDateFormat(&quot;yyyy-MM-dd&quot;);</span><br><span class="line">	&#125; </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>并发修改同一记录时,避免更新丢失,要么在应用层加锁,要么在缓存加锁,要么在数据库层使用乐观锁,使用 version 作为更新依据</p>
-</li>
-<li>Math.random() 这个方法返回是 double 类型,注意取值的范围 0≤x&lt;1(能够 取到零值,注意除零异常),如果想获取整数类型的随机数,不要将 x 放大 10 的若干倍然后 取整,直接使用 Random 对象的 nextInt 或者 nextLong 方法</li>
-<li>获取当前毫秒数 System.currentTimeMillis(); 而不是 new Date().getTime();</li>
-<li>异常不要用来做流程控制,条件控制,因为异常的处理效率比条件分支低</li>
-<li>不能在 finally 块中使用 return,finally 块中的 return 返回后方法结束执行,不 会再执行 try 块中的 return 语句</li>
-</ol>
-<h2 id="mysql篇"><a href="#mysql篇" class="headerlink" title="mysql篇"></a>mysql篇</h2><ol>
-<li>表达是与否概念的字段,必须使用 is_xxx 的方式命名,数据类型是 unsigned tinyint ( 1表示是,0表示否),此规则同样适用于odps建表</li>
-<li>唯一索引名为 <code>uk_字段名</code>；普通索引名则为 <code>idx_字段名</code></li>
-<li>表名、字段名必须使用小写字母或数字;禁止出现数字开头,禁止两个下划线中间只出现数字</li>
-<li>小数类型为 decimal,禁止使用 float 和 double</li>
-<li>如果存储的字符串长度几乎相等,使用 char 定长字符串类型</li>
-<li>varchar 是可变长字符串,不预先分配存储空间,长度不要超过 5000,如果存储长度大于此值,定义字段类型为 text,独立出来一张表,用主键来对应,避免影响其它字段索 引效率</li>
-<li>不要使用 count(列名)或 count(常量)来替代 count(*),count(*)就是 SQL92 定义 的标准统计行数的语法,跟数据库无关,跟 NULL 和非 NULL 无关</li>
-<li>不得使用外键与级联,一切外键概念必须在应用层解决</li>
-<li>禁止使用存储过程,存储过程难以调试和扩展,更没有移植性(不用学存储过程好开心)</li>
-<li><code>in</code> 操作能避免则避免,若实在避免不了,需要仔细评估<code>in</code> 后边的集合元素数量,控制在 1000 个之内</li>
-<li>pojo 类的 boolean 属性不能加 is,而数据库字段必须加 is_,要求在 resultMap 中 进行字段与属性之间的映射</li>
-</ol>
-<blockquote>
-<p>其实我还有一些没记下，因为完全没接触过。。尴尬，还是要继续学习</p>
-</blockquote>
+            <p>
+              
+主要记一下平时不注意的点
 
+java篇
+pojo中的成员变量必须是包装类属性
+
+pojo中都要有toString方法
+
+pojo 类中布尔类型的变量，都不要加 is
+
+方法参数中的可变参数(…)要放在其他参数的最后
+public class Varargs &#123;    public sta
+              ...
+            </p>
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2017/02/25/java-manual/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -1836,29 +1399,23 @@
       
         
           
-            <blockquote>
-<p>写这篇的目的，纯属记笔记哈，因为那些流程和命令要背住，还是。。有点难度的</p>
-</blockquote>
-<h2 id="安装RPM包"><a href="#安装RPM包" class="headerlink" title="安装RPM包"></a>安装RPM包</h2><p>官网地址：<a href="https://dev.mysql.com/downloads/repo/yum/" target="_blank" rel="noopener">https://dev.mysql.com/downloads/repo/yum/</a></p>
-<p>找到最新版本的mysql rpm包，我选择的是<code>mysql57-community-release-el7-9.noarch.rpm</code></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">wget http://dev.mysql.com/get/mysql57-community-release-el7-9.noarch.rpm</span><br><span class="line">rpm -ivh mysql57-community-release-el7-9.noarch.rpm</span><br><span class="line"><span class="meta">#</span><span class="bash"> 貌似也能直接这样</span></span><br><span class="line">rpm -Uvh http://dev.mysql.com/get/mysql57-community-release-el7-9.noarch.rpm</span><br></pre></td></tr></table></figure>
-<h2 id="可选-重新生成缓存"><a href="#可选-重新生成缓存" class="headerlink" title="[可选]重新生成缓存"></a>[可选]重新生成缓存</h2><p>当时我是做了，但是做后感觉不做也应该没事</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum clean all</span><br><span class="line">yum makecache</span><br></pre></td></tr></table></figure>
-<h2 id="yum安装mysql服务端"><a href="#yum安装mysql服务端" class="headerlink" title="yum安装mysql服务端"></a>yum安装mysql服务端</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y mysql-server</span><br></pre></td></tr></table></figure>
-<p>这样之后就已经装好mysql服务端程序了，印象里因为网络的问题下载了很久</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 查看mysql版本</span></span><br><span class="line">mysql --version</span><br></pre></td></tr></table></figure>
-<h2 id="开启mysql服务"><a href="#开启mysql服务" class="headerlink" title="开启mysql服务"></a>开启mysql服务</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">service mysqld start </span><br><span class="line"><span class="meta">#</span><span class="bash"> 或</span></span><br><span class="line">systemctl start mysqld</span><br></pre></td></tr></table></figure>
-<h2 id="配置mysql"><a href="#配置mysql" class="headerlink" title="配置mysql"></a>配置mysql</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl enable mysqld # 设置为开机启动项</span><br><span class="line">systemctl daemon-reload # 重新载入 systemd,扫描新的配置</span><br></pre></td></tr></table></figure>
-<p>紧接着修改/etc/my.cnf配置文件，第一次的时候我是最后才配置下面的编码方式</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[mysqld] # 在这里添加下面的内容</span><br><span class="line">character_set_server=utf8</span><br><span class="line">init_connect='SET NAMES utf8'</span><br><span class="line"><span class="meta">#</span><span class="bash"> default-time_zone = <span class="string">'+8:00'</span>  <span class="comment">#修改时区，加了也没事</span></span></span><br></pre></td></tr></table></figure>
-<p>然后重启数据库</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart mysqld</span><br></pre></td></tr></table></figure>
-<h2 id="修改密码"><a href="#修改密码" class="headerlink" title="修改密码"></a>修改密码</h2><p>在log文件中找到数据库初始化的临时密码</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep 'temporary password' /var/log/mysqld.log</span><br></pre></td></tr></table></figure>
-<p>拿到临时密码之后就可以修改密码了</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 登录mysql，输入临时密码</span></span><br><span class="line">mysql -u root -p</span><br><span class="line"><span class="meta">#</span><span class="bash"> 设置新密码,密码因为默认规则要求有大小写和数字和特殊符号</span></span><br><span class="line">set password for 'root'@'localhost'=password('Abc&amp;123');</span><br><span class="line"><span class="meta">#</span><span class="bash"> 创建新用户</span></span><br><span class="line">GRANT ALL PRIVILEGES ON *.* TO 'frank'@'%' IDENTIFIED BY '123&amp;Abc' WITH GRANT OPTION;</span><br><span class="line"><span class="meta">#</span><span class="bash"> 刷新</span></span><br><span class="line">flush privileges;</span><br></pre></td></tr></table></figure>
+            <p>
+              
+写这篇的目的，纯属记笔记哈，因为那些流程和命令要背住，还是。。有点难度的
 
+安装RPM包官网地址：https://dev.mysql.com/downloads/repo/yum/
+找到最新版本的mysql rpm包，我选择的是mysql57-community-release-el7-9.noa
+              ...
+            </p>
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2017/02/21/mysql-install/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -2029,150 +1586,26 @@
       
         
           
-            <blockquote>
-<p>下面我来分享下配置Centos7的吐血经历，(╯﹏╰)蓝瘦香菇…</p>
-</blockquote>
-<h2 id="环境介绍"><a href="#环境介绍" class="headerlink" title="环境介绍"></a>环境介绍</h2><p><strong>本地：</strong> Mac OSX</p>
-<p><strong>远端服务器：</strong>腾讯云ECS（1核CPU、1GB内存），系统版本为CentOS 7.0</p>
-<p><strong>服务器用户：</strong>root （期待有人来攻击我的垃圾服务器）</p>
-<p><strong>Github：</strong>github.com/Barry215</p>
-<h2 id="安装目的"><a href="#安装目的" class="headerlink" title="安装目的"></a>安装目的</h2><p>本地代码开发测试后，更新到Github仓库，然后通过PM2部署远程服务器，服务器再部署Node的应用，最后使用Nginx进行反向代理</p>
-<h2 id="远端安装Nodejs"><a href="#远端安装Nodejs" class="headerlink" title="远端安装Nodejs"></a>远端安装Nodejs</h2><p>我看网上大多都是通过下载压缩包来安装的，如果我没有在本地装过Node，也许我会去选择，但是因为在Mac上吃过这个坑（node版本更新太快，而且mac上用brew来安装据说有bug），所以还是打算先安装nvm，用nvm来安装Node。</p>
-<h3 id="更新yum"><a href="#更新yum" class="headerlink" title="更新yum"></a>更新yum</h3><p>把yum更新到最新版本：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum update -y  #y参数是让升级过程中都默认yes</span><br></pre></td></tr></table></figure>
-<p>我们将使用最新源代码构建Node.js，要进行软件的安装，需要一组用来编译源代码的开发工具：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y groupinstall "Development Tools"</span><br></pre></td></tr></table></figure>
-<h3 id="安装Nvm"><a href="#安装Nvm" class="headerlink" title="安装Nvm"></a>安装Nvm</h3><p>用curl来安装nvm，但是这个命令有时效性，最新看<a href="https://github.com/creationix/nvm/" target="_blank" rel="noopener">https://github.com/creationix/nvm/</a></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash</span><br></pre></td></tr></table></figure>
-<p>在mac上这样就ok了，因为它会自动地在.bash_profile文件里写上</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export NVM_DIR="$HOME/.nvm"</span><br><span class="line">[ -s "$NVM_DIR/nvm.sh" ] &amp;&amp; . "$NVM_DIR/nvm.sh" # This loads nvm</span><br></pre></td></tr></table></figure>
-<p>但是亲身体验Centos发现要自己加上去，加完后记得<code>source .bash_profile</code>更新</p>
-<p>当然不一定要写在.bash_profile上</p>
-<p>官方说明（写在那四个文件上应该都有效，<a href="http://blog.csdn.net/chenchong08/article/details/7833242" target="_blank" rel="noopener">区别参考</a>）：</p>
-<blockquote>
-<p>The script clones the nvm repository to <code>~/.nvm</code> and adds the source line to your profile (<code>~/.bash_profile</code>, <code>~/.zshrc</code>, <code>~/.profile</code>, or <code>~/.bashrc</code>).</p>
-</blockquote>
-<p>然后，可以用一下 <code>nvm --version</code> 看一下安装好了没有</p>
-<h3 id="安装Node"><a href="#安装Node" class="headerlink" title="安装Node"></a>安装Node</h3><p>因为nvm是从国外的官网获取资源，所以我们再加入淘宝团队的镜像</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export NVM_NODEJS_ORG_MIRROR=https://npm.taobao.org/mirrors/node</span><br></pre></td></tr></table></figure>
-<p>这个也是放在.bash_profile里，加完后记得<code>source .bash_profile</code>更新</p>
-<p>下面我就开始安装Node</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvm install stable  #或者nvm install v7.5.0，选一个自己适用的版本</span><br></pre></td></tr></table></figure>
-<p>执行命令 <code>node -v</code> 就可以看到现在使用的 <code>Node.js</code> 的版本号</p>
-<p>执行命令 <code>npm -v</code> 就可以看到现在使用的 <code>NPM</code> 的版本号</p>
-<h3 id="安装cnpm"><a href="#安装cnpm" class="headerlink" title="安装cnpm"></a>安装cnpm</h3><p>因为原版的 <code>npm</code> 在国内安装东西是很慢的，要解决慢就一定要用镜像</p>
-<p><code>cnpm</code> 就是使用了淘宝的 <code>NPM</code> 镜像的 <code>npm</code></p>
-<p>安装方法也很简单：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g cnpm --registry=https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
-<p>只需要一步就可以安装好 <code>cnpm</code></p>
-<p>运行 <code>cnpm -v</code> 可以看到安装好了的 <code>cnpm</code> 的版本</p>
-<p>如果不使用PM2的话，用<code>scp</code>，<code>sftp</code>把代码传到服务器，可以直接运行NodeJs了</p>
-<p>因为 Nodejs 是一个Web服务器，所以它本身就已经有自己的端口了，我设置的是3000</p>
-<p>使用 <code>node app.js</code> 之类的手段可以让 Nodejs 服务器运行起来</p>
-<h2 id="远端安装PM2"><a href="#远端安装PM2" class="headerlink" title="远端安装PM2"></a>远端安装PM2</h2><p>本地和远端都使用命令安装</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install pm2 -g</span><br></pre></td></tr></table></figure>
-<p>安装成功后使用<code>pm2 -v</code>参看版本</p>
-<h3 id="Github与服务器建立信任"><a href="#Github与服务器建立信任" class="headerlink" title="Github与服务器建立信任"></a>Github与服务器建立信任</h3><p>如果之前github上已经放过服务器的key了，那就不用下面的操作了</p>
-<p>如果没有，那就</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen #生成公钥和密钥</span><br><span class="line">vi ~/.ssh/id_rsa.pub #去复制公钥里的内容</span><br></pre></td></tr></table></figure>
-<p>然后在github上的setting里的SSH keys加入id_rsa.pub的内容就行了</p>
-<h3 id="本地创建项目"><a href="#本地创建项目" class="headerlink" title="本地创建项目"></a>本地创建项目</h3><p>在github上创建一个新的项目，接着将本地项目与github远程仓库建立连接</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin https://github.com/Barry215/node_demo.git</span><br><span class="line">git push -u origin master #第一次提交好像要用-u，之后就不用了</span><br></pre></td></tr></table></figure>
-<h3 id="本地配置pm2"><a href="#本地配置pm2" class="headerlink" title="本地配置pm2"></a>本地配置pm2</h3><p>在本地的项目目录下，输入：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pm2 ecosystem</span><br></pre></td></tr></table></figure>
-<p>会生成一个ecosystem.config.js(版本原因，也可能是ecosystem.json)文件</p>
-<p>因为目前我们仅部署一个应用，因此，先把不必要的信息删除，即删除apps部分的第二项</p>
-<p>同时把我们的目标文件改为你应用的入口文件，此处修改为Express.js的默认设置，即：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">script : &quot;./bin/www&quot;,</span><br></pre></td></tr></table></figure>
-<p>apps部分就设置完毕了，然后再设置deploy部分。其中production用于生产环境，dev用于开发环境</p>
-<p>我的配置结果</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line"></span><br><span class="line">  apps : [</span><br><span class="line"><span class="comment">//由于我们此次只有一个项目,我们只配置一个app</span></span><br><span class="line">    &#123;</span><br><span class="line">      name : <span class="string">"node_demo"</span>, <span class="comment">//自己取一个名字</span></span><br><span class="line">      script : <span class="string">"./bin/www"</span>,</span><br><span class="line">      env: &#123;</span><br><span class="line">        COMMON_VARIABLE: <span class="string">"true"</span></span><br><span class="line">      &#125;,</span><br><span class="line">      env_production : &#123;</span><br><span class="line">        NODE_ENV: <span class="string">"production"</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  ],</span><br><span class="line"></span><br><span class="line">  deploy : &#123;</span><br><span class="line">    <span class="comment">//生产环境部署配置</span></span><br><span class="line">    production : &#123;</span><br><span class="line">      <span class="comment">//登录远程服务器的用户名</span></span><br><span class="line">      user : <span class="string">"root"</span>,</span><br><span class="line">      <span class="comment">//远程服务器的IP或hostname，此处可以是数组同步部署多个服务器</span></span><br><span class="line">      host : <span class="string">"115.159.190.30"</span>,</span><br><span class="line">      <span class="comment">//远端名称及分支名</span></span><br><span class="line">      ref  : <span class="string">"origin/master"</span>,</span><br><span class="line">      <span class="comment">//git仓库地址</span></span><br><span class="line">      repo : <span class="string">"git@github.com:Barry215/node_demo.git"</span>,</span><br><span class="line">      <span class="comment">//远程服务器部署目录，需要填写user具备写入权限的目录</span></span><br><span class="line">      path : <span class="string">"/home/root/www/production"</span>,</span><br><span class="line">      <span class="comment">//部署后需要执行的命令</span></span><br><span class="line">      <span class="string">"post-deploy"</span> : <span class="string">"npm install &amp;&amp; pm2 startOrRestart ecosystem.config.js --env production"</span></span><br><span class="line">    &#125;</span><br><span class="line">     <span class="comment">//因为我没有开发环境的分支，所以dev部分就不写了</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h3 id="免密登录服务器"><a href="#免密登录服务器" class="headerlink" title="免密登录服务器"></a>免密登录服务器</h3><p>因为pm2的部署是通过ssh进行的，因此需要开通本地到远程服务器的无密码登录</p>
-<p>具体步骤看我的另一篇文章—<a href="https://barry215.github.io/2017/01/25/ssh-without-psd/">SSH免密登录服务器</a></p>
-<h3 id="配置pm2"><a href="#配置pm2" class="headerlink" title="配置pm2"></a>配置pm2</h3><p>在本地应用目录下，执行pm2 deploy命令</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pm2 deploy ecosystem.config.js production setup</span><br></pre></td></tr></table></figure>
-<p>提示错误：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Invalid or unexpected token</span><br></pre></td></tr></table></figure>
-<p>仔细检查配置文件，看是否有写错，如果看不出可以放到vim里看</p>
-<p>并且注意ecosystem.config.js版本的顶部会有<code>module.exports =</code></p>
-<p>ecosystem.json版本的顶部直接是<code>{</code>开始的</p>
-<p>又提示错误：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Host key verification failed.</span><br><span class="line">fatal: Could not read from remote repository.</span><br><span class="line">Please make sure you have the correct access rights and the repository exists.</span><br><span class="line">  failed to clone</span><br><span class="line">Deploy failed</span><br></pre></td></tr></table></figure>
-<p>此时主要是在远程服务器中，并未将<a href="http://github.com/" target="_blank" rel="noopener">http://github.com</a>加入known_hosts，在服务器端通过如下命令设置：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keyscan -t rsa github.com &gt;&gt; ~/.ssh/known_hosts</span><br></pre></td></tr></table></figure>
-<p>在本地继续执行部署命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pm2 deploy ecosystem.config.js production setup</span><br></pre></td></tr></table></figure>
-<p>此时，如无其他问题，输出应提示：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">  ○ setup complete</span><br><span class="line">--&gt; Success</span><br></pre></td></tr></table></figure>
-<p>至此，pm2的本地部署设置完毕。</p>
-<h3 id="pm2部署服务器"><a href="#pm2部署服务器" class="headerlink" title="pm2部署服务器"></a>pm2部署服务器</h3><p>pm2部署要求本地的项目必须将修改提交到github</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m &quot;update ecosystem&quot;</span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
-<p>提交后，在本地应用目录，输入如下命令进行生产环境的部署：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pm2 deploy ecosystem.config.js production</span><br></pre></td></tr></table></figure>
-<p>如果看到</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Use `pm2 show &lt;id|name&gt;` to get more details about an app</span><br><span class="line">  ○ hook test</span><br><span class="line">  ○ successfully deployed origin/master</span><br><span class="line">--&gt; Success</span><br></pre></td></tr></table></figure>
-<p>说明部署成功</p>
-<p>在远程服务器查看端口情况：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -antp</span><br></pre></td></tr></table></figure>
-<p>可以看到应用默认部署的3000端口已经开放了。通过浏览器打开：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://115.159.190.30:3000</span><br></pre></td></tr></table></figure>
-<p>可以看到部署的Web应用可以访问了。（如果netstat -antp中可见3000端口可访问，可以检查下ECS的防火墙设置，确保3000端口对外开放）</p>
-<h3 id="服务器设置pm2开机自启"><a href="#服务器设置pm2开机自启" class="headerlink" title="服务器设置pm2开机自启"></a>服务器设置pm2开机自启</h3><p>开启启动设置，此处是CentOS系统，其他系统替换最后一个选项（可选项：ubuntu, centos, redhat, gentoo, systemd, darwin, amazon）：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pm2 startup centos</span><br></pre></td></tr></table></figure>
-<p>然后按照提示需要输入的命令进行输入：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo su -c &quot;env PATH=$PATH:/usr/bin pm2 startup centos -u root --hp /home/root&quot;</span><br></pre></td></tr></table></figure>
-<p>保存pm2设置</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pm2 save</span><br></pre></td></tr></table></figure>
-<p>现在重新启动系统，测试是否可以开机启动：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo reboot</span><br></pre></td></tr></table></figure>
-<p>等系统重启后，通过浏览器检查系统是否自动启动：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://115.159.190.30:3000</span><br></pre></td></tr></table></figure>
-<p>如果启动正常，说明设置成功！</p>
-<h2 id="可选-更新git"><a href="#可选-更新git" class="headerlink" title="(可选)更新git"></a>(可选)更新git</h2><p>因为Centos 7 上的git版本是1.8，我嫌弃它，所以打算安装新的</p>
-<p>卸载原有 git</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum remove git</span><br></pre></td></tr></table></figure>
-<p>安装依赖文件</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum install curl-devel expat-devel gettext-devel openssl-devel zlib-devel #最好都装</span><br><span class="line">yum install gcc perl-ExtUtils-MakeMaker #一定要安装</span><br></pre></td></tr></table></figure>
-<p>切换到<code>/usr/local/src</code>目录下</p>
-<p>下载最新版git</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://www.kernel.org/pub/software/scm/git/git-2.11.1.tar.gz</span><br></pre></td></tr></table></figure>
-<p>解压并进入解压后的目录</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf git-2.11.1.tar.gz &amp;&amp; cd git-2.11.1</span><br></pre></td></tr></table></figure>
-<p>编译安装</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">./configure #必须执行</span><br><span class="line"></span><br><span class="line">#二选一</span><br><span class="line">make &amp;&amp; make install</span><br><span class="line">或者(我试的好像是上面这种)</span><br><span class="line">make prefix=/usr/local/git all</span><br><span class="line">make prefix=/usr/local/git install</span><br></pre></td></tr></table></figure>
-<p>下面这种需要加环境，上面这种跳过</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export PATH=$PATH:/usr/local/git/bin #把它放到.bash_profile里</span><br><span class="line">source ~/.bash_profile</span><br></pre></td></tr></table></figure>
-<p>查看环境</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo $PATH</span><br></pre></td></tr></table></figure>
-<p>查看版本</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git --version</span><br></pre></td></tr></table></figure>
-<h2 id="安装Nginx"><a href="#安装Nginx" class="headerlink" title="安装Nginx"></a>安装Nginx</h2><p>通过Nginx反向代理，可以让服务器上某端口，指向指定域名的80端口，这样访问就不需要加端口号了</p>
-<h3 id="安装依赖包"><a href="#安装依赖包" class="headerlink" title="安装依赖包"></a>安装依赖包</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">yum install -y gcc gcc-c++</span><br><span class="line">yum -y install openssl</span><br><span class="line">yum -y install zlib</span><br><span class="line">yum -y install pcre</span><br></pre></td></tr></table></figure>
-<p>以上安装的是一些主要的依赖包，具体可根据自己情况或者报错信息提示安装或修改</p>
-<p>我装了<code>zlib</code> <code>zlib-devel</code> <code>pcre-devel</code></p>
-<h3 id="可选-安装pcre依赖"><a href="#可选-安装pcre依赖" class="headerlink" title="(可选)安装pcre依赖"></a>(可选)安装pcre依赖</h3><p>我先前不知道可以yum安装，所以是wget装的</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.40.tar.gz </span><br><span class="line">./configure --prefix=/usr/local/pcre</span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
-<h3 id="下载Nginx"><a href="#下载Nginx" class="headerlink" title="下载Nginx"></a>下载Nginx</h3><blockquote>
-<p>网上说可以配置yum去安装它，但是我没有尝试</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget http://nginx.org/download/nginx-1.10.3.tar.gz</span><br></pre></td></tr></table></figure>
-<h3 id="解压"><a href="#解压" class="headerlink" title="解压"></a>解压</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf nginx-1.10.3.tar.gz</span><br></pre></td></tr></table></figure>
-<h3 id="编译安装"><a href="#编译安装" class="headerlink" title="编译安装"></a>编译安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd nginx-1.10.3</span><br><span class="line">./configure --prefix=/usr/local/nginx --with-pcre=../pcre-8.40</span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
-<h3 id="启动Nginx"><a href="#启动Nginx" class="headerlink" title="启动Nginx"></a>启动Nginx</h3><p>进入Nginx的安装目录下，直接启动Nginx</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/nginx/sbin</span><br><span class="line">./nginx -h #查看帮助</span><br><span class="line">./nginx -t #判断配置文件是否正确</span><br><span class="line">./nginx  #重启是 ./nginx -s reload</span><br><span class="line"><span class="meta">#</span><span class="bash">也可以 killall -9 nginx 杀死进程再启动，也可以是<span class="built_in">kill</span> -9 nginx</span></span><br></pre></td></tr></table></figure>
-<p>也可以使用脚本去启动，停止和重启Nginx—<a href="http://blog.csdn.net/w1014074794/article/details/51881050" target="_blank" rel="noopener">参考链接</a></p>
-<h3 id="配置Nginx"><a href="#配置Nginx" class="headerlink" title="配置Nginx"></a>配置Nginx</h3><p>进入配置目录</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/nginx/conf</span><br></pre></td></tr></table></figure>
-<p>配置nginx.conf</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi nginx.conf</span><br></pre></td></tr></table></figure>
-<p>配置参考</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> user nobody;</span></span><br><span class="line">worker_processes 1;</span><br><span class="line">error_log /usr/local/nginx/logs/error.log;</span><br><span class="line">pid /run/nginx.pid;</span><br><span class="line"><span class="meta">#</span><span class="bash"> Load dynamic modules. See /usr/share/nginx/README.dynamic.</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> include /usr/share/nginx/modules/*.conf;</span></span><br><span class="line">events &#123;</span><br><span class="line">    worker_connections 1024;</span><br><span class="line">&#125;</span><br><span class="line">http &#123;</span><br><span class="line">  upstream my_nodejs_upstream &#123;</span><br><span class="line">    server 127.0.0.1:3000;</span><br><span class="line">    keepalive 64;</span><br><span class="line">  &#125;</span><br><span class="line">  server &#123;</span><br><span class="line">    listen 80;</span><br><span class="line">    server_name   www.maijinta.cn;//你的域名</span><br><span class="line">    # access_log /usr/local/nginx/logs/access.log;</span><br><span class="line">    # error_log /usr/local/nginx/logs/error.log;</span><br><span class="line">    location / &#123;</span><br><span class="line">        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">        proxy_set_header Host $http_host;</span><br><span class="line">        proxy_set_header X-NginX-Proxy true;</span><br><span class="line">        proxy_http_version 1.1;</span><br><span class="line">        proxy_pass http://my_nodejs_upstream/;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="重启Nginx"><a href="#重启Nginx" class="headerlink" title="重启Nginx"></a>重启Nginx</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">./nginx -t #判断配置文件是否正确</span><br><span class="line">./nginx -s reload #重启Nginx</span><br></pre></td></tr></table></figure>
-<p>这样之后，就可以用80端口访问我们的NodeJs应用了</p>
-<h2 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h2><p>往后就可以使用pm2来自动化部署Node.js了</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pm2 deploy ecosystem.config.js production</span><br></pre></td></tr></table></figure>
+            <p>
+              
+下面我来分享下配置Centos7的吐血经历，(╯﹏╰)蓝瘦香菇…
 
+环境介绍本地： Mac OSX
+远端服务器：腾讯云ECS（1核CPU、1GB内存），系统版本为CentOS 7.0
+服务器用户：root （期待有人来攻击我的垃圾服务器）
+Github：github.com/Barry215
+安装
+              ...
+            </p>
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2017/02/13/ConfigureCentos7/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -2343,114 +1776,24 @@
       
         
           
-            <p><img src="/2017/01/25/review of Full-Stack Engineer/book.jpg" alt></p>
-<h3 id="全栈的梦想"><a href="#全栈的梦想" class="headerlink" title="全栈的梦想"></a>全栈的梦想</h3><p>一个雨晴的下午，在图书馆翻遍了所有计算机书架才淘到的书。</p>
-<p>本来打算在图书馆看完，但是空调的热浪吹得头疼，索性还是带回家了，结果尼玛看了三天！</p>
-<p>程序员毕竟都是有全栈工程师这样的梦想，我从安卓到后端再到前端，上下游堆积起来的知识坑越来越多，读了这本书以后，我才想起高中毕业那时的口号</p>
-<blockquote>
-<p> 先精后广，一专多长，做“T”型人才</p>
-</blockquote>
-<p>不过我的成长道路没有那样的美好，一开始谁知道要在哪里做精呢，都学了一遍，才慢慢敲开编程的大门，但是谁知道不会再改了呢。</p>
-<p>但是，总而言之，如果明确了目标，我们还是要先精后广。</p>
-<blockquote>
-<p>先在一个特定的方向上有比较深入的钻研，然后再将学习目标渐渐推广开来</p>
-</blockquote>
-<p>作者对全栈工程师提出了三个要求：</p>
-<ul>
-<li>一专多长</li>
-<li>关注商业目标</li>
-<li>关注用户体验</li>
-</ul>
-<h3 id="作为学生"><a href="#作为学生" class="headerlink" title="作为学生"></a>作为学生</h3><p>作者给出的建议</p>
-<ul>
-<li>把握好校招时间段</li>
-<li>毕业后选择大公司</li>
-</ul>
-<h3 id="作为野生程序员"><a href="#作为野生程序员" class="headerlink" title="作为野生程序员"></a>作为野生程序员</h3><p>作者想的称呼，很贴切</p>
-<blockquote>
-<p>没有计算机基础知识和相关教育经历，靠着计算机开发兴趣进入这个行业，虽然知识面比较广，但各方面都一知半解的开发者——野生程序员</p>
-</blockquote>
-<p>凭兴趣学习虽好，但是总会落下一些不常用，但是要紧的知识点</p>
-<h3 id="作为工程师"><a href="#作为工程师" class="headerlink" title="作为工程师"></a>作为工程师</h3><p>作者推荐一定要有自己的<strong>作品集</strong>，并且注重<strong>声望</strong></p>
-<blockquote>
-<p>就像那个什么都懂的人。感觉他什么都能解决。身边是不是有这种人，可能你喜欢也可能你不喜欢，但是你一定不会排斥成为这样的人。很简单，就是“答应做的事情，全部都要完成，但是你也要学会正确的拒绝。”</p>
-</blockquote>
-<h3 id="前端优化"><a href="#前端优化" class="headerlink" title="前端优化"></a>前端优化</h3><ul>
-<li>压缩源码和图片</li>
-<li>选择合适的图片格式</li>
-<li>合并静态资源</li>
-<li>开启服务端的Gzip压缩</li>
-<li>使用CDN</li>
-<li>延长静态资源缓存时间</li>
-<li>把CSS放在页面的头部，把JS放在底部</li>
-</ul>
-<h3 id="浏览器缓存"><a href="#浏览器缓存" class="headerlink" title="浏览器缓存"></a>浏览器缓存</h3><ul>
-<li>Expires</li>
-<li>Last-Modified</li>
-<li>Cache-Control</li>
-</ul>
-<h4 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h4><p><a href="http://www.jianshu.com/p/7a24e0920255" target="_blank" rel="noopener">浏览器缓存</a></p>
-<p><a href="http://www.jianshu.com/p/985b35774295" target="_blank" rel="noopener">浏览器缓存知识小结及应用</a></p>
-<p><a href="http://www.jianshu.com/p/e34a2221a8ac" target="_blank" rel="noopener">浅谈Web缓存</a></p>
-<h3 id="关于版本号"><a href="#关于版本号" class="headerlink" title="关于版本号"></a>关于版本号</h3><p>根据Semver的规范，版本号用小数点分隔为三个数字。</p>
-<p>比如v3.2.1中3是主要版本号，2是次要版本号，1是补丁。</p>
-<blockquote>
-<p>主要版本号：有API变更导致不兼容旧版本的时候使用</p>
-<p>次要版本号：新增功能，但是向前兼容的情况下使用</p>
-<p>补丁：修复向前兼容的bug时使用</p>
-</blockquote>
-<h3 id="时间管理四象限"><a href="#时间管理四象限" class="headerlink" title="时间管理四象限"></a>时间管理四象限</h3><p>事情分为重要与不重要，紧急与不紧急，以此分为四象限</p>
-<p>作者提出</p>
-<ul>
-<li>如果您平时没有做重要的事情，就会发现自己常常在做紧急的事情</li>
-<li>常常做重要的事情，你会发现很少有紧急的事情</li>
-</ul>
-<p>作者还对此举了很多例子，反正我是信服了</p>
-<h3 id="设计的四大基本理论"><a href="#设计的四大基本理论" class="headerlink" title="设计的四大基本理论"></a>设计的四大基本理论</h3><p>亲密</p>
-<blockquote>
-<p>关系亲密的元素要放在一起，关系疏远的元素则要分开。位置的亲密性直接表现出意义的相关性。</p>
-</blockquote>
-<p>对齐</p>
-<blockquote>
-<p>左对齐，右对齐，上对齐，下对齐</p>
-</blockquote>
-<p>重复</p>
-<blockquote>
-<p>视觉上使用重复的图形和元素、线条、颜色等。</p>
-</blockquote>
-<p>对比</p>
-<blockquote>
-<p>如果两个元素不一样，就让它完全不一样，产生视觉冲击力。</p>
-</blockquote>
-<h3 id="管理"><a href="#管理" class="headerlink" title="管理"></a>管理</h3><blockquote>
-<p>这里写的四点，每点都很重要</p>
-</blockquote>
-<ul>
-<li>在项目最开始做出合理的时间评估</li>
-<li>根据人员的强项来安排任务</li>
-<li>唤起团队对项目成功的渴望</li>
-<li>保障沟通。理想沟通频率每周至少两次</li>
-</ul>
-<h3 id="工作"><a href="#工作" class="headerlink" title="工作"></a>工作</h3><p>和上司汇报工作的时候要突出重点</p>
-<p>讲PPT的时候，听众的注意力要么在PPT上，要么在你身上，所以如果PPT内容太多，大家会忽略你说的话</p>
-<p>对于既没有能力也没有上进意愿的员工，尽早开除，这种员工就像是蛀虫，会腐蚀一个团队</p>
-<p>妥协的结果不都是最好的结果</p>
-<p>加班是一种不好的文化</p>
-<h3 id="性格"><a href="#性格" class="headerlink" title="性格"></a>性格</h3><p>内向是世界上最好的性格</p>
-<p>内向者有一种敏感度</p>
-<ul>
-<li>自我意识  自我情绪的感知</li>
-<li>社会意识  周遭人的情绪感知</li>
-<li>自我管理  自我情绪的控制</li>
-<li>关系管理  朋友关系变化感知</li>
-</ul>
-<h3 id="留言"><a href="#留言" class="headerlink" title="留言"></a>留言</h3><p>作者最后留言</p>
-<blockquote>
-<p>最后感谢一下我的妻子，如果没有你的陪伴，我应该早就写完这本书了</p>
-</blockquote>
-<p>最后我也感谢一下作者，如果不是写得很好，我应该早就看完这本书了 23333</p>
+            <p>
+              
+全栈的梦想一个雨晴的下午，在图书馆翻遍了所有计算机书架才淘到的书。
+本来打算在图书馆看完，但是空调的热浪吹得头疼，索性还是带回家了，结果尼玛看了三天！
+程序员毕竟都是有全栈工程师这样的梦想，我从安卓到后端再到前端，上下游堆积起来的知识坑越来越多，读了这本书以后，我才想起高中毕业那时的口号
 
+ 先精
+              ...
+            </p>
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2017/01/25/review of Full-Stack Engineer/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -2621,32 +1964,25 @@
       
         
           
-            <blockquote>
-<p>此教程仅适用于Mac</p>
-</blockquote>
-<h3 id="本地"><a href="#本地" class="headerlink" title="本地"></a>本地</h3><h4 id="生成密钥"><a href="#生成密钥" class="headerlink" title="生成密钥"></a>生成密钥</h4><p><code>ssh-keygen -t rsa</code></p>
-<p>一路回车，各种提示按默认不要改，等待执行完毕。</p>
-<h5 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h5><p>在~/.ssh里生成了两个密钥文件：id_rsa（私钥） id_rsa.pub（公钥）</p>
-<h4 id="放公钥到服务器"><a href="#放公钥到服务器" class="headerlink" title="放公钥到服务器"></a>放公钥到服务器</h4><p><code>scp ~/.ssh/id_rsa.pub 服务器用户名@IP或域名:~/.ssh/</code></p>
-<p>然后需要输入密码，再进行传输</p>
-<h3 id="服务器"><a href="#服务器" class="headerlink" title="服务器"></a>服务器</h3><h4 id="加入验证"><a href="#加入验证" class="headerlink" title="加入验证"></a>加入验证</h4><p><code>cd ~/.ssh</code></p>
-<p>把id_rsa.pub的内容加入到服务器端的默认验证文件authorized_keys</p>
-<p><code>cat ~/.ssh/id_rsa.pub &gt;&gt; ~/.ssh/authorized_keys</code></p>
-<blockquote>
-<p>如果.ssh目录下没有authorized_keys文件，则新建一个</p>
-<p><code>vi authorized_keys</code></p>
-</blockquote>
-<p>这样之后就可以免密登录了，如果要使用别名登录，可以继续配置</p>
-<h3 id="本地-1"><a href="#本地-1" class="headerlink" title="本地"></a>本地</h3><h4 id="配置config文件"><a href="#配置config文件" class="headerlink" title="配置config文件"></a>配置config文件</h4><p><code>vi ~/.ssh/config</code></p>
-<p>加入以下内容：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Host baidu #别名，域名缩写</span><br><span class="line"></span><br><span class="line">HostName baidu.com #完整的域名</span><br><span class="line"></span><br><span class="line">User root #登录该域名使用的账号名</span><br><span class="line"></span><br><span class="line">PreferredAuthentications publickey  #有些情况或许需要加入此句，优先验证类型ssh</span><br><span class="line"></span><br><span class="line">IdentityFile ~/.ssh/id_rsa #私钥文件的路径</span><br></pre></td></tr></table></figure>
-<p>配置好像很简单。。完成之后<code>scp</code>和<code>sftp</code>都不需要输入密码了哟~</p>
-<h4 id="使用命令缩写"><a href="#使用命令缩写" class="headerlink" title="使用命令缩写"></a>使用命令缩写</h4><p>可以去修改用户目录下的<code>.bash_profile</code>文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi ~/.bash_profile</span><br></pre></td></tr></table></figure>
-<p>比如</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alias la=&quot;ls -a&quot;  #添加这一句就实现 la = ls -a的效果</span><br></pre></td></tr></table></figure>
+            <p>
+              
+此教程仅适用于Mac
 
+本地生成密钥ssh-keygen -t rsa
+一路回车，各种提示按默认不要改，等待执行完毕。
+作用在~/.ssh里生成了两个密钥文件：id_rsa（私钥） id_rsa.pub（公钥）
+放公钥到服务器scp ~/.ssh/id_rsa.pub 服务器用户名@IP或域名:~
+              ...
+            </p>
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2017/01/25/ssh-without-psd/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -2805,44 +2141,28 @@
       
         
           
-            <blockquote>
-<p>世上本没有解耦，需求改的多了也便有了解耦。 —— 产品经理</p>
-</blockquote>
-<p>本例将通过一个计时控件，聊聊如何解耦~</p>
-<p>本<code>TimerView</code>仅作为<code>demo</code>，不保证其健壮性，请勿在实际项目中使用。</p>
-<h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><ul>
-<li><code>UI容器</code>与<code>计时逻辑</code>分离</li>
-<li><code>UI容器</code>与<code>具体UI布局</code>分离</li>
-</ul>
-<h3 id="Let’s-Go"><a href="#Let’s-Go" class="headerlink" title="Let’s Go"></a>Let’s Go</h3><p>话说，小明在做一个电商项目，有个倒计时需求。</p>
-<h3 id="需求1-0"><a href="#需求1-0" class="headerlink" title="需求1.0"></a>需求1.0</h3><p>要求”时、分、秒”数字显示。</p>
-<p>这个简单，小明很快自定义了一个<code>TimerView</code>:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TimerView</span> </span>&#123;</span><br><span class="line">    TextView tvHour, tvMinute, tvSecond;</span><br><span class="line">    TextView divider1, divider2;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p><img src="/2017/01/25/screen-record/dtv_default.gif" alt="需求1.0"></p>
-<h3 id="需求2-0"><a href="#需求2-0" class="headerlink" title="需求2.0"></a>需求2.0</h3><p>界面太丑啦，加点颜色和背景吧~</p>
-<p>这个也简单，小明很快加了一些自定义属性：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TimerView</span> </span>&#123;</span><br><span class="line">    TextView tvHour, tvMinute, tvSecond;</span><br><span class="line">    TextView divider1, divider2;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 添加 自定义属性</span></span><br><span class="line">    <span class="keyword">int</span> tvHourBgRes, tvMinuteBgRes, tvSecondBgRes;</span><br><span class="line">    <span class="keyword">int</span> tvHourColor, tvMinuteColor, tvSecondColor;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p><img src="/2017/01/25/screen-record/dtv_diy.gif" alt="需求2.0"></p>
-<h3 id="需求3-0"><a href="#需求3-0" class="headerlink" title="需求3.0"></a>需求3.0</h3><p>这时，产品经理又跑了过来，你看我发现了啥~</p>
-<p>发现一套火焰数字.jpg，好炫酷的说，帮忙改上去吧~</p>
-<p><img src="/2017/01/25/screen-record/dtv_fire.gif" alt="需求3.0"></p>
-<p>小明内心：你TM有病啊！！！</p>
-<p>你发现了么，这下小明把自己带到沟里了。新需求要求显示<code>火焰数字图片</code>(ImageView)。<br><br>然而，由于<code>TimerView</code>由<code>TextView</code>构成，再怎么自定义属性也实现不了新需求(ImageView)了。<br><br>说的就是你呀：<a href="https://github.com/iwgang/CountdownView" target="_blank" rel="noopener">https://github.com/iwgang/CountdownView</a></p>
-<h4 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h4><p>为啥会这样呢？因为一开始就设计紧耦合了。<br><br><code>TimerView</code>依赖了具体子类<code>TextView</code>，功能也就被局限在<code>TextView</code>了。<br><br>那我们只需这么调整一下，把<code>TextView</code>改成更抽象的<code>View</code>。<br><br>这样一来<code>tvHour</code>既可以是<code>TextView</code>，也可以是<code>ImageView</code>，或者某个<code>ViewGroup</code>，功能得以拓展：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TimerView</span> </span>&#123;</span><br><span class="line">    <span class="comment">//TextView tvHour, tvMinute, tvSecond;</span></span><br><span class="line">    View tvHour, tvMinute, tvSecond;</span><br><span class="line">    <span class="comment">//TextView divider1, divider2;</span></span><br><span class="line">    View divider1, divider2;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 自定义属性也不用了，因为无法确定 tvHour 这些究竟是啥子类。</span></span><br><span class="line">    <span class="comment">//int tvHourBgRes, tvMinuteBgRes, tvSecondBgRes;</span></span><br><span class="line">    <span class="comment">//int tvHourColor, tvMinuteColor, tvSecondColor;</span></span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这也体现了软件设计的一大原则：<strong>要依赖抽象(View)而不要依赖具体(TextView)。</strong></p>
-<h4 id="依赖注入"><a href="#依赖注入" class="headerlink" title="依赖注入"></a>依赖注入</h4><p>还有一个问题：<code>tvHour</code>究竟是啥呢，这个得由用户决定。<br><br>通常我们会提供一系列<code>setXXX()</code>方法给用户进行设置。这个套路叫做<strong>依赖注入</strong>。<br><br>依赖注入是解耦的一种常见的方式。通常，当你有无法确定的一些东西，都应该抛给用户决定。<br><br>举个例子，<code>View</code>被点击时，设计者不知道你想干嘛，于是设计了<code>View.setOnClickListener()</code>。这是典型的依赖注入。</p>
-<p>好了，<code>ImageView</code>可以支持了，然而对于界面更新<code>ImageView</code>和<code>TextView</code>肯定是不一样的。<br><br>该怎么更新又无法确定了，我们可以再次用<code>依赖注入</code>的方式解耦，把难题抛给用户。<br><br>因此，我设计了类似<code>Adapter</code>的东西，都在代码里，就不详细展开了。</p>
-<h3 id="需求4-0"><a href="#需求4-0" class="headerlink" title="需求4.0"></a>需求4.0</h3><p>嗨呀~还不够啊，产品经理的脑洞总是很大的。</p>
-<p>产品经理：我看到一个 svg 诶~</p>
-<p>小明：算我倒霉。不过，我早就重构解耦过了。改需求, 小case~</p>
-<p><img src="/2017/01/25/screen-record/gtv.gif" alt="需求4.0"></p>
-<h3 id="需求5-0"><a href="#需求5-0" class="headerlink" title="需求5.0"></a>需求5.0</h3><p>产品经理：小明，你还活着那？我发现机械表更好看诶~</p>
-<p>小明: <strong>**</strong>, 我改就是了</p>
-<p><img src="/2017/01/25/screen-record/mtv.gif" alt="需求5.0"></p>
-<h3 id="感谢"><a href="#感谢" class="headerlink" title="感谢"></a>感谢</h3><p><a href="https://github.com/lypeer/GoogleClock" target="_blank" rel="noopener">https://github.com/lypeer/GoogleClock</a></p>
-<p><a href="https://github.com/gnehsuy/ClockView" target="_blank" rel="noopener">https://github.com/gnehsuy/ClockView</a></p>
-<p>转自博客 - <a href="http://blog.csdn.net/a153614131/article/details/54579426" target="_blank" rel="noopener">http://blog.csdn.net/a153614131/article/details/54579426</a></p>
+            <p>
+              
+世上本没有解耦，需求改的多了也便有了解耦。 —— 产品经理
 
+本例将通过一个计时控件，聊聊如何解耦~
+本TimerView仅作为demo，不保证其健壮性，请勿在实际项目中使用。
+特点
+UI容器与计时逻辑分离
+UI容器与具体UI布局分离
+
+Let’s Go话说，小明在做一个电商项目，有个倒计时需求。
+              ...
+            </p>
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2017/01/25/screen-record/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
