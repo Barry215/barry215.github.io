@@ -104,13 +104,13 @@
 <meta property="og:site_name" content="麦金">
 <meta property="og:description" content="TCP，HTTP和Socket区别 tcp是传输协议，http是超文本传输协议 tcp是传输层协议，http是应用层协议 http连接是基于tcp的三次握手的 Socket连接过程分为三个步骤：服务器监听，客户端请求，连接确认 Socket可以支持不同的传输层协议（TCP或UDP） Socket是对TCP/IP协议的封装  网页访问过程DNS域名解析 –&amp;gt; 发起TCP的三次握手 –&amp;gt;">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://barry215.github.io/2017/03/09/network-review/network-review/tcp3.jpeg">
-<meta property="og:image" content="https://barry215.github.io/2017/03/09/network-review/network-review/tcp4.jpeg">
+<meta property="og:image" content="https://barry215.github.io/2017/03/09/network-review/tcp3.jpeg">
+<meta property="og:image" content="https://barry215.github.io/2017/03/09/network-review/tcp4.jpeg">
 <meta property="og:updated_time" content="2017-08-03T16:10:02.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="网络知识复习">
 <meta name="twitter:description" content="TCP，HTTP和Socket区别 tcp是传输协议，http是超文本传输协议 tcp是传输层协议，http是应用层协议 http连接是基于tcp的三次握手的 Socket连接过程分为三个步骤：服务器监听，客户端请求，连接确认 Socket可以支持不同的传输层协议（TCP或UDP） Socket是对TCP/IP协议的封装  网页访问过程DNS域名解析 –&amp;gt; 发起TCP的三次握手 –&amp;gt;">
-<meta name="twitter:image" content="https://barry215.github.io/2017/03/09/network-review/network-review/tcp3.jpeg">
+<meta name="twitter:image" content="https://barry215.github.io/2017/03/09/network-review/tcp3.jpeg">
 
 
 
@@ -638,7 +638,7 @@
 <li>A —&gt; B，A确认关闭</li>
 </ol>
 <p><strong>三次握手：</strong></p>
-<p><img src="network-review/tcp3.jpeg" alt></p>
+<p><img src="/2017/03/09/network-review/tcp3.jpeg" alt></p>
 <p><strong>第一次（syn=1，seq=x）：</strong></p>
 <p>客户端向服务器发送syn=1，seq=client_isn的数据包，客户端进入SYN_SEND状态</p>
 <p><strong>第二次（syn=1，ack=1，seq=y，ack_num=x+1）：</strong></p>
@@ -650,7 +650,7 @@
 <p>ack和syn是标志位</p>
 </blockquote>
 <p><strong>四次挥手：</strong></p>
-<p><img src="network-review/tcp4.jpeg" alt></p>
+<p><img src="/2017/03/09/network-review/tcp4.jpeg" alt></p>
 <p><strong>第一次挥手（fin=1，seq=x）：</strong></p>
 <p>假设客户端想要关闭连接，客户端发送一个 FIN 标志位置为1的包，表示自己已经没有数据可以发送了，但是仍然可以接受数据。发送完毕后，客户端进入 FIN_WAIT_1 状态</p>
 <p><strong>第二次挥手（ack=1，ack_num=x+1）：</strong></p>

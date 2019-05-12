@@ -638,7 +638,7 @@
 <li>A —&gt; B，A确认关闭</li>
 </ol>
 <p><strong>三次握手：</strong></p>
-<p><img src="network-review/tcp3.jpeg" alt></p>
+<p><img src="/2017/03/09/network-review/tcp3.jpeg" alt></p>
 <p><strong>第一次（syn=1，seq=x）：</strong></p>
 <p>客户端向服务器发送syn=1，seq=client_isn的数据包，客户端进入SYN_SEND状态</p>
 <p><strong>第二次（syn=1，ack=1，seq=y，ack_num=x+1）：</strong></p>
@@ -650,7 +650,7 @@
 <p>ack和syn是标志位</p>
 </blockquote>
 <p><strong>四次挥手：</strong></p>
-<p><img src="network-review/tcp4.jpeg" alt></p>
+<p><img src="/2017/03/09/network-review/tcp4.jpeg" alt></p>
 <p><strong>第一次挥手（fin=1，seq=x）：</strong></p>
 <p>假设客户端想要关闭连接，客户端发送一个 FIN 标志位置为1的包，表示自己已经没有数据可以发送了，但是仍然可以接受数据。发送完毕后，客户端进入 FIN_WAIT_1 状态</p>
 <p><strong>第二次挥手（ack=1，ack_num=x+1）：</strong></p>
@@ -2343,7 +2343,7 @@
       
         
           
-            <p><img src="review of Full-Stack Engineer/book.jpg" alt></p>
+            <p><img src="/2017/01/25/review of Full-Stack Engineer/book.jpg" alt></p>
 <h3 id="全栈的梦想"><a href="#全栈的梦想" class="headerlink" title="全栈的梦想"></a>全栈的梦想</h3><p>一个雨晴的下午，在图书馆翻遍了所有计算机书架才淘到的书。</p>
 <p>本来打算在图书馆看完，但是空调的热浪吹得头疼，索性还是带回家了，结果尼玛看了三天！</p>
 <p>程序员毕竟都是有全栈工程师这样的梦想，我从安卓到后端再到前端，上下游堆积起来的知识坑越来越多，读了这本书以后，我才想起高中毕业那时的口号</p>
@@ -2817,13 +2817,13 @@
 <h3 id="Let’s-Go"><a href="#Let’s-Go" class="headerlink" title="Let’s Go"></a>Let’s Go</h3><p>话说，小明在做一个电商项目，有个倒计时需求。</p>
 <h3 id="需求1-0"><a href="#需求1-0" class="headerlink" title="需求1.0"></a>需求1.0</h3><p>要求”时、分、秒”数字显示。</p>
 <p>这个简单，小明很快自定义了一个<code>TimerView</code>:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TimerView</span> </span>&#123;</span><br><span class="line">    TextView tvHour, tvMinute, tvSecond;</span><br><span class="line">    TextView divider1, divider2;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p><img src="screen-record/dtv_default.gif" alt="需求1.0"></p>
+<p><img src="/2017/01/25/screen-record/dtv_default.gif" alt="需求1.0"></p>
 <h3 id="需求2-0"><a href="#需求2-0" class="headerlink" title="需求2.0"></a>需求2.0</h3><p>界面太丑啦，加点颜色和背景吧~</p>
 <p>这个也简单，小明很快加了一些自定义属性：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TimerView</span> </span>&#123;</span><br><span class="line">    TextView tvHour, tvMinute, tvSecond;</span><br><span class="line">    TextView divider1, divider2;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 添加 自定义属性</span></span><br><span class="line">    <span class="keyword">int</span> tvHourBgRes, tvMinuteBgRes, tvSecondBgRes;</span><br><span class="line">    <span class="keyword">int</span> tvHourColor, tvMinuteColor, tvSecondColor;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p><img src="screen-record/dtv_diy.gif" alt="需求2.0"></p>
+<p><img src="/2017/01/25/screen-record/dtv_diy.gif" alt="需求2.0"></p>
 <h3 id="需求3-0"><a href="#需求3-0" class="headerlink" title="需求3.0"></a>需求3.0</h3><p>这时，产品经理又跑了过来，你看我发现了啥~</p>
 <p>发现一套火焰数字.jpg，好炫酷的说，帮忙改上去吧~</p>
-<p><img src="screen-record/dtv_fire.gif" alt="需求3.0"></p>
+<p><img src="/2017/01/25/screen-record/dtv_fire.gif" alt="需求3.0"></p>
 <p>小明内心：你TM有病啊！！！</p>
 <p>你发现了么，这下小明把自己带到沟里了。新需求要求显示<code>火焰数字图片</code>(ImageView)。<br><br>然而，由于<code>TimerView</code>由<code>TextView</code>构成，再怎么自定义属性也实现不了新需求(ImageView)了。<br><br>说的就是你呀：<a href="https://github.com/iwgang/CountdownView" target="_blank" rel="noopener">https://github.com/iwgang/CountdownView</a></p>
 <h4 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h4><p>为啥会这样呢？因为一开始就设计紧耦合了。<br><br><code>TimerView</code>依赖了具体子类<code>TextView</code>，功能也就被局限在<code>TextView</code>了。<br><br>那我们只需这么调整一下，把<code>TextView</code>改成更抽象的<code>View</code>。<br><br>这样一来<code>tvHour</code>既可以是<code>TextView</code>，也可以是<code>ImageView</code>，或者某个<code>ViewGroup</code>，功能得以拓展：</p>
@@ -2834,10 +2834,10 @@
 <h3 id="需求4-0"><a href="#需求4-0" class="headerlink" title="需求4.0"></a>需求4.0</h3><p>嗨呀~还不够啊，产品经理的脑洞总是很大的。</p>
 <p>产品经理：我看到一个 svg 诶~</p>
 <p>小明：算我倒霉。不过，我早就重构解耦过了。改需求, 小case~</p>
-<p><img src="screen-record/gtv.gif" alt="需求4.0"></p>
+<p><img src="/2017/01/25/screen-record/gtv.gif" alt="需求4.0"></p>
 <h3 id="需求5-0"><a href="#需求5-0" class="headerlink" title="需求5.0"></a>需求5.0</h3><p>产品经理：小明，你还活着那？我发现机械表更好看诶~</p>
 <p>小明: <strong>**</strong>, 我改就是了</p>
-<p><img src="screen-record/mtv.gif" alt="需求5.0"></p>
+<p><img src="/2017/01/25/screen-record/mtv.gif" alt="需求5.0"></p>
 <h3 id="感谢"><a href="#感谢" class="headerlink" title="感谢"></a>感谢</h3><p><a href="https://github.com/lypeer/GoogleClock" target="_blank" rel="noopener">https://github.com/lypeer/GoogleClock</a></p>
 <p><a href="https://github.com/gnehsuy/ClockView" target="_blank" rel="noopener">https://github.com/gnehsuy/ClockView</a></p>
 <p>转自博客 - <a href="http://blog.csdn.net/a153614131/article/details/54579426" target="_blank" rel="noopener">http://blog.csdn.net/a153614131/article/details/54579426</a></p>

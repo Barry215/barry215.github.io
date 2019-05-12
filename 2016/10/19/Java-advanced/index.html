@@ -104,17 +104,17 @@
 <meta property="og:site_name" content="麦金">
 <meta property="og:description" content="这次我更加深入的理解了泛型，多线程和IO处理，还有就是Java的类加载，反射和注解的知识">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://barry215.github.io/2016/10/19/Java-advanced/Java-advanced/exception.jpg">
-<meta property="og:image" content="https://barry215.github.io/2016/10/19/Java-advanced/Java-advanced/exception2.jpg">
-<meta property="og:image" content="https://barry215.github.io/2016/10/19/Java-advanced/Java-advanced/IO.jpeg">
-<meta property="og:image" content="https://barry215.github.io/2016/10/19/Java-advanced/Java-advanced/jmm.png">
-<meta property="og:image" content="https://barry215.github.io/2016/10/19/Java-advanced/Java-advanced/jvm.png">
-<meta property="og:image" content="https://barry215.github.io/2016/10/19/Java-advanced/Java-advanced/cms.jpg">
+<meta property="og:image" content="https://barry215.github.io/2016/10/19/Java-advanced/exception.jpg">
+<meta property="og:image" content="https://barry215.github.io/2016/10/19/Java-advanced/exception2.jpg">
+<meta property="og:image" content="https://barry215.github.io/2016/10/19/Java-advanced/IO.jpeg">
+<meta property="og:image" content="https://barry215.github.io/2016/10/19/Java-advanced/jmm.png">
+<meta property="og:image" content="https://barry215.github.io/2016/10/19/Java-advanced/jvm.png">
+<meta property="og:image" content="https://barry215.github.io/2016/10/19/Java-advanced/cms.jpg">
 <meta property="og:updated_time" content="2017-11-17T00:48:51.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java 进阶知识">
 <meta name="twitter:description" content="这次我更加深入的理解了泛型，多线程和IO处理，还有就是Java的类加载，反射和注解的知识">
-<meta name="twitter:image" content="https://barry215.github.io/2016/10/19/Java-advanced/Java-advanced/exception.jpg">
+<meta name="twitter:image" content="https://barry215.github.io/2016/10/19/Java-advanced/exception.jpg">
 
 
 
@@ -519,7 +519,7 @@
       
 
       
-        <h3 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h3><p><img src="Java-advanced/exception.jpg" alt="exception"></p>
+        <h3 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h3><p><img src="/2016/10/19/Java-advanced/exception.jpg" alt="exception"></p>
 <ul>
 <li><p>Error</p>
 <ul>
@@ -534,7 +534,7 @@
 <li>运行时异常都是RuntimeException类及其子类，这些异常是不检查的异常, 是在程序运行的时候可能会发生的, 所以程序可以捕捉, 也可以不捕捉。</li>
 <li>检查异常是运行时异常以外的异常, 也是Exception及其子类, 这些异常从程序的角度来说是必须经过捕捉检查处理的, 否则不能通过编译。</li>
 </ul>
-<p><img src="Java-advanced/exception2.jpg" alt></p>
+<p><img src="/2016/10/19/Java-advanced/exception2.jpg" alt></p>
 </li>
 <li><p>java中的异常处理机制</p>
 <ul>
@@ -619,7 +619,7 @@
 <li><strong>测试</strong></li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ThreadClassDemo</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String [] args)</span></span></span><br><span class="line"><span class="function">   </span>&#123;</span><br><span class="line">      Runnable hello = <span class="keyword">new</span> DisplayMessage(<span class="string">"Hello"</span>);</span><br><span class="line">     <span class="comment">//把接口传入线程，进行线程初始化</span></span><br><span class="line">      Thread thread1 = <span class="keyword">new</span> Thread(hello);</span><br><span class="line">     <span class="comment">//将该线程标记为守护线程或用户线程</span></span><br><span class="line">      thread1.setDaemon(<span class="keyword">true</span>);</span><br><span class="line">     <span class="comment">//改变线程名称，使之与参数 name 相同</span></span><br><span class="line">      thread1.setName(<span class="string">"hello"</span>);</span><br><span class="line">     <span class="comment">//使该线程开始执行</span></span><br><span class="line">      thread1.start();</span><br><span class="line">     </span><br><span class="line">      Thread thread2 = <span class="keyword">new</span> GuessANumber(<span class="number">27</span>);</span><br><span class="line">      thread2.start();</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="IO处理"><a href="#IO处理" class="headerlink" title="IO处理"></a>IO处理</h3><p><img src="Java-advanced/IO.jpeg" alt="IO图"></p>
+<h3 id="IO处理"><a href="#IO处理" class="headerlink" title="IO处理"></a>IO处理</h3><p><img src="/2016/10/19/Java-advanced/IO.jpeg" alt="IO图"></p>
 <ul>
 <li><strong>字节和字符的关系</strong><ul>
 <li>1个字节＝8位</li>
@@ -848,7 +848,7 @@
 <li>缓存机制，缓存机制将会保证所有加载过的Class都会被缓存，当程序中需要使用某个Class时，类加载器先从缓存区寻找该Class，只有缓存区不存在，系统才会读取该类对应的二进制数据，并将其转换成Class对象，存入缓存区。这就是为什么修改了Class后，必须重启JVM，程序的修改才会生效</li>
 </ul>
 <h4 id="双亲委派模型"><a href="#双亲委派模型" class="headerlink" title="双亲委派模型"></a>双亲委派模型</h4><p>双亲委派模型的工作流程是：如果一个类加载器收到了类加载的请求，它首先不会自己去尝试加载这个类，而是把请求委托给父加载器去完成，依次向上，因此，所有的类加载请求最终都应该被传递到顶层的启动类加载器中，只有当父加载器在它的搜索范围中没有找到所需的类时，即无法完成该加载，子加载器才会尝试自己去加载该类。</p>
-<h4 id="JMM内存模型"><a href="#JMM内存模型" class="headerlink" title="JMM内存模型"></a>JMM内存模型</h4><p><img src="Java-advanced/jmm.png" alt><br>JMM规定了所有的变量都存储在主内存（Main Memory）中。每个线程还有自己的工作内存（Working Memory）,线程的工作内存中保存了该线程使用到的变量的主内存的副本拷贝，线程对变量的所有操作（读取、赋值等）都必须在工作内存中进行，而不能直接读写主内存中的变量（volatile变量仍然有工作内存的拷贝，但是由于它特殊的操作顺序性规定，所以看起来如同直接在主内存中读写访问一般）。不同的线程之间也无法直接访问对方工作内存中的变量，线程之间值的传递都需要通过主内存来完成。</p>
+<h4 id="JMM内存模型"><a href="#JMM内存模型" class="headerlink" title="JMM内存模型"></a>JMM内存模型</h4><p><img src="/2016/10/19/Java-advanced/jmm.png" alt><br>JMM规定了所有的变量都存储在主内存（Main Memory）中。每个线程还有自己的工作内存（Working Memory）,线程的工作内存中保存了该线程使用到的变量的主内存的副本拷贝，线程对变量的所有操作（读取、赋值等）都必须在工作内存中进行，而不能直接读写主内存中的变量（volatile变量仍然有工作内存的拷贝，但是由于它特殊的操作顺序性规定，所以看起来如同直接在主内存中读写访问一般）。不同的线程之间也无法直接访问对方工作内存中的变量，线程之间值的传递都需要通过主内存来完成。</p>
 <h4 id="JVM的内存结构"><a href="#JVM的内存结构" class="headerlink" title="JVM的内存结构"></a>JVM的内存结构</h4><p>JVM的内存一共分为5个部分:</p>
 <ol>
 <li><code>程序计数器</code>: 程序计数器（Program Counter Register）是一块较小的内存空间，它的作用可以看做是当前线程所执行的字节码的行号指示器，因为cpu调度线程是轮流切换的，所以每个线程需要程序计数器来记录下一个字节码指令的地址，来恢复到正确的执行位置</li>
@@ -858,7 +858,7 @@
 <li><code>堆</code>: Java堆是Java虚拟机所管理的内存中最大的一块。Java堆是被所有线程共享的一块内存区域，在虚拟机启动时创建。此内存区域的唯一目的就是存放对象实例，几乎所有的对象实例都在这里分配内存。</li>
 </ol>
 <p>JVM堆内存被分为两部分年轻代(Young Generation)和老年代(Old Generation)</p>
-<p><img src="Java-advanced/jvm.png" alt></p>
+<p><img src="/2016/10/19/Java-advanced/jvm.png" alt></p>
 <h5 id="新生代-Young"><a href="#新生代-Young" class="headerlink" title="新生代(Young)"></a>新生代(Young)</h5><p>新生代是所有新对象产生的地方。当年轻代的内存空间被用完时，就会触发垃圾回收。这个垃圾回收叫做Minor GC。新生代分为3个部分Eden区和Survivor区(FromSpace和ToSpace,两个区域大小相同，大小8:1:1)，新生代的大小可以通过-Xmn来控制，也可以用-XX：SurvivorRatio来控制Eden和Survivor的比例。</p>
 <p>特点</p>
 <p>大多数新建的对象都在Eden区</p>
@@ -896,7 +896,7 @@
 </blockquote>
 <h5 id="Parallel-old-GC"><a href="#Parallel-old-GC" class="headerlink" title="Parallel old GC"></a>Parallel old GC</h5><p>Parallel old是老年代的多线程GC，GC算法是标记-整理算法</p>
 <h5 id="CMS（concurrent-mark-sweep）-GC"><a href="#CMS（concurrent-mark-sweep）-GC" class="headerlink" title="CMS（concurrent mark sweep） GC"></a>CMS（concurrent mark sweep） GC</h5><p>CMS是老年代的多线程GC，GC算法是标记-清除算法<br>优点：用户线程和GC线程并发同时运行<br>缺点：清除之后空间碎片太多</p>
-<p><img src="Java-advanced/cms.jpg" alt></p>
+<p><img src="/2016/10/19/Java-advanced/cms.jpg" alt></p>
 <h5 id="G1-garbage-first-GC"><a href="#G1-garbage-first-GC" class="headerlink" title="G1(garbage first) GC"></a>G1(garbage first) GC</h5><p>G1是管理整个GC堆的多线程GC，它把java堆分成多个大小相等的region独立区域，GC算法是类似标记整理的算法<br>优点：并行和并发</p>
 <h4 id="垃圾回收GC算法"><a href="#垃圾回收GC算法" class="headerlink" title="垃圾回收GC算法"></a>垃圾回收GC算法</h4><ol>
 <li>引用计数算法:</li>

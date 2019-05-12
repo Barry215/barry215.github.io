@@ -661,7 +661,7 @@
 <h3 id="树和森林"><a href="#树和森林" class="headerlink" title="树和森林"></a>树和森林</h3><h4 id="树的存储结构"><a href="#树的存储结构" class="headerlink" title="树的存储结构"></a>树的存储结构</h4><h5 id="双亲表示法"><a href="#双亲表示法" class="headerlink" title="双亲表示法"></a>双亲表示法</h5><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> SIZE 100</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">PTNode</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">  PElemType data;</span><br><span class="line">  <span class="keyword">int</span> parent;  <span class="comment">//双亲位置域</span></span><br><span class="line">&#125;PTNode;</span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">  PTNode nodes[SIZE];</span><br><span class="line">  <span class="keyword">int</span> r,n;   <span class="comment">//根的位置和结点数</span></span><br><span class="line">&#125;PTree;</span><br></pre></td></tr></table></figure>
 <h5 id="孩子表示法"><a href="#孩子表示法" class="headerlink" title="孩子表示法"></a>孩子表示法</h5><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">CTNode</span>   //孩子结点</span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">  <span class="keyword">int</span> child;</span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">CTNode</span> *<span class="title">next</span>;</span></span><br><span class="line">&#125;*ChildPtr;</span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">  TElemType data;</span><br><span class="line">  ChildPtr firstchild;   <span class="comment">//孩子链表头指针</span></span><br><span class="line">&#125;CTBox;</span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">  CTBOX nodes[SIZE];</span><br><span class="line">  <span class="keyword">int</span> r,n;   <span class="comment">//根的位置和结点数</span></span><br><span class="line">&#125;CTree;</span><br></pre></td></tr></table></figure>
 <h5 id="兄弟表示法"><a href="#兄弟表示法" class="headerlink" title="兄弟表示法"></a>兄弟表示法</h5><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">CSNode</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">  ElemType data;</span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">CSNode</span> *<span class="title">firstchild</span>,*<span class="title">nextsibling</span>;</span></span><br><span class="line">&#125;CSNode,*CSTree;</span><br></pre></td></tr></table></figure>
-<h4 id="树与二叉树的转换"><a href="#树与二叉树的转换" class="headerlink" title="树与二叉树的转换"></a>树与二叉树的转换</h4><p><img src="Data-Structure/erchashu.png" alt></p>
+<h4 id="树与二叉树的转换"><a href="#树与二叉树的转换" class="headerlink" title="树与二叉树的转换"></a>树与二叉树的转换</h4><p><img src="/2017/01/05/Data-Structure/erchashu.png" alt></p>
 <h4 id="树和森林的遍历"><a href="#树和森林的遍历" class="headerlink" title="树和森林的遍历"></a>树和森林的遍历</h4><h5 id="树的遍历"><a href="#树的遍历" class="headerlink" title="树的遍历"></a>树的遍历</h5><blockquote>
 <p>把树转化成二叉树</p>
 </blockquote>
@@ -680,11 +680,11 @@
 <p>转变二叉树来实现用较小的代价来访问到概率大的元素，又叫最优二叉树</p>
 </blockquote>
 <h4 id="生成最优树的方法"><a href="#生成最优树的方法" class="headerlink" title="生成最优树的方法"></a>生成最优树的方法</h4><p>现在有一堆概率数：A:5 , B:15 , C:40 , D:30 , E:10</p>
-<p><img src="Data-Structure/hefumanshu.png" alt></p>
+<p><img src="/2017/01/05/Data-Structure/hefumanshu.png" alt></p>
 <p>如上图所示，选两个目前最小的数生成N~1~，保证右子树的权值大于左子树，然后这样循环，即可生成</p>
 <p>上图二叉树的带权路径长度(叶子结点的路径之和)<br>$$<br>40x1+30x2+15x3+10x4+5x4=205<br>$$</p>
 <h4 id="赫夫曼编码"><a href="#赫夫曼编码" class="headerlink" title="赫夫曼编码"></a>赫夫曼编码</h4><p>如下图所示</p>
-<p><img src="Data-Structure/hefumanbianma.png" alt></p>
+<p><img src="/2017/01/05/Data-Structure/hefumanbianma.png" alt></p>
 <p>主要思想还是没变，把概率最大的字母用最少的二进制字符来表示，而且每个二进制字符组代表的字母不冲突。</p>
 <p>速学路径</p>
 <p><a href="http://www.jianshu.com/p/95fba425be44" target="_blank" rel="noopener">http://www.jianshu.com/p/95fba425be44</a></p>
@@ -712,9 +712,9 @@
 <h4 id="连通图"><a href="#连通图" class="headerlink" title="连通图"></a>连通图</h4><blockquote>
 <p>图上任意两个顶点都连通，则为连通图</p>
 </blockquote>
-<h3 id="图的存储结构"><a href="#图的存储结构" class="headerlink" title="图的存储结构"></a>图的存储结构</h3><h4 id="邻接矩阵"><a href="#邻接矩阵" class="headerlink" title="邻接矩阵"></a>邻接矩阵</h4><p><img src="Data-Structure/linjiejuzheng.png" alt></p>
+<h3 id="图的存储结构"><a href="#图的存储结构" class="headerlink" title="图的存储结构"></a>图的存储结构</h3><h4 id="邻接矩阵"><a href="#邻接矩阵" class="headerlink" title="邻接矩阵"></a>邻接矩阵</h4><p><img src="/2017/01/05/Data-Structure/linjiejuzheng.png" alt></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">char</span> VertexType;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> EdgeType;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXSIZE 100</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">  VertexType vexs[MAXSIZE];         <span class="comment">//顶点数组</span></span><br><span class="line">  EdgeType arc[MAXSIZE][MAXSIZE];   <span class="comment">//二维数组，边表</span></span><br><span class="line">  <span class="keyword">int</span> numVertexes,numEdges;         <span class="comment">//顶点数和边数</span></span><br><span class="line">&#125;MGraph;</span><br></pre></td></tr></table></figure>
-<h4 id="邻接表"><a href="#邻接表" class="headerlink" title="邻接表"></a>邻接表</h4><p><img src="Data-Structure/linjiebiao.png" alt></p>
+<h4 id="邻接表"><a href="#邻接表" class="headerlink" title="邻接表"></a>邻接表</h4><p><img src="/2017/01/05/Data-Structure/linjiebiao.png" alt></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAX_VERTEX_NUM 20</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">ArcNode</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">  <span class="keyword">int</span> adjvex;   <span class="comment">//储存该顶点的下标</span></span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">ArcNode</span> *<span class="title">nextarc</span>;</span>  <span class="comment">//指向下一个邻接点的指针</span></span><br><span class="line">&#125;ArcNode;</span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">VNode</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">  VertexType data;   <span class="comment">//顶点信息</span></span><br><span class="line">  ArcNode *firstarc;  <span class="comment">//指向第一个邻接点</span></span><br><span class="line">&#125;VNode,AdjList[MAX_VERTEX_NUM];</span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">  AdjList vertices;</span><br><span class="line">  <span class="keyword">int</span> vexnum,arcnum;  <span class="comment">//顶点数和弧数</span></span><br><span class="line">&#125;ALGraph;</span><br></pre></td></tr></table></figure>
 <h4 id="十字链表"><a href="#十字链表" class="headerlink" title="十字链表"></a>十字链表</h4><blockquote>
 <p>邻接表是以出度为出发点，逆邻接表是以入度为出发点，那么十字链表就是结合它们两者</p>
@@ -761,11 +761,11 @@
 <h3 id="图的遍历"><a href="#图的遍历" class="headerlink" title="图的遍历"></a>图的遍历</h3><h4 id="深度优先遍历"><a href="#深度优先遍历" class="headerlink" title="深度优先遍历"></a>深度优先遍历</h4><blockquote>
 <p>一直递归地遍历第一个顶点的第一个邻接点，直到访问的顶点没有邻接点后，再对第一个顶点的第二个邻接点进行递归遍历，如此循环</p>
 </blockquote>
-<p><img src="Data-Structure/shendubianli.png" alt></p>
+<p><img src="/2017/01/05/Data-Structure/shendubianli.png" alt></p>
 <h4 id="广度优先遍历"><a href="#广度优先遍历" class="headerlink" title="广度优先遍历"></a>广度优先遍历</h4><blockquote>
 <p>以顶点为起始点，由近至远，依次访问和顶点路径想通且路径长度分别为1，2……的顶点</p>
 </blockquote>
-<p><img src="Data-Structure/guangdubianli.png" alt></p>
+<p><img src="/2017/01/05/Data-Structure/guangdubianli.png" alt></p>
 <p>速学路径</p>
 <p><a href="http://blog.csdn.net/dreamzuora/article/details/51137132" target="_blank" rel="noopener">http://blog.csdn.net/dreamzuora/article/details/51137132</a></p>
 <h3 id="最小生成树"><a href="#最小生成树" class="headerlink" title="最小生成树"></a>最小生成树</h3><blockquote>
@@ -796,7 +796,7 @@
 <h3 id="最短路径"><a href="#最短路径" class="headerlink" title="最短路径"></a>最短路径</h3><h4 id="迪杰斯特拉（Dijkstra）算法"><a href="#迪杰斯特拉（Dijkstra）算法" class="headerlink" title="迪杰斯特拉（Dijkstra）算法"></a>迪杰斯特拉（Dijkstra）算法</h4><blockquote>
 <p>按路径长度递增的次序产生最短路径的算法</p>
 </blockquote>
-<p><img src="Data-Structure/dijiesitela.png" alt></p>
+<p><img src="/2017/01/05/Data-Structure/dijiesitela.png" alt></p>
 <p>速学路径</p>
 <p><a href="http://blog.csdn.net/qq_34845121/article/details/62056089" target="_blank" rel="noopener">http://blog.csdn.net/qq_34845121/article/details/62056089</a></p>
 <h4 id="弗洛伊德（Floyd）算法"><a href="#弗洛伊德（Floyd）算法" class="headerlink" title="弗洛伊德（Floyd）算法"></a>弗洛伊德（Floyd）算法</h4><p>速学链接</p>
@@ -830,7 +830,7 @@
 <h3 id="B树-B-树-B-tree"><a href="#B树-B-树-B-tree" class="headerlink" title="B树(B-树,B-tree)"></a>B树(B-树,B-tree)</h3><blockquote>
 <p>B树是多路平衡查找树，B树每个结点可以有n个元素和n+1个孩子，减少树的高度，所以可以降低内存读取外存的次数；( 对二叉查找树的改进。它的设计思想是，将相关数据尽量集中在一起，以便一次读取多个数据，减少硬盘操作次数）一般用于数据库系统中</p>
 </blockquote>
-<p><img src="Data-Structure/b-tree.jpeg" alt></p>
+<p><img src="/2017/01/05/Data-Structure/b-tree.jpeg" alt></p>
 <h4 id="性质-1"><a href="#性质-1" class="headerlink" title="性质"></a>性质</h4><ul>
 <li>根结点的儿子数为[2, M]</li>
 <li>除根结点以外的非叶子节点的儿子数为[M/2, M]</li>
@@ -842,7 +842,7 @@
 <h3 id="B-树"><a href="#B-树" class="headerlink" title="B+树"></a>B+树</h3><blockquote>
 <p>B+树是B树的变种树，有n棵子树的节点中含有n个关键字，每个关键字不保存数据，只用来索引，数据都保存在叶子节点。是为文件系统而生的。</p>
 </blockquote>
-<p><img src="Data-Structure/b+tree.jpeg" alt></p>
+<p><img src="/2017/01/05/Data-Structure/b+tree.jpeg" alt></p>
 <h4 id="为什么数据库索引采用B-树"><a href="#为什么数据库索引采用B-树" class="headerlink" title="为什么数据库索引采用B+树"></a>为什么数据库索引采用B+树</h4><p>因为从磁盘读到内存需要花很多时间，所以普通的搜索树的深度很深，会导致IO时间很长，所以用深度低的多路查找树。那为什么真实数据不放在内层节点呢，是要让磁盘块能放更多的数据项，同时数据项（索引字段）要小一点，这样可以减低树的高度。</p>
 <h4 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h4><p>重点：B树必须用中序遍历的方法按序扫库， 而B+树直接从叶子结点挨个扫一遍就完了</p>
 <table>
@@ -888,7 +888,7 @@
 <li>索引需要占物理空间。</li>
 <li>当对表中的数据进行增加、删除和修改的时候，索引也要动态的维护，降低了数据的维护速度。</li>
 </ol>
-<p><img src="Data-Structure/mysql_diff.jpg" alt></p>
+<p><img src="/2017/01/05/Data-Structure/mysql_diff.jpg" alt></p>
 <h4 id="索引优化"><a href="#索引优化" class="headerlink" title="索引优化"></a>索引优化</h4><ul>
 <li>如果是联合索引，则把=放在最前面，范围&lt;&gt;between放在最后，因为从左往右匹配</li>
 <li>有了’AB’索引，就不用’A’索引了</li>
@@ -914,7 +914,7 @@
 <h4 id="平衡因子"><a href="#平衡因子" class="headerlink" title="平衡因子"></a>平衡因子</h4><p>将二叉树上结点的左子树深度减去右子树深度的值，也只能是-1，0，1</p>
 <p>速学路径</p>
 <p><a href="http://www.jianshu.com/p/db5529e91f4b" target="_blank" rel="noopener">http://www.jianshu.com/p/db5529e91f4b</a></p>
-<h3 id="红黑树"><a href="#红黑树" class="headerlink" title="红黑树"></a>红黑树</h3><p><img src="Data-Structure/red-black-tree.png" alt></p>
+<h3 id="红黑树"><a href="#红黑树" class="headerlink" title="红黑树"></a>红黑树</h3><p><img src="/2017/01/05/Data-Structure/red-black-tree.png" alt></p>
 <h4 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h4><ol>
 <li>每个节点要么是红色，要么是黑色。</li>
 <li>根节点必须是黑色</li>
@@ -929,11 +929,11 @@
 <p><a href="http://www.jianshu.com/p/23b84ba9a498" target="_blank" rel="noopener">http://www.jianshu.com/p/23b84ba9a498</a></p>
 <h3 id="哈希表"><a href="#哈希表" class="headerlink" title="哈希表"></a>哈希表</h3><h4 id="线性探测法"><a href="#线性探测法" class="headerlink" title="线性探测法"></a>线性探测法</h4><p><a href="http://blog.csdn.net/shangruo/article/details/8491733" target="_blank" rel="noopener">http://blog.csdn.net/shangruo/article/details/8491733</a></p>
 <h4 id="二次探测法"><a href="#二次探测法" class="headerlink" title="二次探测法"></a>二次探测法</h4><p><a href="http://blog.csdn.net/xyzbaihaiping/article/details/51607770" target="_blank" rel="noopener">http://blog.csdn.net/xyzbaihaiping/article/details/51607770</a></p>
-<p><img src="Data-Structure/ercitance.png" alt></p>
+<p><img src="/2017/01/05/Data-Structure/ercitance.png" alt></p>
 <h2 id="排序-1"><a href="#排序-1" class="headerlink" title="排序"></a>排序</h2><h3 id="直接插入排序"><a href="#直接插入排序" class="headerlink" title="直接插入排序"></a>直接插入排序</h3><blockquote>
 <p>每步将一个待排序的记录，按其顺序码大小插入到前面已经排序的字序列的合适位置（从后向前找到合适位置后），直到全部插入排序完为止。</p>
 </blockquote>
-<p><img src="Data-Structure/charupaixu.png" alt></p>
+<p><img src="/2017/01/05/Data-Structure/charupaixu.png" alt></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">InsertSort</span><span class="params">(SqList *L)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> i,j;</span><br><span class="line">  <span class="keyword">for</span>(i=<span class="number">2</span>;i&lt;=L-&gt;length;i++)&#123;</span><br><span class="line">    <span class="keyword">if</span>(L-&gt;r[i] &lt; L-&gt;r[i<span class="number">-1</span>])&#123;    <span class="comment">//如果前者大于后者</span></span><br><span class="line">      L-&gt;r[<span class="number">0</span>]=L-&gt;r[i];          <span class="comment">//把后者保存在暂存区r[0]里</span></span><br><span class="line">      <span class="keyword">for</span>(j=i<span class="number">-1</span>;L-&gt;r[j] &gt; L-&gt;r[<span class="number">0</span>];j--)&#123;</span><br><span class="line">        L-&gt;r[j+<span class="number">1</span>]=L-&gt;r[j];      <span class="comment">//后者放入前者的值，如果前者的前者比暂存区的大，则再次交换</span></span><br><span class="line">      &#125;</span><br><span class="line">      L-&gt;r[j+<span class="number">1</span>]=L-&gt;r[<span class="number">0</span>];        <span class="comment">//再把暂存区的值拿出来</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">insertsort</span><span class="params">(<span class="keyword">int</span> arr[])</span></span>&#123;                </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt; arr.length; i ++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(arr[i] &lt; arr[i<span class="number">-1</span>])&#123;</span><br><span class="line"><span class="comment">//注意[0,i-1]都是有序的。如果待插入元素比arr[i-1]还大则无需再与[i-1]前面的元素进行比较了，反之则进入if语句</span></span><br><span class="line">                <span class="keyword">int</span> temp = arr[i];</span><br><span class="line">                <span class="keyword">int</span> j;</span><br><span class="line">                <span class="keyword">for</span>(j = i<span class="number">-1</span>; j &gt;= <span class="number">0</span> &amp;&amp; arr[j] &gt; temp; j --)&#123;                </span><br><span class="line">                        arr[j+<span class="number">1</span>] = arr[j];<span class="comment">//把比temp大或相等的元素全部往后移动一个位置            </span></span><br><span class="line">                &#125;</span><br><span class="line">                arr[j+<span class="number">1</span>] = temp;<span class="comment">//把待排序的元素temp插入腾出位置的(j+1)</span></span><br><span class="line">            &#125;            </span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><strong>java实现</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">insertSort</span><span class="params">(<span class="keyword">int</span>[] list)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> size = list.length;</span><br><span class="line">    <span class="keyword">int</span> temp = <span class="number">0</span> ;</span><br><span class="line">    <span class="keyword">int</span> j =  <span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span> ; i &lt; size ; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        temp = list[i];</span><br><span class="line">        <span class="comment">//假如temp比前面的值小，则将前面的值后移</span></span><br><span class="line">        <span class="keyword">for</span>(j = i ; j &gt; <span class="number">0</span> &amp;&amp; temp &lt; list[j-<span class="number">1</span>] ; j --)</span><br><span class="line">        &#123;</span><br><span class="line">        	list[j] = list[j-<span class="number">1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        list[j] = temp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -941,7 +941,7 @@
 <h3 id="希尔排序"><a href="#希尔排序" class="headerlink" title="希尔排序"></a>希尔排序</h3><blockquote>
 <p>有间隔的直接插入排序</p>
 </blockquote>
-<p><img src="Data-Structure/xierpaixu.png" alt></p>
+<p><img src="/2017/01/05/Data-Structure/xierpaixu.png" alt></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ShellSort</span><span class="params">(SQLite *L)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> i,j;</span><br><span class="line">  <span class="keyword">int</span> increment = L-&gt;length;</span><br><span class="line">  <span class="keyword">do</span>&#123;</span><br><span class="line">    increment = increment/<span class="number">3</span>+<span class="number">1</span>;        <span class="comment">//先确定间距</span></span><br><span class="line">    <span class="keyword">for</span>(i = increment+<span class="number">1</span>;i&lt;=L-&gt;length;i++)&#123;</span><br><span class="line">      <span class="keyword">if</span>(L-&gt;r[i] &lt; L-&gt;r[i-increment])&#123;        <span class="comment">//比较相隔increment的两值大小</span></span><br><span class="line">        L-&gt;r[<span class="number">0</span>]=L-&gt;r[i];</span><br><span class="line">        <span class="keyword">for</span>(j=i-increment;j&gt;<span class="number">0</span>&amp;&amp;L-&gt;r[<span class="number">0</span>]&lt;L-&gt;r[j];j-=increment)&#123;   <span class="comment">//和直接插入法一个意思</span></span><br><span class="line">          L-&gt;r[j+increment]=L-&gt;r[j];</span><br><span class="line">        &#125;</span><br><span class="line">        L-&gt;r[j+increment]=L-&gt;r[<span class="number">0</span>];</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">while</span>(increment&gt;<span class="number">1</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><strong>java实现</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">shellSort</span><span class="params">(<span class="keyword">int</span>[] data)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> j;</span><br><span class="line">    <span class="keyword">int</span> temp;</span><br><span class="line">    <span class="comment">//每次将步长缩短为原来的一半</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> increment = data.length / <span class="number">2</span>; increment &gt; <span class="number">0</span>; increment /= <span class="number">2</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = increment; i &lt; data.length; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            temp = data[i];</span><br><span class="line">            <span class="keyword">for</span> (j = i; j &gt;= increment; j -= increment)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(temp &lt; data[j - increment])<span class="comment">//如想从小到大排只需修改这里</span></span><br><span class="line">                &#123;</span><br><span class="line">                    data[j] = data[j - increment];</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            data[j] = temp;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -987,7 +987,7 @@
 <p>把n个有序的子序列两两归并，直到归并成一个序列</p>
 </blockquote>
 <p>最好和最差的情况都是O(nlogn)但稳定</p>
-<p><img src="Data-Structure/guibin.png" alt></p>
+<p><img src="/2017/01/05/Data-Structure/guibin.png" alt></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">int</span>[] gb_sort(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> low, <span class="keyword">int</span> high) &#123;</span><br><span class="line">    <span class="keyword">int</span> mid = (low + high) / <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">if</span> (low &lt; high) &#123;</span><br><span class="line">        <span class="comment">// 左边</span></span><br><span class="line">        gb_sort(nums, low, mid);</span><br><span class="line">        <span class="comment">// 右边</span></span><br><span class="line">        gb_sort(nums, mid + <span class="number">1</span>, high);</span><br><span class="line">        <span class="comment">// 左右归并</span></span><br><span class="line">        merge(nums, low, mid, high);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> nums;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">merge</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> low, <span class="keyword">int</span> mid, <span class="keyword">int</span> high)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span>[] temp = <span class="keyword">new</span> <span class="keyword">int</span>[high - low + <span class="number">1</span>];</span><br><span class="line">    <span class="keyword">int</span> i = low;<span class="comment">// 左指针</span></span><br><span class="line">    <span class="keyword">int</span> j = mid + <span class="number">1</span>;<span class="comment">// 右指针</span></span><br><span class="line">    <span class="keyword">int</span> k = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">// 把较小的数先移到新数组中</span></span><br><span class="line">    <span class="keyword">while</span> (i &lt;= mid &amp;&amp; j &lt;= high) &#123;</span><br><span class="line">        <span class="keyword">if</span> (nums[i] &lt; nums[j]) &#123;</span><br><span class="line">            temp[k++] = nums[i++];</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            temp[k++] = nums[j++];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 把左边剩余的数移入数组</span></span><br><span class="line">    <span class="keyword">while</span> (i &lt;= mid) &#123;</span><br><span class="line">        temp[k++] = nums[i++];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 把右边边剩余的数移入数组</span></span><br><span class="line">    <span class="keyword">while</span> (j &lt;= high) &#123;</span><br><span class="line">        temp[k++] = nums[j++];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 把新数组中的数覆盖nums数组</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> k2 = <span class="number">0</span>; k2 &lt; temp.length; k2++) &#123;</span><br><span class="line">        nums[k2 + low] = temp[k2];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>速学路径</p>
 <p><a href="http://blog.csdn.net/yinjiabin/article/details/8265827/" target="_blank" rel="noopener">http://blog.csdn.net/yinjiabin/article/details/8265827/</a></p>
@@ -999,7 +999,7 @@
 <p>速学路径</p>
 <p><a href="http://blog.chinaunix.net/uid-26722078-id-3668671.html" target="_blank" rel="noopener">http://blog.chinaunix.net/uid-26722078-id-3668671.html</a></p>
 <p><a href="http://www.cnblogs.com/kkun/archive/2011/11/23/2260275.html" target="_blank" rel="noopener">http://www.cnblogs.com/kkun/archive/2011/11/23/2260275.html</a></p>
-<h3 id="各类算法比较"><a href="#各类算法比较" class="headerlink" title="各类算法比较"></a>各类算法比较</h3><p><img src="Data-Structure/time_al.jpg" alt></p>
+<h3 id="各类算法比较"><a href="#各类算法比较" class="headerlink" title="各类算法比较"></a>各类算法比较</h3><p><img src="/2017/01/05/Data-Structure/time_al.jpg" alt></p>
 
           
         
@@ -1487,7 +1487,7 @@
         
           
             <h3 id="HTTP服务器"><a href="#HTTP服务器" class="headerlink" title="HTTP服务器"></a>HTTP服务器</h3><p>HTTP服务器本质上也是一种应用程序——它通常运行在服务器之上，绑定服务器的IP地址并监听某一个tcp端口来接收并处理HTTP请求，这样客户端（一般来说是IE, Firefox，Chrome这样的浏览器）就能够通过HTTP协议来获取服务器上的网页（HTML格式）、文档（PDF格式）、音频（MP4格式）、视频（MOV格式）等等资源。下图描述的就是这一过程：</p>
-<p> <img src="Web-backstage/sever_client.png" alt></p>
+<p> <img src="/2016/11/13/Web-backstage/sever_client.png" alt></p>
 <p>其实绝大多数编程语言所包含的类库中也都实现了简单的HTTP服务器方便开发者使用：</p>
 <ul>
 <li>HttpServer (Java HTTP Server )</li>
@@ -1496,15 +1496,15 @@
 <p>使用这些类库能够非常容易的运行一个HTTP服务器，它们都能够通过绑定IP地址并监听tcp端口来提供HTTP服务。</p>
 <h4 id="Apache服务器"><a href="#Apache服务器" class="headerlink" title="Apache服务器"></a>Apache服务器</h4><p>Apache HTTP Server能够将某一个文本文件的内容通过HTTP协议返回到客户端，但是这个文本文件的内容是固定的——也就是说无论何时、任何人访问它得到的内容都是完全相同的，这样的资源我们称之为静态资源。</p>
 <h4 id="Tomcat服务器"><a href="#Tomcat服务器" class="headerlink" title="Tomcat服务器"></a>Tomcat服务器</h4><p>Apache Tomcat是Apache基金会下的另外一个项目，它运行在JVM之上，和HTTP服务器一样，绑定IP地址并监听TCP端口。与Apache HTTP Server相比，Tomcat能够动态的生成资源并返回到客户端。动态资源与静态资源相反，在不同的时间、不同的客户端访问得到的内容是不同的。它也是一个servlet容器，可以认为是apache的扩展，但是可以独立于apache运行。</p>
-<p><img src="Web-backstage/webtomcat.png" alt></p>
+<p><img src="/2016/11/13/Web-backstage/webtomcat.png" alt></p>
 <h5 id="职责"><a href="#职责" class="headerlink" title="职责"></a>职责</h5><p>管理Servlet程序的生命周期将URL映射到指定的Servlet进行处理与Servlet程序合作处理HTTP请求——根据HTTP请求生成HttpServletResponse对象并传递给Servlet进行处理，将Servlet中的HttpServletResponse对象生成的内容返回给浏览器<br>虽然Tomcat也可以认为是HTTP服务器</p>
-<h5 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h5><p><img src="Web-backstage/tomcat.png" alt></p>
+<h5 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h5><p><img src="/2016/11/13/Web-backstage/tomcat.png" alt></p>
 <h4 id="Nginx"><a href="#Nginx" class="headerlink" title="Nginx"></a>Nginx</h4><p>Nginx——Ngine X，是一款自由的、开源的、高性能HTTP服务器和反向代理服务器</p>
 <h5 id="反向代理"><a href="#反向代理" class="headerlink" title="反向代理"></a>反向代理</h5><p>反向代理服务器作用在服务器端，它在服务器端接收客户端的请求，然后将请求分发给具体的服务器进行处理，然后再将服务器的相应结果反馈给客户端。正向代理就是我们用VPN来访问外网的时候一样。</p>
-<p><img src="Web-backstage/daili.jpg" alt></p>
+<p><img src="/2016/11/13/Web-backstage/daili.jpg" alt></p>
 <p>正向代理中，proxy和client同属一个LAN，对server透明；<br>反向代理中，proxy和server同属一个LAN，对client透明。<br>实际上proxy在两种代理中做的事都是代为收发请求和响应，不过从结构上来看正好左右互换了下，所以把后出现的那种代理方式叫成了反向代理。</p>
 <h5 id="Tomcat和Nginx配合"><a href="#Tomcat和Nginx配合" class="headerlink" title="Tomcat和Nginx配合"></a>Tomcat和Nginx配合</h5><p>动静态资源分离——运用Nginx的反向代理功能分发请求：所有动态资源的请求交给Tomcat，而静态资源的请求（例如图片、视频、CSS、JavaScript文件等）则直接由Nginx返回到浏览器，这样能大大减轻Tomcat的压力。负载均衡，当业务压力增大时，可能一个Tomcat的实例不足以处理，那么这时可以启动多个Tomcat实例进行水平扩展，而Nginx的负载均衡功能可以把请求通过算法分发到各个不同的实例进行处理</p>
-<p><img src="Web-backstage/Nginx_Tomcat.png" alt></p>
+<p><img src="/2016/11/13/Web-backstage/Nginx_Tomcat.png" alt></p>
 <h3 id="Servlet"><a href="#Servlet" class="headerlink" title="Servlet"></a>Servlet</h3><h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>很久之前，我们的网页都是静态的，就是我们所看到的页面在编写好之后总是唯一的。后来有人便提出动态页面的概念，相应的就提出了Servlet。可以根据客户端的请求来判断返回什么页面。</p>
 <h4 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h4><p>负责处理客户请求，当客户请求来到时，Servlet容器获取请求，然后调用某个Servlet，并把Servlet的执行结果返回给客户。</p>
 <h4 id="Servlet-生命周期"><a href="#Servlet-生命周期" class="headerlink" title="Servlet 生命周期"></a>Servlet 生命周期</h4><ul>
@@ -1892,7 +1892,7 @@
 <li>转发在服务器端完成，故又称为服务器端跳转；重定向在客户端完成，故又称客户端跳转。</li>
 </ul>
 <p><strong>转发和重定向示意图</strong></p>
-<p><img src="Web-backstage/Forward_Redirect.png" alt></p>
+<p><img src="/2016/11/13/Web-backstage/Forward_Redirect.png" alt></p>
 <h3 id="Cookie"><a href="#Cookie" class="headerlink" title="Cookie"></a>Cookie</h3><h4 id="作用-1"><a href="#作用-1" class="headerlink" title="作用"></a>作用</h4><p>主要功能是用户登录，在用户登录时提示用户是否记住登录信息，当用户选择记住登录信息时，会将用户的登录信息保存在Cookie中，以后用户再进入登录页面时会自动为用户写入用户的登录信息。</p>
 <h4 id="常用的方法"><a href="#常用的方法" class="headerlink" title="常用的方法"></a>常用的方法</h4><table>
 <thead>
@@ -1943,7 +1943,7 @@
 <p>dologin.jsp</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page language=<span class="string">"java"</span> <span class="keyword">import</span>=<span class="string">"java.net.*"</span> contentType=<span class="string">"text/html; charset=UTF-8"</span></span><br><span class="line">    pageEncoding=<span class="string">"UTF-8"</span>%&gt;</span><br><span class="line">&lt;!DOCTYPE html PUBLIC <span class="string">"-//W3C//DTD HTML 4.01 Transitional//EN"</span> <span class="string">"http://www.w3.org/TR/html4/loose.dtd"</span>&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta http-equiv=<span class="string">"Content-Type"</span> content=<span class="string">"text/html; charset=UTF-8"</span>&gt;</span><br><span class="line">&lt;title&gt;登录成功&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">	&lt;h1&gt;登录成功&lt;/h1&gt;</span><br><span class="line">	&lt;hr/&gt;</span><br><span class="line">	&lt;%</span><br><span class="line">		request.setCharacterEncoding(<span class="string">"UTF-8"</span>);</span><br><span class="line">		</span><br><span class="line">		String userName = <span class="string">""</span>;</span><br><span class="line">		String password = <span class="string">""</span>;</span><br><span class="line">		String[] isRemeber = request.getParameterValues(<span class="string">"isRemeber"</span>);</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">if</span>(<span class="keyword">null</span> != isRemeber &amp;&amp; isRemeber.length &gt; <span class="number">0</span>) &#123;</span><br><span class="line">			<span class="comment">//获取userName和password的值，为了防止给cookie赋值时出现乱码异常，</span></span><br><span class="line">			<span class="comment">//使用URLEncoder.encode(String str, String encoding)转码</span></span><br><span class="line">			userName = URLEncoder.encode(request.getParameter(<span class="string">"userName"</span>), <span class="string">"UTF-8"</span>);</span><br><span class="line">			password = URLEncoder.encode(request.getParameter(<span class="string">"password"</span>), <span class="string">"UTF-8"</span>);</span><br><span class="line">			</span><br><span class="line">			<span class="comment">//定义cookie</span></span><br><span class="line">			Cookie userNameCookie = <span class="keyword">new</span> Cookie(<span class="string">"userName"</span>, userName);</span><br><span class="line">			Cookie passwordCookie = <span class="keyword">new</span> Cookie(<span class="string">"password"</span>, password);</span><br><span class="line">			</span><br><span class="line">			<span class="comment">//设置cookie的有效时间</span></span><br><span class="line">			userNameCookie.setMaxAge(<span class="number">60</span> * <span class="number">60</span> * <span class="number">24</span> * <span class="number">10</span>);</span><br><span class="line">			passwordCookie.setMaxAge(<span class="number">60</span> * <span class="number">60</span> * <span class="number">24</span> * <span class="number">10</span>);</span><br><span class="line">			</span><br><span class="line">			<span class="comment">//写入cookie对象</span></span><br><span class="line">			response.addCookie(userNameCookie);</span><br><span class="line">			response.addCookie(passwordCookie);</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			Cookie[] cookies = request.getCookies();</span><br><span class="line">			<span class="keyword">if</span>(<span class="keyword">null</span> != cookies &amp;&amp; cookies.length &gt; <span class="number">0</span>) &#123;</span><br><span class="line">				<span class="keyword">for</span>(Cookie c : cookies) &#123;</span><br><span class="line">					<span class="keyword">if</span>(<span class="string">"userName"</span>.equals(c.getName()) || <span class="string">"password"</span>.equals(c.getName())) &#123;</span><br><span class="line">						c.setMaxAge(<span class="number">0</span>);</span><br><span class="line">                      <span class="comment">//写入cookie对象</span></span><br><span class="line">						response.addCookie(c);</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	%&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
 <h3 id="过滤器"><a href="#过滤器" class="headerlink" title="过滤器"></a>过滤器</h3><h4 id="介绍-1"><a href="#介绍-1" class="headerlink" title="介绍"></a>介绍</h4><p>过滤器是一个服务器端的组件，它可以截取客户端的请求和服务端的响应信息，并对这些信息进行过滤。</p>
-<h4 id="过滤器的工作原理"><a href="#过滤器的工作原理" class="headerlink" title="过滤器的工作原理"></a>过滤器的工作原理</h4><p><img src="Web-backstage/filter.png" alt></p>
+<h4 id="过滤器的工作原理"><a href="#过滤器的工作原理" class="headerlink" title="过滤器的工作原理"></a>过滤器的工作原理</h4><p><img src="/2016/11/13/Web-backstage/filter.png" alt></p>
 <h4 id="过滤器的生命周期"><a href="#过滤器的生命周期" class="headerlink" title="过滤器的生命周期"></a>过滤器的生命周期</h4><p>过滤器的生命周期分为四个阶段：实例化、初始化、过滤和销毁：</p>
 <p>实例化是指在Web工程的web.xml文件里声明一个过滤器，在声明了过滤器之后，Web容器会创建一个过滤器的实例；</p>
 <p>初始化是指在创建了过滤器实例之后，服务器会执行过滤器中的init()方法，这是过滤器的初始化方法；</p>
@@ -1959,7 +1959,7 @@
 </blockquote>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">filter</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>EncodingFilter<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">filter-class</span>&gt;</span>com.icarus.filter.EncodingFilter<span class="tag">&lt;/<span class="name">filter-class</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">init-param</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>encoding<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>UTF-8<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;/<span class="name">init-param</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">filter</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">filter-mapping</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>EncodingFilter<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span></span><br><span class="line">       <span class="comment">&lt;!--设置需要过滤的url--&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/*<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">filter-mapping</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <h4 id="过滤器链"><a href="#过滤器链" class="headerlink" title="过滤器链"></a>过滤器链</h4><p>当用户发送请求请求Web资源时，过滤器1会首先获取用户的请求，对请求进行过滤，然后执行FilterChain.doFilter()将请求发送给过滤器2，过滤器2在过滤了用户请求之后执行FilterChain.doFilter()方法请求实际的Web资源，Web资源的响应将首先被过滤器2获取，在过滤器2对响应进行过滤之后将响应传递给过滤器1，在过滤器1过滤之后才将响应发送给用户。</p>
-<p><img src="Web-backstage/doFilter.png" alt></p>
+<p><img src="/2016/11/13/Web-backstage/doFilter.png" alt></p>
 <h3 id="监听器"><a href="#监听器" class="headerlink" title="监听器"></a>监听器</h3><h4 id="介绍-2"><a href="#介绍-2" class="headerlink" title="介绍"></a>介绍</h4><p>监听器是Servlet规范中定义的一种特殊类，用于监听ServletContext、HttpSession和ServletRequest等域对象的创建和销毁事件，它还可以监听域对象的属性发生修改的事件，可以在事件发生前或者发生后做一些必要的处理。</p>
 <h4 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h4><p>在Servlet中要创建监听器类首先需要新建一个类并继承相应的监听器接口，实现接口中定义的方法，然后在web.xml文件中注册相应的监听器即可。如果一个web.xml文件中注册了多个监听器，则监听器的启动顺序按照在web.xml中的注册顺序启动。如果一个web.xml文件中同时定义了监听器、过滤器和Servlet，那么web容器会先加载监听器、再加载过滤器最后加载Servlet。</p>
 <h4 id="监听器的分类"><a href="#监听器的分类" class="headerlink" title="监听器的分类"></a>监听器的分类</h4><p>按照监听的事件可以将监听器划分为以下三类：</p>
@@ -2620,24 +2620,24 @@
             <h2 id="网络基础知识"><a href="#网络基础知识" class="headerlink" title="网络基础知识"></a>网络基础知识</h2><h3 id="OSI七层模型"><a href="#OSI七层模型" class="headerlink" title="OSI七层模型"></a>OSI七层模型</h3><p>它是参考模型是国际标准化组织（ISO）制定的一个用于计算机或通信系统间互联的标准体系。</p>
 <p>它将计算机网络体系结构的通信协议划分为七层，自下而上依次为：</p>
 <p>物理层、数据链路层、网络层、传输层、会话层、表示层、应用层。其中第四层完成数据传送服务，上面三层面向用户。</p>
-<p><img src="Internet-foundation/protocol1.jpg" alt="模型对比"></p>
+<p><img src="/2016/11/08/Internet-foundation/protocol1.jpg" alt="模型对比"></p>
 <h3 id="TCP-IP五层模型"><a href="#TCP-IP五层模型" class="headerlink" title="TCP/IP五层模型"></a>TCP/IP五层模型</h3><p>应用层、传输层、网络层、数据链路层、物理层。层级越往上越接近用户，越往下越接近硬件。</p>
 <p>每一层都是为了完成一种功能。为了实现这些功能，就需要大家都遵守共同的规则。</p>
-<p><img src="Internet-foundation/protocol2.jpg" alt="五层模型"></p>
+<p><img src="/2016/11/08/Internet-foundation/protocol2.jpg" alt="五层模型"></p>
 <h4 id="物理层"><a href="#物理层" class="headerlink" title="物理层"></a>物理层</h4><p>就是用物理的方式把多个计算机连接在一起，比如无线电，双绞线，光缆，电缆</p>
 <h4 id="数据链路层"><a href="#数据链路层" class="headerlink" title="数据链路层"></a>数据链路层</h4><p>把二进制的信号按规则组合起来，使它变得有意义</p>
 <h5 id="以太网协议"><a href="#以太网协议" class="headerlink" title="以太网协议"></a>以太网协议</h5><p>以太网就是平常所说的局域网的一种</p>
 <p>同一个以太网下的电脑用唯一的mac地址识别，然后可以相互发送数据</p>
 <h5 id="以太网数据包"><a href="#以太网数据包" class="headerlink" title="以太网数据包"></a>以太网数据包</h5><p>一组电信号构成一个数据包，叫做”帧”（Frame）。每一帧分成两个部分：标头（Head）和数据（Data）</p>
 <p>这个数据包最大是1500字节，所以如果数据很长，就必须分割成多个帧进行发送。</p>
-<p><img src="Internet-foundation/head_data_1.png" alt></p>
+<p><img src="/2016/11/08/Internet-foundation/head_data_1.png" alt></p>
 <h5 id="mac地址"><a href="#mac地址" class="headerlink" title="mac地址"></a>mac地址</h5><p>以太网规定，连入网络的所有设备，都必须具有”网卡”接口。数据包必须是从一块网卡，传送到另一块网卡。网卡的地址，就是数据包的发送地址和接收地址，这叫做MAC地址。</p>
 <p>每块网卡出厂的时候，都有一个全世界独一无二的MAC地址，长度是48个二进制位，通常用12个十六进制数表示。</p>
 <p>举例：a8:bb:cf:04:cf:bc是一个mac地址</p>
 <h5 id="网卡"><a href="#网卡" class="headerlink" title="网卡"></a>网卡</h5><p>网卡是工作在链路层的网络组件，是局域网中连接计算机和传输介质的接口，不仅能实现与局域网传输介质之间的物理连接和电信号匹配，还涉及帧的发送与接收、帧的封装与拆封、介质访问控制、数据的编码与解码以及数据缓存的功能等。</p>
 <h5 id="广播"><a href="#广播" class="headerlink" title="广播"></a>广播</h5><p>在以太网内传输数据，肯定要知道目的主机的mac地址。所以需要一个ARP协议来知道目的主机的mac地址</p>
 <p>然后因为某种原因，以太网采用广播的方式发送数据包，即向以太网内的所有计算机发送数据包，然后如果计算机的mac地址和目的的mac地址一样，那就打开数据包，否则就丢弃</p>
-<h4 id="网络层"><a href="#网络层" class="headerlink" title="网络层"></a>网络层</h4><p><img src="Internet-foundation/yitaiwang.png" alt></p>
+<h4 id="网络层"><a href="#网络层" class="headerlink" title="网络层"></a>网络层</h4><p><img src="/2016/11/08/Internet-foundation/yitaiwang.png" alt></p>
 <p>以太网内发送数据包有局限性</p>
 <ul>
 <li>采用广播的方式发送，效率低</li>
@@ -2693,7 +2693,7 @@
 <h5 id="NAT协议"><a href="#NAT协议" class="headerlink" title="NAT协议"></a>NAT协议</h5><p>将私网地址转换成公网地址，从而连接到公共网络</p>
 <p>好处：节省了公网IP地址</p>
 <h5 id="IP数据包"><a href="#IP数据包" class="headerlink" title="IP数据包"></a>IP数据包</h5><p>把IP数据包直接放进以太网数据包的”数据”部分</p>
-<p><img src="Internet-foundation/head_data_2.png" alt></p>
+<p><img src="/2016/11/08/Internet-foundation/head_data_2.png" alt></p>
 <h5 id="ARP协议"><a href="#ARP协议" class="headerlink" title="ARP协议"></a>ARP协议</h5><p>因为IP数据包是放在以太网数据包里发送的，所以我们必须同时知道两个地址，一个是对方的MAC地址，另一个是对方的IP地址。通常情况下，对方的IP地址是已知的，但是我们不知道它的MAC地址。</p>
 <p>所以我们需要用ARP协议来获取目的主机的MAC地址。</p>
 <p>这里又可以分成两种情况</p>
@@ -2707,17 +2707,17 @@
 <blockquote>
 <p>说明：由于历史的原因，许多有关TCP/IP的文献曾经把网络层使用的路由器称为网关，在今天很多局域网采用都是路由来接入网络，因此通常指的网关就是路由器的IP</p>
 </blockquote>
-<p><img src="Internet-foundation/wangguan.jpg" alt></p>
+<p><img src="/2016/11/08/Internet-foundation/wangguan.jpg" alt></p>
 <h4 id="传输层"><a href="#传输层" class="headerlink" title="传输层"></a>传输层</h4><p>虽然通过以上两层，数据传到了计算机，但是计算机还是不知道这个数据是哪个应用程序的数据。所以我们又在计算机上定义了端口（port）。</p>
 <p>传输层的功能，就是建立”端口到端口”的通信。相比之下，”网络层”的功能是建立”主机到主机”的通信。只要确定主机和端口，我们就能实现程序之间的交流。</p>
 <h5 id="端口"><a href="#端口" class="headerlink" title="端口"></a>端口</h5><p>端口是0到65535之间的一个整数，正好16个二进制位。0到1023的端口被系统占用，用户只能选用大于1023的端口。不管是浏览网页还是在线聊天，应用程序会随机选用一个端口，然后与服务器的相应端口联系。</p>
 <h5 id="UDP协议"><a href="#UDP协议" class="headerlink" title="UDP协议"></a>UDP协议</h5><p>现在，我们必须在数据包中加入端口信息，这就需要新的协议。最简单的实现叫做UDP协议，它的格式几乎就是在数据前面，加上端口号。</p>
-<p><img src="Internet-foundation/head_data_3.png" alt></p>
+<p><img src="/2016/11/08/Internet-foundation/head_data_3.png" alt></p>
 <h5 id="TCP协议"><a href="#TCP协议" class="headerlink" title="TCP协议"></a>TCP协议</h5><p>UDP协议的优点是比较简单，容易实现，但是缺点是可靠性较差，一旦数据包发出，无法知道对方是否收到。</p>
 <p>所以出现了TCP协议，它会和目的主机进行三次握手确认，保证了数据传输的准确性</p>
 <p>握手过程中传送的包里不包含数据，三次握手完毕后，客户端与服务器才正式开始传送数据。</p>
 <p>只需要一次连接，属于长连接，只要不断开的情况可以一直使用。</p>
-<p><img src="Internet-foundation/tcp.png" alt></p>
+<p><img src="/2016/11/08/Internet-foundation/tcp.png" alt></p>
 <h5 id="TCP滑动窗口"><a href="#TCP滑动窗口" class="headerlink" title="TCP滑动窗口"></a>TCP滑动窗口</h5><p>如果发送方把数据发送得过快，接收方可能会来不及接收，这就会造成数据的丢失。</p>
 <p>滑动窗口本质上是描述接受方的TCP数据报缓冲区大小的数据，发送方根据这个数据来计算自己最多能发送多长的数据。如果发送方收到接受方的窗口大小为0的TCP数据报，那么发送方将停止发送数据，等到接受方发送窗口大小不为0的数据报的到来。窗口可以实时调整。</p>
 <p>TCP的窗口单位是字节，不是报文段。</p>
@@ -2738,7 +2738,7 @@
 <p>只管是否发送成功，不保证对方是否接收到数据，所以UDP是不安全的，有可能会丢失数据包。</p>
 <h4 id="应用层"><a href="#应用层" class="headerlink" title="应用层"></a>应用层</h4><p>这一层有很多的协议，因为要规定应用程序的数据格式。比如Email (SMTP)、HTTP、FTP这些数据，都对应的协议。</p>
 <p>数据包是TCP/IP协议通信传输中的数据单位，也称为“包”。</p>
-<p><img src="Internet-foundation/head_data_4.png" alt></p>
+<p><img src="/2016/11/08/Internet-foundation/head_data_4.png" alt></p>
 <h5 id="SMTP协议"><a href="#SMTP协议" class="headerlink" title="SMTP协议"></a>SMTP协议</h5><p>SMTP（Simple Mail Transfer Protocol，简单邮件传输协议），用来发送电子邮件。</p>
 <h5 id="HTTP数据包"><a href="#HTTP数据包" class="headerlink" title="HTTP数据包"></a>HTTP数据包</h5><p><img src="Internet-foundation/http1.png" alt></p>
 <h5 id="HTTP协议"><a href="#HTTP协议" class="headerlink" title="HTTP协议"></a>HTTP协议</h5><p>HTTP(超文本传输协议)是利用TCP在两台电脑(通常是Web服务器和客户端)之间传输信息的协议。客户端使用Web浏览器发起HTTP请求给Web服务器，Web服务器发送被请求的信息给客户端。</p>
@@ -2746,7 +2746,7 @@
 <h5 id="HTTPS协议"><a href="#HTTPS协议" class="headerlink" title="HTTPS协议"></a>HTTPS协议</h5><p>以安全为目标的HTTP通道，简单讲是HTTP的安全版。即HTTP下加入SSL层，HTTPS的安全基础是SSL，因此加密的详细内容就需要SSL。用于安全的HTTP数据传输。</p>
 <h5 id="SSL协议"><a href="#SSL协议" class="headerlink" title="SSL协议"></a>SSL协议</h5><p>SSL协议能够对信用卡和个人信息提供较安全的保护。SSL是对计算机之间整个会话进行加密的协议。在SSL中，采用了公开密钥和私有密钥两种加密方法。</p>
 <h5 id="FTP协议"><a href="#FTP协议" class="headerlink" title="FTP协议"></a>FTP协议</h5><p>FTP（File Transfer Protocol，文件传输协议） 是 TCP/IP 协议组中的协议之一。FTP协议包括两个组成部分，其一为FTP服务器，其二为FTP客户端。其中FTP服务器用来存储文件，用户可以使用FTP客户端通过FTP协议访问位于FTP服务器上的资源。在开发网站的时候，通常利用FTP协议把网页或程序传到Web服务器上。此外，由于FTP传输效率非常高，在网络上传输大的文件时，一般也采用该协议。</p>
-<p><img src="Internet-foundation/internet.png" alt></p>
+<p><img src="/2016/11/08/Internet-foundation/internet.png" alt></p>
 <h3 id="网络请求"><a href="#网络请求" class="headerlink" title="网络请求"></a>网络请求</h3><p>发送数据包，需要知道两个地址</p>
 <ul>
 <li>目的计算机的mac地址</li>
@@ -2771,7 +2771,7 @@
 </tr>
 </tbody>
 </table>
-<h4 id="静态IP地址设置"><a href="#静态IP地址设置" class="headerlink" title="静态IP地址设置"></a>静态IP地址设置</h4><p><img src="Internet-foundation/xieyi.png" alt></p>
+<h4 id="静态IP地址设置"><a href="#静态IP地址设置" class="headerlink" title="静态IP地址设置"></a>静态IP地址设置</h4><p><img src="/2016/11/08/Internet-foundation/xieyi.png" alt></p>
 <p>需要4个网络参数</p>
 <ul>
 <li>本机的IP地址   192.168.1.100</li>
@@ -2849,7 +2849,7 @@
 <p>用VPN代理后，你的IP地址就变成了VPN服务器的地址，所有的网络操作都是服务器帮你做的</p>
 <h4 id="浏览器知识"><a href="#浏览器知识" class="headerlink" title="浏览器知识"></a>浏览器知识</h4><h5 id="URL"><a href="#URL" class="headerlink" title="URL"></a>URL</h5><p>URL全称是资源描述符，一个URL地址，它用于描述一个网络上的资源</p>
 <h5 id="HTTP请求报文"><a href="#HTTP请求报文" class="headerlink" title="HTTP请求报文"></a>HTTP请求报文</h5><p><img src="Internet-foundation/http2.png" alt></p>
-<h5 id="HTTP请求头"><a href="#HTTP请求头" class="headerlink" title="HTTP请求头"></a>HTTP请求头</h5><p><img src="Internet-foundation/request.jpeg" alt></p>
+<h5 id="HTTP请求头"><a href="#HTTP请求头" class="headerlink" title="HTTP请求头"></a>HTTP请求头</h5><p><img src="/2016/11/08/Internet-foundation/request.jpeg" alt></p>
 <table>
 <thead>
 <tr>
@@ -2894,7 +2894,7 @@
 </table>
 <p>accept:浏览器通过这个头告诉服务器，它所支持的数据类型<br>Accept-Charset: 浏览器通过这个头告诉服务器，它支持哪种字符集<br>Accept-Encoding：浏览器通过这个头告诉服务器，支持的压缩格式<br>Accept-Language：浏览器通过这个头告诉服务器，它的语言环境<br>Host：浏览器通过这个头告诉服务器，想访问哪台主机<br>If-Modified-Since: 浏览器通过这个头告诉服务器，缓存数据的时间<br>Referer：浏览器通过这个头告诉服务器，客户机是哪个页面来的  防盗链<br>Connection：浏览器通过这个头告诉服务器，请求完后是断开链接还是何持链接</p>
 <h5 id="WEB缓存机制"><a href="#WEB缓存机制" class="headerlink" title="WEB缓存机制"></a>WEB缓存机制</h5><p>Cache策略</p>
-<p><img src="Internet-foundation/cache.png" alt></p>
+<p><img src="/2016/11/08/Internet-foundation/cache.png" alt></p>
 <p>浏览器缓存</p>
 <p>浏览器会把缓存的文件保存在一个叫User Data的文件夹下，下次页面加载同样资源时，可以直接从本地读取，不必通过HTTP从服务器端再次下载资源，大大加快了页面的响应速度</p>
 <p>本地缓存阶段</p>
@@ -2903,16 +2903,16 @@
 <p>协商缓存阶段</p>
 <p>HTPP1.0 使用Last-Modified与If-Modified-Since，服务器返回的是Last-Modified，浏览器第二次会发If-Modified-Since</p>
 <p>HTTP1.1 使用ETag与If-None-Match，服务器返回的是ETag，浏览器第二次会发If-None-Match，当ETag和Last-modified同时存在时，Last-modified会被忽略</p>
-<p><img src="Internet-foundation/cacheHead.png" alt></p>
+<p><img src="/2016/11/08/Internet-foundation/cacheHead.png" alt></p>
 <p>当一个用户发起一个静态资源请求的时候，浏览器会通过以下几步来获取资源：</p>
 <ul>
 <li>本地缓存阶段：先在本地查找该资源，如果有发现该资源，而且该资源还没有过期，就使用这一个资源，完全不会发送http请求到服务器；</li>
 <li>协商缓存阶段：如果在本地缓存找到对应的资源，但是不知道该资源是否过期或者已经过期，则发一个http请求到服务器,然后服务器判断这个请求，如果请求的资源在服务器上没有改动过，则返回304，让浏览器使用本地找到的那个资源；</li>
 <li>缓存失败阶段：当服务器发现请求的资源已经修改过，或者这是一个新的请求(在本来没有找到资源)，服务器则返回该资源的数据，并且返回200， 当然这个是指找到资源的情况下，如果服务器上没有这个资源，则返回404。</li>
 </ul>
-<p><img src="Internet-foundation/cacheFlow.png" alt></p>
+<p><img src="/2016/11/08/Internet-foundation/cacheFlow.png" alt></p>
 <p>刷新失效</p>
-<p><img src="Internet-foundation/flashCache.png" alt></p>
+<p><img src="/2016/11/08/Internet-foundation/flashCache.png" alt></p>
 <h5 id="Web缓存的作用"><a href="#Web缓存的作用" class="headerlink" title="Web缓存的作用"></a>Web缓存的作用</h5><ul>
 <li>减少网络带宽消耗</li>
 <li>降低服务器压力</li>
@@ -2929,7 +2929,7 @@
 <li>ping命令</li>
 <li>抓包</li>
 </ul>
-<h5 id="HTTP响应头"><a href="#HTTP响应头" class="headerlink" title="HTTP响应头"></a>HTTP响应头</h5><p><img src="Internet-foundation/response.png" alt></p>
+<h5 id="HTTP响应头"><a href="#HTTP响应头" class="headerlink" title="HTTP响应头"></a>HTTP响应头</h5><p><img src="/2016/11/08/Internet-foundation/response.png" alt></p>
 <table>
 <thead>
 <tr>
@@ -3045,7 +3045,7 @@
 <p>CSRF漏洞一般分为站外和站内两种类型。</p>
 <p>CSRF站外类型的漏洞本质上就是传统意义上的外部提交数据问题。通常程序员会考虑给一些留言或者评论的表单加上水印以防止SPAM问题（这里，SPAM可以简单的理解为垃圾留言、垃圾评论，或者是带有站外链接的恶意回复），但是有时为了提高用户的体验性，可能没有对一些操作做任何限制，所以攻击者可以事先预测并设置请求的参数，在站外的Web页面里编写脚本伪造文件请求，或者和自动提交的表单一起使用来实现GET、POST请求，当用户在会话状态下点击链接访问站外Web页面，客户端就被强迫发起请求。</p>
 <p>CSRF站内类型的漏洞在一定程度上是由于程序员滥用REQUEST类变量造成的。在一些敏感的操作中（如修改密码、添加用户等），本来要求用户从表单提交发起POST请求传递参数给程序，但是由于使用了REQUEST类变量造成的。在一些敏感的操作中（如修改密码、添加用户等），本来要求用户从表单提交发起POST请求传递参数给程序，但是由于使用了_REQUEST等变量，程序除支持接收POST请求传递的参数外也支持接收GET请求传递的参数，这样就会为攻击者使用CSRF攻击创造条件。一般攻击者只要把预测的请求参数放在站内一个贴子或者留言的图片链接里，受害者浏览了这样的页面就会被强迫发起这些请求。</p>
-<p><img src="Internet-foundation/csrf.jpg" alt></p>
+<p><img src="/2016/11/08/Internet-foundation/csrf.jpg" alt></p>
 <h5 id="CSRF漏洞防御"><a href="#CSRF漏洞防御" class="headerlink" title="CSRF漏洞防御"></a>CSRF漏洞防御</h5><ol>
 <li>验证HTTP Referer字段，查看HTTP请求来源</li>
 <li>在请求中添加token并验证</li>
